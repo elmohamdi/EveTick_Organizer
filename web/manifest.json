@@ -1,6 +1,6 @@
 {
-    "name": "evetick_organizer",
-    "short_name": "evetick_organizer",
+    "name": "evetick_organizer_clean",
+    "short_name": "evetick_organizer_clean",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "evetick_organizer" "\0"
+            VALUE "FileDescription", "evetick_organizer_clean" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "evetick_organizer" "\0"
+            VALUE "InternalName", "evetick_organizer_clean" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2026 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "evetick_organizer.exe" "\0"
-            VALUE "ProductName", "evetick_organizer" "\0"
+            VALUE "OriginalFilename", "evetick_organizer_clean.exe" "\0"
+            VALUE "ProductName", "evetick_organizer_clean" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

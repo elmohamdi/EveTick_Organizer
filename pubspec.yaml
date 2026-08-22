@@ -1,4 +1,4 @@
-name: evetick_organizer
+name: evetick_organizer_clean
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -30,45 +30,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-    # State management
-  flutter_bloc: ^9.1.1
-  # Code generator (mainly used with cubit & retrofit)
-  freezed: ^3.2.5
-  freezed_annotation: ^3.1.0
-  # For dependency injection
-  get_it: ^9.2.1
-  #Automatically generate code for converting to and from JSON by annotating Dart classes.
-  json_serializable: ^6.13.1
-  json_annotation: ^4.11.0
-  # Networking
-  dio: ^5.9.2
-  retrofit: ^4.9.2
-  retrofit_generator: ^10.2.5
-  pretty_dio_logger: ^1.4.0
-  # localizatio
-  intl: ^0.20.2
-  easy_localization: ^3.0.8
-  # for splash screen
-  flutter_native_splash: ^2.4.7
-  # An SVG rendering and widget library for Flutter, which allows painting
-  flutter_svg: ^2.2.4
-  # for adapting screen and font size
-  shared_preferences: ^2.5.5
-  pin_code_fields: ^9.3.0
-  firebase_auth: 6.3.0
-  firebase_core: 4.6.0
-  go_router: ^17.3.0
-  cloud_firestore: ^6.2.0
-  geolocator: ^14.0.3
-  geocoding: ^4.0.0
-  cached_network_image: ^3.4.1
-  image_picker: ^1.2.3
-  firebase_storage: ^13.2.0
-  google_maps_flutter: ^2.17.1
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
-  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:

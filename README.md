@@ -1,4 +1,4 @@
-# evetick_organizer
+# evetick_organizer_clean
 
 A new Flutter project.
 
