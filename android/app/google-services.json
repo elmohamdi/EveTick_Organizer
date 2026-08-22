@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "791601355828",
+    "project_id": "evetickorganizer",
+    "storage_bucket": "evetickorganizer.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791601355828:android:b0b69f29f1ab7fbae63e61",
+        "android_client_info": {
+          "package_name": "com.example.evetick_organizer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIWc4XpxCZ6m57Ihig8xKaOZvaO_DjHi0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

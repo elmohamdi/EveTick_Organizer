@@ -1,0 +1,926 @@
+{
+  "@@locale": "en",
+  "commonSkip": "Skip",
+  "@commonSkip": {},
+  "commonNext": "Next",
+  "@commonNext": {},
+  "commonContinue": "Continue",
+  "@commonContinue": {},
+  "commonConfirm": "Confirm",
+  "@commonConfirm": {},
+  "commonConfirmSelection": "Confirm Selection",
+  "@commonConfirmSelection": {},
+  "commonCancel": "Cancel",
+  "@commonCancel": {},
+  "commonDone": "Done!",
+  "@commonDone": {},
+  "commonSave": "Save",
+  "@commonSave": {},
+  "commonPost": "Post",
+  "@commonPost": {},
+  "commonFollow": "Follow",
+  "@commonFollow": {},
+  "commonFollowing": "Following",
+  "@commonFollowing": {},
+  "commonManage": "Manage",
+  "@commonManage": {},
+  "commonShare": "Share",
+  "@commonShare": {},
+  "commonReadMore": "Read More",
+  "@commonReadMore": {},
+  "commonViewAll": "View All",
+  "@commonViewAll": {},
+  "commonSeeAll": "See All",
+  "@commonSeeAll": {},
+  "commonLoadMoreReviews": "Load More Reviews",
+  "@commonLoadMoreReviews": {},
+  "commonBackToHome": "Back to Home",
+  "@commonBackToHome": {},
+  "commonOr": "or",
+  "@commonOr": {},
+  "commonBookNow": "Book Now",
+  "@commonBookNow": {},
+  "commonSoldOut": "Sold Out",
+  "@commonSoldOut": {},
+  "commonWaitlist": "WAITLIST",
+  "@commonWaitlist": {},
+  "commonFromPrice": "From ${price}",
+  "@commonFromPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingAppName": "EveTick",
+  "@onboardingAppName": {},
+  "onboardingSlide1Title": "Discover Local \n Events",
+  "@onboardingSlide1Title": {},
+  "onboardingSlide1Subtitle": "Find and book tickets for concerts, cinema, and more happening right in your city",
+  "@onboardingSlide1Subtitle": {},
+  "onboardingSlide2Title": "Seamless Booking",
+  "@onboardingSlide2Title": {},
+  "onboardingSlide2Subtitle": "Secure your spot in seconds with our fast and easy checkout process",
+  "@onboardingSlide2Subtitle": {},
+  "onboardingWelcomeTitle": "Discover Events\nYou ",
+  "@onboardingWelcomeTitle": {},
+  "onboardingWelcomeTitleRemain": "Love",
+  "@onboardingWelcomeTitleRemain": {},
+
+  "onboardingWelcomeSubtitle": "Join the community of event seekers",
+  "@onboardingWelcomeSubtitle": {},
+  "locationSetLocationTitle": "Where are You?",
+  "@locationSetLocationTitle": {},
+  "onboardingLocationPermissionNotice": "To show you events near you, we need your location permission.",
+  "@onboardingLocationPermissionNotice": {},
+  "locationSelectLocationTitle": "Select Location",
+  "@locationSelectLocationTitle": {},
+  "locationSearchPlaceholder": "Search for city, street, or venue",
+  "@locationSearchPlaceholder": {},
+  "locationUseCurrentLocation": "Use Current Location",
+  "@locationUseCurrentLocation": {},
+  "locationCurrentCity": "London, United Kingdom",
+  "@locationCurrentCity": {},
+  "locationPopularCities": "Popular Cities",
+  "@locationPopularCities": {},
+  "locationSelectGovernorate": "Select Governorate",
+  "@locationSelectGovernorate": {},
+  "locationChooseGovernorate": "Choose Governorate",
+  "@locationChooseGovernorate": {},
+  "locationNearbyLocations": "Nearby Locations",
+  "@locationNearbyLocations": {},
+  "locationSelectManually": "Select Manually",
+  "@locationSelectManually": {},
+  "locationDistanceAway": "{distance} miles away",
+  "@locationDistanceAway": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      }
+    }
+  },
+  "locationRecentSearch": "Recent Search, {city}",
+  "@locationRecentSearch": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "locationCitiesLondon": "London",
+  "@locationCitiesLondon": {},
+  "locationCitiesNewYork": "New York",
+  "@locationCitiesNewYork": {},
+  "locationCitiesSanFrancisco": "San Francisco",
+  "@locationCitiesSanFrancisco": {},
+  "locationCitiesDubai": "Dubai",
+  "@locationCitiesDubai": {},
+  "locationVenueWestminster": "Westminster, London",
+  "@locationVenueWestminster": {},
+  "locationVenueMadisonSquareGarden": "Madison Square Garden",
+  "@locationVenueMadisonSquareGarden": {},
+  "authSignIn": "Sign in",
+  "@authSignIn": {},
+  "authSignUp": "Sign up",
+  "@authSignUp": {},
+  "authContinueWithGoogle": "Continue with Google",
+  "@authContinueWithGoogle": {},
+  "authContinueWithFacebook": "Continue with Facebook",
+  "@authContinueWithFacebook": {},
+  "authContinueAsGuest": "Continue as guest",
+  "@authContinueAsGuest": {},
+  "authNoAccountPrompt": "Don't have an account? ",
+  "@authNoAccountPrompt": {},
+  "authNoAccountPromptRemain": "Sign up",
+  "@authNoAccountPromptRemain": {},
+  "authHasAccountPrompt": "Already have an account? ",
+  "@authHasAccountPrompt": {},
+  "authHasAccountPromptRemain": "Sign in",
+  "@authHasAccountPromptRemain": {},
+  "authEmailAddressLabel": "Email Address",
+  "@authEmailAddressLabel": {},
+  "authEmailPlaceholder": "Enter your email",
+  "@authEmailPlaceholder": {},
+  "authEmailPlaceholderContinue": "Enter your email to continue",
+  "@authEmailPlaceholderContinue": {},
+  "authFullNameLabel": "Full Name",
+  "@authFullNameLabel": {},
+  "authFullNamePlaceholder": "Enter your Name",
+  "@authFullNamePlaceholder": {},
+  "authPasswordLabel": "Password",
+  "@authPasswordLabel": {},
+  "authPasswordPlaceholder": "Enter your password",
+  "@authPasswordPlaceholder": {},
+  "authVerifyTitle": "Verify",
+  "@authVerifyTitle": {},
+  "authVerificationCodeLabel": "Verification Code",
+  "@authVerificationCodeLabel": {},
+  "authVerificationSentNotice": "Check your email for the code sent to {email}",
+  "@authVerificationSentNotice": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "authResendCodePrompt": "Didn't receive the code? Resend",
+  "@authResendCodePrompt": {},
+  "authRegistrationSuccess": "Successfully registered to EveTick",
+  "@authRegistrationSuccess": {},
+  "authStartExploring": "Start Exploring",
+  "@authStartExploring": {},
+  "homeSearchPlaceholder": "Search for concerts, cinema...",
+  "@homeSearchPlaceholder": {},
+  "homeSearchSuggestionExample": "Jazz concerts in London",
+  "@homeSearchSuggestionExample": {},
+  "homeFiltersAll": "All",
+  "@homeFiltersAll": {},
+  "homeFiltersEvents": "Events",
+  "@homeFiltersEvents": {},
+  "homeFiltersTickets": "Tickets",
+  "@homeFiltersTickets": {},
+  "homeFiltersConcerts": "Concerts",
+  "@homeFiltersConcerts": {},
+  "homeFiltersCinema": "Cinema",
+  "@homeFiltersCinema": {},
+  "homeFiltersTrips": "Trips",
+  "@homeFiltersTrips": {},
+  "homeFiltersSports": "Sports",
+  "@homeFiltersSports": {},
+  "homeFiltersWorkshops": "Workshops",
+  "@homeFiltersWorkshops": {},
+  "homeFiltersNightlife": "Nightlife",
+  "@homeFiltersNightlife": {},
+  "homeFiltersFreeEvents": "Free Events",
+  "@homeFiltersFreeEvents": {},
+  "homeSortOptionsTrendingNow": "Trending Now",
+  "@homeSortOptionsTrendingNow": {},
+  "homeSortOptionsUpcoming": "Upcoming",
+  "@homeSortOptionsUpcoming": {},
+  "homeSortOptionsThisWeekend": "This weekend",
+  "@homeSortOptionsThisWeekend": {},
+  "homeSortOptionsPriceLowToHigh": "Price: Low to High",
+  "@homeSortOptionsPriceLowToHigh": {},
+  "homeResultsFound": "{count} results found",
+  "@homeResultsFound": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "homeFeaturedEvents": "Featured Events",
+  "@homeFeaturedEvents": {},
+  "homePopularEvents": "Popular Events",
+  "@homePopularEvents": {},
+  "homeBadgesTopSelling": "TOP SELLING",
+  "@homeBadgesTopSelling": {},
+  "homeBadgesBestValue": "BEST VALUE",
+  "@homeBadgesBestValue": {},
+  "homeBadgesTrending": "TRENDING",
+  "@homeBadgesTrending": {},
+  "homeBadgesHighDemand": "HIGH DEMAND",
+  "@homeBadgesHighDemand": {},
+  "homeBadgesBestPrice": "BEST PRICE",
+  "@homeBadgesBestPrice": {},
+  "homeBadgesEarlyBird": "Early Bird",
+  "@homeBadgesEarlyBird": {},
+  "homeEventPrice": "${price}",
+  "@homeEventPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "searchRecentSearches": "Recent Searches",
+  "@searchRecentSearches": {},
+  "searchClearAll": "Clear All",
+  "@searchClearAll": {},
+  "searchSortBy": "Sort by",
+  "@searchSortBy": {},
+  "searchSortOptionsPopularity": "Popularity",
+  "@searchSortOptionsPopularity": {},
+  "searchSortOptionsDate": "Date",
+  "@searchSortOptionsDate": {},
+  "searchSortOptionsDistance": "Distance",
+  "@searchSortOptionsDistance": {},
+  "searchFilterAndRefine": "Filter & Refine",
+  "@searchFilterAndRefine": {},
+  "searchApplyFilters": "Apply Filters",
+  "@searchApplyFilters": {},
+  "notificationsTitle": "Notifications",
+  "@notificationsTitle": {},
+  "notificationsTimeAgoJustNow": "{minutes}M AGO",
+  "@notificationsTimeAgoJustNow": {
+    "placeholders": {
+      "minutes": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationsTimeAgoHoursAgo": "{hours}H AGO",
+  "@notificationsTimeAgoHoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationsTimeAgoDaysAgo": "{days} DAYS AGO",
+  "@notificationsTimeAgoDaysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationsTimeAgoYesterday": "YESTERDAY",
+  "@notificationsTimeAgoYesterday": {},
+  "notificationsTimeAgoEarlier": "EARLIER",
+  "@notificationsTimeAgoEarlier": {},
+  "notificationsHotDealTitle": "Hot Deal: Summer Fest 2024",
+  "@notificationsHotDealTitle": {},
+  "notificationsHotDealBody": "Get 20% off on Early Bird tickets for the biggest summer music festival....",
+  "@notificationsHotDealBody": {},
+  "notificationsNewEventTitle": "New Event Near You!",
+  "@notificationsNewEventTitle": {},
+  "notificationsNewEventBody": "Techno Night with DJ Spark is happening this Friday at The...",
+  "@notificationsNewEventBody": {},
+  "notificationsTicketConfirmedTitle": "Ticket Confirmed",
+  "@notificationsTicketConfirmedTitle": {},
+  "notificationsTicketConfirmedBody": "Your booking for \"Jazz Under Stars\" is confirmed. See you there!",
+  "@notificationsTicketConfirmedBody": {},
+  "notificationsArtistFollowedTitle": "Artist You Follow",
+  "@notificationsArtistFollowedTitle": {},
+  "notificationsArtistFollowedBody": "Coldplay just announced a new world tour dates. Stay tuned for tickets!",
+  "@notificationsArtistFollowedBody": {},
+  "notificationsProfileUpdatedTitle": "Profile Updated",
+  "@notificationsProfileUpdatedTitle": {},
+  "notificationsProfileUpdatedBody": "You have successfully updated your payment method.",
+  "@notificationsProfileUpdatedBody": {},
+  "eventDetailsEventLocation": "Event Location",
+  "@eventDetailsEventLocation": {},
+  "eventDetailsVenueExamplesExcelCentre": "Excel Centre, London",
+  "@eventDetailsVenueExamplesExcelCentre": {},
+  "eventDetailsVenueExamplesWembleyStadium": "Wembley Stadium",
+  "@eventDetailsVenueExamplesWembleyStadium": {},
+  "eventDetailsVenueExamplesGrandEgyptianMuseum": "Grand Egyptian Museum",
+  "@eventDetailsVenueExamplesGrandEgyptianMuseum": {},
+  "eventDetailsVenueExamplesTheGrandArena": "The Grand Arena, Downtown",
+  "@eventDetailsVenueExamplesTheGrandArena": {},
+  "eventDetailsVenueExamplesSiliconValleyCenter": "Silicon Valley Center, CA",
+  "@eventDetailsVenueExamplesSiliconValleyCenter": {},
+  "eventDetailsDescriptionTitle": "Description",
+  "@eventDetailsDescriptionTitle": {},
+  "eventDetailsDescriptionExample": "Experience the ultimate summer music festival featuring top global artists, immersive art installations, and a diverse culinary selection. This year's lineup includes headliners that will keep you dancing under the stars... Read More",
+  "@eventDetailsDescriptionExample": {},
+  "eventDetailsDateLabel": "Date",
+  "@eventDetailsDateLabel": {},
+  "eventDetailsTimeLabel": "Time",
+  "@eventDetailsTimeLabel": {},
+  "eventDetailsPriceFrom": "From ${price}",
+  "@eventDetailsPriceFrom": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "eventDetailsPerksVipAccess": "VIP Access",
+  "@eventDetailsPerksVipAccess": {},
+  "eventDetailsPerksBackstageLounge": "Backstage lounge access.",
+  "@eventDetailsPerksBackstageLounge": {},
+  "eventDetailsPerksComplimentaryDrinks": "2 Complimentary drink vouchers.",
+  "@eventDetailsPerksComplimentaryDrinks": {},
+  "eventDetailsPerksPremiumViewing": "Premium viewing area.",
+  "@eventDetailsPerksPremiumViewing": {},
+  "eventDetailsPerksMeetAndGreet": "Meet and Greet with performers.",
+  "@eventDetailsPerksMeetAndGreet": {},
+  "eventDetailsPerksIncludesVipPerks": "Includes all VIP perks.",
+  "@eventDetailsPerksIncludesVipPerks": {},
+  "eventDetailsPerksStandardEntry": "Includes standard entry.",
+  "@eventDetailsPerksStandardEntry": {},
+  "eventDetailsPerksLimitedQuantities": "Limited quantities for our early supporters.",
+  "@eventDetailsPerksLimitedQuantities": {},
+  "ticketsSelectTicketsTitle": "Select Tickets",
+  "@ticketsSelectTicketsTitle": {},
+  "ticketsVenueName": "Main Arena Hall",
+  "@ticketsVenueName": {},
+  "ticketsStepIndicator": "Step {step} OF {total}",
+  "@ticketsStepIndicator": {
+    "placeholders": {
+      "step": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "ticketsStepTicketSelection": "Ticket Selection",
+  "@ticketsStepTicketSelection": {},
+  "ticketsStepCheckout": "Checkout",
+  "@ticketsStepCheckout": {},
+  "ticketsStepPayment": "Payment",
+  "@ticketsStepPayment": {},
+  "ticketsAvailable": "Available",
+  "@ticketsAvailable": {},
+  "ticketsReserved": "Reserved",
+  "@ticketsReserved": {},
+  "ticketsSelected": "Selected",
+  "@ticketsSelected": {},
+  "ticketsTicketTypesGeneralAdmission": "General Admission",
+  "@ticketsTicketTypesGeneralAdmission": {},
+  "ticketsTicketTypesVipAccess": "VIP Access",
+  "@ticketsTicketTypesVipAccess": {},
+  "ticketsTicketTypesBackstagePass": "Backstage Pass",
+  "@ticketsTicketTypesBackstagePass": {},
+  "ticketsTicketCountSelected": "{count} ticket selected",
+  "@ticketsTicketCountSelected": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "ticketsTotalPrice": "TOTAL PRICE",
+  "@ticketsTotalPrice": {},
+  "ticketsPlusServiceFee": "+ Service fee",
+  "@ticketsPlusServiceFee": {},
+  "ticketsSelectedSeats": "Selected Seats",
+  "@ticketsSelectedSeats": {},
+  "ticketsPricePerTicket": "Price per ticket",
+  "@ticketsPricePerTicket": {},
+  "ticketsContinueToCheckout": "Continue to Checkout",
+  "@ticketsContinueToCheckout": {},
+  "checkoutTitle": "Checkout",
+  "@checkoutTitle": {},
+  "checkoutBookingSummary": "Booking Summary",
+  "@checkoutBookingSummary": {},
+  "checkoutTicketQuantityTypeExample": "{count}X {ticket_type}",
+  "@checkoutTicketQuantityTypeExample": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "ticket_type": {
+        "type": "String"
+      }
+    }
+  },
+  "checkoutTicketTypeGeneralAdmission": "GENERAL ADMISSION",
+  "@checkoutTicketTypeGeneralAdmission": {},
+  "checkoutAttendeeLabel": "Attendee",
+  "@checkoutAttendeeLabel": {},
+  "checkoutSeatLabel": "Seat",
+  "@checkoutSeatLabel": {},
+  "checkoutCategoryLabel": "Category",
+  "@checkoutCategoryLabel": {},
+  "checkoutCardholderNamePlaceholderExample": "Ahmed Mohamed",
+  "@checkoutCardholderNamePlaceholderExample": {},
+  "checkoutExpiryDatePlaceholder": "MM/YY",
+  "@checkoutExpiryDatePlaceholder": {},
+  "checkoutCvvPlaceholder": "***",
+  "@checkoutCvvPlaceholder": {},
+  "checkoutProceedToPayment": "Proceed to Payment",
+  "@checkoutProceedToPayment": {},
+  "paymentPaymentMethod": "Payment Method",
+  "@paymentPaymentMethod": {},
+  "paymentMethodsCreditCard": "Credit Card",
+  "@paymentMethodsCreditCard": {},
+  "paymentMethodsApplePay": "Apple Pay",
+  "@paymentMethodsApplePay": {},
+  "paymentMethodsPaypal": "PayPal",
+  "@paymentMethodsPaypal": {},
+  "paymentCardNumberLabel": "Card Number",
+  "@paymentCardNumberLabel": {},
+  "paymentCardNumberPlaceholder": "0000 0000 0000 0000",
+  "@paymentCardNumberPlaceholder": {},
+  "paymentCardholderNameLabel": "Cardholder Name",
+  "@paymentCardholderNameLabel": {},
+  "paymentExpiryDateLabel": "Expiry Date",
+  "@paymentExpiryDateLabel": {},
+  "paymentCvvLabel": "CVV",
+  "@paymentCvvLabel": {},
+  "paymentSubtotal": "Subtotal",
+  "@paymentSubtotal": {},
+  "paymentServiceFee": "Service Fee",
+  "@paymentServiceFee": {},
+  "paymentTaxes": "Taxes",
+  "@paymentTaxes": {},
+  "paymentTotalPrice": "Total Price",
+  "@paymentTotalPrice": {},
+  "paymentSecurePaymentNotice": "SECURE SSL ENCRYPTED PAYMENT",
+  "@paymentSecurePaymentNotice": {},
+  "paymentPayNow": "Pay Now",
+  "@paymentPayNow": {},
+  "confirmationTitle": "Confirmation",
+  "@confirmationTitle": {},
+  "confirmationPaymentSuccessful": "Payment Successful!",
+  "@confirmationPaymentSuccessful": {},
+  "confirmationTicketConfirmed": "Ticket Confirmed",
+  "@confirmationTicketConfirmed": {},
+  "confirmationOrderId": "Order ID #{id}",
+  "@confirmationOrderId": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "confirmationBookingId": "Booking ID",
+  "@confirmationBookingId": {},
+  "confirmationTotalPaid": "Total Paid",
+  "@confirmationTotalPaid": {},
+  "confirmationViewTicket": "View Ticket",
+  "@confirmationViewTicket": {},
+  "confirmationScanAtEntrance": "SCAN AT ENTRANCE",
+  "@confirmationScanAtEntrance": {},
+  "confirmationTicketId": "Ticket ID: #{id}",
+  "@confirmationTicketId": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "confirmationViewOnMap": "View on Map",
+  "@confirmationViewOnMap": {},
+  "profileMyProfile": "My Profile",
+  "@profileMyProfile": {},
+  "profilePremiumAttendee": "Premium Attendee",
+  "@profilePremiumAttendee": {},
+  "profilePremiumMemberSince": "Premium Member since {year}",
+  "@profilePremiumMemberSince": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "profilePersonalInfo": "Personal Info",
+  "@profilePersonalInfo": {},
+  "profilePersonalInfoSubtitle": "Email, phone, Address",
+  "@profilePersonalInfoSubtitle": {},
+  "profileEditProfile": "Edit Profile",
+  "@profileEditProfile": {},
+  "profileFullNameLabel": "Full Name",
+  "@profileFullNameLabel": {},
+  "profileEmailAddressLabel": "Email Address",
+  "@profileEmailAddressLabel": {},
+  "profilePhoneNumberLabel": "Phone Number",
+  "@profilePhoneNumberLabel": {},
+  "profilePhysicalAddressLabel": "Physical Address",
+  "@profilePhysicalAddressLabel": {},
+  "profileAddressExample": "7 Posta Street, Eldekhila, Alexandria",
+  "@profileAddressExample": {},
+  "profilePhoneExample": "+20 127 1734 638",
+  "@profilePhoneExample": {},
+  "profileAddPhotosOptional": "Add Photos (optional)",
+  "@profileAddPhotosOptional": {},
+  "profileUpload": "UPLOAD",
+  "@profileUpload": {},
+  "profileAccountSection": "Account",
+  "@profileAccountSection": {},
+  "profilePreferencesSection": "Perferences",
+  "@profilePreferencesSection": {},
+  "profilePreferencesRowsLanguage": "Language",
+  "@profilePreferencesRowsLanguage": {},
+  "profilePreferencesRowsAppearance": "Appearance",
+  "@profilePreferencesRowsAppearance": {},
+  "profilePreferencesRowsNotifications": "Notifications",
+  "@profilePreferencesRowsNotifications": {},
+  "profileAppearanceValuesDarkMode": "Dark Mode",
+  "@profileAppearanceValuesDarkMode": {},
+  "profileAppearanceValuesLightMode": "Light Mode",
+  "@profileAppearanceValuesLightMode": {},
+  "profileLanguageValueExample": "English (US)",
+  "@profileLanguageValueExample": {},
+  "profileTabsMyTickets": "My Tickets",
+  "@profileTabsMyTickets": {},
+  "profileTabsFavorites": "Favorites",
+  "@profileTabsFavorites": {},
+  "profileTabsReviewsAndRatings": "Reviews & Ratings",
+  "@profileTabsReviewsAndRatings": {},
+  "profileTabsFollowingArtists": "Following Artists",
+  "@profileTabsFollowingArtists": {},
+  "profileTabsFollowingOrganizers": "Following Organizers",
+  "@profileTabsFollowingOrganizers": {},
+  "profileTicketStatusUpcoming": "Upcoming",
+  "@profileTicketStatusUpcoming": {},
+  "profileTicketStatusPast": "Past",
+  "@profileTicketStatusPast": {},
+  "profileTicketStatusConfirmed": "CONFIRMED",
+  "@profileTicketStatusConfirmed": {},
+  "profileTicketStatusCompleted": "COMPLETED",
+  "@profileTicketStatusCompleted": {},
+  "profileTicketStatusActive": "ACTIVE",
+  "@profileTicketStatusActive": {},
+  "profileSearchOrganizersPlaceholder": "Search organizers",
+  "@profileSearchOrganizersPlaceholder": {},
+  "profileSearchArtistsPlaceholder": "Search artists...",
+  "@profileSearchArtistsPlaceholder": {},
+  "profileOrganizersCount": "Organizers ({count})",
+  "@profileOrganizersCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "profileFollowersCount": "{count} Followers",
+  "@profileFollowersCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+   "profileSupportSection": "Support",
+  "@profileSupportSection": {},
+  "profileAccount": "Account",
+  "@profileAccount": {},
+  "profileSettings": "Settings",
+  "@profileSettings": {},
+  "profileHelpCenter": "Help Center",
+  "@profileHelpCenter": {},
+  "profileTermsOfService": "Terms of Service",
+  "@profileTermsOfService": {},
+  "profileLogOut": "Log Out",
+  "@profileLogOut": {},
+  "myTicketsTitle": "My Tickets",
+  "@myTicketsTitle": {},
+  "myTicketsTabsUpcoming": "Upcoming",
+  "@myTicketsTabsUpcoming": {},
+  "myTicketsTabsPast": "Past",
+  "@myTicketsTabsPast": {},
+  "myTicketsTicketIdLabel": "Ticket ID: #{id}",
+  "@myTicketsTicketIdLabel": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "myTicketsSampleEventsAiFutureTech": "AI & Future Technology",
+  "@myTicketsSampleEventsAiFutureTech": {},
+  "myTicketsSampleEventsNeonNights": "Neon Nights",
+  "@myTicketsSampleEventsNeonNights": {},
+  "myTicketsSampleEventsIndieFolkFestival": "Indie Folk Festival",
+  "@myTicketsSampleEventsIndieFolkFestival": {},
+  "myTicketsSampleEventsWomenCooking": "Women Cooking",
+  "@myTicketsSampleEventsWomenCooking": {},
+  "myTicketsSampleEventsSummerJazzNight": "Summer Jazz Night",
+  "@myTicketsSampleEventsSummerJazzNight": {},
+  "myTicketsSampleEventsDigitalArtExpo": "Digital Art Expo",
+  "@myTicketsSampleEventsDigitalArtExpo": {},
+  "favoritesTitle": "Favorites",
+  "@favoritesTitle": {},
+  "favoritesCategoryMusic": "Music",
+  "@favoritesCategoryMusic": {},
+  "favoritesSampleEventsSummerSoundwave": "Summer Soundwave 2024",
+  "@favoritesSampleEventsSummerSoundwave": {},
+  "favoritesSampleEventsGlobalInnovationSummit": "Global Innovation Summit",
+  "@favoritesSampleEventsGlobalInnovationSummit": {},
+  "artistOrganizerViewProfile": "View Profile",
+  "@artistOrganizerViewProfile": {},
+  "artistOrganizerFollowers": "Followers",
+  "@artistOrganizerFollowers": {},
+  "artistOrganizerUpcomingEvents": "Upcoming Events",
+  "@artistOrganizerUpcomingEvents": {},
+  "artistOrganizerEventsHosted": "Events Hosted",
+  "@artistOrganizerEventsHosted": {},
+  "artistOrganizerShowsCount": "{count} Shows",
+  "@artistOrganizerShowsCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "artistOrganizerAbout": "About",
+  "@artistOrganizerAbout": {},
+  "artistOrganizerGallery": "Gallery",
+  "@artistOrganizerGallery": {},
+  "artistOrganizerUpcomingTours": "Upcoming Tours",
+  "@artistOrganizerUpcomingTours": {},
+  "artistOrganizerUpcomingEventsViewAll": "Upcoming Events (View All)",
+  "@artistOrganizerUpcomingEventsViewAll": {},
+  "artistOrganizerShowsCountFull": "{count} Shows",
+  "@artistOrganizerShowsCountFull": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "artistOrganizerEventsHostedCount": "{count}",
+  "@artistOrganizerEventsHostedCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "artistOrganizerFollowersCountShort": "{count}",
+  "@artistOrganizerFollowersCountShort": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "artistOrganizerFindMoreArtists": "Find More Artists",
+  "@artistOrganizerFindMoreArtists": {},
+  "artistOrganizerTabsUpcoming": "Upcoming",
+  "@artistOrganizerTabsUpcoming": {},
+  "artistOrganizerTabsPastEvents": "Past Events",
+  "@artistOrganizerTabsPastEvents": {},
+  "artistOrganizerTabsReviews": "Reviews",
+  "@artistOrganizerTabsReviews": {},
+  "artistOrganizerArtistBioExample": "Abel Makkonen Tesfaye, known professionally as The Weeknd, is a Canadian singer-songwriter and record producer. Known for his sonic versatility and dark lyricism... Read More",
+  "@artistOrganizerArtistBioExample": {},
+  "artistOrganizerOrganizerBioExample": "Global Concerts Inc. is a premier event organizer specializing in international music festivals and live stadium performances. Bringing the world's best talent to your city.",
+  "@artistOrganizerOrganizerBioExample": {},
+  "artistOrganizerBandLabel": "Band",
+  "@artistOrganizerBandLabel": {},
+  "artistOrganizerArtistLabel": "Artist",
+  "@artistOrganizerArtistLabel": {},
+  "reviewsTitle": "Reviews & Ratings",
+  "@reviewsTitle": {},
+  "reviewsOverallRating": "{rating}",
+  "@reviewsOverallRating": {
+    "placeholders": {
+      "rating": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewsReviewsCountTotal": "{count} Reviews",
+  "@reviewsReviewsCountTotal": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewsRatingBarLabel": "{stars}",
+  "@reviewsRatingBarLabel": {
+    "placeholders": {
+      "stars": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewsWriteAReview": "Write a Review",
+  "@reviewsWriteAReview": {},
+  "reviewsHowWasYourExperience": "HOW WAS YOUR EXPERIENCE?",
+  "@reviewsHowWasYourExperience": {},
+  "reviewsShareExperiencePlaceholder": "Share your experience with others...",
+  "@reviewsShareExperiencePlaceholder": {},
+  "reviewsPostAnonymously": "Post Anonymously",
+  "@reviewsPostAnonymously": {},
+  "reviewsAnonymousNote": "Your name won't be visible to others",
+  "@reviewsAnonymousNote": {},
+  "reviewsReviewsCount": "{count} Reviews",
+  "@reviewsReviewsCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewsVerifiedAttendee": "Verified Attendee • {time} ago",
+  "@reviewsVerifiedAttendee": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewsHelpfulCount": "Helpful ({count})",
+  "@reviewsHelpfulCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewsReply": "Reply",
+  "@reviewsReply": {},
+  "reviewsReviewExample1": "The atmosphere was electric! Sound quality was 10/10. Definitely worth the price. The staff was super helpful when we couldn't find our seats.",
+  "@reviewsReviewExample1": {},
+  "reviewsReviewExample2": "Overall great experience! Only downside was the long queue for beverages. I recommend arriving early if you want to grab drinks before the show starts.",
+  "@reviewsReviewExample2": {},
+  "reviewsReviewExample3": "Unbelievable night! The light show was synchronized perfectly with the bass. I've been to many events, but EveTick always makes booking so seamless.",
+  "@reviewsReviewExample3": {},
+  "settingsTitle": "Settings",
+  "@settingsTitle": {},
+  "settingsAppearance": "Appearance",
+  "@settingsAppearance": {},
+  "settingsAppearanceSubtitle": "Choose how EveTick looks on your device.",
+  "@settingsAppearanceSubtitle": {},
+  "settingsLightMode": "Light",
+  "@settingsLightMode": {},
+  "settingsLightModeSubtitle": "Always bright and clear",
+  "@settingsLightModeSubtitle": {},
+  "settingsDarkMode": "Dark",
+  "@settingsDarkMode": {},
+  "settingsDarkModeSubtitle": "Easier on the eyes in low light",
+  "@settingsDarkModeSubtitle": {},
+  "settingsSelectLanguage": "Select Language",
+  "@settingsSelectLanguage": {},
+  "settingsDefaultLanguage": "Default language",
+  "@settingsDefaultLanguage": {},
+  "settingsArabicLanguage": "Arabic language",
+  "@settingsArabicLanguage": {},
+  "settingsLanguageOptionsEnglish": "English",
+  "@settingsLanguageOptionsEnglish": {},
+  "settingsLanguageOptionsArabic": "Arabic",
+  "@settingsLanguageOptionsArabic": {},
+  "settingsApplyChanges": "Apply Changes",
+  "@settingsApplyChanges": {},
+  "settingsApplySelection": "Apply Selection",
+  "@settingsApplySelection": {},
+  "helpSupportTitle": "Help & Support",
+  "@helpSupportTitle": {},
+  "helpSupportHowCanWeHelp": "How can we help?",
+  "@helpSupportHowCanWeHelp": {},
+  "helpSupportWhatCanWeHelpWith": "WHAT CAN WE HELP WITH?",
+  "@helpSupportWhatCanWeHelpWith": {},
+  "helpSupportSelectCategory": "Select Category",
+  "@helpSupportSelectCategory": {},
+  "helpSupportCategoriesAccount": "Account",
+  "@helpSupportCategoriesAccount": {},
+  "helpSupportCategoriesBooking": "Booking",
+  "@helpSupportCategoriesBooking": {},
+  "helpSupportCategoriesPayment": "Payment",
+  "@helpSupportCategoriesPayment": {},
+  "helpSupportCategoriesOrganizerHelp": "Organizer Help",
+  "@helpSupportCategoriesOrganizerHelp": {},
+  "helpSupportFrequentQuestions": "Frequent Questions",
+  "@helpSupportFrequentQuestions": {},
+  "helpSupportFaqRefundQuestion": "How do I refund a ticket?",
+  "@helpSupportFaqRefundQuestion": {},
+  "helpSupportFaqRefundAnswer": "You can request a refund directly through the 'My Tickets' section if the event organizer allows it. Usually, refunds are processed within 5-7 business days to your original payment method.",
+  "@helpSupportFaqRefundAnswer": {},
+  "helpSupportFaqQrCodeQuestion": "Where can I find my QR code?",
+  "@helpSupportFaqQrCodeQuestion": {},
+  "helpSupportFaqTransferQuestion": "Can I transfer my tickets to a friend?",
+  "@helpSupportFaqTransferQuestion": {},
+  "helpSupportFaqProfilePhotoQuestion": "How do I change my profile photo?",
+  "@helpSupportFaqProfilePhotoQuestion": {},
+  "helpSupportStillNeedHelp": "Still need help?",
+  "@helpSupportStillNeedHelp": {},
+  "helpSupportSupportAvailabilityNotice": "Our support team is available 24/7 to assist you with any issues.",
+  "@helpSupportSupportAvailabilityNotice": {},
+  "helpSupportContactSupport": "Contact Support",
+  "@helpSupportContactSupport": {},
+  "helpSupportSendMessageTitle": "Send Us a Message",
+  "@helpSupportSendMessageTitle": {},
+  "helpSupportYourMessageLabel": "Your Message",
+  "@helpSupportYourMessageLabel": {},
+  "helpSupportMessagePlaceholder": "Describe your issue or feedback in detail here...",
+  "@helpSupportMessagePlaceholder": {},
+  "helpSupportAttachmentsOptional": "ATTACHMENTS (OPTIONAL)",
+  "@helpSupportAttachmentsOptional": {},
+  "helpSupportUploadScreenshot": "Upload Screenshot",
+  "@helpSupportUploadScreenshot": {},
+  "helpSupportSupportedFormatsNotice": "Supported formats: PNG, JPG (Max 5MB)",
+  "@helpSupportSupportedFormatsNotice": {},
+  "helpSupportResponseTimeNotice": "Our support team typically responds within 24 hours. For urgent ticket issues, please check our FAQ section.",
+  "@helpSupportResponseTimeNotice": {},
+  "helpSupportSendMessage": "Send Message",
+  "@helpSupportSendMessage": {},
+  "termsTitle": "Terms of Service",
+  "@termsTitle": {},
+  "termsSubtitle": "Terms and Services",
+  "@termsSubtitle": {},
+  "termsLastUpdated": "Last updated: {date}",
+  "@termsLastUpdated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "termsSectionsAcceptanceTitle": "Acceptance of Terms",
+  "@termsSectionsAcceptanceTitle": {},
+  "termsSectionsAcceptanceBody1": "By accessing or using the EveTick platform, you agree to be bound by these Terms and Services. These terms constitute a legally binding agreement between you and EveTick Inc.",
+  "@termsSectionsAcceptanceBody1": {},
+  "termsSectionsAcceptanceBody2": "If you do not agree to all of these terms, please do not use our services. We reserve the right to change or modify these terms at any time.",
+  "@termsSectionsAcceptanceBody2": {},
+  "termsSectionsEligibilityTitle": "User Eligibility",
+  "@termsSectionsEligibilityTitle": {},
+  "termsSectionsEligibilityBody": "You must be at least 18 years of age to use the Services. By creating an account, you represent and warrant that you have the right, authority, and capacity to enter into this agreement.",
+  "@termsSectionsEligibilityBody": {},
+  "termsSectionsEligibilityListItem1": "Provide accurate registration information",
+  "@termsSectionsEligibilityListItem1": {},
+  "termsSectionsEligibilityListItem2": "Maintain the security of your password.",
+  "@termsSectionsEligibilityListItem2": {},
+  "termsSectionsEligibilityListItem3": "Promptly update any information changes.",
+  "@termsSectionsEligibilityListItem3": {},
+  "termsSectionsTicketPurchaseTitle": "Ticket Purchase & Refunds",
+  "@termsSectionsTicketPurchaseTitle": {},
+  "termsSectionsTicketPurchaseBody": "All sales are final unless an event is cancelled or rescheduled. EveTick acts as an intermediary between event organizers and attendees. Please review our Refund Policy for specific details regarding venue-specific cancellations.",
+  "@termsSectionsTicketPurchaseBody": {},
+  "termsSectionsProhibitedConductTitle": "Prohibited Conduct",
+  "@termsSectionsProhibitedConductTitle": {},
+  "termsSectionsProhibitedConductIntro": "Users are strictly prohibited from:",
+  "@termsSectionsProhibitedConductIntro": {},
+  "termsSectionsProhibitedConductListItem1": "Reselling tickets at a price higher than the original face value on third-party platforms.",
+  "@termsSectionsProhibitedConductListItem1": {},
+  "termsSectionsProhibitedConductListItem2": "Attempting to circumvent security features or API limitations.",
+  "@termsSectionsProhibitedConductListItem2": {},
+  "termsSectionsProhibitedConductListItem3": "Impersonating any person or entity or misrepresenting your affiliation.",
+  "@termsSectionsProhibitedConductListItem3": {},
+  "termsSectionsIpTitle": "Intellectual Property",
+  "@termsSectionsIpTitle": {},
+  "termsSectionsIpBody": "The EveTick name, logo, and all related designs are trademarks of EveTick Inc. You may not use these without prior written permission.",
+  "@termsSectionsIpBody": {},
+  "termsSectionsLiabilityTitle": "Limitation of Liability",
+  "@termsSectionsLiabilityTitle": {},
+  "termsSectionsLiabilityBody": "To the maximum extent permitted by law, EveTick shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your access to or use of the services.",
+  "@termsSectionsLiabilityBody": {},
+  "termsDecline": "Decline",
+  "@termsDecline": {},
+  "termsAgreeAndContinue": "Agree & Continue",
+  "@termsAgreeAndContinue": {},
+  "profilePersonalInfoTitle": "Personal Info",
+  "@profilePersonalInfoTitle": {},
+  "profileFullName": "Full Name",
+  "@profileFullName": {},
+  "profileFullNameHint": "Enter your full name",
+  "@profileFullNameHint": {},
+  "profileFullNameRequired": "Name is required",
+  "@profileFullNameRequired": {},
+  "profileEmail": "Email",
+  "@profileEmail": {},
+  "profileEmailHint": "Enter your email",
+  "@profileEmailHint": {},
+  "profilePhone": "Phone Number",
+  "@profilePhone": {},
+  "profilePhoneHint": "Enter your phone number",
+  "@profilePhoneHint": {},
+  "profilePhoneInvalid": "Invalid phone number",
+  "@profilePhoneInvalid": {},
+  "profileAddress": "Physical Address",
+  "@profileAddress": {},
+  "profileAddressHint": "Enter your address",
+  "@profileAddressHint": {},
+  "profileAddressRequired": "Address is required",
+  "@profileAddressRequired": {},
+  "profileSave": "Save",
+  "@profileSave": {},
+  "profileUpdatedSuccess": "Profile updated successfully.",
+  "@profileUpdatedSuccess": {},
+  "profileTheme": "Theme",
+  "@profileTheme": {},
+  "profileThemeSystem": "System Default",
+  "@profileThemeSystem": {},
+  "profileThemeLight": "Light Mode",
+  "@profileThemeLight": {},
+  "profileThemeDark": "Dark Mode",
+  "@profileThemeDark": {}
+}
