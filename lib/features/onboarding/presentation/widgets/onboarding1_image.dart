@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Onboarding1Image extends StatelessWidget {
-  const Onboarding1Image({super.key});
+class OnboardingBackGroungImage extends StatelessWidget {
+  const OnboardingBackGroungImage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,12 +10,11 @@ class Onboarding1Image extends StatelessWidget {
       padding: EdgeInsets.only(top: 131.h),
       child: Stack(
         children: [
-          
           SizedBox(
             width: double.infinity,
             height: 550.h,
             child: Image.asset(
-              'assets/images/onboarding_image1.png',
+              'assets/images/onboarding_background_image.png',
               fit: BoxFit.cover,
             ),
           ),

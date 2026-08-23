@@ -30,7 +30,7 @@
   "onboardingSlide2Subtitle": "أمّن مكانك في ثوانٍ مع عملية دفع سريعة وسهلة",
   "onboardingWelcomeTitle": "اكتشف الفعاليات\nالتي ",
   "onboardingWelcomeTitleRemain": "تحبها",
-  "onboardingWelcomeSubtitle": "انضم إلى مجتمع الباحثين عن الفعاليات",
+  "onboardingWelcomeSubtitle": "أنشئ فعالياتك، وقم بإدارتها، ونمّيها بكل سهولة.",
   "locationSetLocationTitle": "أين أنت؟", 
   "onboardingLocationPermissionNotice": "لعرض الفعاليات القريبة منك، نحتاج إلى إذن الوصول لموقعك.",
   "locationSelectLocationTitle": "اختر الموقع",
@@ -366,5 +366,11 @@
   "profileTheme": "المظهر",
   "profileThemeSystem": "تلقائي",
   "profileThemeLight": "الوضع الفاتح",
-  "profileThemeDark": "الوضع الداكن"
+  "profileThemeDark": "الوضع الداكن",
+  "onboardingCreateCustomize": "أنشئ وخصص",
+  "onboardingCreateCustomizeDescription": "أنشئ صفحات فعاليات مميزة، وأضف أنواع التذاكر والتفضيلات الخاصة بك.",
+  "onboardingScanAndManage":"افحص و تحكم",
+  "onboardingScanningDescription":"استخدم أدوات المسح الضوئي القوية لدينا للتحقق من صحة التذاكر وإدارة الدخول",
+  "onboardingDashboardTitle":"كل حاجة في لوحة تحكم",
+  "onboardingDashboardSubtitle":"احصل على نظرة عامة فورية على فعالياتك وتذاكرك ومبيعاتك وأداء موظفيك."
 }

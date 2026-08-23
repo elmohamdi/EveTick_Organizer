@@ -86,31 +86,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboardingSlide1Title => 'Discover Local \n Events';
 
   @override
-  String get onboardingSlide1Subtitle =>
-      'Find and book tickets for concerts, cinema, and more happening right in your city';
+  String get onboardingSlide1Subtitle => 'Find and book tickets for concerts, cinema, and more happening right in your city';
 
   @override
   String get onboardingSlide2Title => 'Seamless Booking';
 
   @override
-  String get onboardingSlide2Subtitle =>
-      'Secure your spot in seconds with our fast and easy checkout process';
+  String get onboardingSlide2Subtitle => 'Secure your spot in seconds with our fast and easy checkout process';
 
   @override
-  String get onboardingWelcomeTitle => 'Discover Events\nYou ';
+  String get onboardingWelcomeTitle => 'Manage Your Events\nLike ';
 
   @override
-  String get onboardingWelcomeTitleRemain => 'Love';
+  String get onboardingWelcomeTitleRemain => 'a Pro';
 
   @override
-  String get onboardingWelcomeSubtitle => 'Join the community of event seekers';
+  String get onboardingWelcomeSubtitle => 'Create, manage, and grow your events with ease.';
 
   @override
   String get locationSetLocationTitle => 'Where are You?';
 
   @override
-  String get onboardingLocationPermissionNotice =>
-      'To show you events near you, we need your location permission.';
+  String get onboardingLocationPermissionNotice => 'To show you events near you, we need your location permission.';
 
   @override
   String get locationSelectLocationTitle => 'Select Location';
@@ -369,36 +366,31 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notificationsHotDealTitle => 'Hot Deal: Summer Fest 2024';
 
   @override
-  String get notificationsHotDealBody =>
-      'Get 20% off on Early Bird tickets for the biggest summer music festival....';
+  String get notificationsHotDealBody => 'Get 20% off on Early Bird tickets for the biggest summer music festival....';
 
   @override
   String get notificationsNewEventTitle => 'New Event Near You!';
 
   @override
-  String get notificationsNewEventBody =>
-      'Techno Night with DJ Spark is happening this Friday at The...';
+  String get notificationsNewEventBody => 'Techno Night with DJ Spark is happening this Friday at The...';
 
   @override
   String get notificationsTicketConfirmedTitle => 'Ticket Confirmed';
 
   @override
-  String get notificationsTicketConfirmedBody =>
-      'Your booking for \"Jazz Under Stars\" is confirmed. See you there!';
+  String get notificationsTicketConfirmedBody => 'Your booking for \"Jazz Under Stars\" is confirmed. See you there!';
 
   @override
   String get notificationsArtistFollowedTitle => 'Artist You Follow';
 
   @override
-  String get notificationsArtistFollowedBody =>
-      'Coldplay just announced a new world tour dates. Stay tuned for tickets!';
+  String get notificationsArtistFollowedBody => 'Coldplay just announced a new world tour dates. Stay tuned for tickets!';
 
   @override
   String get notificationsProfileUpdatedTitle => 'Profile Updated';
 
   @override
-  String get notificationsProfileUpdatedBody =>
-      'You have successfully updated your payment method.';
+  String get notificationsProfileUpdatedBody => 'You have successfully updated your payment method.';
 
   @override
   String get eventDetailsEventLocation => 'Event Location';
@@ -410,23 +402,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get eventDetailsVenueExamplesWembleyStadium => 'Wembley Stadium';
 
   @override
-  String get eventDetailsVenueExamplesGrandEgyptianMuseum =>
-      'Grand Egyptian Museum';
+  String get eventDetailsVenueExamplesGrandEgyptianMuseum => 'Grand Egyptian Museum';
 
   @override
-  String get eventDetailsVenueExamplesTheGrandArena =>
-      'The Grand Arena, Downtown';
+  String get eventDetailsVenueExamplesTheGrandArena => 'The Grand Arena, Downtown';
 
   @override
-  String get eventDetailsVenueExamplesSiliconValleyCenter =>
-      'Silicon Valley Center, CA';
+  String get eventDetailsVenueExamplesSiliconValleyCenter => 'Silicon Valley Center, CA';
 
   @override
   String get eventDetailsDescriptionTitle => 'Description';
 
   @override
-  String get eventDetailsDescriptionExample =>
-      'Experience the ultimate summer music festival featuring top global artists, immersive art installations, and a diverse culinary selection. This year\'s lineup includes headliners that will keep you dancing under the stars... Read More';
+  String get eventDetailsDescriptionExample => 'Experience the ultimate summer music festival featuring top global artists, immersive art installations, and a diverse culinary selection. This year\'s lineup includes headliners that will keep you dancing under the stars... Read More';
 
   @override
   String get eventDetailsDateLabel => 'Date';
@@ -446,8 +434,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get eventDetailsPerksBackstageLounge => 'Backstage lounge access.';
 
   @override
-  String get eventDetailsPerksComplimentaryDrinks =>
-      '2 Complimentary drink vouchers.';
+  String get eventDetailsPerksComplimentaryDrinks => '2 Complimentary drink vouchers.';
 
   @override
   String get eventDetailsPerksPremiumViewing => 'Premium viewing area.';
@@ -462,8 +449,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get eventDetailsPerksStandardEntry => 'Includes standard entry.';
 
   @override
-  String get eventDetailsPerksLimitedQuantities =>
-      'Limited quantities for our early supporters.';
+  String get eventDetailsPerksLimitedQuantities => 'Limited quantities for our early supporters.';
 
   @override
   String get ticketsSelectTicketsTitle => 'Select Tickets';
@@ -811,8 +797,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get favoritesSampleEventsSummerSoundwave => 'Summer Soundwave 2024';
 
   @override
-  String get favoritesSampleEventsGlobalInnovationSummit =>
-      'Global Innovation Summit';
+  String get favoritesSampleEventsGlobalInnovationSummit => 'Global Innovation Summit';
 
   @override
   String get artistOrganizerViewProfile => 'View Profile';
@@ -841,8 +826,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get artistOrganizerUpcomingTours => 'Upcoming Tours';
 
   @override
-  String get artistOrganizerUpcomingEventsViewAll =>
-      'Upcoming Events (View All)';
+  String get artistOrganizerUpcomingEventsViewAll => 'Upcoming Events (View All)';
 
   @override
   String artistOrganizerShowsCountFull(String count) {
@@ -872,12 +856,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get artistOrganizerTabsReviews => 'Reviews';
 
   @override
-  String get artistOrganizerArtistBioExample =>
-      'Abel Makkonen Tesfaye, known professionally as The Weeknd, is a Canadian singer-songwriter and record producer. Known for his sonic versatility and dark lyricism... Read More';
+  String get artistOrganizerArtistBioExample => 'Abel Makkonen Tesfaye, known professionally as The Weeknd, is a Canadian singer-songwriter and record producer. Known for his sonic versatility and dark lyricism... Read More';
 
   @override
-  String get artistOrganizerOrganizerBioExample =>
-      'Global Concerts Inc. is a premier event organizer specializing in international music festivals and live stadium performances. Bringing the world\'s best talent to your city.';
+  String get artistOrganizerOrganizerBioExample => 'Global Concerts Inc. is a premier event organizer specializing in international music festivals and live stadium performances. Bringing the world\'s best talent to your city.';
 
   @override
   String get artistOrganizerBandLabel => 'Band';
@@ -910,8 +892,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reviewsHowWasYourExperience => 'HOW WAS YOUR EXPERIENCE?';
 
   @override
-  String get reviewsShareExperiencePlaceholder =>
-      'Share your experience with others...';
+  String get reviewsShareExperiencePlaceholder => 'Share your experience with others...';
 
   @override
   String get reviewsPostAnonymously => 'Post Anonymously';
@@ -938,16 +919,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reviewsReply => 'Reply';
 
   @override
-  String get reviewsReviewExample1 =>
-      'The atmosphere was electric! Sound quality was 10/10. Definitely worth the price. The staff was super helpful when we couldn\'t find our seats.';
+  String get reviewsReviewExample1 => 'The atmosphere was electric! Sound quality was 10/10. Definitely worth the price. The staff was super helpful when we couldn\'t find our seats.';
 
   @override
-  String get reviewsReviewExample2 =>
-      'Overall great experience! Only downside was the long queue for beverages. I recommend arriving early if you want to grab drinks before the show starts.';
+  String get reviewsReviewExample2 => 'Overall great experience! Only downside was the long queue for beverages. I recommend arriving early if you want to grab drinks before the show starts.';
 
   @override
-  String get reviewsReviewExample3 =>
-      'Unbelievable night! The light show was synchronized perfectly with the bass. I\'ve been to many events, but EveTick always makes booking so seamless.';
+  String get reviewsReviewExample3 => 'Unbelievable night! The light show was synchronized perfectly with the bass. I\'ve been to many events, but EveTick always makes booking so seamless.';
 
   @override
   String get settingsTitle => 'Settings';
@@ -956,8 +934,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsAppearance => 'Appearance';
 
   @override
-  String get settingsAppearanceSubtitle =>
-      'Choose how EveTick looks on your device.';
+  String get settingsAppearanceSubtitle => 'Choose how EveTick looks on your device.';
 
   @override
   String get settingsLightMode => 'Light';
@@ -1023,26 +1000,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get helpSupportFaqRefundQuestion => 'How do I refund a ticket?';
 
   @override
-  String get helpSupportFaqRefundAnswer =>
-      'You can request a refund directly through the \'My Tickets\' section if the event organizer allows it. Usually, refunds are processed within 5-7 business days to your original payment method.';
+  String get helpSupportFaqRefundAnswer => 'You can request a refund directly through the \'My Tickets\' section if the event organizer allows it. Usually, refunds are processed within 5-7 business days to your original payment method.';
 
   @override
   String get helpSupportFaqQrCodeQuestion => 'Where can I find my QR code?';
 
   @override
-  String get helpSupportFaqTransferQuestion =>
-      'Can I transfer my tickets to a friend?';
+  String get helpSupportFaqTransferQuestion => 'Can I transfer my tickets to a friend?';
 
   @override
-  String get helpSupportFaqProfilePhotoQuestion =>
-      'How do I change my profile photo?';
+  String get helpSupportFaqProfilePhotoQuestion => 'How do I change my profile photo?';
 
   @override
   String get helpSupportStillNeedHelp => 'Still need help?';
 
   @override
-  String get helpSupportSupportAvailabilityNotice =>
-      'Our support team is available 24/7 to assist you with any issues.';
+  String get helpSupportSupportAvailabilityNotice => 'Our support team is available 24/7 to assist you with any issues.';
 
   @override
   String get helpSupportContactSupport => 'Contact Support';
@@ -1054,8 +1027,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get helpSupportYourMessageLabel => 'Your Message';
 
   @override
-  String get helpSupportMessagePlaceholder =>
-      'Describe your issue or feedback in detail here...';
+  String get helpSupportMessagePlaceholder => 'Describe your issue or feedback in detail here...';
 
   @override
   String get helpSupportAttachmentsOptional => 'ATTACHMENTS (OPTIONAL)';
@@ -1064,12 +1036,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get helpSupportUploadScreenshot => 'Upload Screenshot';
 
   @override
-  String get helpSupportSupportedFormatsNotice =>
-      'Supported formats: PNG, JPG (Max 5MB)';
+  String get helpSupportSupportedFormatsNotice => 'Supported formats: PNG, JPG (Max 5MB)';
 
   @override
-  String get helpSupportResponseTimeNotice =>
-      'Our support team typically responds within 24 hours. For urgent ticket issues, please check our FAQ section.';
+  String get helpSupportResponseTimeNotice => 'Our support team typically responds within 24 hours. For urgent ticket issues, please check our FAQ section.';
 
   @override
   String get helpSupportSendMessage => 'Send Message';
@@ -1089,71 +1059,58 @@ class AppLocalizationsEn extends AppLocalizations {
   String get termsSectionsAcceptanceTitle => 'Acceptance of Terms';
 
   @override
-  String get termsSectionsAcceptanceBody1 =>
-      'By accessing or using the EveTick platform, you agree to be bound by these Terms and Services. These terms constitute a legally binding agreement between you and EveTick Inc.';
+  String get termsSectionsAcceptanceBody1 => 'By accessing or using the EveTick platform, you agree to be bound by these Terms and Services. These terms constitute a legally binding agreement between you and EveTick Inc.';
 
   @override
-  String get termsSectionsAcceptanceBody2 =>
-      'If you do not agree to all of these terms, please do not use our services. We reserve the right to change or modify these terms at any time.';
+  String get termsSectionsAcceptanceBody2 => 'If you do not agree to all of these terms, please do not use our services. We reserve the right to change or modify these terms at any time.';
 
   @override
   String get termsSectionsEligibilityTitle => 'User Eligibility';
 
   @override
-  String get termsSectionsEligibilityBody =>
-      'You must be at least 18 years of age to use the Services. By creating an account, you represent and warrant that you have the right, authority, and capacity to enter into this agreement.';
+  String get termsSectionsEligibilityBody => 'You must be at least 18 years of age to use the Services. By creating an account, you represent and warrant that you have the right, authority, and capacity to enter into this agreement.';
 
   @override
-  String get termsSectionsEligibilityListItem1 =>
-      'Provide accurate registration information';
+  String get termsSectionsEligibilityListItem1 => 'Provide accurate registration information';
 
   @override
-  String get termsSectionsEligibilityListItem2 =>
-      'Maintain the security of your password.';
+  String get termsSectionsEligibilityListItem2 => 'Maintain the security of your password.';
 
   @override
-  String get termsSectionsEligibilityListItem3 =>
-      'Promptly update any information changes.';
+  String get termsSectionsEligibilityListItem3 => 'Promptly update any information changes.';
 
   @override
   String get termsSectionsTicketPurchaseTitle => 'Ticket Purchase & Refunds';
 
   @override
-  String get termsSectionsTicketPurchaseBody =>
-      'All sales are final unless an event is cancelled or rescheduled. EveTick acts as an intermediary between event organizers and attendees. Please review our Refund Policy for specific details regarding venue-specific cancellations.';
+  String get termsSectionsTicketPurchaseBody => 'All sales are final unless an event is cancelled or rescheduled. EveTick acts as an intermediary between event organizers and attendees. Please review our Refund Policy for specific details regarding venue-specific cancellations.';
 
   @override
   String get termsSectionsProhibitedConductTitle => 'Prohibited Conduct';
 
   @override
-  String get termsSectionsProhibitedConductIntro =>
-      'Users are strictly prohibited from:';
+  String get termsSectionsProhibitedConductIntro => 'Users are strictly prohibited from:';
 
   @override
-  String get termsSectionsProhibitedConductListItem1 =>
-      'Reselling tickets at a price higher than the original face value on third-party platforms.';
+  String get termsSectionsProhibitedConductListItem1 => 'Reselling tickets at a price higher than the original face value on third-party platforms.';
 
   @override
-  String get termsSectionsProhibitedConductListItem2 =>
-      'Attempting to circumvent security features or API limitations.';
+  String get termsSectionsProhibitedConductListItem2 => 'Attempting to circumvent security features or API limitations.';
 
   @override
-  String get termsSectionsProhibitedConductListItem3 =>
-      'Impersonating any person or entity or misrepresenting your affiliation.';
+  String get termsSectionsProhibitedConductListItem3 => 'Impersonating any person or entity or misrepresenting your affiliation.';
 
   @override
   String get termsSectionsIpTitle => 'Intellectual Property';
 
   @override
-  String get termsSectionsIpBody =>
-      'The EveTick name, logo, and all related designs are trademarks of EveTick Inc. You may not use these without prior written permission.';
+  String get termsSectionsIpBody => 'The EveTick name, logo, and all related designs are trademarks of EveTick Inc. You may not use these without prior written permission.';
 
   @override
   String get termsSectionsLiabilityTitle => 'Limitation of Liability';
 
   @override
-  String get termsSectionsLiabilityBody =>
-      'To the maximum extent permitted by law, EveTick shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your access to or use of the services.';
+  String get termsSectionsLiabilityBody => 'To the maximum extent permitted by law, EveTick shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your access to or use of the services.';
 
   @override
   String get termsDecline => 'Decline';
@@ -1214,4 +1171,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileThemeDark => 'Dark Mode';
+
+  @override
+  String get onboardingCreateCustomize => 'Create & Customize';
+
+  @override
+  String get onboardingCreateCustomizeDescription => 'Create stunning event pages, add ticket types, and your preferences.';
+
+  @override
+  String get onboardingScanAndManage => 'Scan & Manage';
+
+  @override
+  String get onboardingScanningDescription => 'Use our powerful scanning tools to validate tickets and manage entry';
+
+  @override
+  String get onboardingDashboardTitle => 'All-in-One Dashboard';
+
+  @override
+  String get onboardingDashboardSubtitle => 'Get a real-time overview of your events,tickets, sales, and staff performance.';
 }

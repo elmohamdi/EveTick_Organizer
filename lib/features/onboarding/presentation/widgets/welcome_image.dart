@@ -14,7 +14,7 @@ class WelcomeImage extends StatelessWidget {
           width: double.infinity,
           height: 650.h,
           child: Image.asset(
-            'assets/images/welcome_background_image.png',
+            'assets/images/onboarding_background_image.png',
             fit: BoxFit.cover,
           ),
         ),

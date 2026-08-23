@@ -86,15 +86,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get onboardingSlide1Title => 'اكتشف الفعاليات \n المحلية';
 
   @override
-  String get onboardingSlide1Subtitle =>
-      'ابحث واحجز تذاكر الحفلات والسينما وغيرها من الفعاليات القريبة منك';
+  String get onboardingSlide1Subtitle => 'ابحث واحجز تذاكر الحفلات والسينما وغيرها من الفعاليات القريبة منك';
 
   @override
   String get onboardingSlide2Title => 'حجز سلس';
 
   @override
-  String get onboardingSlide2Subtitle =>
-      'أمّن مكانك في ثوانٍ مع عملية دفع سريعة وسهلة';
+  String get onboardingSlide2Subtitle => 'أمّن مكانك في ثوانٍ مع عملية دفع سريعة وسهلة';
 
   @override
   String get onboardingWelcomeTitle => 'اكتشف الفعاليات\nالتي ';
@@ -103,15 +101,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get onboardingWelcomeTitleRemain => 'تحبها';
 
   @override
-  String get onboardingWelcomeSubtitle =>
-      'انضم إلى مجتمع الباحثين عن الفعاليات';
+  String get onboardingWelcomeSubtitle => 'انضم إلى مجتمع الباحثين عن الفعاليات';
 
   @override
   String get locationSetLocationTitle => 'أين أنت؟';
 
   @override
-  String get onboardingLocationPermissionNotice =>
-      'لعرض الفعاليات القريبة منك، نحتاج إلى إذن الوصول لموقعك.';
+  String get onboardingLocationPermissionNotice => 'لعرض الفعاليات القريبة منك، نحتاج إلى إذن الوصول لموقعك.';
 
   @override
   String get locationSelectLocationTitle => 'اختر الموقع';
@@ -370,36 +366,31 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notificationsHotDealTitle => 'عرض ساخن: مهرجان الصيف 2024';
 
   @override
-  String get notificationsHotDealBody =>
-      'احصل على خصم 20% على تذاكر الحجز المبكر لأكبر مهرجان موسيقي صيفي....';
+  String get notificationsHotDealBody => 'احصل على خصم 20% على تذاكر الحجز المبكر لأكبر مهرجان موسيقي صيفي....';
 
   @override
   String get notificationsNewEventTitle => 'فعالية جديدة بالقرب منك!';
 
   @override
-  String get notificationsNewEventBody =>
-      'ليلة تكنو مع دي جي سبارك تُقام هذه الجمعة في...';
+  String get notificationsNewEventBody => 'ليلة تكنو مع دي جي سبارك تُقام هذه الجمعة في...';
 
   @override
   String get notificationsTicketConfirmedTitle => 'تم تأكيد التذكرة';
 
   @override
-  String get notificationsTicketConfirmedBody =>
-      'تم تأكيد حجزك لـ\"جاز تحت النجوم\". نراك هناك!';
+  String get notificationsTicketConfirmedBody => 'تم تأكيد حجزك لـ\"جاز تحت النجوم\". نراك هناك!';
 
   @override
   String get notificationsArtistFollowedTitle => 'فنان تتابعه';
 
   @override
-  String get notificationsArtistFollowedBody =>
-      'أعلن كولدبلاي للتو عن جولة عالمية جديدة. ترقّب التذاكر!';
+  String get notificationsArtistFollowedBody => 'أعلن كولدبلاي للتو عن جولة عالمية جديدة. ترقّب التذاكر!';
 
   @override
   String get notificationsProfileUpdatedTitle => 'تم تحديث الملف الشخصي';
 
   @override
-  String get notificationsProfileUpdatedBody =>
-      'لقد قمت بتحديث طريقة الدفع بنجاح.';
+  String get notificationsProfileUpdatedBody => 'لقد قمت بتحديث طريقة الدفع بنجاح.';
 
   @override
   String get eventDetailsEventLocation => 'موقع الفعالية';
@@ -411,23 +402,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get eventDetailsVenueExamplesWembleyStadium => 'ملعب ويمبلي';
 
   @override
-  String get eventDetailsVenueExamplesGrandEgyptianMuseum =>
-      'المتحف المصري الكبير';
+  String get eventDetailsVenueExamplesGrandEgyptianMuseum => 'المتحف المصري الكبير';
 
   @override
-  String get eventDetailsVenueExamplesTheGrandArena =>
-      'الأرينا الكبرى، وسط المدينة';
+  String get eventDetailsVenueExamplesTheGrandArena => 'الأرينا الكبرى، وسط المدينة';
 
   @override
-  String get eventDetailsVenueExamplesSiliconValleyCenter =>
-      'مركز وادي السيليكون، كاليفورنيا';
+  String get eventDetailsVenueExamplesSiliconValleyCenter => 'مركز وادي السيليكون، كاليفورنيا';
 
   @override
   String get eventDetailsDescriptionTitle => 'الوصف';
 
   @override
-  String get eventDetailsDescriptionExample =>
-      'استمتع بأروع مهرجان موسيقي صيفي يضم أشهر الفنانين العالميين ومنشآت فنية غامرة وتشكيلة متنوعة من المأكولات. تضم قائمة هذا العام نجومًا سيبقونك ترقص تحت النجوم... اقرأ المزيد';
+  String get eventDetailsDescriptionExample => 'استمتع بأروع مهرجان موسيقي صيفي يضم أشهر الفنانين العالميين ومنشآت فنية غامرة وتشكيلة متنوعة من المأكولات. تضم قائمة هذا العام نجومًا سيبقونك ترقص تحت النجوم... اقرأ المزيد';
 
   @override
   String get eventDetailsDateLabel => 'التاريخ';
@@ -456,15 +443,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get eventDetailsPerksMeetAndGreet => 'لقاء وتصوير مع الفنانين.';
 
   @override
-  String get eventDetailsPerksIncludesVipPerks =>
-      'يشمل جميع مزايا كبار الشخصيات.';
+  String get eventDetailsPerksIncludesVipPerks => 'يشمل جميع مزايا كبار الشخصيات.';
 
   @override
   String get eventDetailsPerksStandardEntry => 'يشمل الدخول القياسي.';
 
   @override
-  String get eventDetailsPerksLimitedQuantities =>
-      'كميات محدودة لمؤيدينا الأوائل.';
+  String get eventDetailsPerksLimitedQuantities => 'كميات محدودة لمؤيدينا الأوائل.';
 
   @override
   String get ticketsSelectTicketsTitle => 'اختر التذاكر';
@@ -653,8 +638,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profilePersonalInfo => 'المعلومات الشخصية';
 
   @override
-  String get profilePersonalInfoSubtitle =>
-      'البريد الإلكتروني، الهاتف، العنوان';
+  String get profilePersonalInfoSubtitle => 'البريد الإلكتروني، الهاتف، العنوان';
 
   @override
   String get profileEditProfile => 'تعديل الملف الشخصي';
@@ -786,8 +770,7 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get myTicketsSampleEventsAiFutureTech =>
-      'الذكاء الاصطناعي ومستقبل التكنولوجيا';
+  String get myTicketsSampleEventsAiFutureTech => 'الذكاء الاصطناعي ومستقبل التكنولوجيا';
 
   @override
   String get myTicketsSampleEventsNeonNights => 'ليالي نيون';
@@ -811,12 +794,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get favoritesCategoryMusic => 'موسيقى';
 
   @override
-  String get favoritesSampleEventsSummerSoundwave =>
-      'مهرجان الموجة الصوتية الصيفية 2024';
+  String get favoritesSampleEventsSummerSoundwave => 'مهرجان الموجة الصوتية الصيفية 2024';
 
   @override
-  String get favoritesSampleEventsGlobalInnovationSummit =>
-      'قمة الابتكار العالمية';
+  String get favoritesSampleEventsGlobalInnovationSummit => 'قمة الابتكار العالمية';
 
   @override
   String get artistOrganizerViewProfile => 'عرض الملف الشخصي';
@@ -845,8 +826,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get artistOrganizerUpcomingTours => 'الجولات القادمة';
 
   @override
-  String get artistOrganizerUpcomingEventsViewAll =>
-      'الفعاليات القادمة (عرض الكل)';
+  String get artistOrganizerUpcomingEventsViewAll => 'الفعاليات القادمة (عرض الكل)';
 
   @override
   String artistOrganizerShowsCountFull(String count) {
@@ -876,12 +856,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get artistOrganizerTabsReviews => 'التقييمات';
 
   @override
-  String get artistOrganizerArtistBioExample =>
-      'أبيل ماكونين تسفاي، المعروف باسم ذا ويكند، مغنٍ وكاتب أغانٍ ومنتج موسيقي كندي. اشتهر بتنوعه الصوتي وأسلوبه الغنائي الحزين... اقرأ المزيد';
+  String get artistOrganizerArtistBioExample => 'أبيل ماكونين تسفاي، المعروف باسم ذا ويكند، مغنٍ وكاتب أغانٍ ومنتج موسيقي كندي. اشتهر بتنوعه الصوتي وأسلوبه الغنائي الحزين... اقرأ المزيد';
 
   @override
-  String get artistOrganizerOrganizerBioExample =>
-      'جلوبال كونسرتس هي شركة تنظيم فعاليات رائدة متخصصة في المهرجانات الموسيقية العالمية والعروض في الملاعب الكبرى، تجلب أفضل المواهب العالمية إلى مدينتك.';
+  String get artistOrganizerOrganizerBioExample => 'جلوبال كونسرتس هي شركة تنظيم فعاليات رائدة متخصصة في المهرجانات الموسيقية العالمية والعروض في الملاعب الكبرى، تجلب أفضل المواهب العالمية إلى مدينتك.';
 
   @override
   String get artistOrganizerBandLabel => 'فرقة';
@@ -941,16 +919,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get reviewsReply => 'رد';
 
   @override
-  String get reviewsReviewExample1 =>
-      'كانت الأجواء رائعة! جودة الصوت كانت ممتازة. تستحق ثمنها بالتأكيد. كان الطاقم متعاونًا جدًا عندما لم نجد مقاعدنا.';
+  String get reviewsReviewExample1 => 'كانت الأجواء رائعة! جودة الصوت كانت ممتازة. تستحق ثمنها بالتأكيد. كان الطاقم متعاونًا جدًا عندما لم نجد مقاعدنا.';
 
   @override
-  String get reviewsReviewExample2 =>
-      'تجربة رائعة بشكل عام! العيب الوحيد كان طابور الانتظار الطويل للمشروبات. أنصح بالحضور مبكرًا إذا كنت تريد الحصول على مشروب قبل بدء العرض.';
+  String get reviewsReviewExample2 => 'تجربة رائعة بشكل عام! العيب الوحيد كان طابور الانتظار الطويل للمشروبات. أنصح بالحضور مبكرًا إذا كنت تريد الحصول على مشروب قبل بدء العرض.';
 
   @override
-  String get reviewsReviewExample3 =>
-      'ليلة لا تُصدق! العرض الضوئي كان متزامنًا تمامًا مع الإيقاع. لقد حضرت فعاليات كثيرة، لكن إيفتيك يجعل الحجز سلسًا دائمًا.';
+  String get reviewsReviewExample3 => 'ليلة لا تُصدق! العرض الضوئي كان متزامنًا تمامًا مع الإيقاع. لقد حضرت فعاليات كثيرة، لكن إيفتيك يجعل الحجز سلسًا دائمًا.';
 
   @override
   String get settingsTitle => 'الإعدادات';
@@ -1025,26 +1000,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get helpSupportFaqRefundQuestion => 'كيف يمكنني استرداد ثمن تذكرة؟';
 
   @override
-  String get helpSupportFaqRefundAnswer =>
-      'يمكنك طلب استرداد الأموال مباشرة من قسم \"تذاكري\" إذا سمح منظم الفعالية بذلك. عادةً ما تتم معالجة المبالغ المستردة خلال 5-7 أيام عمل إلى وسيلة الدفع الأصلية.';
+  String get helpSupportFaqRefundAnswer => 'يمكنك طلب استرداد الأموال مباشرة من قسم \"تذاكري\" إذا سمح منظم الفعالية بذلك. عادةً ما تتم معالجة المبالغ المستردة خلال 5-7 أيام عمل إلى وسيلة الدفع الأصلية.';
 
   @override
-  String get helpSupportFaqQrCodeQuestion =>
-      'أين يمكنني إيجاد رمز QR الخاص بي؟';
+  String get helpSupportFaqQrCodeQuestion => 'أين يمكنني إيجاد رمز QR الخاص بي؟';
 
   @override
   String get helpSupportFaqTransferQuestion => 'هل يمكنني نقل تذاكري إلى صديق؟';
 
   @override
-  String get helpSupportFaqProfilePhotoQuestion =>
-      'كيف يمكنني تغيير صورة ملفي الشخصي؟';
+  String get helpSupportFaqProfilePhotoQuestion => 'كيف يمكنني تغيير صورة ملفي الشخصي؟';
 
   @override
   String get helpSupportStillNeedHelp => 'ما زلت بحاجة إلى مساعدة؟';
 
   @override
-  String get helpSupportSupportAvailabilityNotice =>
-      'فريق الدعم لدينا متاح على مدار الساعة لمساعدتك في أي مشكلة.';
+  String get helpSupportSupportAvailabilityNotice => 'فريق الدعم لدينا متاح على مدار الساعة لمساعدتك في أي مشكلة.';
 
   @override
   String get helpSupportContactSupport => 'التواصل مع الدعم';
@@ -1056,8 +1027,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get helpSupportYourMessageLabel => 'رسالتك';
 
   @override
-  String get helpSupportMessagePlaceholder =>
-      'صف مشكلتك أو ملاحظاتك بالتفصيل هنا...';
+  String get helpSupportMessagePlaceholder => 'صف مشكلتك أو ملاحظاتك بالتفصيل هنا...';
 
   @override
   String get helpSupportAttachmentsOptional => 'المرفقات (اختياري)';
@@ -1066,12 +1036,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get helpSupportUploadScreenshot => 'رفع لقطة شاشة';
 
   @override
-  String get helpSupportSupportedFormatsNotice =>
-      'الصيغ المدعومة: PNG، JPG (بحد أقصى 5 ميجابايت)';
+  String get helpSupportSupportedFormatsNotice => 'الصيغ المدعومة: PNG، JPG (بحد أقصى 5 ميجابايت)';
 
   @override
-  String get helpSupportResponseTimeNotice =>
-      'يستجيب فريق الدعم لدينا عادةً خلال 24 ساعة. لمشكلات التذاكر العاجلة، يُرجى مراجعة قسم الأسئلة الشائعة.';
+  String get helpSupportResponseTimeNotice => 'يستجيب فريق الدعم لدينا عادةً خلال 24 ساعة. لمشكلات التذاكر العاجلة، يُرجى مراجعة قسم الأسئلة الشائعة.';
 
   @override
   String get helpSupportSendMessage => 'إرسال الرسالة';
@@ -1091,70 +1059,58 @@ class AppLocalizationsAr extends AppLocalizations {
   String get termsSectionsAcceptanceTitle => 'قبول الشروط';
 
   @override
-  String get termsSectionsAcceptanceBody1 =>
-      'من خلال الوصول إلى منصة إيفتيك أو استخدامها، فإنك توافق على الالتزام بهذه الشروط والخدمات. تشكل هذه الشروط اتفاقية ملزمة قانونًا بينك وبين شركة إيفتيك.';
+  String get termsSectionsAcceptanceBody1 => 'من خلال الوصول إلى منصة إيفتيك أو استخدامها، فإنك توافق على الالتزام بهذه الشروط والخدمات. تشكل هذه الشروط اتفاقية ملزمة قانونًا بينك وبين شركة إيفتيك.';
 
   @override
-  String get termsSectionsAcceptanceBody2 =>
-      'إذا كنت لا توافق على جميع هذه الشروط، فيُرجى عدم استخدام خدماتنا. نحتفظ بالحق في تغيير أو تعديل هذه الشروط في أي وقت.';
+  String get termsSectionsAcceptanceBody2 => 'إذا كنت لا توافق على جميع هذه الشروط، فيُرجى عدم استخدام خدماتنا. نحتفظ بالحق في تغيير أو تعديل هذه الشروط في أي وقت.';
 
   @override
   String get termsSectionsEligibilityTitle => 'أهلية المستخدم';
 
   @override
-  String get termsSectionsEligibilityBody =>
-      'يجب أن يكون عمرك 18 عامًا على الأقل لاستخدام الخدمات. من خلال إنشاء حساب، فإنك تقر وتضمن أن لديك الحق والصلاحية والأهلية للدخول في هذه الاتفاقية.';
+  String get termsSectionsEligibilityBody => 'يجب أن يكون عمرك 18 عامًا على الأقل لاستخدام الخدمات. من خلال إنشاء حساب، فإنك تقر وتضمن أن لديك الحق والصلاحية والأهلية للدخول في هذه الاتفاقية.';
 
   @override
   String get termsSectionsEligibilityListItem1 => 'تقديم معلومات تسجيل دقيقة';
 
   @override
-  String get termsSectionsEligibilityListItem2 =>
-      'الحفاظ على أمان كلمة المرور الخاصة بك.';
+  String get termsSectionsEligibilityListItem2 => 'الحفاظ على أمان كلمة المرور الخاصة بك.';
 
   @override
-  String get termsSectionsEligibilityListItem3 =>
-      'تحديث أي تغييرات في المعلومات فورًا.';
+  String get termsSectionsEligibilityListItem3 => 'تحديث أي تغييرات في المعلومات فورًا.';
 
   @override
   String get termsSectionsTicketPurchaseTitle => 'شراء التذاكر والاسترداد';
 
   @override
-  String get termsSectionsTicketPurchaseBody =>
-      'جميع المبيعات نهائية ما لم يتم إلغاء الفعالية أو إعادة جدولتها. تعمل إيفتيك كوسيط بين منظمي الفعاليات والحضور. يُرجى مراجعة سياسة الاسترداد الخاصة بنا للاطلاع على التفاصيل المتعلقة بإلغاءات أماكن محددة.';
+  String get termsSectionsTicketPurchaseBody => 'جميع المبيعات نهائية ما لم يتم إلغاء الفعالية أو إعادة جدولتها. تعمل إيفتيك كوسيط بين منظمي الفعاليات والحضور. يُرجى مراجعة سياسة الاسترداد الخاصة بنا للاطلاع على التفاصيل المتعلقة بإلغاءات أماكن محددة.';
 
   @override
   String get termsSectionsProhibitedConductTitle => 'السلوك المحظور';
 
   @override
-  String get termsSectionsProhibitedConductIntro =>
-      'يُحظر على المستخدمين بشكل صارم القيام بما يلي:';
+  String get termsSectionsProhibitedConductIntro => 'يُحظر على المستخدمين بشكل صارم القيام بما يلي:';
 
   @override
-  String get termsSectionsProhibitedConductListItem1 =>
-      'إعادة بيع التذاكر بسعر أعلى من القيمة الاسمية الأصلية على منصات طرف ثالث.';
+  String get termsSectionsProhibitedConductListItem1 => 'إعادة بيع التذاكر بسعر أعلى من القيمة الاسمية الأصلية على منصات طرف ثالث.';
 
   @override
-  String get termsSectionsProhibitedConductListItem2 =>
-      'محاولة التحايل على ميزات الأمان أو قيود واجهة برمجة التطبيقات (API).';
+  String get termsSectionsProhibitedConductListItem2 => 'محاولة التحايل على ميزات الأمان أو قيود واجهة برمجة التطبيقات (API).';
 
   @override
-  String get termsSectionsProhibitedConductListItem3 =>
-      'انتحال شخصية أي فرد أو كيان أو تحريف انتمائك.';
+  String get termsSectionsProhibitedConductListItem3 => 'انتحال شخصية أي فرد أو كيان أو تحريف انتمائك.';
 
   @override
   String get termsSectionsIpTitle => 'الملكية الفكرية';
 
   @override
-  String get termsSectionsIpBody =>
-      'اسم إيفتيك وشعارها وجميع التصاميم المرتبطة بها هي علامات تجارية مملوكة لشركة إيفتيك. لا يجوز استخدامها دون إذن كتابي مسبق.';
+  String get termsSectionsIpBody => 'اسم إيفتيك وشعارها وجميع التصاميم المرتبطة بها هي علامات تجارية مملوكة لشركة إيفتيك. لا يجوز استخدامها دون إذن كتابي مسبق.';
 
   @override
   String get termsSectionsLiabilityTitle => 'تحديد المسؤولية';
 
   @override
-  String get termsSectionsLiabilityBody =>
-      'إلى أقصى حد يسمح به القانون، لن تكون إيفتيك مسؤولة عن أي أضرار غير مباشرة أو عرضية أو خاصة أو تبعية أو تأديبية ناتجة عن وصولك إلى الخدمات أو استخدامها.';
+  String get termsSectionsLiabilityBody => 'إلى أقصى حد يسمح به القانون، لن تكون إيفتيك مسؤولة عن أي أضرار غير مباشرة أو عرضية أو خاصة أو تبعية أو تأديبية ناتجة عن وصولك إلى الخدمات أو استخدامها.';
 
   @override
   String get termsDecline => 'رفض';
@@ -1215,4 +1171,22 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get profileThemeDark => 'الوضع الداكن';
+
+  @override
+  String get onboardingCreateCustomize => 'أنشئ وخصص';
+
+  @override
+  String get onboardingCreateCustomizeDescription => 'أنشئ صفحات فعاليات مميزة، وأضف أنواع التذاكر والتفضيلات الخاصة بك.';
+
+  @override
+  String get onboardingScanAndManage => 'افحص و تحكم';
+
+  @override
+  String get onboardingScanningDescription => 'استخدم أدوات المسح الضوئي القوية لدينا للتحقق من صحة التذاكر وإدارة الدخول';
+
+  @override
+  String get onboardingDashboardTitle => 'كل حاجة في لوحة تحكم';
+
+  @override
+  String get onboardingDashboardSubtitle => 'احصل على نظرة عامة فورية على فعالياتك وتذاكرك ومبيعاتك وأداء موظفيك.';
 }

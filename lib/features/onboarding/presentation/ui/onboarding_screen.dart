@@ -4,6 +4,7 @@ import 'package:evetick_organizer/core/theming/extensions/build_context_extensio
 import 'package:evetick_organizer/features/onboarding/presentation/cubit/onboarding_cubit.dart';
 import 'package:evetick_organizer/features/onboarding/presentation/ui/onboarding1_screen.dart';
 import 'package:evetick_organizer/features/onboarding/presentation/ui/onboarding2_screen.dart';
+import 'package:evetick_organizer/features/onboarding/presentation/ui/onboarding3_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,7 +30,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   Future<void> _goToNext() async {
-    if (currentIndex < 1) {
+    if (currentIndex < 2) {
       pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
@@ -67,6 +68,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 Onboarding2Screen(
                   currentIndex: currentIndex,
                   onNext: _goToNext,
+                ),
+                Onboarding3Screen(
+                  onNext: _goToNext,
+                  currentIndex: currentIndex,
                 ),
               ],
             ),

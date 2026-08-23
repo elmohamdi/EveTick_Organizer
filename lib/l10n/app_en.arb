@@ -62,12 +62,12 @@
   "@onboardingSlide2Title": {},
   "onboardingSlide2Subtitle": "Secure your spot in seconds with our fast and easy checkout process",
   "@onboardingSlide2Subtitle": {},
-  "onboardingWelcomeTitle": "Discover Events\nYou ",
+  "onboardingWelcomeTitle": "Manage Your Events\nLike ",
   "@onboardingWelcomeTitle": {},
-  "onboardingWelcomeTitleRemain": "Love",
+  "onboardingWelcomeTitleRemain": "a Pro",
   "@onboardingWelcomeTitleRemain": {},
 
-  "onboardingWelcomeSubtitle": "Join the community of event seekers",
+  "onboardingWelcomeSubtitle": "Create, manage, and grow your events with ease.",
   "@onboardingWelcomeSubtitle": {},
   "locationSetLocationTitle": "Where are You?",
   "@locationSetLocationTitle": {},
@@ -922,5 +922,11 @@
   "profileThemeLight": "Light Mode",
   "@profileThemeLight": {},
   "profileThemeDark": "Dark Mode",
+    "onboardingCreateCustomize": "Create & Customize",
+  "onboardingCreateCustomizeDescription": "Create stunning event pages, add ticket types, and your preferences.",
+  "onboardingScanAndManage":"Scan & Manage",
+  "onboardingScanningDescription":"Use our powerful scanning tools to validate tickets and manage entry",
+  "onboardingDashboardTitle":"All-in-One Dashboard",
+  "onboardingDashboardSubtitle":"Get a real-time overview of your events,tickets, sales, and staff performance.",
   "@profileThemeDark": {}
 }

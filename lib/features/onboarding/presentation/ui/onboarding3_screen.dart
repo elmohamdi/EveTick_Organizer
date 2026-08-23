@@ -8,10 +8,10 @@ import 'package:evetick_organizer/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Onboarding2Screen extends StatelessWidget {
+class Onboarding3Screen extends StatelessWidget {
   final VoidCallback onNext;
   final int currentIndex;
-  const Onboarding2Screen({
+  const Onboarding3Screen({
     super.key,
     required this.onNext,
     required this.currentIndex,
@@ -32,17 +32,17 @@ class Onboarding2Screen extends StatelessWidget {
             ),
             ImageGradient(),
             Positioned(
-              top: 124.h,
-              left: 86.w,
-              right: 90.w,
-              child: Image.asset('assets/images/phone_widget.png'),
+              top: 130.h,
+              left: 88.w,
+              right: 88.w,
+              child: Image.asset('assets/images/dashboard_widget.png'),
             ),
             Positioned(
-              top: 525.h,
+              top: 528.h,
               left: 16.w,
               right: 16.w,
               child: Text(
-                AppLocalizations.of(context)!.onboardingScanAndManage,
+                AppLocalizations.of(context)!.onboardingDashboardTitle,
                 style: TextStyles.font24WhiteBold(context),
                 textAlign: TextAlign.center,
               ),
@@ -52,7 +52,7 @@ class Onboarding2Screen extends StatelessWidget {
               left: 16.w,
               right: 16.w,
               child: Text(
-                AppLocalizations.of(context)!.onboardingScanningDescription,
+                AppLocalizations.of(context)!.onboardingDashboardSubtitle,
                 style: TextStyles.font16LightGrayRegular(context),
                 textAlign: TextAlign.center,
               ),
@@ -73,7 +73,7 @@ class Onboarding2Screen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 665.h, left: 16.w, right: 16.w),
+              padding: EdgeInsets.only(top: 660.h, left: 16.w, right: 16.w),
               child: FilledAppTextButton(
                 buttonText: AppLocalizations.of(context)!.commonNext,
                 onPressed: onNext,

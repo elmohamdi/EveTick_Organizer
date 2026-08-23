@@ -26,19 +26,25 @@ class Onboarding1Screen extends StatelessWidget {
       child: SingleChildScrollView(
         child: Stack(
           children: [
-            Onboarding1Image(),
+            OnboardingBackGroungImage(),
             Positioned.fill(
               child: Container(
-                color: context.colors.darkBlue.withValues(alpha: 0.2),
+                color: context.colors.darkBlue.withValues(alpha: 0.09),
               ),
             ),
             ImageGradient(),
             Positioned(
-              top: 472.h,
+              top: 136.h,
+              left: 30.w,
+              right: 30.w,
+              child: Image.asset('assets/images/ticket_widget.png'),
+            ),
+            Positioned(
+              top: 510.h,
               left: 16.w,
               right: 16.w,
               child: Text(
-                AppLocalizations.of(context)!.onboardingSlide1Title,
+                AppLocalizations.of(context)!.onboardingCreateCustomize,
                 style: TextStyles.font24WhiteBold(context),
                 textAlign: TextAlign.center,
               ),
@@ -48,22 +54,25 @@ class Onboarding1Screen extends StatelessWidget {
               left: 16.w,
               right: 16.w,
               child: Text(
-                AppLocalizations.of(context)!.onboardingSlide1Subtitle,
+                AppLocalizations.of(
+                  context,
+                )!.onboardingCreateCustomizeDescription,
                 style: TextStyles.font16LightGrayRegular(context),
                 textAlign: TextAlign.center,
               ),
             ),
             Positioned(
               top: 628.h,
-              left: 162.5.w,
-              right: 162.5.w,
+              left: 0,
+              right: 0,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-
                 children: [
                   CustomIndicator(active: currentIndex == 0),
                   SizedBox(width: 5.w),
                   CustomIndicator(active: currentIndex == 1),
+                  SizedBox(width: 5.w),
+                  CustomIndicator(active: currentIndex == 2),
                 ],
               ),
             ),
@@ -74,20 +83,22 @@ class Onboarding1Screen extends StatelessWidget {
               bottom: 740.h,
               child: TextButton(
                 onPressed: onSkip,
-                child: Text(AppLocalizations.of(context)!.commonSkip, style: TextStyles.font16LightGrayRegular(context)),
+                child: Text(
+                  AppLocalizations.of(context)!.commonSkip,
+                  style: TextStyles.font16LightGrayRegular(context),
+                ),
               ),
             ),
             Padding(
               padding: EdgeInsets.only(
                 left: 16.w,
                 right: 16.w,
-                top: 676.h,
+                top: 660.h,
                 bottom: 117.h,
               ),
               child: FilledAppTextButton(
                 buttonText: AppLocalizations.of(context)!.commonNext,
                 onPressed: onNext,
-
               ),
             ),
           ],

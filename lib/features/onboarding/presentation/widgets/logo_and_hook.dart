@@ -12,16 +12,16 @@ class LogoAndHook extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsetsDirectional.only(end: 28.w),
+    return SizedBox(
+      width: 280.w,
       child: Column(
         children: [
-          SizedBox(
-            child: Theme.of(context).brightness == Brightness.dark
-                ? SvgPicture.asset('assets/svgs/dark_logo.svg')
-                : SvgPicture.asset('assets/svgs/light_logo.svg'),
-          ),
+          Theme.of(context).brightness == Brightness.dark
+              ? SvgPicture.asset('assets/svgs/dark_logo.svg')
+              : SvgPicture.asset('assets/svgs/light_logo.svg'),
+
           verticalSpace(4),
+
           RichText(
             textAlign: TextAlign.center,
             text: TextSpan(
@@ -44,9 +44,13 @@ class LogoAndHook extends StatelessWidget {
               ],
             ),
           ),
+
           verticalSpace(8),
+
           Text(
             AppLocalizations.of(context)!.onboardingWelcomeSubtitle,
+            textAlign: TextAlign.center,
+            softWrap: true,
             style: TextStyles.font16LightGrayRegular(context),
           ),
         ],
