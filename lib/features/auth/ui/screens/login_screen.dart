@@ -24,6 +24,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     verticalSpace(32),
                     const LoginBlocListener(),
-                    EmailAndPassword(),
+                    Form(key: _formKey, child: const EmailAndPassword()),
                     verticalSpace(24),
                     FilledAppTextButton(
                       buttonText: AppLocalizations.of(context)!.commonContinue,
@@ -93,10 +94,12 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void validateThenDoLogin(BuildContext context) {
-    if (context.read<LoginCubit>().formKey.currentState!.validate()) {
-      context.read<LoginCubit>().emitLoginStates(
-        email: context.read<LoginCubit>().emailController.text,
-        password: context.read<LoginCubit>().passwordController.text,
+    if (_formKey.currentState?.validate() ?? false) {
+      final cubit = context.read<LoginCubit>();
+
+      cubit.emitLoginStates(
+        email: cubit.emailController.text.trim(),
+        password: cubit.passwordController.text,
       );
     }
   }

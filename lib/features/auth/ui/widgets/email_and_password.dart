@@ -18,7 +18,6 @@ class EmailAndPassword extends StatefulWidget {
 class _EmailAndPasswordState extends State<EmailAndPassword> {
   bool isObscureText = true;
 
-
   @override
   void initState() {
     super.initState();
@@ -29,56 +28,53 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
-    
-    return Form(
-      key: context.read<LoginCubit>().formKey,
-      child: Column(
-        children: [
-          AppTextFormField(
-            label: AppLocalizations.of(context)!.authEmailAddressLabel,
-            hintText: AppLocalizations.of(context)!.authEmailPlaceholder,
-            suffixIcon: Icon(
-              Icons.email_outlined,
+    return Column(
+      children: [
+        AppTextFormField(
+          label: AppLocalizations.of(context)!.authEmailAddressLabel,
+          hintText: AppLocalizations.of(context)!.authEmailPlaceholder,
+          suffixIcon: Icon(
+            Icons.email_outlined,
+            color: ColorsManager.lightGray,
+            size: 24.sp,
+          ),
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter a valid email';
+            }
+          },
+          controller: context.read<LoginCubit>().emailController,
+        ),
+        verticalSpace(16),
+
+        AppTextFormField(
+          label: AppLocalizations.of(context)!.authPasswordLabel,
+          hintText: AppLocalizations.of(context)!.authPasswordPlaceholder,
+          isObscureText: isObscureText,
+          controller: context.read<LoginCubit>().passwordController,
+          suffixIcon: GestureDetector(
+            onTap: () {
+              setState(() {
+                isObscureText = !isObscureText;
+              });
+            },
+            child: Icon(
+              isObscureText ? Icons.visibility_off : Icons.visibility,
               color: ColorsManager.lightGray,
               size: 24.sp,
             ),
-            validator: (value){
-              if(value == null || value.isEmpty){
-                return 'Please enter a valid email';
-              }
-            },
-            controller: context.read<LoginCubit>().emailController,
           ),
-          verticalSpace(16),
-
-          AppTextFormField(
-            label:  AppLocalizations.of(context)!.authPasswordLabel,
-            hintText: AppLocalizations.of(context)!.authPasswordPlaceholder,
-            isObscureText: isObscureText,
-            controller: context.read<LoginCubit>().passwordController,
-            suffixIcon: GestureDetector(
-              onTap: () {
-                setState(() {
-                  isObscureText = !isObscureText;
-                });
-              },
-              child: Icon(
-                isObscureText ? Icons.visibility_off : Icons.visibility,
-                color: ColorsManager.lightGray,
-                size: 24.sp,
-              ),
-            ),
-            validator: (value) {
-              if(value == null || value.isEmpty || AppRegex.isPasswordValid(value)){
-                return 'Please enter a valid password';
-              }
-            },
-          ),
-        ],
-      ),
+          validator: (value) {
+            if (value == null ||
+                value.isEmpty ||
+                AppRegex.isPasswordValid(value)) {
+              return 'Please enter a valid password';
+            }
+          },
+        ),
+      ],
     );
   }
 }
