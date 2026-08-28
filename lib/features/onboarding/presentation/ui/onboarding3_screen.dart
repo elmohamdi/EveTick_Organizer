@@ -20,67 +20,65 @@ class Onboarding3Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: double.infinity,
-      child: SingleChildScrollView(
-        child: Stack(
-          children: [
-            OnboardingBackGroungImage(),
-            Positioned.fill(
-              child: Container(
-                color: context.colors.darkBlue.withValues(alpha: 0.09),
-              ),
+      height: 1.sh,
+      child: Stack(
+        children: [
+          OnboardingBackGroungImage(),
+          Positioned.fill(
+            child: Container(
+              color: context.colors.darkBlue.withValues(alpha: 0.09),
             ),
-            ImageGradient(),
-            Positioned(
-              top: 130.h,
-              left: 88.w,
-              right: 88.w,
-              child: Image.asset('assets/images/dashboard_widget.png'),
+          ),
+          ImageGradient(),
+          Positioned(
+            top: 130.h,
+            left: 88.w,
+            right: 88.w,
+            child: Image.asset('assets/images/dashboard_widget.png'),
+          ),
+          Positioned(
+            top: 528.h,
+            left: 16.w,
+            right: 16.w,
+            child: Text(
+              AppLocalizations.of(context)!.onboardingDashboardTitle,
+              style: TextStyles.font24WhiteBold(context),
+              textAlign: TextAlign.center,
             ),
-            Positioned(
-              top: 528.h,
-              left: 16.w,
-              right: 16.w,
-              child: Text(
-                AppLocalizations.of(context)!.onboardingDashboardTitle,
-                style: TextStyles.font24WhiteBold(context),
-                textAlign: TextAlign.center,
-              ),
+          ),
+          Positioned(
+            top: 570.h,
+            left: 16.w,
+            right: 16.w,
+            child: Text(
+              AppLocalizations.of(context)!.onboardingDashboardSubtitle,
+              style: TextStyles.font16LightGrayRegular(context),
+              textAlign: TextAlign.center,
             ),
-            Positioned(
-              top: 570.h,
-              left: 16.w,
-              right: 16.w,
-              child: Text(
-                AppLocalizations.of(context)!.onboardingDashboardSubtitle,
-                style: TextStyles.font16LightGrayRegular(context),
-                textAlign: TextAlign.center,
-              ),
+          ),
+          Positioned(
+            top: 628.h,
+            left: 0,
+            right: 0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CustomIndicator(active: currentIndex == 0),
+                SizedBox(width: 5.w),
+                CustomIndicator(active: currentIndex == 1),
+                SizedBox(width: 5.w),
+                CustomIndicator(active: currentIndex == 2),
+              ],
             ),
-            Positioned(
-              top: 628.h,
-              left: 0,
-              right: 0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CustomIndicator(active: currentIndex == 0),
-                  SizedBox(width: 5.w),
-                  CustomIndicator(active: currentIndex == 1),
-                  SizedBox(width: 5.w),
-                  CustomIndicator(active: currentIndex == 2),
-                ],
-              ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 665.h, left: 16.w, right: 16.w),
+            child: FilledAppTextButton(
+              buttonText: AppLocalizations.of(context)!.commonNext,
+              onPressed: onNext,
             ),
-            Padding(
-              padding: EdgeInsets.only(top: 660.h, left: 16.w, right: 16.w),
-              child: FilledAppTextButton(
-                buttonText: AppLocalizations.of(context)!.commonNext,
-                onPressed: onNext,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

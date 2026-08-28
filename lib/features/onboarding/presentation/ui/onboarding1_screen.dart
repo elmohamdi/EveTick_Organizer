@@ -40,7 +40,7 @@ class Onboarding1Screen extends StatelessWidget {
               child: Image.asset('assets/images/ticket_widget.png'),
             ),
             Positioned(
-              top: 510.h,
+              top: 520.h,
               left: 16.w,
               right: 16.w,
               child: Text(
@@ -50,7 +50,7 @@ class Onboarding1Screen extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 558.h,
+              top: 568.h,
               left: 16.w,
               right: 16.w,
               child: Text(
@@ -62,7 +62,7 @@ class Onboarding1Screen extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 628.h,
+              top: 625.h,
               left: 0,
               right: 0,
               child: Row(
@@ -77,15 +77,17 @@ class Onboarding1Screen extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 56.h,
+              top: 50.h,
               left: 306.w,
               right: 16.w,
               bottom: 740.h,
-              child: TextButton(
-                onPressed: onSkip,
-                child: Text(
-                  AppLocalizations.of(context)!.commonSkip,
-                  style: TextStyles.font16LightGrayRegular(context),
+              child: SizedBox(
+                child: TextButton(
+                  onPressed: onSkip,
+                  child: Text(
+                    AppLocalizations.of(context)!.commonSkip,
+                    style: TextStyles.font14LightGrayRegular(context),
+                  ),
                 ),
               ),
             ),
@@ -93,7 +95,7 @@ class Onboarding1Screen extends StatelessWidget {
               padding: EdgeInsets.only(
                 left: 16.w,
                 right: 16.w,
-                top: 660.h,
+                top: 665.h,
                 bottom: 117.h,
               ),
               child: FilledAppTextButton(

@@ -22,6 +22,11 @@ class TextStyles {
     fontWeight: FontWeightHelper.regular,
     color: context.colors.lightGray,
   );
+    static TextStyle font14LightGrayRegular(BuildContext context) => TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: context.colors.lightGray,
+  );
 
   static TextStyle font16WhiteMid(BuildContext context) => TextStyle(
     fontSize: 16.sp,
