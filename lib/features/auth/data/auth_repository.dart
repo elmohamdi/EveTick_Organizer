@@ -76,6 +76,7 @@ class AuthRepository {
         name: name.trim(),
         isEmailVerified: false,
         isGuest: false,
+        role: 'Organizer',
       );
       await firestore.collection('users').doc(user.uid).set(user.toJson());
 
@@ -111,6 +112,7 @@ class AuthRepository {
         name: 'Guest',
         isEmailVerified: false,
         isGuest: true,
+        role: 'Not Submitted , Guest',
       );
 
       final docRef = firestore.collection('users').doc(user.uid);

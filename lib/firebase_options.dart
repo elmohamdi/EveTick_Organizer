@@ -50,18 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDIWc4XpxCZ6m57Ihig8xKaOZvaO_DjHi0',
-    appId: '1:791601355828:android:b0b69f29f1ab7fbae63e61',
-    messagingSenderId: '791601355828',
-    projectId: 'evetickorganizer',
-    storageBucket: 'evetickorganizer.firebasestorage.app',
+    apiKey: 'AIzaSyASRDXyRPgAinhzrNDV9eTFqQsx-RHtXgQ',
+    appId: '1:1043739333910:android:9f40f5da4e2737acc7ac37',
+    messagingSenderId: '1043739333910',
+    projectId: 'evetick-a2d16',
+    storageBucket: 'evetick-a2d16.firebasestorage.app',
   );
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCzWsvYfDAhKgQ-Nq0fPHpTzWGISFZrrv8',
-    appId: '1:791601355828:ios:3f54e2097c61c635e63e61',
-    messagingSenderId: '791601355828',
-    projectId: 'evetickorganizer',
-    storageBucket: 'evetickorganizer.firebasestorage.app',
+    apiKey: 'AIzaSyAkOvjSVWRGw994Er5LBgjoC4CkUSouVV0',
+    appId: '1:1043739333910:ios:c68d8d94c6e04133c7ac37',
+    messagingSenderId: '1043739333910',
+    projectId: 'evetick-a2d16',
+    storageBucket: 'evetick-a2d16.firebasestorage.app',
+    androidClientId: '1043739333910-i79d0p2oaj495170opjo166ajkr7vsib.apps.googleusercontent.com',
+    iosClientId: '1043739333910-7nermlikk5vd6s3vg3tg5a86mv5ilmgp.apps.googleusercontent.com',
     iosBundleId: 'com.example.evetickOrganizer',
   );
 }

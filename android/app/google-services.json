@@ -1,26 +1,95 @@
 {
   "project_info": {
-    "project_number": "791601355828",
-    "project_id": "evetickorganizer",
-    "storage_bucket": "evetickorganizer.firebasestorage.app"
+    "project_number": "1043739333910",
+    "project_id": "evetick-a2d16",
+    "storage_bucket": "evetick-a2d16.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:791601355828:android:b0b69f29f1ab7fbae63e61",
+        "mobilesdk_app_id": "1:1043739333910:android:190a8736c3458156c7ac37",
         "android_client_info": {
-          "package_name": "com.example.evetick_organizer"
+          "package_name": "com.example.evetick"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1043739333910-i79d0p2oaj495170opjo166ajkr7vsib.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.evetick",
+            "certificate_hash": "dac21dd98328f1d148b30ad50bf847d345adc83c"
+          }
+        },
+        {
+          "client_id": "1043739333910-ns9uhbj7cam17v1l545ni16cm41m7c2d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.evetick",
+            "certificate_hash": "01b63c6bac77714f34c85bcf9881656316878765"
+          }
+        },
+        {
+          "client_id": "1043739333910-0jqtm6786bbbbc1drjanj0aghrnhk1mp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyDIWc4XpxCZ6m57Ihig8xKaOZvaO_DjHi0"
+          "current_key": "AIzaSyASRDXyRPgAinhzrNDV9eTFqQsx-RHtXgQ"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1043739333910-0jqtm6786bbbbc1drjanj0aghrnhk1mp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1043739333910-lh2jjii7j8o4kbkrl9g31bo7u5270k7c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.evetick"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043739333910:android:9f40f5da4e2737acc7ac37",
+        "android_client_info": {
+          "package_name": "com.example.evetick_organizer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1043739333910-0jqtm6786bbbbc1drjanj0aghrnhk1mp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASRDXyRPgAinhzrNDV9eTFqQsx-RHtXgQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1043739333910-0jqtm6786bbbbc1drjanj0aghrnhk1mp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1043739333910-lh2jjii7j8o4kbkrl9g31bo7u5270k7c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.evetick"
+              }
+            }
+          ]
         }
       }
     }
