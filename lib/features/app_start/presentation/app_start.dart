@@ -1,4 +1,3 @@
-
 import 'package:evetick_organizer/core/helpers/extentions.dart';
 import 'package:evetick_organizer/core/routing/routes.dart';
 import 'package:evetick_organizer/features/app_start/logic/cubit/app_start_cubit.dart';
@@ -26,7 +25,7 @@ class AppStartScreen extends StatelessWidget {
             context.pushReplacedNamed(Routes.loginScreen);
           },
           goToHome: () {
-            context.pushReplacedNamed(Routes.profileScreen);
+            context.pushReplacedNamed(Routes.homeScreen);
           },
           goToLocation: () {
             context.pushReplacedNamed(Routes.setLocationScreen);

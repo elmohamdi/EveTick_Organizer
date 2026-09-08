@@ -1,4 +1,3 @@
-
 import 'package:evetick_organizer/core/helpers/spacing.dart';
 import 'package:evetick_organizer/core/theming/colors.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
@@ -8,7 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextFormField extends StatelessWidget {
-  final String label;
+  final String? label;
   final EdgeInsetsGeometry? contentPadding;
   final InputBorder? focusedBorder;
   final InputBorder? enabledBorder;
@@ -22,10 +21,10 @@ class AppTextFormField extends StatelessWidget {
   final Function(String?) validator;
   final bool readOnly;
   final TextInputType? keyboardType;
-      final List<TextInputFormatter>? inputFormatters;
+  final List<TextInputFormatter>? inputFormatters;
   const AppTextFormField({
     super.key,
-    required this.label,
+    this.label,
     this.contentPadding,
     this.focusedBorder,
     this.enabledBorder,
@@ -48,8 +47,10 @@ class AppTextFormField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(label, style: TextStyles.font16WhiteRegular(context)),
-        verticalSpace(8),
+        if (label != null && label!.isNotEmpty) ...[
+          Text(label!, style: TextStyles.font16WhiteRegular(context)),
+          verticalSpace(8),
+        ],
         TextFormField(
           inputFormatters: inputFormatters,
           keyboardType: keyboardType,

@@ -95,4 +95,9 @@ class TextStyles {
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.orange,
   );
+  static TextStyle font24OrangeBold = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.orange,
+  );
 }

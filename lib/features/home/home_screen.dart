@@ -1,3 +1,6 @@
+import 'package:evetick_organizer/core/helpers/extentions.dart';
+import 'package:evetick_organizer/core/routing/routes.dart';
+import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,10 +11,17 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home Screen'),
+        centerTitle: true,
+        backgroundColor: context.colors.darkBlue,
       ),
-      body: Center(
-        child: Text('Home Screen'),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        
+        onPressed: () {
+          context.pushNamed(Routes.createEvent);
+        },
       ),
+      body: Center(child: Text('Home Screen')),
     );
   }
 }
