@@ -38,7 +38,11 @@ class AppDropdownFormField<T> extends StatelessWidget {
           menuMaxHeight: 250.h,
           dropdownColor: context.colors.fourthBlue,
           borderRadius: BorderRadius.circular(12.r),
-          icon: const Icon(Icons.keyboard_arrow_down, color: Colors.grey),
+          icon: Icon(
+            Icons.keyboard_arrow_down,
+            color: context.colors.gray3,
+            size: 30.sp,
+          ),
           style: TextStyles.font16WhiteRegular(context),
           decoration: InputDecoration(
             isDense: true,

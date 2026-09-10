@@ -18,10 +18,14 @@ class AppTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final Color? backgroundColor;
   final TextEditingController? controller;
-  final Function(String?) validator;
+  final String? Function(String?)? validator;
   final bool readOnly;
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
+  final VoidCallback? onTap;
+  final int? maxLines;
+  final int? maxLength;
+  final void Function(String)? onChanged;
   const AppTextFormField({
     super.key,
     this.label,
@@ -35,10 +39,14 @@ class AppTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.backgroundColor,
     this.controller,
-    required this.validator,
+     this.validator,
     this.readOnly = false,
     this.keyboardType,
     this.inputFormatters,
+    this.onTap,
+    this.maxLines = 1,
+    this.maxLength,
+    this.onChanged,
   });
 
   @override
@@ -55,9 +63,14 @@ class AppTextFormField extends StatelessWidget {
           inputFormatters: inputFormatters,
           keyboardType: keyboardType,
           readOnly: readOnly,
+          onTap: onTap,
           controller: controller,
+          maxLines: maxLines,
+          maxLength: maxLength,
+          onChanged: onChanged,
           decoration: InputDecoration(
             isDense: true,
+            counterStyle: TextStyles.font12LightGrayRegular(context),
             contentPadding:
                 contentPadding ??
                 EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h),
@@ -95,9 +108,7 @@ class AppTextFormField extends StatelessWidget {
           ),
           obscureText: isObscureText ?? false,
           style: inputTextStyle ?? TextStyles.font16WhiteRegular(context),
-          validator: (value) {
-            return validator(value);
-          },
+          validator: validator,
         ),
       ],
     );

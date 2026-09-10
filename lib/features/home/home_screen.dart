@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
         child: Icon(Icons.add),
         
         onPressed: () {
-          context.pushNamed(Routes.createEvent);
+          context.pushNamed(Routes.createEventScreen);
         },
       ),
       body: Center(child: Text('Home Screen')),

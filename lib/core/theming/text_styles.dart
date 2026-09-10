@@ -22,7 +22,7 @@ class TextStyles {
     fontWeight: FontWeightHelper.regular,
     color: context.colors.lightGray,
   );
-    static TextStyle font14LightGrayRegular(BuildContext context) => TextStyle(
+  static TextStyle font14LightGrayRegular(BuildContext context) => TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.regular,
     color: context.colors.lightGray,
@@ -100,4 +100,10 @@ class TextStyles {
     fontWeight: FontWeightHelper.bold,
     color: ColorsManager.orange,
   );
+  static TextStyle font14IndicatorLabel(BuildContext context, Color color) =>
+      TextStyle(
+        fontSize: 14.sp,
+        fontWeight: FontWeightHelper.bold,
+        color: color,
+      );
 }

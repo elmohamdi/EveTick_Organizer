@@ -13,6 +13,7 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color darkBlue;
   final Color black;
   final Color fourthBlue;
+  final Color gray3;
   const AppColors({
     required this.darkBlue,
     required this.black,
@@ -25,6 +26,7 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.textBackground,
     required this.hotBackground,
     required this.fourthBlue,
+    required this.gray3
   });
 
   @override
@@ -39,7 +41,8 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? textBackground,
     Color? hotBackground,
     Color? darkBlue,
-    Color? fourthBlue
+    Color? fourthBlue,
+    Color? gray3
   }) {
     return AppColors(
       darkBlue: darkBlue ?? this.darkBlue,
@@ -52,7 +55,9 @@ class AppColors extends ThemeExtension<AppColors> {
       textBackground: textBackground ?? this.textBackground,
       hotBackground: hotBackground ?? this.hotBackground,
       black: black ?? this.black,
-      fourthBlue: fourthBlue??this.fourthBlue
+      gray3: gray3??this.gray3,
+      fourthBlue: fourthBlue??this.fourthBlue,
+      
     );
   }
 
@@ -72,6 +77,7 @@ class AppColors extends ThemeExtension<AppColors> {
       darkBlue: Color.lerp(darkBlue, other.darkBlue, t)!,
       black: Color.lerp(black, other.black, t)!,
       fourthBlue: Color.lerp(fourthBlue, other.fourthBlue, t)!,
+      gray3: Color.lerp(gray3, other.gray3, t)!,
     );
   }
 }

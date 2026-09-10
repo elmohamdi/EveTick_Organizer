@@ -8,6 +8,8 @@ import 'package:evetick_organizer/features/auth/logic/signup_cubit/signup_cubit.
 import 'package:evetick_organizer/features/auth/ui/screens/login_screen.dart';
 import 'package:evetick_organizer/features/auth/ui/screens/signup_screen.dart';
 import 'package:evetick_organizer/features/auth/ui/screens/verification_screen.dart';
+import 'package:evetick_organizer/features/create_event/presentation/screens/create_event_screen.dart';
+import 'package:evetick_organizer/features/create_event/presentation/screens/publish_event.dart';
 import 'package:evetick_organizer/features/home/home_screen.dart';
 import 'package:evetick_organizer/features/location/data/repos/location_repository.dart';
 import 'package:evetick_organizer/features/location/logic/cubit/location_cubit.dart';
@@ -107,6 +109,10 @@ class AppRouter {
             child: EditProfileScreen(),
           ),
         );
+      case Routes.createEventScreen:
+        return MaterialPageRoute(builder: (_) => CreateEventScreen());
+      case Routes.publishEventScreen:
+        return MaterialPageRoute(builder: (_) => const PublishEvent());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

@@ -70,6 +70,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_screenutil: ^5.9.3
   flutter_launcher_icons: ^0.14.4
+  step_progress_indicator: ^1.0.2
 
 dev_dependencies:
   flutter_test:
