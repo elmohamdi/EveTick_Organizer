@@ -32,8 +32,6 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
     );
   }
 
-  // Tickets is the last page inside the PageView. Publish has no fields of
-  // its own, so it's a separate pushed screen instead of a 4th page.
   void _goToPublishScreen() {
     Navigator.of(context).pushNamed(Routes.publishEventScreen);
   }
@@ -56,7 +54,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
           Expanded(
             child: PageView(
               controller: _pageController,
-              physics: const NeverScrollableScrollPhysics(),
+              // physics: const NeverScrollableScrollPhysics(),
               onPageChanged: (index) => setState(() => currentIndex = index),
               children: [
                 BuildEventDetails(onNextStep: _goToNextPage),

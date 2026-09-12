@@ -21,7 +21,28 @@ class BuildEventDetails extends StatefulWidget {
 class _BuildEventDetailsState extends State<BuildEventDetails> {
   final _formKey = GlobalKey<FormState>();
 
-  final List<String> categories = ['Sport', 'Music', 'Medical', 'Movies'];
+  final List<String> categories = [
+    'Sports',
+    'Music',
+    'Medical',
+    'Movies',
+    'Technology',
+    'Business',
+    'Education',
+    'Entertainment',
+    'Arts & Culture',
+    'Food & Drink',
+    'Health & Wellness',
+    'Travel & Adventure',
+    'Gaming',
+    'Fashion',
+    'Networking',
+    'Workshops',
+    'Conferences',
+    'Exhibitions',
+    'Festivals',
+    'Charity & Social',
+  ];
 
   final TextEditingController titleController = TextEditingController();
   final TextEditingController locationController = TextEditingController();
@@ -180,7 +201,10 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
 
             verticalSpace(24),
 
-            Text('Start Date & Time', style: TextStyles.font16WhiteRegular(context)),
+            Text(
+              'Start Date & Time',
+              style: TextStyles.font16WhiteRegular(context),
+            ),
             verticalSpace(8),
             Row(
               children: [
@@ -218,7 +242,10 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
 
             verticalSpace(24),
 
-            Text('End Date & Time', style: TextStyles.font16WhiteRegular(context)),
+            Text(
+              'End Date & Time',
+              style: TextStyles.font16WhiteRegular(context),
+            ),
             verticalSpace(8),
             Row(
               children: [
