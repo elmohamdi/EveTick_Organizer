@@ -27,6 +27,16 @@ class TextStyles {
     fontWeight: FontWeightHelper.regular,
     color: context.colors.lightGray,
   );
+  static TextStyle font14Gray3Regular = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.gray3,
+  );
+  static TextStyle font12Gray3Mid = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorsManager.gray3,
+  );
 
   static TextStyle font16WhiteMid(BuildContext context) => TextStyle(
     fontSize: 16.sp,
@@ -55,7 +65,11 @@ class TextStyles {
     fontWeight: FontWeightHelper.regular,
     color: context.colors.white,
   );
-
+  static TextStyle font16Gray3Regular = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.gray3,
+  );
   static TextStyle font16LightGrayMid(BuildContext context) => TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.medium,

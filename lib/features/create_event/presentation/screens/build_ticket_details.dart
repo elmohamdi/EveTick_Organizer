@@ -96,13 +96,13 @@ class _BuildTicketDetailsState extends State<BuildTicketDetails> {
                   children: [
                     Icon(
                       Icons.add_circle_outline,
-                      color: context.colors.white,
+                      color: context.colors.lightGray,
                       size: 20.sp,
                     ),
                     horizontalSpace(8),
                     Text(
                       'Add New Tier',
-                      style: TextStyles.font16WhiteRegular(context),
+                      style: TextStyles.font16LightGrayRegular(context),
                     ),
                   ],
                 ),

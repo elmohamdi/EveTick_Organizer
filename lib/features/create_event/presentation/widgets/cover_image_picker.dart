@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:evetick_organizer/core/helpers/spacing.dart';
 import 'package:evetick_organizer/core/theming/colors.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
@@ -41,7 +42,7 @@ class CoverImagePicker extends StatelessWidget {
                       height: 48.w,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: context.colors.fourthBlue,
+                        color: context.colors.textBackground,
                       ),
                       child: Icon(
                         Icons.camera_alt_outlined,
@@ -57,7 +58,7 @@ class CoverImagePicker extends StatelessWidget {
                     verticalSpace(4),
                     Text(
                       'Recommended size: 1200 x 675px',
-                      style: TextStyles.font14LightGrayRegular(context),
+                      style: TextStyles.font14Gray3Regular,
                     ),
                   ],
                 )

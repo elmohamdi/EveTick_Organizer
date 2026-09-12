@@ -70,7 +70,7 @@ class PayoutMethodTile extends StatelessWidget {
               height: 36.w,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: context.colors.thirdBlue,
+                color: context.colors.textBackground,
               ),
               child: Icon(icon, color: ColorsManager.orange, size: 18.sp),
             ),
@@ -80,10 +80,7 @@ class PayoutMethodTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(title, style: TextStyles.font16WhiteRegular(context)),
-                  Text(
-                    subtitle,
-                    style: TextStyles.font14LightGrayRegular(context),
-                  ),
+                  Text(subtitle, style: TextStyles.font14Gray3Regular),
                 ],
               ),
             ),

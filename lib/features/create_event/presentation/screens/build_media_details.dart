@@ -94,7 +94,7 @@ class _BuildMediaDetailsState extends State<BuildMediaDetails> {
             verticalSpace(4),
             Text(
               'Add visuals to attract more attendees',
-              style: TextStyles.font16lightGrayMid(context),
+              style: TextStyles.font16Gray3Regular,
             ),
 
             verticalSpace(24),
@@ -135,7 +135,7 @@ class _BuildMediaDetailsState extends State<BuildMediaDetails> {
             verticalSpace(8),
             Text(
               'maximum $_maxGalleryPhotos photos, up to 5MB each.',
-              style: TextStyles.font14LightGrayRegular(context),
+              style: TextStyles.font14Gray3Regular,
             ),
 
             verticalSpace(24),
@@ -146,6 +146,7 @@ class _BuildMediaDetailsState extends State<BuildMediaDetails> {
               controller: descriptionController,
               maxLines: 5,
               maxLength: 2000,
+              hintStyle: TextStyles.font14Gray3Regular,
             ),
 
             verticalSpace(32),

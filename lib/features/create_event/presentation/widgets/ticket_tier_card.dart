@@ -1,7 +1,7 @@
 import 'package:evetick_organizer/core/helpers/spacing.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
+import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/core/widgets/app_text_form_field.dart';
-import 'package:evetick_organizer/features/create_event/presentation/screens/build_ticket_details.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/ticket_tier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -44,6 +44,7 @@ class TicketTierCard extends StatelessWidget {
             ),
 
           AppTextFormField(
+            hintStyle: TextStyles.font12Gray3Mid,
             label: 'Ticket Name',
             hintText: 'Enter your ticket name.',
             controller: tier.nameController,
@@ -63,6 +64,7 @@ class TicketTierCard extends StatelessWidget {
             children: [
               Expanded(
                 child: AppTextFormField(
+                  hintStyle: TextStyles.font12Gray3Mid,
                   label: 'Price',
                   hintText: 'Enter Your Price.',
                   controller: tier.priceController,
@@ -89,6 +91,7 @@ class TicketTierCard extends StatelessWidget {
               horizontalSpace(12),
               Expanded(
                 child: AppTextFormField(
+                  hintStyle: TextStyles.font12Gray3Mid,
                   label: 'Quantity',
                   hintText: 'Enter Ticket Quantity.',
                   controller: tier.quantityController,
@@ -116,7 +119,9 @@ class TicketTierCard extends StatelessWidget {
             hintText: 'Enter Ticket Description.',
             controller: tier.descriptionController,
             backgroundColor: context.colors.thirdBlue,
+            hintStyle: TextStyles.font12Gray3Mid,
             maxLines: 3,
+            minLines: 1,
           ),
         ],
       ),
