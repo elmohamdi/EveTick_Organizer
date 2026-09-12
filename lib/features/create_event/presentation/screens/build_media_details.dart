@@ -75,7 +75,7 @@ class _BuildMediaDetailsState extends State<BuildMediaDetails> {
       );
       return;
     }
-
+    
     if (!isValid) return;
 
     widget.onNextStep?.call();
