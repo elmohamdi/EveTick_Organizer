@@ -4,6 +4,9 @@ import 'package:evetick_organizer/core/theming/logic/theme_cubit.dart';
 import 'package:evetick_organizer/features/auth/data/auth_repository.dart';
 import 'package:evetick_organizer/features/auth/logic/login_cubit/login_cubit.dart';
 import 'package:evetick_organizer/features/auth/logic/signup_cubit/signup_cubit.dart';
+import 'package:evetick_organizer/features/create_event/data/repositories/create_event_repository.dart';
+import 'package:evetick_organizer/features/create_event/data/repositories/create_event_repository_impl.dart';
+import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
 import 'package:evetick_organizer/features/localization/data/locale_repository.dart';
 import 'package:evetick_organizer/features/localization/logic/locale_cubit.dart';
 import 'package:evetick_organizer/features/location/data/repos/location_repository.dart';
@@ -65,4 +68,11 @@ Future<void> setupGetIt() async {
   // theme
   getIt.registerLazySingleton(() => ThemeRepository());
   getIt.registerLazySingleton(() => ThemeCubit(getIt()));
+  //create Event
+  getIt.registerLazySingleton<CreateEventRepository>(
+    () => CreateEventRepositoryImpl(),
+  );
+  getIt.registerFactory<CreateEventCubit>(
+    () => CreateEventCubit(createEventRepository: getIt()),
+  );
 }
