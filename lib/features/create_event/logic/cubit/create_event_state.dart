@@ -1,10 +1,35 @@
-part of 'create_event_cubit.dart';
+import 'package:evetick_organizer/features/create_event/data/models/ticket_tier_model.dart';
+import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_picker/image_picker.dart';
+
+part 'create_event_state.freezed.dart';
+
+enum CreateEventStatus { initial, loading, success, failure }
 
 @freezed
-class CreateEventState with _$CreateEventState {
-  const factory CreateEventState.initial() = _Initial;
-  const factory CreateEventState.loading() = _Loading;
-  const factory CreateEventState.success() = _Success;
-  const factory CreateEventState.failure(String message) = _Failure;
-  
+abstract class CreateEventState with _$CreateEventState {
+  const factory CreateEventState({
+    @Default(CreateEventStatus.initial) CreateEventStatus status,
+
+    String? eventTitle,
+    String? eventCategory,
+    String? eventDescription,
+    String? eventLocation,
+
+    DateTime? startDate,
+    TimeOfDay? startTime,
+    DateTime? endDate,
+    TimeOfDay? endTime,
+
+    @Default(true) bool isOnlineEvent,
+
+    XFile? eventCoverImage,
+
+    @Default([]) List<XFile> eventGalleryPhotos,
+
+    @Default([]) List<TicketTierModel> eventTicketTiers,
+
+    String? errorMessage,
+  }) = _CreateEventState;
 }

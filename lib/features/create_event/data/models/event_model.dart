@@ -10,7 +10,7 @@ class EventModel {
   final String eventLocation;
   final XFile eventCoverImage;
   final List<XFile>? eventPhotos;
-  final String? eventDescription;
+  final String eventDescription;
   final List<TicketTierModel> eventTicketTier;
   final bool isOnlineEvent;
   EventModel({
@@ -23,21 +23,21 @@ class EventModel {
     required this.startAt,
     required this.endAt,
     required this.isOnlineEvent,
+    required this.eventDescription,
     this.eventPhotos,
-    this.eventDescription,
   });
-  Map<String,dynamic>toJson(){
+  Map<String, dynamic> toJson() {
     return {
-      'eventId':eventId,
-      'eventTitle':eventTitle,
-      'eventCategory':eventCategory,
-      'startAt':startAt.toIso8601String(),
-      'endAt':endAt.toIso8601String(),
-      'eventLocation':eventLocation,
-      'eventCoverImage':eventCoverImage.path,
-      'eventPhotos':eventPhotos?.map((e) => e.path).toList(),
-      'eventDescription':eventDescription,
-      'isOnlineEvent':isOnlineEvent,
+      'eventId': eventId,
+      'eventTitle': eventTitle,
+      'eventCategory': eventCategory,
+      'startAt': startAt.toIso8601String(),
+      'endAt': endAt.toIso8601String(),
+      'eventLocation': eventLocation,
+      'eventCoverImage': eventCoverImage.path,
+      'eventPhotos': eventPhotos?.map((e) => e.path).toList(),
+      'eventDescription': eventDescription,
+      'isOnlineEvent': isOnlineEvent,
       'ticketTiers': eventTicketTier.map((e) => e.toJson()).toList(),
     };
   }
