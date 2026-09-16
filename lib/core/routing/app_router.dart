@@ -10,7 +10,6 @@ import 'package:evetick_organizer/features/auth/ui/screens/signup_screen.dart';
 import 'package:evetick_organizer/features/auth/ui/screens/verification_screen.dart';
 import 'package:evetick_organizer/features/create_event/presentation/screens/create_event_screen.dart';
 import 'package:evetick_organizer/features/create_event/presentation/screens/publish_event.dart';
-import 'package:evetick_organizer/features/home/home_screen.dart';
 import 'package:evetick_organizer/features/location/data/repos/location_repository.dart';
 import 'package:evetick_organizer/features/location/logic/cubit/location_cubit.dart';
 import 'package:evetick_organizer/features/location/presentation/screens/map_picker_screen.dart';
@@ -22,6 +21,7 @@ import 'package:evetick_organizer/features/onboarding/presentation/ui/welcome_sc
 import 'package:evetick_organizer/features/profile/logic/profile_cubit.dart';
 import 'package:evetick_organizer/features/profile/ui/screens/edit_profile_screen.dart';
 import 'package:evetick_organizer/features/profile/ui/screens/profile_screen.dart';
+import 'package:evetick_organizer/main_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -53,7 +53,7 @@ class AppRouter {
           ),
         );
       case Routes.homeScreen:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(builder: (_) => const MainContainer());
       case Routes.verificationScreen:
         return MaterialPageRoute(builder: (_) => const VerificationScreen());
       case Routes.appStartScreen:
