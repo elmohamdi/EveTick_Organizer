@@ -67,5 +67,8 @@ class CreateEventCubit extends Cubit<CreateEventState> {
   void updateEventTicketTiers(List<TicketTierModel> eventTicketTiers) {
     emit(state.copyWith(eventTicketTiers: eventTicketTiers));
   }
-  
+  void clearEndDate() {
+  emit(state.copyWith(endDate: null));
+}
+
 }

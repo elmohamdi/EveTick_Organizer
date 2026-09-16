@@ -1,11 +1,13 @@
-import 'package:evetick_organizer/core/routing/routes.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
 import 'package:evetick_organizer/core/theming/text_styles.dart';
+import 'package:evetick_organizer/features/create_event/data/models/event_model.dart';
+import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
 import 'package:evetick_organizer/features/create_event/presentation/screens/build_event_details.dart';
 import 'package:evetick_organizer/features/create_event/presentation/screens/build_media_details.dart';
 import 'package:evetick_organizer/features/create_event/presentation/screens/build_ticket_details.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/event_phase_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CreateEventScreen extends StatefulWidget {
@@ -32,8 +34,36 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
     );
   }
 
-  void _goToPublishScreen() {
-    Navigator.of(context).pushNamed(Routes.publishEventScreen);
+  void _puplishEvent() {
+    final state = context.read<CreateEventCubit>().state;
+    final startAt = DateTime(
+      state.startDate!.year,
+      state.startDate!.month,
+      state.startDate!.day,
+      state.startTime!.hour,
+      state.startTime!.minute,
+    );
+
+    final endAt = DateTime(
+      state.endDate!.year,
+      state.endDate!.month,
+      state.endDate!.day,
+      state.endTime!.hour,
+      state.endTime!.minute,
+    );
+    final event = EventModel(
+      eventTitle: state.eventTitle!,
+      eventCategory: state.eventCategory!,
+      startAt: startAt,
+      endAt: endAt,
+      eventLocation: state.eventLocation ?? '',
+      eventCoverImage: state.eventCoverImage!,
+      eventPhotos: state.eventGalleryPhotos,
+      eventDescription: state.eventDescription,
+      eventTicketTier: state.eventTicketTiers,
+      isOnlineEvent: state.isOnlineEvent,
+    );
+    context.read<CreateEventCubit>().createEvent(event);
   }
 
   @override
@@ -59,7 +89,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
               children: [
                 BuildEventDetails(onNextStep: _goToNextPage),
                 BuildMediaDetails(onNextStep: _goToNextPage),
-                BuildTicketDetails(onPublish: _goToPublishScreen),
+                BuildTicketDetails(onPublish: _puplishEvent),
               ],
             ),
           ),

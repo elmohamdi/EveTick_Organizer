@@ -2,9 +2,11 @@ import 'package:evetick_organizer/core/helpers/spacing.dart';
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/core/widgets/app_text_form_field.dart';
 import 'package:evetick_organizer/core/widgets/filled_app_text_button.dart';
+import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/cover_image_picker.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/gallery_photo_slot.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -47,6 +49,7 @@ class _BuildMediaDetailsState extends State<BuildMediaDetails> {
     setState(() {
       coverImage = image;
     });
+    context.read<CreateEventCubit>().updateEventCoverImage(image);
   }
 
   Future<void> _pickGalleryPhoto(int index) async {
@@ -60,10 +63,17 @@ class _BuildMediaDetailsState extends State<BuildMediaDetails> {
     setState(() {
       galleryPhotos[index] = image;
     });
+    context.read<CreateEventCubit>().updateEventGalleryPhotos(
+      galleryPhotos.whereType<XFile>().toList(),
+    );
   }
 
   void _removeGalleryPhoto(int index) {
     setState(() => galleryPhotos[index] = null);
+
+    context.read<CreateEventCubit>().updateEventGalleryPhotos(
+      galleryPhotos.whereType<XFile>().toList(),
+    );
   }
 
   void _onNextStepPressed() {
@@ -75,7 +85,7 @@ class _BuildMediaDetailsState extends State<BuildMediaDetails> {
       );
       return;
     }
-    
+
     if (!isValid) return;
 
     widget.onNextStep?.call();
@@ -141,6 +151,9 @@ class _BuildMediaDetailsState extends State<BuildMediaDetails> {
             verticalSpace(24),
 
             AppTextFormField(
+              onChanged: (value) {
+                context.read<CreateEventCubit>().updateDescription(value);
+              },
               hintText:
                   'Tell your attendees what to expect this amazing event...',
               controller: descriptionController,

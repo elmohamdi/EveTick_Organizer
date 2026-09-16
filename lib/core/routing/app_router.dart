@@ -8,6 +8,7 @@ import 'package:evetick_organizer/features/auth/logic/signup_cubit/signup_cubit.
 import 'package:evetick_organizer/features/auth/ui/screens/login_screen.dart';
 import 'package:evetick_organizer/features/auth/ui/screens/signup_screen.dart';
 import 'package:evetick_organizer/features/auth/ui/screens/verification_screen.dart';
+import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
 import 'package:evetick_organizer/features/create_event/presentation/screens/create_event_screen.dart';
 import 'package:evetick_organizer/features/create_event/presentation/screens/publish_event.dart';
 import 'package:evetick_organizer/features/location/data/repos/location_repository.dart';
@@ -110,7 +111,12 @@ class AppRouter {
           ),
         );
       case Routes.createEventScreen:
-        return MaterialPageRoute(builder: (_) => CreateEventScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<CreateEventCubit>(),
+            child: const CreateEventScreen(),
+          ),
+        );
       case Routes.publishEventScreen:
         return MaterialPageRoute(builder: (_) => const PublishEvent());
       default:

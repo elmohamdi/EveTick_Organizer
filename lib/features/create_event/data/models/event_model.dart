@@ -2,7 +2,6 @@ import 'package:evetick_organizer/features/create_event/data/models/ticket_tier_
 import 'package:image_picker/image_picker.dart';
 
 class EventModel {
-  final String eventId;
   final String eventTitle;
   final String eventCategory;
   final DateTime startAt;
@@ -10,11 +9,10 @@ class EventModel {
   final String eventLocation;
   final XFile eventCoverImage;
   final List<XFile>? eventPhotos;
-  final String eventDescription;
+  final String? eventDescription;
   final List<TicketTierModel> eventTicketTier;
   final bool isOnlineEvent;
   EventModel({
-    required this.eventId,
     required this.eventTitle,
     required this.eventCategory,
     required this.eventLocation,
@@ -28,7 +26,6 @@ class EventModel {
   });
   Map<String, dynamic> toJson() {
     return {
-      'eventId': eventId,
       'eventTitle': eventTitle,
       'eventCategory': eventCategory,
       'startAt': startAt.toIso8601String(),

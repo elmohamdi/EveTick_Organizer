@@ -2,10 +2,13 @@ import 'package:evetick_organizer/core/helpers/spacing.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/core/widgets/filled_app_text_button.dart';
+import 'package:evetick_organizer/features/create_event/data/models/ticket_tier_model.dart';
+import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/payout_method_tile.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/ticket_tier.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/ticket_tier_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BuildTicketDetails extends StatefulWidget {
@@ -24,6 +27,18 @@ class _BuildTicketDetailsState extends State<BuildTicketDetails> {
   final List<TicketTier> tiers = [TicketTier()];
 
   PayoutMethod selectedPayoutMethod = PayoutMethod.bank;
+  List<TicketTierModel> convertTicketTiersToModels() {
+    return tiers.map((tier) {
+      return TicketTierModel(
+        ticketName: tier.nameController.text.trim(),
+        ticketPrice: double.parse(tier.priceController.text),
+        ticketQuantity: int.parse(tier.quantityController.text),
+        ticketDescription: tier.descriptionController.text.trim().isEmpty
+            ? null
+            : tier.descriptionController.text.trim(),
+      );
+    }).toList();
+  }
 
   @override
   void dispose() {
@@ -44,6 +59,10 @@ class _BuildTicketDetailsState extends State<BuildTicketDetails> {
   void _onPublishPressed() {
     final bool isValid = _formKey.currentState?.validate() ?? false;
     if (!isValid) return;
+
+    final ticketTierModels = convertTicketTiersToModels();
+
+    context.read<CreateEventCubit>().updateEventTicketTiers(ticketTierModels);
 
     widget.onPublish?.call();
   }

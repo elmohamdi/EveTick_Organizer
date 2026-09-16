@@ -5,7 +5,9 @@ import 'package:evetick_organizer/core/widgets/app_drop_down_form_field.dart';
 import 'package:evetick_organizer/core/widgets/app_radio_button.dart';
 import 'package:evetick_organizer/core/widgets/app_text_form_field.dart';
 import 'package:evetick_organizer/core/widgets/filled_app_text_button.dart';
+import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
@@ -94,14 +96,16 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
       if (isStart) {
         startDate = picked;
         startDateController.text = DateFormat('MM/dd/yyyy').format(picked);
-
+        context.read<CreateEventCubit>().updateStartDate(picked);
         if (endDate != null && endDate!.isBefore(picked)) {
           endDate = null;
           endDateController.clear();
+          context.read<CreateEventCubit>().clearEndDate();
         }
       } else {
         endDate = picked;
         endDateController.text = DateFormat('MM/dd/yyyy').format(picked);
+        context.read<CreateEventCubit>().updateEndDate(picked);
       }
     });
   }
@@ -121,9 +125,11 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
       if (isStart) {
         startTime = picked;
         startTimeController.text = picked.format(context);
+        context.read<CreateEventCubit>().updateStartTime(picked);
       } else {
         endTime = picked;
         endTimeController.text = picked.format(context);
+        context.read<CreateEventCubit>().updateEndTime(picked);
       }
     });
   }
@@ -154,6 +160,29 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
 
     if (!isValid) return;
 
+    final startDateTime = DateTime(
+      startDate!.year,
+      startDate!.month,
+      startDate!.day,
+      startTime!.hour,
+      startTime!.minute,
+    );
+
+    final endDateTime = DateTime(
+      endDate!.year,
+      endDate!.month,
+      endDate!.day,
+      endTime!.hour,
+      endTime!.minute,
+    );
+    if (!endDateTime.isAfter(startDateTime)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('End date & time must be after start date & time'),
+        ),
+      );
+      return;
+    }
     widget.onNextStep?.call();
   }
 
@@ -170,6 +199,9 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
               hintText: 'Enter catchy event name',
               label: 'Event Title',
               controller: titleController,
+              onChanged: (value) {
+                context.read<CreateEventCubit>().updateTitle(value);
+              },
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
                   return 'Please enter event title';
@@ -186,16 +218,18 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
               value: selectedCategory,
               items: categories,
               itemLabel: (item) => item,
-              onChanged: (value) {
-                setState(() {
-                  selectedCategory = value;
-                });
-              },
+
               validator: (value) {
                 if (value == null) {
                   return 'Please select a category';
                 }
                 return null;
+              },
+              onChanged: (value) {
+                setState(() {
+                  selectedCategory = value;
+                });
+                context.read<CreateEventCubit>().updateCategory(value!);
               },
             ),
 
@@ -284,6 +318,9 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
             verticalSpace(24),
 
             AppTextFormField(
+              onChanged: (value) {
+                context.read<CreateEventCubit>().updateLocation(value);
+              },
               hintText: 'Search or enter location',
               label: 'Event Location',
               controller: locationController,
@@ -306,6 +343,7 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
               value: isOnlineEvent,
               label: 'Online event (Virtual)',
               onChanged: (value) {
+                context.read<CreateEventCubit>().updateIsOnlineEvent(value);
                 setState(() {
                   isOnlineEvent = value;
                 });
