@@ -10,7 +10,7 @@ class EventPhaseIndicator extends StatelessWidget {
 
   const EventPhaseIndicator({super.key, this.currentStep = 0});
 
-  static const List<String> labels = ['Details', 'Media', 'Tickets'];
+  static const List<String> labels = ['Details', 'Media', 'Seating', 'Tickets'];
 
   @override
   Widget build(BuildContext context) {

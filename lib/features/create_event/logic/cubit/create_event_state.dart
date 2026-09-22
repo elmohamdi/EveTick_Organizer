@@ -1,3 +1,4 @@
+import 'package:evetick_organizer/features/create_event/data/models/seating_config_model.dart';
 import 'package:evetick_organizer/features/create_event/data/models/ticket_tier_model.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -29,6 +30,8 @@ abstract class CreateEventState with _$CreateEventState {
     @Default([]) List<XFile> eventGalleryPhotos,
 
     @Default([]) List<TicketTierModel> eventTicketTiers,
+
+    SeatingConfigModel? seatingConfig,
 
     String? errorMessage,
   }) = _CreateEventState;

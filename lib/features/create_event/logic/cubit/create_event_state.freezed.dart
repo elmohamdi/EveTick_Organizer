@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CreateEventState {
 
- CreateEventStatus get status; String? get eventTitle; String? get eventCategory; String? get eventDescription; String? get eventLocation; DateTime? get startDate; TimeOfDay? get startTime; DateTime? get endDate; TimeOfDay? get endTime; bool get isOnlineEvent; XFile? get eventCoverImage; List<XFile> get eventGalleryPhotos; List<TicketTierModel> get eventTicketTiers; String? get errorMessage;
+ CreateEventStatus get status; String? get eventTitle; String? get eventCategory; String? get eventDescription; String? get eventLocation; DateTime? get startDate; TimeOfDay? get startTime; DateTime? get endDate; TimeOfDay? get endTime; bool get isOnlineEvent; XFile? get eventCoverImage; List<XFile> get eventGalleryPhotos; List<TicketTierModel> get eventTicketTiers; SeatingConfigModel? get seatingConfig; String? get errorMessage;
 /// Create a copy of CreateEventState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $CreateEventStateCopyWith<CreateEventState> get copyWith => _$CreateEventStateCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateEventState&&(identical(other.status, status) || other.status == status)&&(identical(other.eventTitle, eventTitle) || other.eventTitle == eventTitle)&&(identical(other.eventCategory, eventCategory) || other.eventCategory == eventCategory)&&(identical(other.eventDescription, eventDescription) || other.eventDescription == eventDescription)&&(identical(other.eventLocation, eventLocation) || other.eventLocation == eventLocation)&&(identical(other.startDate, startDate) || other.startDate == startDate)&&(identical(other.startTime, startTime) || other.startTime == startTime)&&(identical(other.endDate, endDate) || other.endDate == endDate)&&(identical(other.endTime, endTime) || other.endTime == endTime)&&(identical(other.isOnlineEvent, isOnlineEvent) || other.isOnlineEvent == isOnlineEvent)&&(identical(other.eventCoverImage, eventCoverImage) || other.eventCoverImage == eventCoverImage)&&const DeepCollectionEquality().equals(other.eventGalleryPhotos, eventGalleryPhotos)&&const DeepCollectionEquality().equals(other.eventTicketTiers, eventTicketTiers)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateEventState&&(identical(other.status, status) || other.status == status)&&(identical(other.eventTitle, eventTitle) || other.eventTitle == eventTitle)&&(identical(other.eventCategory, eventCategory) || other.eventCategory == eventCategory)&&(identical(other.eventDescription, eventDescription) || other.eventDescription == eventDescription)&&(identical(other.eventLocation, eventLocation) || other.eventLocation == eventLocation)&&(identical(other.startDate, startDate) || other.startDate == startDate)&&(identical(other.startTime, startTime) || other.startTime == startTime)&&(identical(other.endDate, endDate) || other.endDate == endDate)&&(identical(other.endTime, endTime) || other.endTime == endTime)&&(identical(other.isOnlineEvent, isOnlineEvent) || other.isOnlineEvent == isOnlineEvent)&&(identical(other.eventCoverImage, eventCoverImage) || other.eventCoverImage == eventCoverImage)&&const DeepCollectionEquality().equals(other.eventGalleryPhotos, eventGalleryPhotos)&&const DeepCollectionEquality().equals(other.eventTicketTiers, eventTicketTiers)&&(identical(other.seatingConfig, seatingConfig) || other.seatingConfig == seatingConfig)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,eventTitle,eventCategory,eventDescription,eventLocation,startDate,startTime,endDate,endTime,isOnlineEvent,eventCoverImage,const DeepCollectionEquality().hash(eventGalleryPhotos),const DeepCollectionEquality().hash(eventTicketTiers),errorMessage);
+int get hashCode => Object.hash(runtimeType,status,eventTitle,eventCategory,eventDescription,eventLocation,startDate,startTime,endDate,endTime,isOnlineEvent,eventCoverImage,const DeepCollectionEquality().hash(eventGalleryPhotos),const DeepCollectionEquality().hash(eventTicketTiers),seatingConfig,errorMessage);
 
 @override
 String toString() {
-  return 'CreateEventState(status: $status, eventTitle: $eventTitle, eventCategory: $eventCategory, eventDescription: $eventDescription, eventLocation: $eventLocation, startDate: $startDate, startTime: $startTime, endDate: $endDate, endTime: $endTime, isOnlineEvent: $isOnlineEvent, eventCoverImage: $eventCoverImage, eventGalleryPhotos: $eventGalleryPhotos, eventTicketTiers: $eventTicketTiers, errorMessage: $errorMessage)';
+  return 'CreateEventState(status: $status, eventTitle: $eventTitle, eventCategory: $eventCategory, eventDescription: $eventDescription, eventLocation: $eventLocation, startDate: $startDate, startTime: $startTime, endDate: $endDate, endTime: $endTime, isOnlineEvent: $isOnlineEvent, eventCoverImage: $eventCoverImage, eventGalleryPhotos: $eventGalleryPhotos, eventTicketTiers: $eventTicketTiers, seatingConfig: $seatingConfig, errorMessage: $errorMessage)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $CreateEventStateCopyWith<$Res>  {
   factory $CreateEventStateCopyWith(CreateEventState value, $Res Function(CreateEventState) _then) = _$CreateEventStateCopyWithImpl;
 @useResult
 $Res call({
- CreateEventStatus status, String? eventTitle, String? eventCategory, String? eventDescription, String? eventLocation, DateTime? startDate, TimeOfDay? startTime, DateTime? endDate, TimeOfDay? endTime, bool isOnlineEvent, XFile? eventCoverImage, List<XFile> eventGalleryPhotos, List<TicketTierModel> eventTicketTiers, String? errorMessage
+ CreateEventStatus status, String? eventTitle, String? eventCategory, String? eventDescription, String? eventLocation, DateTime? startDate, TimeOfDay? startTime, DateTime? endDate, TimeOfDay? endTime, bool isOnlineEvent, XFile? eventCoverImage, List<XFile> eventGalleryPhotos, List<TicketTierModel> eventTicketTiers, SeatingConfigModel? seatingConfig, String? errorMessage
 });
 
 
@@ -62,7 +62,7 @@ class _$CreateEventStateCopyWithImpl<$Res>
 
 /// Create a copy of CreateEventState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? eventTitle = freezed,Object? eventCategory = freezed,Object? eventDescription = freezed,Object? eventLocation = freezed,Object? startDate = freezed,Object? startTime = freezed,Object? endDate = freezed,Object? endTime = freezed,Object? isOnlineEvent = null,Object? eventCoverImage = freezed,Object? eventGalleryPhotos = null,Object? eventTicketTiers = null,Object? errorMessage = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? eventTitle = freezed,Object? eventCategory = freezed,Object? eventDescription = freezed,Object? eventLocation = freezed,Object? startDate = freezed,Object? startTime = freezed,Object? endDate = freezed,Object? endTime = freezed,Object? isOnlineEvent = null,Object? eventCoverImage = freezed,Object? eventGalleryPhotos = null,Object? eventTicketTiers = null,Object? seatingConfig = freezed,Object? errorMessage = freezed,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as CreateEventStatus,eventTitle: freezed == eventTitle ? _self.eventTitle : eventTitle // ignore: cast_nullable_to_non_nullable
@@ -77,7 +77,8 @@ as TimeOfDay?,isOnlineEvent: null == isOnlineEvent ? _self.isOnlineEvent : isOnl
 as bool,eventCoverImage: freezed == eventCoverImage ? _self.eventCoverImage : eventCoverImage // ignore: cast_nullable_to_non_nullable
 as XFile?,eventGalleryPhotos: null == eventGalleryPhotos ? _self.eventGalleryPhotos : eventGalleryPhotos // ignore: cast_nullable_to_non_nullable
 as List<XFile>,eventTicketTiers: null == eventTicketTiers ? _self.eventTicketTiers : eventTicketTiers // ignore: cast_nullable_to_non_nullable
-as List<TicketTierModel>,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as List<TicketTierModel>,seatingConfig: freezed == seatingConfig ? _self.seatingConfig : seatingConfig // ignore: cast_nullable_to_non_nullable
+as SeatingConfigModel?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -163,10 +164,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( CreateEventStatus status,  String? eventTitle,  String? eventCategory,  String? eventDescription,  String? eventLocation,  DateTime? startDate,  TimeOfDay? startTime,  DateTime? endDate,  TimeOfDay? endTime,  bool isOnlineEvent,  XFile? eventCoverImage,  List<XFile> eventGalleryPhotos,  List<TicketTierModel> eventTicketTiers,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( CreateEventStatus status,  String? eventTitle,  String? eventCategory,  String? eventDescription,  String? eventLocation,  DateTime? startDate,  TimeOfDay? startTime,  DateTime? endDate,  TimeOfDay? endTime,  bool isOnlineEvent,  XFile? eventCoverImage,  List<XFile> eventGalleryPhotos,  List<TicketTierModel> eventTicketTiers,  SeatingConfigModel? seatingConfig,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateEventState() when $default != null:
-return $default(_that.status,_that.eventTitle,_that.eventCategory,_that.eventDescription,_that.eventLocation,_that.startDate,_that.startTime,_that.endDate,_that.endTime,_that.isOnlineEvent,_that.eventCoverImage,_that.eventGalleryPhotos,_that.eventTicketTiers,_that.errorMessage);case _:
+return $default(_that.status,_that.eventTitle,_that.eventCategory,_that.eventDescription,_that.eventLocation,_that.startDate,_that.startTime,_that.endDate,_that.endTime,_that.isOnlineEvent,_that.eventCoverImage,_that.eventGalleryPhotos,_that.eventTicketTiers,_that.seatingConfig,_that.errorMessage);case _:
   return orElse();
 
 }
@@ -184,10 +185,10 @@ return $default(_that.status,_that.eventTitle,_that.eventCategory,_that.eventDes
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( CreateEventStatus status,  String? eventTitle,  String? eventCategory,  String? eventDescription,  String? eventLocation,  DateTime? startDate,  TimeOfDay? startTime,  DateTime? endDate,  TimeOfDay? endTime,  bool isOnlineEvent,  XFile? eventCoverImage,  List<XFile> eventGalleryPhotos,  List<TicketTierModel> eventTicketTiers,  String? errorMessage)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( CreateEventStatus status,  String? eventTitle,  String? eventCategory,  String? eventDescription,  String? eventLocation,  DateTime? startDate,  TimeOfDay? startTime,  DateTime? endDate,  TimeOfDay? endTime,  bool isOnlineEvent,  XFile? eventCoverImage,  List<XFile> eventGalleryPhotos,  List<TicketTierModel> eventTicketTiers,  SeatingConfigModel? seatingConfig,  String? errorMessage)  $default,) {final _that = this;
 switch (_that) {
 case _CreateEventState():
-return $default(_that.status,_that.eventTitle,_that.eventCategory,_that.eventDescription,_that.eventLocation,_that.startDate,_that.startTime,_that.endDate,_that.endTime,_that.isOnlineEvent,_that.eventCoverImage,_that.eventGalleryPhotos,_that.eventTicketTiers,_that.errorMessage);case _:
+return $default(_that.status,_that.eventTitle,_that.eventCategory,_that.eventDescription,_that.eventLocation,_that.startDate,_that.startTime,_that.endDate,_that.endTime,_that.isOnlineEvent,_that.eventCoverImage,_that.eventGalleryPhotos,_that.eventTicketTiers,_that.seatingConfig,_that.errorMessage);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -204,10 +205,10 @@ return $default(_that.status,_that.eventTitle,_that.eventCategory,_that.eventDes
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( CreateEventStatus status,  String? eventTitle,  String? eventCategory,  String? eventDescription,  String? eventLocation,  DateTime? startDate,  TimeOfDay? startTime,  DateTime? endDate,  TimeOfDay? endTime,  bool isOnlineEvent,  XFile? eventCoverImage,  List<XFile> eventGalleryPhotos,  List<TicketTierModel> eventTicketTiers,  String? errorMessage)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( CreateEventStatus status,  String? eventTitle,  String? eventCategory,  String? eventDescription,  String? eventLocation,  DateTime? startDate,  TimeOfDay? startTime,  DateTime? endDate,  TimeOfDay? endTime,  bool isOnlineEvent,  XFile? eventCoverImage,  List<XFile> eventGalleryPhotos,  List<TicketTierModel> eventTicketTiers,  SeatingConfigModel? seatingConfig,  String? errorMessage)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateEventState() when $default != null:
-return $default(_that.status,_that.eventTitle,_that.eventCategory,_that.eventDescription,_that.eventLocation,_that.startDate,_that.startTime,_that.endDate,_that.endTime,_that.isOnlineEvent,_that.eventCoverImage,_that.eventGalleryPhotos,_that.eventTicketTiers,_that.errorMessage);case _:
+return $default(_that.status,_that.eventTitle,_that.eventCategory,_that.eventDescription,_that.eventLocation,_that.startDate,_that.startTime,_that.endDate,_that.endTime,_that.isOnlineEvent,_that.eventCoverImage,_that.eventGalleryPhotos,_that.eventTicketTiers,_that.seatingConfig,_that.errorMessage);case _:
   return null;
 
 }
@@ -219,7 +220,7 @@ return $default(_that.status,_that.eventTitle,_that.eventCategory,_that.eventDes
 
 
 class _CreateEventState implements CreateEventState {
-  const _CreateEventState({this.status = CreateEventStatus.initial, this.eventTitle, this.eventCategory, this.eventDescription, this.eventLocation, this.startDate, this.startTime, this.endDate, this.endTime, this.isOnlineEvent = true, this.eventCoverImage, final  List<XFile> eventGalleryPhotos = const [], final  List<TicketTierModel> eventTicketTiers = const [], this.errorMessage}): _eventGalleryPhotos = eventGalleryPhotos,_eventTicketTiers = eventTicketTiers;
+  const _CreateEventState({this.status = CreateEventStatus.initial, this.eventTitle, this.eventCategory, this.eventDescription, this.eventLocation, this.startDate, this.startTime, this.endDate, this.endTime, this.isOnlineEvent = true, this.eventCoverImage, final  List<XFile> eventGalleryPhotos = const [], final  List<TicketTierModel> eventTicketTiers = const [], this.seatingConfig, this.errorMessage}): _eventGalleryPhotos = eventGalleryPhotos,_eventTicketTiers = eventTicketTiers;
   
 
 @override@JsonKey() final  CreateEventStatus status;
@@ -247,6 +248,7 @@ class _CreateEventState implements CreateEventState {
   return EqualUnmodifiableListView(_eventTicketTiers);
 }
 
+@override final  SeatingConfigModel? seatingConfig;
 @override final  String? errorMessage;
 
 /// Create a copy of CreateEventState
@@ -259,16 +261,16 @@ _$CreateEventStateCopyWith<_CreateEventState> get copyWith => __$CreateEventStat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateEventState&&(identical(other.status, status) || other.status == status)&&(identical(other.eventTitle, eventTitle) || other.eventTitle == eventTitle)&&(identical(other.eventCategory, eventCategory) || other.eventCategory == eventCategory)&&(identical(other.eventDescription, eventDescription) || other.eventDescription == eventDescription)&&(identical(other.eventLocation, eventLocation) || other.eventLocation == eventLocation)&&(identical(other.startDate, startDate) || other.startDate == startDate)&&(identical(other.startTime, startTime) || other.startTime == startTime)&&(identical(other.endDate, endDate) || other.endDate == endDate)&&(identical(other.endTime, endTime) || other.endTime == endTime)&&(identical(other.isOnlineEvent, isOnlineEvent) || other.isOnlineEvent == isOnlineEvent)&&(identical(other.eventCoverImage, eventCoverImage) || other.eventCoverImage == eventCoverImage)&&const DeepCollectionEquality().equals(other._eventGalleryPhotos, _eventGalleryPhotos)&&const DeepCollectionEquality().equals(other._eventTicketTiers, _eventTicketTiers)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateEventState&&(identical(other.status, status) || other.status == status)&&(identical(other.eventTitle, eventTitle) || other.eventTitle == eventTitle)&&(identical(other.eventCategory, eventCategory) || other.eventCategory == eventCategory)&&(identical(other.eventDescription, eventDescription) || other.eventDescription == eventDescription)&&(identical(other.eventLocation, eventLocation) || other.eventLocation == eventLocation)&&(identical(other.startDate, startDate) || other.startDate == startDate)&&(identical(other.startTime, startTime) || other.startTime == startTime)&&(identical(other.endDate, endDate) || other.endDate == endDate)&&(identical(other.endTime, endTime) || other.endTime == endTime)&&(identical(other.isOnlineEvent, isOnlineEvent) || other.isOnlineEvent == isOnlineEvent)&&(identical(other.eventCoverImage, eventCoverImage) || other.eventCoverImage == eventCoverImage)&&const DeepCollectionEquality().equals(other._eventGalleryPhotos, _eventGalleryPhotos)&&const DeepCollectionEquality().equals(other._eventTicketTiers, _eventTicketTiers)&&(identical(other.seatingConfig, seatingConfig) || other.seatingConfig == seatingConfig)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,eventTitle,eventCategory,eventDescription,eventLocation,startDate,startTime,endDate,endTime,isOnlineEvent,eventCoverImage,const DeepCollectionEquality().hash(_eventGalleryPhotos),const DeepCollectionEquality().hash(_eventTicketTiers),errorMessage);
+int get hashCode => Object.hash(runtimeType,status,eventTitle,eventCategory,eventDescription,eventLocation,startDate,startTime,endDate,endTime,isOnlineEvent,eventCoverImage,const DeepCollectionEquality().hash(_eventGalleryPhotos),const DeepCollectionEquality().hash(_eventTicketTiers),seatingConfig,errorMessage);
 
 @override
 String toString() {
-  return 'CreateEventState(status: $status, eventTitle: $eventTitle, eventCategory: $eventCategory, eventDescription: $eventDescription, eventLocation: $eventLocation, startDate: $startDate, startTime: $startTime, endDate: $endDate, endTime: $endTime, isOnlineEvent: $isOnlineEvent, eventCoverImage: $eventCoverImage, eventGalleryPhotos: $eventGalleryPhotos, eventTicketTiers: $eventTicketTiers, errorMessage: $errorMessage)';
+  return 'CreateEventState(status: $status, eventTitle: $eventTitle, eventCategory: $eventCategory, eventDescription: $eventDescription, eventLocation: $eventLocation, startDate: $startDate, startTime: $startTime, endDate: $endDate, endTime: $endTime, isOnlineEvent: $isOnlineEvent, eventCoverImage: $eventCoverImage, eventGalleryPhotos: $eventGalleryPhotos, eventTicketTiers: $eventTicketTiers, seatingConfig: $seatingConfig, errorMessage: $errorMessage)';
 }
 
 
@@ -279,7 +281,7 @@ abstract mixin class _$CreateEventStateCopyWith<$Res> implements $CreateEventSta
   factory _$CreateEventStateCopyWith(_CreateEventState value, $Res Function(_CreateEventState) _then) = __$CreateEventStateCopyWithImpl;
 @override @useResult
 $Res call({
- CreateEventStatus status, String? eventTitle, String? eventCategory, String? eventDescription, String? eventLocation, DateTime? startDate, TimeOfDay? startTime, DateTime? endDate, TimeOfDay? endTime, bool isOnlineEvent, XFile? eventCoverImage, List<XFile> eventGalleryPhotos, List<TicketTierModel> eventTicketTiers, String? errorMessage
+ CreateEventStatus status, String? eventTitle, String? eventCategory, String? eventDescription, String? eventLocation, DateTime? startDate, TimeOfDay? startTime, DateTime? endDate, TimeOfDay? endTime, bool isOnlineEvent, XFile? eventCoverImage, List<XFile> eventGalleryPhotos, List<TicketTierModel> eventTicketTiers, SeatingConfigModel? seatingConfig, String? errorMessage
 });
 
 
@@ -296,7 +298,7 @@ class __$CreateEventStateCopyWithImpl<$Res>
 
 /// Create a copy of CreateEventState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? eventTitle = freezed,Object? eventCategory = freezed,Object? eventDescription = freezed,Object? eventLocation = freezed,Object? startDate = freezed,Object? startTime = freezed,Object? endDate = freezed,Object? endTime = freezed,Object? isOnlineEvent = null,Object? eventCoverImage = freezed,Object? eventGalleryPhotos = null,Object? eventTicketTiers = null,Object? errorMessage = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? eventTitle = freezed,Object? eventCategory = freezed,Object? eventDescription = freezed,Object? eventLocation = freezed,Object? startDate = freezed,Object? startTime = freezed,Object? endDate = freezed,Object? endTime = freezed,Object? isOnlineEvent = null,Object? eventCoverImage = freezed,Object? eventGalleryPhotos = null,Object? eventTicketTiers = null,Object? seatingConfig = freezed,Object? errorMessage = freezed,}) {
   return _then(_CreateEventState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as CreateEventStatus,eventTitle: freezed == eventTitle ? _self.eventTitle : eventTitle // ignore: cast_nullable_to_non_nullable
@@ -311,7 +313,8 @@ as TimeOfDay?,isOnlineEvent: null == isOnlineEvent ? _self.isOnlineEvent : isOnl
 as bool,eventCoverImage: freezed == eventCoverImage ? _self.eventCoverImage : eventCoverImage // ignore: cast_nullable_to_non_nullable
 as XFile?,eventGalleryPhotos: null == eventGalleryPhotos ? _self._eventGalleryPhotos : eventGalleryPhotos // ignore: cast_nullable_to_non_nullable
 as List<XFile>,eventTicketTiers: null == eventTicketTiers ? _self._eventTicketTiers : eventTicketTiers // ignore: cast_nullable_to_non_nullable
-as List<TicketTierModel>,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as List<TicketTierModel>,seatingConfig: freezed == seatingConfig ? _self.seatingConfig : seatingConfig // ignore: cast_nullable_to_non_nullable
+as SeatingConfigModel?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

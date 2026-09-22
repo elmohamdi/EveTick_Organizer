@@ -4,6 +4,7 @@ import 'package:evetick_organizer/features/create_event/data/models/event_model.
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
 import 'package:evetick_organizer/features/create_event/presentation/screens/build_event_details.dart';
 import 'package:evetick_organizer/features/create_event/presentation/screens/build_media_details.dart';
+import 'package:evetick_organizer/features/create_event/presentation/screens/build_seating_details.dart';
 import 'package:evetick_organizer/features/create_event/presentation/screens/build_ticket_details.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/event_phase_indicator.dart';
 import 'package:flutter/material.dart';
@@ -62,6 +63,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
       eventDescription: state.eventDescription,
       eventTicketTier: state.eventTicketTiers,
       isOnlineEvent: state.isOnlineEvent,
+      seatingConfig: state.seatingConfig,
     );
     context.read<CreateEventCubit>().createEvent(event);
   }
@@ -84,11 +86,12 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
           Expanded(
             child: PageView(
               controller: _pageController,
-              // physics: const NeverScrollableScrollPhysics(),
+                
               onPageChanged: (index) => setState(() => currentIndex = index),
               children: [
                 BuildEventDetails(onNextStep: _goToNextPage),
                 BuildMediaDetails(onNextStep: _goToNextPage),
+                BuildSeatingDetails(onNextStep: _goToNextPage),
                 BuildTicketDetails(onPublish: _puplishEvent),
               ],
             ),
