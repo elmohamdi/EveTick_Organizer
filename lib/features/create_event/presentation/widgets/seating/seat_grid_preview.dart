@@ -72,9 +72,15 @@ class _SeatGridPreviewState extends State<SeatGridPreview> {
     final double estimatedCellWidth = seatsPerRow > 0
         ? (screenWidth - 40 - 20 - _aisleGap) / seatsPerRow
         : 28;
-    final double estimatedSeatSize = (estimatedCellWidth / 1.22).clamp(24.0, 36.0);
-    final int walkways = totalRows > 0 ? (totalRows - 1) ~/ _walkwayEveryNRows : 0;
-    final double requiredHeight = (totalRows * estimatedSeatSize * 1.5) + (walkways * 30) + 120;
+    final double estimatedSeatSize = (estimatedCellWidth / 1.22).clamp(
+      24.0,
+      36.0,
+    );
+    final int walkways = totalRows > 0
+        ? (totalRows - 1) ~/ _walkwayEveryNRows
+        : 0;
+    final double requiredHeight =
+        (totalRows * estimatedSeatSize * 1.5) + (walkways * 30) + 120;
     final double containerHeight = requiredHeight.clamp(300.0, 700.0);
 
     return Container(

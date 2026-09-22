@@ -1,3 +1,4 @@
+import 'package:evetick_organizer/core/di/dependency_injection.dart';
 import 'package:evetick_organizer/core/helpers/spacing.dart';
 import 'package:evetick_organizer/core/theming/colors.dart';
 import 'package:evetick_organizer/core/theming/text_styles.dart';
@@ -6,6 +7,10 @@ import 'package:evetick_organizer/core/widgets/app_radio_button.dart';
 import 'package:evetick_organizer/core/widgets/app_text_form_field.dart';
 import 'package:evetick_organizer/core/widgets/filled_app_text_button.dart';
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
+import 'package:evetick_organizer/features/location/data/models/location_model.dart';
+import 'package:evetick_organizer/features/location/data/repos/location_repository.dart';
+import 'package:evetick_organizer/features/location/logic/cubit/location_cubit.dart';
+import 'package:evetick_organizer/features/location/presentation/screens/map_picker_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -62,6 +67,7 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
   TimeOfDay? endTime;
 
   bool isOnlineEvent = true;
+  bool isGettingLocation = false;
 
   @override
   void dispose() {
@@ -132,6 +138,57 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
         context.read<CreateEventCubit>().updateEndTime(picked);
       }
     });
+  }
+
+  Future<void> _pickLocationFromMap() async {
+    final location = await Navigator.push<LocationModel>(
+      context,
+      MaterialPageRoute(
+        builder: (context) => BlocProvider(
+          create: (context) => getIt<LocationCubit>(),
+          child: const MapPickerScreen(),
+        ),
+      ),
+    );
+    if (location != null && location.address != null) {
+      locationController.text = location.address!;
+      if (mounted) {
+        context.read<CreateEventCubit>().updateLocation(location.address!);
+      }
+    }
+  }
+
+  Future<void> _getCurrentLocation() async {
+    setState(() {
+      isGettingLocation = true;
+    });
+    try {
+      final location = await getIt<LocationRepository>().getCurrentLocation();
+      if (location.address != null) {
+        locationController.text = location.address!;
+        if (mounted) {
+          context.read<CreateEventCubit>().updateLocation(location.address!);
+        }
+      } else {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Could not get address from location')),
+          );
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error getting location: $e')),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() {
+          isGettingLocation = false;
+        });
+      }
+    }
   }
 
   void _onNextStepPressed() {
@@ -324,10 +381,36 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
               hintText: 'Search or enter location',
               label: 'Event Location',
               controller: locationController,
-              suffixIcon: Icon(
-                Icons.map_outlined,
-                color: ColorsManager.orange,
-                size: 22.sp,
+              suffixIcon: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (isGettingLocation)
+                    Container(
+                      margin: EdgeInsets.only(right: 8.w),
+                      width: 16.w,
+                      height: 16.w,
+                      child: const CircularProgressIndicator(strokeWidth: 2),
+                    )
+                  else
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      icon: Icon(
+                        Icons.my_location,
+                        color: ColorsManager.orange,
+                        size: 22.sp,
+                      ),
+                      onPressed: _getCurrentLocation,
+                    ),
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    icon: Icon(
+                      Icons.map_outlined,
+                      color: ColorsManager.orange,
+                      size: 22.sp,
+                    ),
+                    onPressed: _pickLocationFromMap,
+                  ),
+                ],
               ),
               validator: (value) {
                 if (!isOnlineEvent && (value == null || value.trim().isEmpty)) {

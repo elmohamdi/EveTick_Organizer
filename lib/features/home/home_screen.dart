@@ -19,18 +19,13 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Home Screen'),
         centerTitle: true,
         backgroundColor: context.colors.darkBlue,
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: FilledAppTextButton(
           buttonText: 'Create Event',
           onPressed: () => context.pushNamed(Routes.createEventScreen),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {
-          context.pushNamed(Routes.createEventScreen);
-        },
       ),
     );
   }

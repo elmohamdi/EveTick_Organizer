@@ -36,9 +36,15 @@ class SeatingConfigModel {
       'layoutType': layoutType.name,
       'rows': rows,
       'seatsPerRow': seatsPerRow,
-      'seatMap': seatMap
-          .map((row) => row.map((seat) => seat.name).toList())
-          .toList(),
+      // Firestore does not support nested arrays (array-of-array), so each
+      // row is stored as a map containing a single 'seats' array instead of
+      // a raw List<String> nested directly inside the outer 'seatMap' list.
+      'seatMap': seatMap.asMap().entries.map((entry) {
+        return {
+          'row': entry.key,
+          'seats': entry.value.map((seat) => seat.name).toList(),
+        };
+      }).toList(),
       'sections': sections.map((section) => section.toJson()).toList(),
     };
   }

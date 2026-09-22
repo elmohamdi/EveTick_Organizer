@@ -1,5 +1,4 @@
 import 'package:evetick_organizer/core/helpers/spacing.dart';
-import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/core/widgets/filled_app_text_button.dart';
 import 'package:evetick_organizer/features/create_event/data/models/seat_status.dart';
