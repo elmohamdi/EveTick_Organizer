@@ -77,7 +77,15 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
     return BlocConsumer<CreateEventCubit, CreateEventState>(
       listener: (context, state) {
         if (state.status == CreateEventStatus.success) {
-          context.pushReplacedNamed(Routes.publishEventScreen);
+          context.pushReplacedNamed(
+            Routes.publishEventScreen,
+            arguments: {
+              'eventTitle': state.eventTitle,
+              'imagePath': state.eventCoverImage?.path,
+              'startDate': state.startDate,
+              'startTime': state.startTime,
+            },
+          );
         } else if (state.status == CreateEventStatus.failure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(

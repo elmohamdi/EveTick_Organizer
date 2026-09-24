@@ -10,7 +10,7 @@ import 'package:evetick_organizer/features/auth/ui/screens/signup_screen.dart';
 import 'package:evetick_organizer/features/auth/ui/screens/verification_screen.dart';
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
 import 'package:evetick_organizer/features/create_event/presentation/screens/create_event_screen.dart';
-import 'package:evetick_organizer/features/create_event/presentation/screens/publish_event.dart';
+import 'package:evetick_organizer/features/create_event/presentation/screens/publish_event_screen.dart';
 import 'package:evetick_organizer/features/location/data/repos/location_repository.dart';
 import 'package:evetick_organizer/features/location/logic/cubit/location_cubit.dart';
 import 'package:evetick_organizer/features/location/presentation/screens/map_picker_screen.dart';
@@ -118,7 +118,15 @@ class AppRouter {
           ),
         );
       case Routes.publishEventScreen:
-        return MaterialPageRoute(builder: (_) => const PublishEvent());
+        final args = arguments as Map<String, dynamic>? ?? {};
+        return MaterialPageRoute(
+          builder: (_) => PublishEventScreen(
+            eventTitle: args['eventTitle'] as String? ?? 'Event Name',
+            imagePath: args['imagePath'] as String?,
+            startDate: args['startDate'] as DateTime? ?? DateTime.now(),
+            startTime: args['startTime'] as TimeOfDay? ?? TimeOfDay.now(),
+          ),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
