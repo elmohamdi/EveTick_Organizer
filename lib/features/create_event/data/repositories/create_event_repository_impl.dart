@@ -29,6 +29,7 @@ class CreateEventRepositoryImpl implements CreateEventRepository {
       'galleryImagesUrls': galleryImagesUrls,
       'eventDescription': event.eventDescription,
       'isOnlineEvent': event.isOnlineEvent,
+      'status': 'pending',
       'ticketTiers': event.eventTicketTier
           .map((tier) => tier.toJson())
           .toList(),

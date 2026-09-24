@@ -7,6 +7,8 @@ import 'package:evetick_organizer/features/auth/logic/signup_cubit/signup_cubit.
 import 'package:evetick_organizer/features/create_event/data/repositories/create_event_repository.dart';
 import 'package:evetick_organizer/features/create_event/data/repositories/create_event_repository_impl.dart';
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
+import 'package:evetick_organizer/features/pending_events/data/repositories/pending_events_repository.dart';
+import 'package:evetick_organizer/features/pending_events/logic/cubit/pending_events_cubit.dart';
 import 'package:evetick_organizer/features/localization/data/locale_repository.dart';
 import 'package:evetick_organizer/features/localization/logic/locale_cubit.dart';
 import 'package:evetick_organizer/features/location/data/repos/location_repository.dart';
@@ -74,5 +76,13 @@ Future<void> setupGetIt() async {
   );
   getIt.registerFactory<CreateEventCubit>(
     () => CreateEventCubit(createEventRepository: getIt()),
+  );
+
+  // pending events
+  getIt.registerLazySingleton<PendingEventsRepository>(
+    () => PendingEventsRepository(),
+  );
+  getIt.registerFactory<PendingEventsCubit>(
+    () => PendingEventsCubit(getIt<PendingEventsRepository>()),
   );
 }

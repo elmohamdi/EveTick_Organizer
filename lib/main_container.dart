@@ -3,6 +3,8 @@ import 'package:evetick_organizer/features/animated_navbar/animated_navbar.dart'
 import 'package:evetick_organizer/features/animated_navbar/navbar_item.dart';
 import 'package:evetick_organizer/features/auth/logic/login_cubit/login_cubit.dart';
 import 'package:evetick_organizer/features/home/home_screen.dart';
+import 'package:evetick_organizer/features/pending_events/logic/cubit/pending_events_cubit.dart';
+import 'package:evetick_organizer/features/pending_events/presentation/screens/pending_events_screen.dart';
 import 'package:evetick_organizer/features/profile/logic/profile_cubit.dart';
 import 'package:evetick_organizer/features/profile/ui/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +26,10 @@ class _MainContainerState extends State<MainContainer> {
   // so switching tabs with setState() won't recreate the cubits.
   late final List<Widget> _pages = [
     const HomeScreen(),
-    const Center(child: Text('Favorites Screen')),
+    BlocProvider(
+      create: (_) => getIt<PendingEventsCubit>()..getPendingEvents(),
+      child: const PendingEventsScreen(),
+    ),
     const Center(child: Text('Tickets Screen')),
     MultiBlocProvider(
       // ProfileScreen (and ProfileHeader inside it) reads ProfileCubit,
@@ -59,8 +64,8 @@ class _MainContainerState extends State<MainContainer> {
             activeIcon: Icon(Icons.home),
           ),
           AnimatedNavbarItem(
-            icon: Icon(Icons.favorite_border),
-            activeIcon: Icon(Icons.favorite),
+            icon: Icon(Icons.event_note_outlined),
+            activeIcon: Icon(Icons.event_note),
           ),
           AnimatedNavbarItem(
             icon: Icon(Icons.confirmation_number_outlined),
