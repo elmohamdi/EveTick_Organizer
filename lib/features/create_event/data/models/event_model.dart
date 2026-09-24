@@ -8,6 +8,7 @@ class EventModel {
   final DateTime startAt;
   final DateTime endAt;
   final String eventLocation;
+  final String? eventUrl;
   final XFile eventCoverImage;
   final List<XFile>? eventPhotos;
   final String? eventDescription;
@@ -18,6 +19,7 @@ class EventModel {
     required this.eventTitle,
     required this.eventCategory,
     required this.eventLocation,
+    this.eventUrl,
     required this.eventCoverImage,
     required this.eventTicketTier,
     required this.startAt,
@@ -34,6 +36,7 @@ class EventModel {
       'startAt': startAt.toIso8601String(),
       'endAt': endAt.toIso8601String(),
       'eventLocation': eventLocation,
+      'eventUrl': eventUrl,
       'eventCoverImage': eventCoverImage.path,
       'eventPhotos': eventPhotos?.map((e) => e.path).toList(),
       'eventDescription': eventDescription,

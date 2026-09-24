@@ -44,6 +44,9 @@ class CreateEventCubit extends Cubit<CreateEventState> {
   void updateLocation(String location) {
     emit(state.copyWith(eventLocation: location));
   }
+  void updateEventUrl(String eventUrl) {
+    emit(state.copyWith(eventUrl: eventUrl));
+  }
   void updateStartDate(DateTime startDate) {
     emit(state.copyWith(startDate: startDate));
   }

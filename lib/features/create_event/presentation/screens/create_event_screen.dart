@@ -61,6 +61,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
       startAt: startAt,
       endAt: endAt,
       eventLocation: state.eventLocation ?? '',
+      eventUrl: state.eventUrl,
       eventCoverImage: state.eventCoverImage!,
       eventPhotos: state.eventGalleryPhotos,
       eventDescription: state.eventDescription,

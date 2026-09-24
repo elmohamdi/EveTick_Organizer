@@ -17,6 +17,7 @@ abstract class CreateEventState with _$CreateEventState {
     String? eventCategory,
     String? eventDescription,
     String? eventLocation,
+    String? eventUrl,
 
     DateTime? startDate,
     TimeOfDay? startTime,

@@ -1,12 +1,12 @@
 import 'package:evetick_organizer/core/di/dependency_injection.dart';
 import 'package:evetick_organizer/core/helpers/spacing.dart';
-import 'package:evetick_organizer/core/theming/colors.dart';
-import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/core/widgets/app_drop_down_form_field.dart';
 import 'package:evetick_organizer/core/widgets/app_radio_button.dart';
 import 'package:evetick_organizer/core/widgets/app_text_form_field.dart';
 import 'package:evetick_organizer/core/widgets/filled_app_text_button.dart';
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
+import 'package:evetick_organizer/features/create_event/presentation/widgets/date_time_section_field.dart';
+import 'package:evetick_organizer/features/create_event/presentation/widgets/event_location_field.dart';
 import 'package:evetick_organizer/features/location/data/models/location_model.dart';
 import 'package:evetick_organizer/features/location/data/repos/location_repository.dart';
 import 'package:evetick_organizer/features/location/logic/cubit/location_cubit.dart';
@@ -28,7 +28,7 @@ class BuildEventDetails extends StatefulWidget {
 class _BuildEventDetailsState extends State<BuildEventDetails> {
   final _formKey = GlobalKey<FormState>();
 
-  final List<String> categories = [
+  static const List<String> _categories = [
     'Sports',
     'Music',
     'Medical',
@@ -51,13 +51,13 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
     'Charity & Social',
   ];
 
-  final TextEditingController titleController = TextEditingController();
-  final TextEditingController locationController = TextEditingController();
-
-  final TextEditingController startDateController = TextEditingController();
-  final TextEditingController startTimeController = TextEditingController();
-  final TextEditingController endDateController = TextEditingController();
-  final TextEditingController endTimeController = TextEditingController();
+  final titleController = TextEditingController();
+  final locationController = TextEditingController();
+  final urlController = TextEditingController();
+  final startDateController = TextEditingController();
+  final startTimeController = TextEditingController();
+  final endDateController = TextEditingController();
+  final endTimeController = TextEditingController();
 
   String? selectedCategory;
 
@@ -66,13 +66,14 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
   DateTime? endDate;
   TimeOfDay? endTime;
 
-  bool isOnlineEvent = true;
+  bool isOnlineEvent = false;
   bool isGettingLocation = false;
 
   @override
   void dispose() {
     titleController.dispose();
     locationController.dispose();
+    urlController.dispose();
     startDateController.dispose();
     startTimeController.dispose();
     endDateController.dispose();
@@ -80,22 +81,23 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
     super.dispose();
   }
 
+  // ---------------------------------------------------------------------
+  // Actions
+  // ---------------------------------------------------------------------
+
   Future<void> _pickDate({required bool isStart}) async {
-    final DateTime initialDate = isStart
+    final initialDate = isStart
         ? (startDate ?? DateTime.now())
         : (endDate ?? startDate ?? DateTime.now());
 
-    final DateTime firstDate = isStart
-        ? DateTime.now()
-        : (startDate ?? DateTime.now());
+    final firstDate = isStart ? DateTime.now() : (startDate ?? DateTime.now());
 
-    final DateTime? picked = await showDatePicker(
+    final picked = await showDatePicker(
       context: context,
       initialDate: initialDate.isBefore(firstDate) ? firstDate : initialDate,
       firstDate: firstDate,
       lastDate: DateTime(firstDate.year + 5),
     );
-
     if (picked == null) return;
 
     setState(() {
@@ -117,14 +119,11 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
   }
 
   Future<void> _pickTime({required bool isStart}) async {
-    final TimeOfDay initialTime =
-        (isStart ? startTime : endTime) ?? TimeOfDay.now();
-
-    final TimeOfDay? picked = await showTimePicker(
+    final initialTime = (isStart ? startTime : endTime) ?? TimeOfDay.now();
+    final picked = await showTimePicker(
       context: context,
       initialTime: initialTime,
     );
-
     if (picked == null) return;
 
     setState(() {
@@ -159,9 +158,7 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
   }
 
   Future<void> _getCurrentLocation() async {
-    setState(() {
-      isGettingLocation = true;
-    });
+    setState(() => isGettingLocation = true);
     try {
       final location = await getIt<LocationRepository>().getCurrentLocation();
       if (location.address != null) {
@@ -169,52 +166,41 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
         if (mounted) {
           context.read<CreateEventCubit>().updateLocation(location.address!);
         }
-      } else {
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Could not get address from location')),
-          );
-        }
+      } else if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Could not get address from location')),
+        );
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error getting location: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Error getting location: $e')));
       }
     } finally {
-      if (mounted) {
-        setState(() {
-          isGettingLocation = false;
-        });
-      }
+      if (mounted) setState(() => isGettingLocation = false);
     }
   }
 
   void _onNextStepPressed() {
-    final bool isValid = _formKey.currentState?.validate() ?? false;
+    final isValid = _formKey.currentState?.validate() ?? false;
 
     if (startDateController.text.isEmpty || startTimeController.text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please select a start date & time')),
-      );
+      _showSnack('Please select a start date & time');
       return;
     }
-
     if (endDateController.text.isEmpty || endTimeController.text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please select an end date & time')),
-      );
+      _showSnack('Please select an end date & time');
       return;
     }
-
     if (!isOnlineEvent && locationController.text.trim().isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please enter the event location')),
-      );
+      _showSnack('Please enter the event location');
       return;
     }
-
+    if (isOnlineEvent && urlController.text.trim().isEmpty) {
+      _showSnack('Please enter the event URL');
+      return;
+    }
     if (!isValid) return;
 
     final startDateTime = DateTime(
@@ -224,7 +210,6 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
       startTime!.hour,
       startTime!.minute,
     );
-
     final endDateTime = DateTime(
       endDate!.year,
       endDate!.month,
@@ -233,14 +218,16 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
       endTime!.minute,
     );
     if (!endDateTime.isAfter(startDateTime)) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('End date & time must be after start date & time'),
-        ),
-      );
+      _showSnack('End date & time must be after start date & time');
       return;
     }
     widget.onNextStep?.call();
+  }
+
+  void _showSnack(String message) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 
   @override
@@ -256,170 +243,68 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
               hintText: 'Enter catchy event name',
               label: 'Event Title',
               controller: titleController,
-              onChanged: (value) {
-                context.read<CreateEventCubit>().updateTitle(value);
-              },
-              validator: (value) {
-                if (value == null || value.trim().isEmpty) {
-                  return 'Please enter event title';
-                }
-                return null;
-              },
+              onChanged: (value) =>
+                  context.read<CreateEventCubit>().updateTitle(value),
+              validator: (value) => (value == null || value.trim().isEmpty)
+                  ? 'Please enter event title'
+                  : null,
             ),
-
             verticalSpace(24),
 
             AppDropdownFormField<String>(
               label: 'Category',
               hintText: 'Select event category',
               value: selectedCategory,
-              items: categories,
+              items: _categories,
               itemLabel: (item) => item,
-
-              validator: (value) {
-                if (value == null) {
-                  return 'Please select a category';
-                }
-                return null;
-              },
+              validator: (value) =>
+                  value == null ? 'Please select a category' : null,
               onChanged: (value) {
-                setState(() {
-                  selectedCategory = value;
-                });
+                setState(() => selectedCategory = value);
                 context.read<CreateEventCubit>().updateCategory(value!);
               },
             ),
-
             verticalSpace(24),
 
-            Text(
-              'Start Date & Time',
-              style: TextStyles.font16WhiteRegular(context),
+            DateTimeSectionField(
+              title: 'Start Date & Time',
+              dateController: startDateController,
+              timeController: startTimeController,
+              onPickDate: () => _pickDate(isStart: true),
+              onPickTime: () => _pickTime(isStart: true),
             ),
-            verticalSpace(8),
-            Row(
-              children: [
-                Expanded(
-                  child: AppTextFormField(
-                    hintText: 'mm/dd/yyyy',
-                    readOnly: true,
-                    controller: startDateController,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return '';
-                      }
-                      return null;
-                    },
-                    onTap: () => _pickDate(isStart: true),
-                  ),
-                ),
-                horizontalSpace(12),
-                Expanded(
-                  child: AppTextFormField(
-                    hintText: '-- : -- --',
-                    readOnly: true,
-                    controller: startTimeController,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return '';
-                      }
-                      return null;
-                    },
-                    onTap: () => _pickTime(isStart: true),
-                  ),
-                ),
-              ],
-            ),
-
             verticalSpace(24),
 
-            Text(
-              'End Date & Time',
-              style: TextStyles.font16WhiteRegular(context),
+            DateTimeSectionField(
+              title: 'End Date & Time',
+              dateController: endDateController,
+              timeController: endTimeController,
+              onPickDate: () => _pickDate(isStart: false),
+              onPickTime: () => _pickTime(isStart: false),
             ),
-            verticalSpace(8),
-            Row(
-              children: [
-                Expanded(
-                  child: AppTextFormField(
-                    hintText: 'mm/dd/yyyy',
-                    readOnly: true,
-                    controller: endDateController,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return '';
-                      }
-                      return null;
-                    },
-                    onTap: () => _pickDate(isStart: false),
-                  ),
-                ),
-                horizontalSpace(12),
-                Expanded(
-                  child: AppTextFormField(
-                    hintText: '-- : -- --',
-                    readOnly: true,
-                    controller: endTimeController,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return '';
-                      }
-                      return null;
-                    },
-                    onTap: () => _pickTime(isStart: false),
-                  ),
-                ),
-              ],
-            ),
-
             verticalSpace(24),
 
-            AppTextFormField(
-              onChanged: (value) {
-                context.read<CreateEventCubit>().updateLocation(value);
-              },
-              hintText: 'Search or enter location',
-              label: 'Event Location',
-              controller: locationController,
-              suffixIcon: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (isGettingLocation)
-                    Container(
-                      margin: EdgeInsets.only(right: 8.w),
-                      width: 16.w,
-                      height: 16.w,
-                      child: const CircularProgressIndicator(strokeWidth: 2),
-                    )
-                  else
-                    IconButton(
-                      padding: EdgeInsets.zero,
-                      icon: Icon(
-                        Icons.my_location,
-                        color: ColorsManager.orange,
-                        size: 22.sp,
-                      ),
-                      onPressed: _getCurrentLocation,
-                    ),
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    icon: Icon(
-                      Icons.map_outlined,
-                      color: ColorsManager.orange,
-                      size: 22.sp,
-                    ),
-                    onPressed: _pickLocationFromMap,
-                  ),
-                ],
+            if (isOnlineEvent)
+              AppTextFormField(
+                controller: urlController,
+                label: 'Event URL',
+                hintText: 'Enter event URL (e.g. Zoom link)',
+                onChanged: (value) =>
+                    context.read<CreateEventCubit>().updateEventUrl(value),
+                validator: (value) => (value == null || value.trim().isEmpty)
+                    ? 'Please enter event URL'
+                    : null,
+              )
+            else
+              EventLocationField(
+                controller: locationController,
+                isOnlineEvent: isOnlineEvent,
+                isGettingLocation: isGettingLocation,
+                onChanged: (value) =>
+                    context.read<CreateEventCubit>().updateLocation(value),
+                onGetCurrentLocation: _getCurrentLocation,
+                onPickFromMap: _pickLocationFromMap,
               ),
-              validator: (value) {
-                if (!isOnlineEvent && (value == null || value.trim().isEmpty)) {
-                  return 'Please enter the event location';
-                }
-                return null;
-              },
-            ),
-
             verticalSpace(12),
 
             AppRadioButton(
@@ -427,19 +312,15 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
               label: 'Online event (Virtual)',
               onChanged: (value) {
                 context.read<CreateEventCubit>().updateIsOnlineEvent(value);
-                setState(() {
-                  isOnlineEvent = value;
-                });
+                setState(() => isOnlineEvent = value);
               },
             ),
-
             verticalSpace(32),
 
             FilledAppTextButton(
               buttonText: 'Next Step',
               onPressed: _onNextStepPressed,
             ),
-
             verticalSpace(24),
           ],
         ),

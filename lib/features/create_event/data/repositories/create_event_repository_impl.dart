@@ -24,6 +24,7 @@ class CreateEventRepositoryImpl implements CreateEventRepository {
       'startAt': event.startAt.toIso8601String(),
       'endAt': event.endAt.toIso8601String(),
       'eventLocation': event.eventLocation,
+      'eventUrl': event.eventUrl,
       'coverImageUrl': coverImageUrl,
       'galleryImagesUrls': galleryImagesUrls,
       'eventDescription': event.eventDescription,
