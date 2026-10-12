@@ -5,8 +5,10 @@ import 'package:evetick_organizer/features/auth/logic/login_cubit/login_cubit.da
 import 'package:evetick_organizer/features/home/home_screen.dart';
 import 'package:evetick_organizer/features/pending_events/logic/cubit/pending_events_cubit.dart';
 import 'package:evetick_organizer/features/pending_events/presentation/screens/pending_events_screen.dart';
+import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
 import 'package:evetick_organizer/features/profile/logic/profile_cubit.dart';
 import 'package:evetick_organizer/features/profile/ui/screens/profile_screen.dart';
+import 'package:evetick_organizer/features/ticket_scan/presentation/screens/ticket_scan_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,7 +32,7 @@ class _MainContainerState extends State<MainContainer> {
       create: (_) => getIt<PendingEventsCubit>()..getPendingEvents(),
       child: const PendingEventsScreen(),
     ),
-    const Center(child: Text('Tickets Screen')),
+    const TicketScanScreen(),
     MultiBlocProvider(
       // ProfileScreen (and ProfileHeader inside it) reads ProfileCubit,
       // and its logout button reads LoginCubit. Previously neither was
@@ -53,6 +55,7 @@ class _MainContainerState extends State<MainContainer> {
       body: IndexedStack(index: _currentIndex, children: _pages),
       bottomNavigationBar: AnimatedSpotlightNavbar(
         currentIndex: _currentIndex,
+        backgroundColor: context.colors.lightBlue,
         onTap: (index) {
           setState(() {
             _currentIndex = index;
@@ -68,8 +71,8 @@ class _MainContainerState extends State<MainContainer> {
             activeIcon: Icon(Icons.event_note),
           ),
           AnimatedNavbarItem(
-            icon: Icon(Icons.confirmation_number_outlined),
-            activeIcon: Icon(Icons.confirmation_number),
+            icon: Icon(Icons.qr_code_scanner_outlined),
+            activeIcon: Icon(Icons.qr_code_scanner),
           ),
           AnimatedNavbarItem(
             icon: Icon(Icons.person_outline),

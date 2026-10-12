@@ -22,6 +22,7 @@ import 'package:evetick_organizer/features/onboarding/presentation/ui/welcome_sc
 import 'package:evetick_organizer/features/profile/logic/profile_cubit.dart';
 import 'package:evetick_organizer/features/profile/ui/screens/edit_profile_screen.dart';
 import 'package:evetick_organizer/features/profile/ui/screens/profile_screen.dart';
+import 'package:evetick_organizer/features/ticket_scan/presentation/screens/ticket_scan_screen.dart';
 import 'package:evetick_organizer/main_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -126,6 +127,10 @@ class AppRouter {
             startDate: args['startDate'] as DateTime? ?? DateTime.now(),
             startTime: args['startTime'] as TimeOfDay? ?? TimeOfDay.now(),
           ),
+        );
+      case Routes.ticketScanScreen:
+        return MaterialPageRoute(
+          builder: (_) => const TicketScanScreen(),
         );
       default:
         return MaterialPageRoute(
