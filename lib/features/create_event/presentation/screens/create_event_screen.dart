@@ -68,6 +68,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
       eventTicketTier: state.eventTicketTiers,
       isOnlineEvent: state.isOnlineEvent,
       seatingConfig: state.seatingConfig,
+      paymentMethods: state.paymentMethods,
     );
     context.read<CreateEventCubit>().createEvent(event);
   }

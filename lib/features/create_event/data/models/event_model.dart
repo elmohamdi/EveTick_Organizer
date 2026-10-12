@@ -1,3 +1,4 @@
+import 'package:evetick_organizer/features/create_event/data/models/payment_method_model.dart';
 import 'package:evetick_organizer/features/create_event/data/models/seating_config_model.dart';
 import 'package:evetick_organizer/features/create_event/data/models/ticket_tier_model.dart';
 import 'package:image_picker/image_picker.dart';
@@ -15,6 +16,7 @@ class EventModel {
   final List<TicketTierModel> eventTicketTier;
   final bool isOnlineEvent;
   final SeatingConfigModel? seatingConfig;
+  final List<PaymentMethodModel> paymentMethods;
   EventModel({
     required this.eventTitle,
     required this.eventCategory,
@@ -28,6 +30,7 @@ class EventModel {
     required this.eventDescription,
     this.eventPhotos,
     this.seatingConfig,
+    required this.paymentMethods,
   });
   Map<String, dynamic> toJson() {
     return {
@@ -43,6 +46,7 @@ class EventModel {
       'isOnlineEvent': isOnlineEvent,
       'ticketTiers': eventTicketTier.map((e) => e.toJson()).toList(),
       'seatingConfig': seatingConfig?.toJson(),
+      'paymentMethods': paymentMethods.map((e) => e.toJson()).toList(),
     };
   }
 }

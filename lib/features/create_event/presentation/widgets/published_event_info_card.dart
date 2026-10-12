@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:evetick_organizer/core/helpers/spacing.dart';
-import 'package:evetick_organizer/core/theming/colors.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +26,7 @@ class PublishedEventInfoCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: ColorsManager.secondryBlue,
+        color: context.colors.lightBlue,
         borderRadius: BorderRadius.circular(16.r),
       ),
       child: Row(

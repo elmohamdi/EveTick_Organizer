@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:evetick_organizer/features/create_event/data/models/event_model.dart';
+import 'package:evetick_organizer/features/create_event/data/models/payment_method_model.dart';
 import 'package:evetick_organizer/features/create_event/data/models/seating_config_model.dart';
 import 'package:evetick_organizer/features/create_event/data/models/ticket_tier_model.dart';
 import 'package:evetick_organizer/features/create_event/data/repositories/create_event_repository.dart';
@@ -70,6 +71,9 @@ class CreateEventCubit extends Cubit<CreateEventState> {
   }
   void updateEventTicketTiers(List<TicketTierModel> eventTicketTiers) {
     emit(state.copyWith(eventTicketTiers: eventTicketTiers));
+  }
+  void updatePaymentMethods(List<PaymentMethodModel> paymentMethods) {
+    emit(state.copyWith(paymentMethods: paymentMethods));
   }
   void updateSeatingConfig(SeatingConfigModel seatingConfig) {
     emit(state.copyWith(seatingConfig: seatingConfig));

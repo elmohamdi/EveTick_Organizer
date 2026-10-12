@@ -34,6 +34,9 @@ class CreateEventRepositoryImpl implements CreateEventRepository {
           .map((tier) => tier.toJson())
           .toList(),
       'seatingConfig': event.seatingConfig?.toJson(),
+      'paymentMethods': event.paymentMethods
+          .map((method) => method.toJson())
+          .toList(),
     };
     await eventDoc.set(eventData);
   }

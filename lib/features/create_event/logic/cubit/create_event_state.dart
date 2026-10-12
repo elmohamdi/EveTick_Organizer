@@ -1,3 +1,4 @@
+import 'package:evetick_organizer/features/create_event/data/models/payment_method_model.dart';
 import 'package:evetick_organizer/features/create_event/data/models/seating_config_model.dart';
 import 'package:evetick_organizer/features/create_event/data/models/ticket_tier_model.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,8 @@ abstract class CreateEventState with _$CreateEventState {
     @Default([]) List<XFile> eventGalleryPhotos,
 
     @Default([]) List<TicketTierModel> eventTicketTiers,
+
+    @Default([]) List<PaymentMethodModel> paymentMethods,
 
     SeatingConfigModel? seatingConfig,
 

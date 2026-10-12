@@ -4,7 +4,9 @@ import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/core/widgets/filled_app_text_button.dart';
 import 'package:evetick_organizer/features/create_event/data/models/ticket_tier_model.dart';
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
-import 'package:evetick_organizer/features/create_event/presentation/widgets/payout_method_tile.dart';
+import 'package:evetick_organizer/features/create_event/data/models/payment_method_type.dart';
+import 'package:evetick_organizer/features/create_event/presentation/widgets/payment_method_entry.dart';
+import 'package:evetick_organizer/features/create_event/presentation/widgets/payment_methods_section.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/ticket_tier.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/ticket_tier_card.dart';
 import 'package:flutter/material.dart';
@@ -20,13 +22,15 @@ class BuildTicketDetails extends StatefulWidget {
   State<BuildTicketDetails> createState() => _BuildTicketDetailsState();
 }
 
-enum PayoutMethod { bank, paypal }
-
 class _BuildTicketDetailsState extends State<BuildTicketDetails> {
   final _formKey = GlobalKey<FormState>();
   final List<TicketTier> tiers = [TicketTier()];
 
-  PayoutMethod selectedPayoutMethod = PayoutMethod.bank;
+  final List<PaymentMethodEntry> paymentEntries = PaymentMethodType.values
+      .map(PaymentMethodEntry.new)
+      .toList();
+  bool showPaymentMethodsError = false;
+
   List<TicketTierModel> convertTicketTiersToModels() {
     return tiers.map((tier) {
       return TicketTierModel(
@@ -45,6 +49,9 @@ class _BuildTicketDetailsState extends State<BuildTicketDetails> {
     for (final tier in tiers) {
       tier.dispose();
     }
+    for (final entry in paymentEntries) {
+      entry.dispose();
+    }
     super.dispose();
   }
 
@@ -56,13 +63,27 @@ class _BuildTicketDetailsState extends State<BuildTicketDetails> {
     setState(() => tiers.removeAt(index).dispose());
   }
 
+  void _togglePaymentMethod(PaymentMethodEntry entry) {
+    setState(() {
+      entry.isEnabled = !entry.isEnabled;
+      showPaymentMethodsError = false;
+    });
+  }
+
   void _onPublishPressed() {
     final bool isValid = _formKey.currentState?.validate() ?? false;
-    if (!isValid) return;
+    final selectedEntries = paymentEntries.where((e) => e.isEnabled).toList();
+
+    setState(() => showPaymentMethodsError = selectedEntries.isEmpty);
+    if (!isValid || selectedEntries.isEmpty) return;
 
     final ticketTierModels = convertTicketTiersToModels();
+    final cubit = context.read<CreateEventCubit>();
 
-    context.read<CreateEventCubit>().updateEventTicketTiers(ticketTierModels);
+    cubit.updateEventTicketTiers(ticketTierModels);
+    cubit.updatePaymentMethods(
+      selectedEntries.map((e) => e.toModel()).toList(),
+    );
 
     widget.onPublish?.call();
   }
@@ -130,37 +151,10 @@ class _BuildTicketDetailsState extends State<BuildTicketDetails> {
 
             verticalSpace(32),
 
-            Text('Payment Method', style: TextStyles.font18WhiteBold(context)),
-            verticalSpace(16),
-
-            PayoutMethodTile(
-              icon: Icons.account_balance_outlined,
-              title: 'Bank Account',
-              subtitle: 'Chase •••• 4242',
-              isSelected: selectedPayoutMethod == PayoutMethod.bank,
-              onTap: () =>
-                  setState(() => selectedPayoutMethod = PayoutMethod.bank),
-            ),
-            verticalSpace(12),
-            PayoutMethodTile(
-              icon: Icons.paypal_rounded,
-              title: 'PayPal',
-              subtitle: 'eve-tick-pay@example.com',
-              isSelected: selectedPayoutMethod == PayoutMethod.paypal,
-              onTap: () =>
-                  setState(() => selectedPayoutMethod = PayoutMethod.paypal),
-            ),
-
-            verticalSpace(16),
-
-            Center(
-              child: TextButton(
-                onPressed: () {},
-                child: Text(
-                  '+ Link New Payout Method',
-                  style: TextStyles.font16OrangeRegular,
-                ),
-              ),
+            PaymentMethodsSection(
+              entries: paymentEntries,
+              onToggle: _togglePaymentMethod,
+              showError: showPaymentMethodsError,
             ),
 
             verticalSpace(24),
