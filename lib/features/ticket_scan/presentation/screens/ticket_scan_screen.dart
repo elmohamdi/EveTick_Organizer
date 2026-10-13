@@ -1,22 +1,27 @@
 import 'package:evetick_organizer/core/helpers/spacing.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
+import 'package:evetick_organizer/features/ticket_scan/logic/cubit/ticket_scan_cubit.dart';
 import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/manual_entry_field.dart';
 import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/manual_entry_header.dart';
+import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/scan_event_picker_sheet.dart';
 import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/scan_header_app_bar.dart';
 import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/scan_quick_settings.dart';
+import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/scan_result_overlay.dart';
 import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/scan_stats_section.dart';
 import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/scan_viewfinder.dart';
-import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/ticket_verified_banner.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 
+/// Requires a [TicketScanCubit] above it in the tree.
 class TicketScanScreen extends StatefulWidget {
-  final String eventTitle;
+  /// Called by the back button. When null the screen simply pops (use this
+  /// when the screen is pushed as a route; the bottom-nav tab passes a
+  /// callback that returns to the home tab).
+  final VoidCallback? onBack;
 
-  const TicketScanScreen({
-    super.key,
-    this.eventTitle = 'Summer Music Festival 2024',
-  });
+  const TicketScanScreen({super.key, this.onBack});
 
   @override
   State<TicketScanScreen> createState() => _TicketScanScreenState();
@@ -24,138 +29,119 @@ class TicketScanScreen extends StatefulWidget {
 
 class _TicketScanScreenState extends State<TicketScanScreen> {
   late final TextEditingController _codeController;
-
-  bool _isFlashOn = false;
-  bool _isSoundOn = true;
-  bool _isVibrateOn = true;
-  bool _isBannerVisible = true;
-  int _scannedCount = 428;
-  final int _totalExpected = 1250;
-  String _attendeeName = 'John Doe';
-  String _ticketTier = 'VIP Access';
+  late final MobileScannerController _scannerController;
 
   @override
   void initState() {
     super.initState();
     _codeController = TextEditingController();
+    _scannerController = MobileScannerController(
+      formats: const [BarcodeFormat.qrCode],
+      detectionSpeed: DetectionSpeed.noDuplicates,
+    );
   }
 
   @override
   void dispose() {
     _codeController.dispose();
+    _scannerController.dispose();
     super.dispose();
   }
 
+  void _onDetect(BarcodeCapture capture) {
+    final code = capture.barcodes
+        .map((barcode) => barcode.rawValue)
+        .whereType<String>()
+        .firstOrNull;
+    if (code == null) return;
+    context.read<TicketScanCubit>().onCodeScanned(code);
+  }
+
   void _onManualCodeSubmitted(String code) {
-    final trimmedCode = code.trim();
-    if (trimmedCode.isEmpty) return;
+    if (code.trim().isEmpty) return;
 
     FocusScope.of(context).unfocus();
     _codeController.clear();
+    context.read<TicketScanCubit>().onCodeScanned(code);
+  }
 
-    setState(() {
-      _scannedCount++;
-      _attendeeName = 'Pass #$trimmedCode';
-      _ticketTier = 'Verified Entry';
-      _isBannerVisible = true;
-    });
+  void _showEventPicker() {
+    final cubit = context.read<TicketScanCubit>()..loadEvents();
+    showModalBottomSheet<void>(
+      context: context,
+      backgroundColor: context.colors.darkBlue,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24.r)),
+      ),
+      builder: (_) =>
+          BlocProvider.value(value: cubit, child: const ScanEventPickerSheet()),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    final eventSubtitle = context.select((TicketScanCubit cubit) {
+      final state = cubit.state;
+      return state.selectedEvent?.title ??
+          (state.isLoadingEvents ? 'Loading events...' : 'Select an event');
+    });
+    final isScanning = context.select(
+      (TicketScanCubit cubit) => !cubit.state.isProcessing,
+    );
+
     return Scaffold(
       backgroundColor: context.colors.darkBlue,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              verticalSpace(8),
-
-              // Animated Verified Banner
-              AnimatedCrossFade(
-                duration: const Duration(milliseconds: 300),
-                crossFadeState: _isBannerVisible
-                    ? CrossFadeState.showFirst
-                    : CrossFadeState.showSecond,
-                firstChild: Padding(
-                  padding: EdgeInsets.only(bottom: 12.h),
-                  child: TicketVerifiedBanner(
-                    title: 'Ticket Verified',
-                    subtitle: '$_attendeeName • $_ticketTier',
-                    onDismiss: () {
-                      setState(() {
-                        _isBannerVisible = false;
-                      });
+      body: Stack(
+        children: [
+          SafeArea(
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              keyboardDismissBehavior:
+                  ScrollViewKeyboardDismissBehavior.onDrag,
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  verticalSpace(8),
+                  ValueListenableBuilder<MobileScannerState>(
+                    valueListenable: _scannerController,
+                    builder: (context, scannerState, _) {
+                      final torchState = scannerState.torchState;
+                      return ScanHeaderAppBar(
+                        subtitle: eventSubtitle,
+                        isFlashOn: torchState == TorchState.on,
+                        onFlashToggle: torchState == TorchState.unavailable
+                            ? null
+                            : _scannerController.toggleTorch,
+                        onBackPressed: widget.onBack,
+                        onSubtitleTap: _showEventPicker,
+                      );
                     },
                   ),
-                ),
-                secondChild: const SizedBox.shrink(),
+                  verticalSpace(14),
+                  ScanViewfinder(
+                    controller: _scannerController,
+                    onDetect: _onDetect,
+                    isScanning: isScanning,
+                  ),
+                  verticalSpace(20),
+                  const ManualEntryHeader(),
+                  verticalSpace(8),
+                  ManualEntryField(
+                    controller: _codeController,
+                    onSubmitted: _onManualCodeSubmitted,
+                  ),
+                  verticalSpace(14),
+                  const ScanQuickSettings(),
+                  verticalSpace(22),
+                  const ScanStatsSection(),
+                  verticalSpace(16),
+                ],
               ),
-
-              // Top Bar with Back, Title, and Flashlight buttons
-              ScanHeaderAppBar(
-                title: 'Scan Tickets',
-                subtitle: widget.eventTitle,
-                isFlashOn: _isFlashOn,
-                onFlashToggle: () {
-                  setState(() {
-                    _isFlashOn = !_isFlashOn;
-                  });
-                },
-              ),
-
-              verticalSpace(14),
-
-              // Scanner Viewfinder
-              const ScanViewfinder(
-                frameSize: 240,
-                isScanning: true,
-              ),
-
-              verticalSpace(20),
-
-              // Manual Entry Section
-              const ManualEntryHeader(),
-              verticalSpace(8),
-              ManualEntryField(
-                controller: _codeController,
-                onSubmitted: _onManualCodeSubmitted,
-              ),
-
-              verticalSpace(14),
-
-              // Quick Settings (Sound & Vibrate)
-              ScanQuickSettings(
-                soundEnabled: _isSoundOn,
-                onSoundChanged: (val) {
-                  setState(() {
-                    _isSoundOn = val;
-                  });
-                },
-                vibrateEnabled: _isVibrateOn,
-                onVibrateChanged: (val) {
-                  setState(() {
-                    _isVibrateOn = val;
-                  });
-                },
-              ),
-
-              verticalSpace(22),
-
-              // Bottom Stats Section
-              ScanStatsSection(
-                scannedCount: '$_scannedCount',
-                totalExpectedCount: '$_totalExpected',
-              ),
-
-              // Bottom padding so items are not hidden behind floating navbar
-              verticalSpace(90),
-            ],
+            ),
           ),
-        ),
+          const ScanResultOverlay(),
+        ],
       ),
     );
   }

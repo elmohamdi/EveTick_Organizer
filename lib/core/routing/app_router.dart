@@ -22,6 +22,7 @@ import 'package:evetick_organizer/features/onboarding/presentation/ui/welcome_sc
 import 'package:evetick_organizer/features/profile/logic/profile_cubit.dart';
 import 'package:evetick_organizer/features/profile/ui/screens/edit_profile_screen.dart';
 import 'package:evetick_organizer/features/profile/ui/screens/profile_screen.dart';
+import 'package:evetick_organizer/features/ticket_scan/logic/cubit/ticket_scan_cubit.dart';
 import 'package:evetick_organizer/features/ticket_scan/presentation/screens/ticket_scan_screen.dart';
 import 'package:evetick_organizer/main_container.dart';
 import 'package:flutter/material.dart';
@@ -130,7 +131,10 @@ class AppRouter {
         );
       case Routes.ticketScanScreen:
         return MaterialPageRoute(
-          builder: (_) => const TicketScanScreen(),
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<TicketScanCubit>()..init(),
+            child: const TicketScanScreen(),
+          ),
         );
       default:
         return MaterialPageRoute(

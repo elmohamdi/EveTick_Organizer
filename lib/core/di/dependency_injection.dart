@@ -9,6 +9,10 @@ import 'package:evetick_organizer/features/create_event/data/repositories/create
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
 import 'package:evetick_organizer/features/pending_events/data/repositories/pending_events_repository.dart';
 import 'package:evetick_organizer/features/pending_events/logic/cubit/pending_events_cubit.dart';
+import 'package:evetick_organizer/features/ticket_scan/data/repositories/ticket_scan_repository.dart';
+import 'package:evetick_organizer/features/ticket_scan/data/repositories/ticket_scan_repository_impl.dart';
+import 'package:evetick_organizer/features/ticket_scan/logic/cubit/ticket_scan_cubit.dart';
+import 'package:evetick_organizer/features/ticket_scan/services/scan_feedback_service.dart';
 import 'package:evetick_organizer/features/localization/data/locale_repository.dart';
 import 'package:evetick_organizer/features/localization/logic/locale_cubit.dart';
 import 'package:evetick_organizer/features/location/data/repos/location_repository.dart';
@@ -84,5 +88,20 @@ Future<void> setupGetIt() async {
   );
   getIt.registerFactory<PendingEventsCubit>(
     () => PendingEventsCubit(getIt<PendingEventsRepository>()),
+  );
+
+  // ticket scan
+  getIt.registerLazySingleton<TicketScanRepository>(
+    () => TicketScanRepositoryImpl(
+      firestore: FirebaseFirestore.instance,
+      auth: FirebaseAuth.instance,
+    ),
+  );
+  getIt.registerLazySingleton(() => const ScanFeedbackService());
+  getIt.registerFactory<TicketScanCubit>(
+    () => TicketScanCubit(
+      getIt<TicketScanRepository>(),
+      getIt<ScanFeedbackService>(),
+    ),
   );
 }

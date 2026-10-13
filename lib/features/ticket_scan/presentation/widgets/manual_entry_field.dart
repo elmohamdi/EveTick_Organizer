@@ -37,6 +37,9 @@ class ManualEntryField extends StatelessWidget {
                 fontWeight: FontWeight.w400,
               ),
               cursorColor: ColorsManager.orange,
+              textInputAction: TextInputAction.done,
+              autocorrect: false,
+              enableSuggestions: false,
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.symmetric(horizontal: 8.w),
                 border: InputBorder.none,

@@ -9,16 +9,22 @@ class ScanHeaderAppBar extends StatelessWidget {
   final String title;
   final String subtitle;
   final bool isFlashOn;
+
+  /// `null` disables the flash button (e.g. the device has no torch).
   final VoidCallback? onFlashToggle;
   final VoidCallback? onBackPressed;
+
+  /// When set, the subtitle becomes tappable (used to switch the event).
+  final VoidCallback? onSubtitleTap;
 
   const ScanHeaderAppBar({
     super.key,
     this.title = 'Scan Tickets',
-    this.subtitle = 'Summer Music Festival 2024',
+    required this.subtitle,
     this.isFlashOn = false,
     this.onFlashToggle,
     this.onBackPressed,
+    this.onSubtitleTap,
   });
 
   @override
@@ -65,13 +71,32 @@ class ScanHeaderAppBar extends StatelessWidget {
                 style: TextStyles.font18WhiteBold(context),
               ),
               verticalSpace(2),
-              Text(
-                subtitle,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 13.sp,
-                  fontWeight: FontWeight.w400,
-                  color: context.colors.lightGray,
+              InkWell(
+                onTap: onSubtitleTap,
+                borderRadius: BorderRadius.circular(8.r),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        subtitle,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 13.sp,
+                          fontWeight: FontWeight.w400,
+                          color: context.colors.lightGray,
+                        ),
+                      ),
+                    ),
+                    if (onSubtitleTap != null)
+                      Icon(
+                        Icons.keyboard_arrow_down_rounded,
+                        size: 18.sp,
+                        color: context.colors.lightGray,
+                      ),
+                  ],
                 ),
               ),
             ],
@@ -79,31 +104,38 @@ class ScanHeaderAppBar extends StatelessWidget {
         ),
 
         // Flashlight Toggle Button
-        Material(
-          color: Colors.transparent,
-          child: InkWell(
-            onTap: onFlashToggle,
-            borderRadius: BorderRadius.circular(22.r),
-            child: Container(
-              width: 44.w,
-              height: 44.w,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: isFlashOn
-                    ? ColorsManager.orange.withValues(alpha: 0.25)
-                    : context.colors.secondaryBlue.withValues(alpha: 0.6),
-                border: Border.all(
+        Opacity(
+          opacity: onFlashToggle == null ? 0.4 : 1,
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              onTap: onFlashToggle,
+              borderRadius: BorderRadius.circular(22.r),
+              child: Container(
+                width: 44.w,
+                height: 44.w,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
                   color: isFlashOn
-                      ? ColorsManager.orange
-                      : context.colors.secondaryBlue.withValues(alpha: 0.3),
-                  width: 1,
+                      ? ColorsManager.orange.withValues(alpha: 0.25)
+                      : context.colors.secondaryBlue.withValues(alpha: 0.6),
+                  border: Border.all(
+                    color: isFlashOn
+                        ? ColorsManager.orange
+                        : context.colors.secondaryBlue.withValues(alpha: 0.3),
+                    width: 1,
+                  ),
                 ),
-              ),
-              child: Center(
-                child: Icon(
-                  isFlashOn ? Icons.flash_on_rounded : Icons.flash_on_rounded,
-                  color: isFlashOn ? ColorsManager.orange : context.colors.white,
-                  size: 20.sp,
+                child: Center(
+                  child: Icon(
+                    isFlashOn
+                        ? Icons.flash_on_rounded
+                        : Icons.flash_off_rounded,
+                    color: isFlashOn
+                        ? ColorsManager.orange
+                        : context.colors.white,
+                    size: 20.sp,
+                  ),
                 ),
               ),
             ),

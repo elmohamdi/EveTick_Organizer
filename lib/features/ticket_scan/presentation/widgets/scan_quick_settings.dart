@@ -1,23 +1,22 @@
 import 'package:evetick_organizer/core/helpers/spacing.dart';
+import 'package:evetick_organizer/features/ticket_scan/logic/cubit/ticket_scan_cubit.dart';
 import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/scan_toggle_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ScanQuickSettings extends StatelessWidget {
-  final bool soundEnabled;
-  final ValueChanged<bool> onSoundChanged;
-  final bool vibrateEnabled;
-  final ValueChanged<bool> onVibrateChanged;
-
-  const ScanQuickSettings({
-    super.key,
-    required this.soundEnabled,
-    required this.onSoundChanged,
-    required this.vibrateEnabled,
-    required this.onVibrateChanged,
-  });
+  const ScanQuickSettings({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final soundEnabled = context.select(
+      (TicketScanCubit cubit) => cubit.state.soundEnabled,
+    );
+    final vibrateEnabled = context.select(
+      (TicketScanCubit cubit) => cubit.state.vibrateEnabled,
+    );
+    final cubit = context.read<TicketScanCubit>();
+
     return Row(
       children: [
         Expanded(
@@ -25,7 +24,7 @@ class ScanQuickSettings extends StatelessWidget {
             icon: Icons.volume_up_rounded,
             title: 'Sound',
             isEnabled: soundEnabled,
-            onChanged: onSoundChanged,
+            onChanged: cubit.setSoundEnabled,
           ),
         ),
         horizontalSpace(12),
@@ -34,7 +33,7 @@ class ScanQuickSettings extends StatelessWidget {
             icon: Icons.vibration_rounded,
             title: 'Vibrate',
             isEnabled: vibrateEnabled,
-            onChanged: onVibrateChanged,
+            onChanged: cubit.setVibrateEnabled,
           ),
         ),
       ],
