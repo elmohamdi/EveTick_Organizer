@@ -12,7 +12,6 @@ class ScanHeaderAppBar extends StatelessWidget {
 
   /// `null` disables the flash button (e.g. the device has no torch).
   final VoidCallback? onFlashToggle;
-  final VoidCallback? onBackPressed;
 
   /// When set, the subtitle becomes tappable (used to switch the event).
   final VoidCallback? onSubtitleTap;
@@ -23,7 +22,6 @@ class ScanHeaderAppBar extends StatelessWidget {
     required this.subtitle,
     this.isFlashOn = false,
     this.onFlashToggle,
-    this.onBackPressed,
     this.onSubtitleTap,
   });
 
@@ -36,7 +34,6 @@ class ScanHeaderAppBar extends StatelessWidget {
         Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: onBackPressed ?? () => Navigator.of(context).maybePop(),
             borderRadius: BorderRadius.circular(22.r),
             child: Container(
               width: 44.w,
@@ -47,13 +44,6 @@ class ScanHeaderAppBar extends StatelessWidget {
                 border: Border.all(
                   color: context.colors.secondaryBlue.withValues(alpha: 0.3),
                   width: 1,
-                ),
-              ),
-              child: Center(
-                child: Icon(
-                  Icons.arrow_back_ios_new_rounded,
-                  color: context.colors.white,
-                  size: 18.sp,
                 ),
               ),
             ),

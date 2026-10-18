@@ -1,8 +1,13 @@
+import 'package:evetick_organizer/core/di/dependency_injection.dart';
+import 'package:evetick_organizer/core/helpers/extentions.dart';
+import 'package:evetick_organizer/core/routing/routes.dart';
 import 'package:evetick_organizer/core/theming/colors.dart';
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/features/pending_events/logic/cubit/pending_events_cubit.dart';
 import 'package:evetick_organizer/features/pending_events/logic/cubit/pending_events_state.dart';
 import 'package:evetick_organizer/features/pending_events/presentation/widgets/event_card.dart';
+import 'package:evetick_organizer/features/staff_access/logic/cubit/staff_invites_cubit.dart';
+import 'package:evetick_organizer/features/staff_access/presentation/widgets/staff_invites_banner.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,6 +17,13 @@ class PendingEventsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => getIt<StaffInvitesCubit>()..load(),
+      child: Builder(builder: _buildScaffold),
+    );
+  }
+
+  Widget _buildScaffold(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorsManager.darkBlue,
       appBar: AppBar(
@@ -20,8 +32,31 @@ class PendingEventsScreen extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
         automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            tooltip: 'Refresh',
+            onPressed: () {
+              context.read<StaffInvitesCubit>().load();
+              context.read<PendingEventsCubit>().getPendingEvents();
+            },
+            icon: const Icon(Icons.refresh_rounded, color: ColorsManager.white),
+          ),
+        ],
       ),
-      body: BlocBuilder<PendingEventsCubit, PendingEventsState>(
+      body: Column(
+        children: [
+          StaffInvitesBanner(
+            onAccepted: () =>
+                context.read<PendingEventsCubit>().getPendingEvents(),
+          ),
+          Expanded(child: _buildEvents(context)),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildEvents(BuildContext context) {
+    return BlocBuilder<PendingEventsCubit, PendingEventsState>(
         builder: (context, state) {
           if (state is PendingEventsLoading) {
             return const Center(
@@ -48,13 +83,25 @@ class PendingEventsScreen extends StatelessWidget {
               itemCount: state.events.length,
               itemBuilder: (context, index) {
                 final event = state.events[index];
-                return EventCard(event: event);
+                final eventId = event['eventId'] as String?;
+                // Staff only get the dashboard with the "view analytics"
+                // permission; the owner always does.
+                final canManage =
+                    event['isStaffEvent'] != true || event['canManage'] == true;
+                return EventCard(
+                  event: event,
+                  onManage: eventId == null || !canManage
+                      ? null
+                      : () => context.pushNamed(
+                          Routes.eventDashboardScreen,
+                          arguments: eventId,
+                        ),
+                );
               },
             );
           }
           return const SizedBox.shrink();
         },
-      ),
     );
   }
 }

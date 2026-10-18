@@ -61,6 +61,10 @@ class _MainContainerState extends State<MainContainer> {
   ];
 
   void _onTabSelected(int index) {
+    // Events the user just joined as staff become scannable right away.
+    if (index == _scanTabIndex && _currentIndex != _scanTabIndex) {
+      _ticketScanCubit.loadEvents();
+    }
     setState(() {
       _currentIndex = index;
     });

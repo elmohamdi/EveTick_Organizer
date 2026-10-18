@@ -1,11 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evetick_organizer/core/services/firebase_error_handler.dart';
 import 'package:evetick_organizer/core/services/result.dart';
+import 'package:evetick_organizer/features/event_staff/data/models/staff_permission.dart';
+import 'package:evetick_organizer/features/staff_access/data/repositories/staff_access_repository.dart';
 import 'package:evetick_organizer/features/ticket_scan/data/models/scan_event.dart';
 import 'package:evetick_organizer/features/ticket_scan/data/models/scan_result.dart';
 import 'package:evetick_organizer/features/ticket_scan/data/models/scan_status.dart';
 import 'package:evetick_organizer/features/ticket_scan/data/repositories/ticket_scan_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 
 /// Firestore implementation.
 ///
@@ -24,11 +27,14 @@ class TicketScanRepositoryImpl implements TicketScanRepository {
   TicketScanRepositoryImpl({
     required FirebaseFirestore firestore,
     required FirebaseAuth auth,
+    StaffAccessRepository? staffAccess,
   }) : _firestore = firestore,
-       _auth = auth;
+       _auth = auth,
+       _staffAccess = staffAccess ?? StaffAccessRepository();
 
   final FirebaseFirestore _firestore;
   final FirebaseAuth _auth;
+  final StaffAccessRepository _staffAccess;
 
   CollectionReference<Map<String, dynamic>> _tickets(String eventId) =>
       _firestore.collection('events').doc(eventId).collection('tickets');
@@ -36,12 +42,19 @@ class TicketScanRepositoryImpl implements TicketScanRepository {
   @override
   Future<Result<List<ScanEvent>>> getScannableEvents() async {
     try {
+      final uid = _auth.currentUser?.uid;
+      if (uid == null) return const Result.success(<ScanEvent>[]);
+
+      // Only this organizer's events. Status is filtered on the client so the
+      // query needs just one equality filter (no composite index required).
       final snapshot = await _firestore
           .collection('events')
-          .where('status', whereIn: ['pending', 'live'])
+          .where('organizerId', isEqualTo: uid)
           .get();
 
-      final events = snapshot.docs.map((doc) {
+      final events = snapshot.docs
+          .where((doc) => ['pending', 'live'].contains(doc.data()['status']))
+          .map((doc) {
         final data = doc.data();
         final tiers = (data['ticketTiers'] as List<dynamic>?) ?? const [];
         final totalExpected = tiers.fold<int>(0, (sum, tier) {
@@ -55,6 +68,31 @@ class TicketScanRepositoryImpl implements TicketScanRepository {
           isLive: data['status'] == 'live',
         );
       }).toList();
+
+      // Events where the user is accepted staff with the scan permission.
+      // If this lookup fails the organizer still gets their own events.
+      final staffResult = await _staffAccess.getMyAccess();
+      staffResult.when<void>(
+        success: (access) {
+          final knownIds = events.map((event) => event.id).toSet();
+          for (final assignment in access.assignments) {
+            final data = assignment.event;
+            if (!assignment.can(StaffPermission.scanTickets)) continue;
+            if (!['pending', 'live'].contains(data['status'])) continue;
+            if (!knownIds.add(assignment.eventId)) continue;
+            events.add(
+              ScanEvent(
+                id: assignment.eventId,
+                title: (data['eventTitle'] as String?) ?? 'Untitled event',
+                totalExpected: (data['totalExpected'] as num?)?.toInt() ?? 0,
+                isLive: data['status'] == 'live',
+              ),
+            );
+          }
+        },
+        failure: (failure) =>
+            debugPrint('Staff scan events not loaded: ${failure.message}'),
+      );
 
       return Result.success(events);
     } on FirebaseException catch (e) {

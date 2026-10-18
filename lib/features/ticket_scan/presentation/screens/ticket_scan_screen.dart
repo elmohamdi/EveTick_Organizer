@@ -113,7 +113,6 @@ class _TicketScanScreenState extends State<TicketScanScreen> {
                         onFlashToggle: torchState == TorchState.unavailable
                             ? null
                             : _scannerController.toggleTorch,
-                        onBackPressed: widget.onBack,
                         onSubtitleTap: _showEventPicker,
                       );
                     },

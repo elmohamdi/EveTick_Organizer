@@ -7,8 +7,16 @@ import 'package:evetick_organizer/features/auth/logic/signup_cubit/signup_cubit.
 import 'package:evetick_organizer/features/create_event/data/repositories/create_event_repository.dart';
 import 'package:evetick_organizer/features/create_event/data/repositories/create_event_repository_impl.dart';
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
+import 'package:evetick_organizer/features/event_dashboard/data/repositories/event_dashboard_repository.dart';
+import 'package:evetick_organizer/features/event_dashboard/data/repositories/event_dashboard_repository_impl.dart';
+import 'package:evetick_organizer/features/event_dashboard/logic/cubit/event_dashboard_cubit.dart';
+import 'package:evetick_organizer/features/event_staff/data/repositories/event_staff_repository.dart';
+import 'package:evetick_organizer/features/event_staff/data/repositories/event_staff_repository_impl.dart';
+import 'package:evetick_organizer/features/event_staff/logic/cubit/event_staff_cubit.dart';
 import 'package:evetick_organizer/features/pending_events/data/repositories/pending_events_repository.dart';
 import 'package:evetick_organizer/features/pending_events/logic/cubit/pending_events_cubit.dart';
+import 'package:evetick_organizer/features/staff_access/data/repositories/staff_access_repository.dart';
+import 'package:evetick_organizer/features/staff_access/logic/cubit/staff_invites_cubit.dart';
 import 'package:evetick_organizer/features/ticket_scan/data/repositories/ticket_scan_repository.dart';
 import 'package:evetick_organizer/features/ticket_scan/data/repositories/ticket_scan_repository_impl.dart';
 import 'package:evetick_organizer/features/ticket_scan/logic/cubit/ticket_scan_cubit.dart';
@@ -82,12 +90,43 @@ Future<void> setupGetIt() async {
     () => CreateEventCubit(createEventRepository: getIt()),
   );
 
+  // staff access (invitations + events the user works on as staff)
+  getIt.registerLazySingleton<StaffAccessRepository>(
+    () => StaffAccessRepository(),
+  );
+  getIt.registerFactory<StaffInvitesCubit>(
+    () => StaffInvitesCubit(getIt<StaffAccessRepository>()),
+  );
+
   // pending events
   getIt.registerLazySingleton<PendingEventsRepository>(
-    () => PendingEventsRepository(),
+    () => PendingEventsRepository(staffAccess: getIt<StaffAccessRepository>()),
   );
   getIt.registerFactory<PendingEventsCubit>(
     () => PendingEventsCubit(getIt<PendingEventsRepository>()),
+  );
+
+  // event dashboard (one cubit per opened event -> eventId is a param)
+  getIt.registerLazySingleton<EventDashboardRepository>(
+    () => EventDashboardRepositoryImpl(
+      firestore: FirebaseFirestore.instance,
+      auth: FirebaseAuth.instance,
+    ),
+  );
+  getIt.registerFactoryParam<EventDashboardCubit, String, void>(
+    (eventId, _) =>
+        EventDashboardCubit(getIt<EventDashboardRepository>(), eventId),
+  );
+
+  // event staff
+  getIt.registerLazySingleton<EventStaffRepository>(
+    () => EventStaffRepositoryImpl(
+      firestore: FirebaseFirestore.instance,
+      auth: FirebaseAuth.instance,
+    ),
+  );
+  getIt.registerFactoryParam<EventStaffCubit, String, void>(
+    (eventId, _) => EventStaffCubit(getIt<EventStaffRepository>(), eventId),
   );
 
   // ticket scan
@@ -95,6 +134,7 @@ Future<void> setupGetIt() async {
     () => TicketScanRepositoryImpl(
       firestore: FirebaseFirestore.instance,
       auth: FirebaseAuth.instance,
+      staffAccess: getIt<StaffAccessRepository>(),
     ),
   );
   getIt.registerLazySingleton(() => const ScanFeedbackService());

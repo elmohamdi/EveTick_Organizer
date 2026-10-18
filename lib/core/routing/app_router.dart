@@ -11,6 +11,9 @@ import 'package:evetick_organizer/features/auth/ui/screens/verification_screen.d
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
 import 'package:evetick_organizer/features/create_event/presentation/screens/create_event_screen.dart';
 import 'package:evetick_organizer/features/create_event/presentation/screens/publish_event_screen.dart';
+import 'package:evetick_organizer/features/event_dashboard/logic/cubit/event_dashboard_cubit.dart';
+import 'package:evetick_organizer/features/event_dashboard/presentation/screens/event_dashboard_screen.dart';
+import 'package:evetick_organizer/features/event_staff/logic/cubit/event_staff_cubit.dart';
 import 'package:evetick_organizer/features/location/data/repos/location_repository.dart';
 import 'package:evetick_organizer/features/location/logic/cubit/location_cubit.dart';
 import 'package:evetick_organizer/features/location/presentation/screens/map_picker_screen.dart';
@@ -134,6 +137,23 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (_) => getIt<TicketScanCubit>()..init(),
             child: const TicketScanScreen(),
+          ),
+        );
+      case Routes.eventDashboardScreen:
+        final eventId = arguments as String;
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (_) =>
+                    getIt<EventDashboardCubit>(param1: eventId)..load(),
+              ),
+              BlocProvider(
+                create: (_) =>
+                    getIt<EventStaffCubit>(param1: eventId)..loadStaff(),
+              ),
+            ],
+            child: const EventDashboardScreen(),
           ),
         );
       default:
