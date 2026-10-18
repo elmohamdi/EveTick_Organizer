@@ -1,4 +1,3 @@
-
 import 'package:evetick_organizer/core/helpers/spacing.dart';
 import 'package:evetick_organizer/core/theming/colors.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
@@ -8,7 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextFormField extends StatelessWidget {
-  final String label;
+  final String? label;
   final EdgeInsetsGeometry? contentPadding;
   final InputBorder? focusedBorder;
   final InputBorder? enabledBorder;
@@ -19,13 +18,18 @@ class AppTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final Color? backgroundColor;
   final TextEditingController? controller;
-  final Function(String?) validator;
+  final String? Function(String?)? validator;
   final bool readOnly;
   final TextInputType? keyboardType;
-      final List<TextInputFormatter>? inputFormatters;
+  final List<TextInputFormatter>? inputFormatters;
+  final VoidCallback? onTap;
+  final int? maxLines;
+  final int? maxLength;
+  final void Function(String)? onChanged;
+  final int? minLines;
   const AppTextFormField({
     super.key,
-    required this.label,
+    this.label,
     this.contentPadding,
     this.focusedBorder,
     this.enabledBorder,
@@ -36,10 +40,15 @@ class AppTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.backgroundColor,
     this.controller,
-    required this.validator,
+    this.validator,
     this.readOnly = false,
     this.keyboardType,
     this.inputFormatters,
+    this.onTap,
+    this.maxLines = 1,
+    this.maxLength,
+    this.onChanged,
+    this.minLines,
   });
 
   @override
@@ -48,15 +57,23 @@ class AppTextFormField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(label, style: TextStyles.font16WhiteRegular(context)),
-        verticalSpace(8),
+        if (label != null && label!.isNotEmpty) ...[
+          Text(label!, style: TextStyles.font16WhiteRegular(context)),
+          verticalSpace(8),
+        ],
         TextFormField(
+          minLines: minLines,
           inputFormatters: inputFormatters,
           keyboardType: keyboardType,
           readOnly: readOnly,
+          onTap: onTap,
           controller: controller,
+          maxLines: maxLines,
+          maxLength: maxLength,
+          onChanged: onChanged,
           decoration: InputDecoration(
             isDense: true,
+            counterStyle: TextStyles.font12LightGrayRegular(context),
             contentPadding:
                 contentPadding ??
                 EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h),
@@ -94,9 +111,7 @@ class AppTextFormField extends StatelessWidget {
           ),
           obscureText: isObscureText ?? false,
           style: inputTextStyle ?? TextStyles.font16WhiteRegular(context),
-          validator: (value) {
-            return validator(value);
-          },
+          validator: validator,
         ),
       ],
     );

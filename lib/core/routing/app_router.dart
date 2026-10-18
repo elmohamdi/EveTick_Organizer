@@ -8,7 +8,12 @@ import 'package:evetick_organizer/features/auth/logic/signup_cubit/signup_cubit.
 import 'package:evetick_organizer/features/auth/ui/screens/login_screen.dart';
 import 'package:evetick_organizer/features/auth/ui/screens/signup_screen.dart';
 import 'package:evetick_organizer/features/auth/ui/screens/verification_screen.dart';
-import 'package:evetick_organizer/features/home/home_screen.dart';
+import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
+import 'package:evetick_organizer/features/create_event/presentation/screens/create_event_screen.dart';
+import 'package:evetick_organizer/features/create_event/presentation/screens/publish_event_screen.dart';
+import 'package:evetick_organizer/features/event_dashboard/logic/cubit/event_dashboard_cubit.dart';
+import 'package:evetick_organizer/features/event_dashboard/presentation/screens/event_dashboard_screen.dart';
+import 'package:evetick_organizer/features/event_staff/logic/cubit/event_staff_cubit.dart';
 import 'package:evetick_organizer/features/location/data/repos/location_repository.dart';
 import 'package:evetick_organizer/features/location/logic/cubit/location_cubit.dart';
 import 'package:evetick_organizer/features/location/presentation/screens/map_picker_screen.dart';
@@ -20,6 +25,9 @@ import 'package:evetick_organizer/features/onboarding/presentation/ui/welcome_sc
 import 'package:evetick_organizer/features/profile/logic/profile_cubit.dart';
 import 'package:evetick_organizer/features/profile/ui/screens/edit_profile_screen.dart';
 import 'package:evetick_organizer/features/profile/ui/screens/profile_screen.dart';
+import 'package:evetick_organizer/features/ticket_scan/logic/cubit/ticket_scan_cubit.dart';
+import 'package:evetick_organizer/features/ticket_scan/presentation/screens/ticket_scan_screen.dart';
+import 'package:evetick_organizer/main_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -51,7 +59,7 @@ class AppRouter {
           ),
         );
       case Routes.homeScreen:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(builder: (_) => const MainContainer());
       case Routes.verificationScreen:
         return MaterialPageRoute(builder: (_) => const VerificationScreen());
       case Routes.appStartScreen:
@@ -105,6 +113,47 @@ class AppRouter {
           builder: (_) => BlocProvider.value(
             value: profileCubit,
             child: EditProfileScreen(),
+          ),
+        );
+      case Routes.createEventScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<CreateEventCubit>(),
+            child: const CreateEventScreen(),
+          ),
+        );
+      case Routes.publishEventScreen:
+        final args = arguments as Map<String, dynamic>? ?? {};
+        return MaterialPageRoute(
+          builder: (_) => PublishEventScreen(
+            eventTitle: args['eventTitle'] as String? ?? 'Event Name',
+            imagePath: args['imagePath'] as String?,
+            startDate: args['startDate'] as DateTime? ?? DateTime.now(),
+            startTime: args['startTime'] as TimeOfDay? ?? TimeOfDay.now(),
+          ),
+        );
+      case Routes.ticketScanScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<TicketScanCubit>()..init(),
+            child: const TicketScanScreen(),
+          ),
+        );
+      case Routes.eventDashboardScreen:
+        final eventId = arguments as String;
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (_) =>
+                    getIt<EventDashboardCubit>(param1: eventId)..load(),
+              ),
+              BlocProvider(
+                create: (_) =>
+                    getIt<EventStaffCubit>(param1: eventId)..loadStaff(),
+              ),
+            ],
+            child: const EventDashboardScreen(),
           ),
         );
       default:
