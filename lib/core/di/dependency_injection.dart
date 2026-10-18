@@ -13,6 +13,9 @@ import 'package:evetick_organizer/features/event_dashboard/logic/cubit/event_das
 import 'package:evetick_organizer/features/event_staff/data/repositories/event_staff_repository.dart';
 import 'package:evetick_organizer/features/event_staff/data/repositories/event_staff_repository_impl.dart';
 import 'package:evetick_organizer/features/event_staff/logic/cubit/event_staff_cubit.dart';
+import 'package:evetick_organizer/features/home/data/repositories/home_repository.dart';
+import 'package:evetick_organizer/features/home/data/repositories/home_repository_impl.dart';
+import 'package:evetick_organizer/features/home/logic/cubit/home_cubit.dart';
 import 'package:evetick_organizer/features/pending_events/data/repositories/pending_events_repository.dart';
 import 'package:evetick_organizer/features/pending_events/logic/cubit/pending_events_cubit.dart';
 import 'package:evetick_organizer/features/staff_access/data/repositories/staff_access_repository.dart';
@@ -117,6 +120,16 @@ Future<void> setupGetIt() async {
     (eventId, _) =>
         EventDashboardCubit(getIt<EventDashboardRepository>(), eventId),
   );
+
+  // home overview (stats across all of the organizer's events)
+  getIt.registerLazySingleton<HomeRepository>(
+    () => HomeRepositoryImpl(
+      firestore: FirebaseFirestore.instance,
+      auth: FirebaseAuth.instance,
+      dashboardRepository: getIt<EventDashboardRepository>(),
+    ),
+  );
+  getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt<HomeRepository>()));
 
   // event staff
   getIt.registerLazySingleton<EventStaffRepository>(

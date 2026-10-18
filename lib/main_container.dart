@@ -2,7 +2,9 @@ import 'package:evetick_organizer/core/di/dependency_injection.dart';
 import 'package:evetick_organizer/features/animated_navbar/animated_navbar.dart';
 import 'package:evetick_organizer/features/animated_navbar/navbar_item.dart';
 import 'package:evetick_organizer/features/auth/logic/login_cubit/login_cubit.dart';
-import 'package:evetick_organizer/features/home/home_screen.dart';
+import 'package:evetick_organizer/features/home/logic/cubit/home_cubit.dart';
+import 'package:evetick_organizer/features/home/presentation/screens/home_screen.dart';
+import 'package:evetick_organizer/features/home/presentation/widgets/create_event_fab.dart';
 import 'package:evetick_organizer/features/pending_events/logic/cubit/pending_events_cubit.dart';
 import 'package:evetick_organizer/features/pending_events/presentation/screens/pending_events_screen.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
@@ -37,7 +39,10 @@ class _MainContainerState extends State<MainContainer> {
   // `late final` still guarantees it's built exactly once per State,
   // so switching tabs with setState() won't recreate the cubits.
   late final List<Widget> _pages = [
-    const HomeScreen(),
+    BlocProvider(
+      create: (_) => getIt<HomeCubit>()..load(),
+      child: const HomeScreen(),
+    ),
     BlocProvider(
       create: (_) => getIt<PendingEventsCubit>()..getPendingEvents(),
       child: const PendingEventsScreen(),
@@ -93,6 +98,10 @@ class _MainContainerState extends State<MainContainer> {
                 : _pages[i],
         ],
       ),
+      // Only on the home tab. As the Scaffold's own FAB it is placed above
+      // the bottom navbar automatically.
+      floatingActionButton:
+          _currentIndex == _homeTabIndex ? const CreateEventFab() : null,
       bottomNavigationBar: AnimatedSpotlightNavbar(
         currentIndex: _currentIndex,
         backgroundColor: context.colors.lightBlue,
