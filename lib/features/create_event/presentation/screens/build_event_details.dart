@@ -123,6 +123,8 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
     final picked = await showTimePicker(
       context: context,
       initialTime: initialTime,
+      // Plain hour / minute fields instead of the analog clock dial.
+      initialEntryMode: TimePickerEntryMode.inputOnly,
     );
     if (picked == null) return;
 

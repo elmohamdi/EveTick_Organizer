@@ -1,5 +1,7 @@
 import 'package:evetick_organizer/core/theming/app_colors.dart';
 import 'package:evetick_organizer/core/theming/colors.dart';
+import 'package:evetick_organizer/core/theming/date_picker_theme.dart';
+import 'package:evetick_organizer/core/theming/time_picker_theme.dart';
 import 'package:flutter/material.dart';
 
 const darkAppColors = AppColors(
@@ -20,4 +22,6 @@ final ThemeData darkThemeData = ThemeData(
   scaffoldBackgroundColor: ColorsManager.darkBlue,
   brightness: Brightness.dark,
   extensions: const [darkAppColors],
+  timePickerTheme: appTimePickerTheme(darkAppColors),
+  datePickerTheme: appDatePickerTheme(darkAppColors),
 );

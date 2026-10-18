@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:evetick_organizer/core/helpers/spacing.dart';
+import 'package:evetick_organizer/core/theming/colors.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/core/widgets/event_status_chip.dart';
@@ -85,8 +86,8 @@ class _CoverImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget placeholder() => Container(
-      color: context.colors.gray3,
-      child: Icon(Icons.image, color: context.colors.white, size: 40.sp),
+      color: ColorsManager.orange.withValues(alpha: 0.15),
+      child: Icon(Icons.image_outlined, color: ColorsManager.orange, size: 40.sp),
     );
 
     final imageUrl = url;
