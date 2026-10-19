@@ -1,4 +1,3 @@
-import 'package:evetick_organizer/core/di/dependency_injection.dart';
 import 'package:evetick_organizer/core/helpers/extentions.dart';
 import 'package:evetick_organizer/core/routing/routes.dart';
 import 'package:evetick_organizer/core/theming/colors.dart';
@@ -15,15 +14,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class PendingEventsScreen extends StatelessWidget {
   const PendingEventsScreen({super.key});
 
+  /// Needs a [PendingEventsCubit] and a [StaffInvitesCubit] above it; both
+  /// are owned by `MainContainer`.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<StaffInvitesCubit>()..load(),
-      child: Builder(builder: _buildScaffold),
-    );
-  }
-
-  Widget _buildScaffold(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorsManager.darkBlue,
       appBar: AppBar(
