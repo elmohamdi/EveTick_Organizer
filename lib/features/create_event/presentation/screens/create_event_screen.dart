@@ -11,10 +11,10 @@ import 'package:evetick_organizer/features/create_event/presentation/screens/bui
 import 'package:evetick_organizer/features/create_event/presentation/screens/build_seating_details.dart';
 import 'package:evetick_organizer/features/create_event/presentation/screens/build_ticket_details.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/event_phase_indicator.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class CreateEventScreen extends StatefulWidget {
   const CreateEventScreen({super.key});
@@ -92,7 +92,8 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
         } else if (state.status == CreateEventStatus.failure) {
           AppToast.error(
             context,
-            state.errorMessage ?? AppLocalizations.of(context)!.createEventPublishFailed,
+            state.errorMessage ??
+                AppLocalizations.of(context)!.createEventPublishFailed,
           );
         }
       },
