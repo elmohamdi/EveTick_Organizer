@@ -89,6 +89,10 @@ class _MainContainerState extends State<MainContainer>
     // The tabs that show the invitations banner re-check on every visit.
     final showsInvites = index == _homeTabIndex || index == _eventsTabIndex;
     if (showsInvites && index != _currentIndex) _staffInvitesCubit.load();
+    // Reload My Events on every visit so a just-created event shows up.
+    if (index == _eventsTabIndex && index != _currentIndex) {
+      _pendingEventsCubit.getPendingEvents();
+    }
     // Events the user just joined as staff become scannable right away.
     if (index == _scanTabIndex && _currentIndex != _scanTabIndex) {
       _ticketScanCubit.loadEvents();

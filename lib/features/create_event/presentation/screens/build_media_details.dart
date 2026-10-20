@@ -3,6 +3,7 @@ import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/core/widgets/app_text_form_field.dart';
 import 'package:evetick_organizer/core/widgets/app_toast/app_toast.dart';
 import 'package:evetick_organizer/core/widgets/filled_app_text_button.dart';
+import 'package:evetick_organizer/features/create_event/helpers/persist_picked_image.dart';
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/cover_image_picker.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/gallery_photo_slot.dart';
@@ -46,11 +47,13 @@ class _BuildMediaDetailsState extends State<BuildMediaDetails> {
     );
 
     if (image == null) return;
+    final saved = await persistPickedImage(image);
+    if (!mounted) return;
 
     setState(() {
-      coverImage = image;
+      coverImage = saved;
     });
-    context.read<CreateEventCubit>().updateEventCoverImage(image);
+    context.read<CreateEventCubit>().updateEventCoverImage(saved);
   }
 
   Future<void> _pickGalleryPhoto(int index) async {
@@ -60,9 +63,11 @@ class _BuildMediaDetailsState extends State<BuildMediaDetails> {
     );
 
     if (image == null) return;
+    final saved = await persistPickedImage(image);
+    if (!mounted) return;
 
     setState(() {
-      galleryPhotos[index] = image;
+      galleryPhotos[index] = saved;
     });
     context.read<CreateEventCubit>().updateEventGalleryPhotos(
       galleryPhotos.whereType<XFile>().toList(),
