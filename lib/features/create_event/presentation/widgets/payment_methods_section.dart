@@ -4,6 +4,7 @@ import 'package:evetick_organizer/features/create_event/presentation/widgets/pay
 import 'package:evetick_organizer/features/create_event/presentation/widgets/payment_method_entry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class PaymentMethodsSection extends StatelessWidget {
   const PaymentMethodsSection({
@@ -22,10 +23,10 @@ class PaymentMethodsSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Payment Methods', style: TextStyles.font18WhiteBold(context)),
+        Text(AppLocalizations.of(context)!.createEventPaymentMethods, style: TextStyles.font18WhiteBold(context)),
         verticalSpace(4),
         Text(
-          'Choose where you want to receive your money.',
+          AppLocalizations.of(context)!.createEventPaymentMethodsSubtitle,
           style: TextStyles.font14Gray3Regular,
         ),
         verticalSpace(16),
@@ -35,7 +36,7 @@ class PaymentMethodsSection extends StatelessWidget {
         ],
         if (showError)
           Text(
-            'Please select at least one payment method',
+            AppLocalizations.of(context)!.createEventPaymentMethodRequired,
             style: TextStyles.font16RedMid.copyWith(fontSize: 12.sp),
           ),
       ],

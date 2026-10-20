@@ -10,6 +10,7 @@ import 'package:evetick_organizer/features/pending_events/presentation/screens/p
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
 import 'package:evetick_organizer/features/profile/logic/profile_cubit.dart';
 import 'package:evetick_organizer/features/profile/ui/screens/profile_screen.dart';
+import 'package:evetick_organizer/features/staff_access/logic/cubit/staff_invites_cubit.dart';
 import 'package:evetick_organizer/features/ticket_scan/logic/cubit/ticket_scan_cubit.dart';
 import 'package:evetick_organizer/features/ticket_scan/presentation/screens/ticket_scan_screen.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +23,10 @@ class MainContainer extends StatefulWidget {
   State<MainContainer> createState() => _MainContainerState();
 }
 
-class _MainContainerState extends State<MainContainer> {
+class _MainContainerState extends State<MainContainer>
+    with WidgetsBindingObserver {
   static const int _homeTabIndex = 0;
+  static const int _eventsTabIndex = 1;
   static const int _scanTabIndex = 2;
 
   int _currentIndex = _homeTabIndex;
@@ -34,6 +37,15 @@ class _MainContainerState extends State<MainContainer> {
   late final TicketScanCubit _ticketScanCubit = getIt<TicketScanCubit>()
     ..init();
 
+  // Owned here so the Home banner, the My Events banner and the events list
+  // share one state, and so staff invitations can be re-checked when the user
+  // switches tabs or comes back to the app (an invitation sent while the app
+  // was already open used to stay invisible until a manual refresh).
+  late final StaffInvitesCubit _staffInvitesCubit = getIt<StaffInvitesCubit>()
+    ..load();
+  late final PendingEventsCubit _pendingEventsCubit =
+      getIt<PendingEventsCubit>()..getPendingEvents();
+
   // Not `const` anymore: the Profile tab now creates its own cubits via
   // getIt, so this list can no longer be a compile-time constant.
   // `late final` still guarantees it's built exactly once per State,
@@ -43,10 +55,7 @@ class _MainContainerState extends State<MainContainer> {
       create: (_) => getIt<HomeCubit>()..load(),
       child: const HomeScreen(),
     ),
-    BlocProvider(
-      create: (_) => getIt<PendingEventsCubit>()..getPendingEvents(),
-      child: const PendingEventsScreen(),
-    ),
+    const PendingEventsScreen(),
     BlocProvider.value(
       value: _ticketScanCubit,
       child: TicketScanScreen(onBack: () => _onTabSelected(_homeTabIndex)),
@@ -65,7 +74,25 @@ class _MainContainerState extends State<MainContainer> {
     ),
   ];
 
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) _staffInvitesCubit.load();
+  }
+
   void _onTabSelected(int index) {
+    // The tabs that show the invitations banner re-check on every visit.
+    final showsInvites = index == _homeTabIndex || index == _eventsTabIndex;
+    if (showsInvites && index != _currentIndex) _staffInvitesCubit.load();
+    // Reload My Events on every visit so a just-created event shows up.
+    if (index == _eventsTabIndex && index != _currentIndex) {
+      _pendingEventsCubit.getPendingEvents();
+    }
     // Events the user just joined as staff become scannable right away.
     if (index == _scanTabIndex && _currentIndex != _scanTabIndex) {
       _ticketScanCubit.loadEvents();
@@ -77,53 +104,62 @@ class _MainContainerState extends State<MainContainer> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _staffInvitesCubit.close();
+    _pendingEventsCubit.close();
     _ticketScanCubit.close();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBody: true,
-      backgroundColor: Colors.transparent,
-      // IndexedStack keeps every tab alive. The scan tab is replaced by an
-      // empty box while it isn't selected so the camera is released (and the
-      // permission prompt doesn't appear on app start).
-      body: IndexedStack(
-        index: _currentIndex,
-        children: [
-          for (var i = 0; i < _pages.length; i++)
-            i == _scanTabIndex && _currentIndex != _scanTabIndex
-                ? const SizedBox.shrink()
-                : _pages[i],
-        ],
-      ),
-      // Only on the home tab. As the Scaffold's own FAB it is placed above
-      // the bottom navbar automatically.
-      floatingActionButton:
-          _currentIndex == _homeTabIndex ? const CreateEventFab() : null,
-      bottomNavigationBar: AnimatedSpotlightNavbar(
-        currentIndex: _currentIndex,
-        backgroundColor: context.colors.lightBlue,
-        onTap: _onTabSelected,
-        items: const [
-          AnimatedNavbarItem(
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home),
-          ),
-          AnimatedNavbarItem(
-            icon: Icon(Icons.event_note_outlined),
-            activeIcon: Icon(Icons.event_note),
-          ),
-          AnimatedNavbarItem(
-            icon: Icon(Icons.qr_code_scanner_outlined),
-            activeIcon: Icon(Icons.qr_code_scanner),
-          ),
-          AnimatedNavbarItem(
-            icon: Icon(Icons.person_outline),
-            activeIcon: Icon(Icons.person),
-          ),
-        ],
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: _staffInvitesCubit),
+        BlocProvider.value(value: _pendingEventsCubit),
+      ],
+      child: Scaffold(
+        extendBody: true,
+        backgroundColor: Colors.transparent,
+        // IndexedStack keeps every tab alive. The scan tab is replaced by an
+        // empty box while it isn't selected so the camera is released (and the
+        // permission prompt doesn't appear on app start).
+        body: IndexedStack(
+          index: _currentIndex,
+          children: [
+            for (var i = 0; i < _pages.length; i++)
+              i == _scanTabIndex && _currentIndex != _scanTabIndex
+                  ? const SizedBox.shrink()
+                  : _pages[i],
+          ],
+        ),
+        // Only on the home tab. As the Scaffold's own FAB it is placed above
+        // the bottom navbar automatically.
+        floatingActionButton:
+            _currentIndex == _homeTabIndex ? const CreateEventFab() : null,
+        bottomNavigationBar: AnimatedSpotlightNavbar(
+          currentIndex: _currentIndex,
+          backgroundColor: context.colors.lightBlue,
+          onTap: _onTabSelected,
+          items: const [
+            AnimatedNavbarItem(
+              icon: Icon(Icons.home_outlined),
+              activeIcon: Icon(Icons.home),
+            ),
+            AnimatedNavbarItem(
+              icon: Icon(Icons.event_note_outlined),
+              activeIcon: Icon(Icons.event_note),
+            ),
+            AnimatedNavbarItem(
+              icon: Icon(Icons.qr_code_scanner_outlined),
+              activeIcon: Icon(Icons.qr_code_scanner),
+            ),
+            AnimatedNavbarItem(
+              icon: Icon(Icons.person_outline),
+              activeIcon: Icon(Icons.person),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:evetick_organizer/core/helpers/spacing.dart';
+import 'package:evetick_organizer/core/theming/colors.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:flutter/material.dart';
@@ -41,10 +42,10 @@ class DashboardStatCard extends StatelessWidget {
                 width: 36.w,
                 height: 36.w,
                 decoration: BoxDecoration(
-                  color: context.colors.textBackground,
+                  color: ColorsManager.orange.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
-                child: Icon(icon, size: 20.sp, color: context.colors.white),
+                child: Icon(icon, size: 20.sp, color: ColorsManager.orange),
               ),
               horizontalSpace(10),
               Expanded(

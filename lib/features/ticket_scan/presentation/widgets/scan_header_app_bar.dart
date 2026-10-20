@@ -4,9 +4,10 @@ import 'package:evetick_organizer/core/theming/extensions/build_context_extensio
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class ScanHeaderAppBar extends StatelessWidget {
-  final String title;
+  final String? title;
   final String subtitle;
   final bool isFlashOn;
 
@@ -18,7 +19,7 @@ class ScanHeaderAppBar extends StatelessWidget {
 
   const ScanHeaderAppBar({
     super.key,
-    this.title = 'Scan Tickets',
+    this.title,
     required this.subtitle,
     this.isFlashOn = false,
     this.onFlashToggle,
@@ -56,7 +57,7 @@ class ScanHeaderAppBar extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                title,
+                title ?? AppLocalizations.of(context)!.scanTitle,
                 textAlign: TextAlign.center,
                 style: TextStyles.font18WhiteBold(context),
               ),

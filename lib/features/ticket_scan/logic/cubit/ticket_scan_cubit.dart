@@ -89,7 +89,7 @@ class TicketScanCubit extends Cubit<TicketScanState> {
       _showResult(
         const ScanResult(
           status: ScanStatus.error,
-          message: 'Select an event before scanning',
+          noEventSelected: true,
         ),
       );
       return;

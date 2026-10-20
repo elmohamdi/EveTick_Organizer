@@ -78,8 +78,16 @@ class StaffAccessRepository {
       case 'deadline-exceeded':
         return FirebaseFailure('Service unavailable, check your connection');
       case 'not-found':
-        // Also what the SDK reports when the function isn't deployed yet.
-        return FirebaseFailure(e.message ?? 'Invitation not found');
+        {
+          // When the callable isn't deployed (or the region is wrong) the SDK
+          // reports a bare "NOT_FOUND". Never show that raw string to users;
+          // our own functions send a real message for a missing invitation.
+          final message = e.message;
+          if (message == null || message == 'NOT_FOUND') {
+            return FirebaseFailure('Staff invitations are unavailable right now');
+          }
+          return FirebaseFailure(message);
+        }
       case 'failed-precondition':
       case 'invalid-argument':
       case 'permission-denied':

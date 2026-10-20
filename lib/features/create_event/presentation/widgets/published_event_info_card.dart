@@ -6,6 +6,7 @@ import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class PublishedEventInfoCard extends StatelessWidget {
   final String eventTitle;
@@ -68,7 +69,7 @@ class PublishedEventInfoCard extends StatelessWidget {
                 ),
                 verticalSpace(8),
                 Text(
-                  '${DateFormat('MMM dd, yyyy').format(startDate)} • ${startTime.format(context)}',
+                  '${DateFormat('MMM dd, yyyy', Localizations.localeOf(context).toString()).format(startDate)} • ${startTime.format(context)}',
                   style: TextStyles.font12LightGrayRegular(
                     context,
                   ).copyWith(color: context.colors.lightGray),
@@ -84,7 +85,7 @@ class PublishedEventInfoCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(20.r),
             ),
             child: Text(
-              'PENDING',
+              AppLocalizations.of(context)!.createEventStatusPending,
               style: TextStyles.font12Gray3Mid.copyWith(
                 color: context.colors.white,
                 fontSize: 10.sp,

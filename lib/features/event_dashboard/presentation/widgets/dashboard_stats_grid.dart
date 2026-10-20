@@ -4,6 +4,7 @@ import 'package:evetick_organizer/core/theming/colors.dart';
 import 'package:evetick_organizer/features/event_dashboard/data/models/event_dashboard.dart';
 import 'package:evetick_organizer/features/event_dashboard/presentation/widgets/dashboard_stat_card.dart';
 import 'package:flutter/material.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class DashboardStatsGrid extends StatelessWidget {
   const DashboardStatsGrid({super.key, required this.dashboard});
@@ -18,10 +19,12 @@ class DashboardStatsGrid extends StatelessWidget {
       children: [
         DashboardStatCard(
           icon: Icons.payments_outlined,
-          label: 'TOTAL REVENUE',
-          value: Formatters.money(dashboard.revenue),
+          label: AppLocalizations.of(context)!.dashboardTotalRevenue,
+          value: Formatters.money(context, dashboard.revenue),
           valueColor: ColorsManager.orange,
-          caption: 'From ${Formatters.number(dashboard.ticketsSold)} tickets',
+          caption: AppLocalizations.of(context)!.dashboardFromTickets(
+            Formatters.number(context, dashboard.ticketsSold),
+          ),
         ),
         verticalSpace(12),
         IntrinsicHeight(
@@ -31,21 +34,26 @@ class DashboardStatsGrid extends StatelessWidget {
               Expanded(
                 child: DashboardStatCard(
                   icon: Icons.confirmation_number_outlined,
-                  label: 'TICKETS SOLD',
-                  value: Formatters.number(dashboard.ticketsSold),
+                  label: AppLocalizations.of(context)!.homeStatTicketsSold,
+                  value: Formatters.number(context, dashboard.ticketsSold),
                   caption:
-                      '$soldPercent% of ${Formatters.number(dashboard.capacity)}',
+                      AppLocalizations.of(context)!.homeStatSoldPercent(
+                        soldPercent,
+                        Formatters.number(context, dashboard.capacity),
+                      ),
                 ),
               ),
               horizontalSpace(12),
               Expanded(
                 child: DashboardStatCard(
                   icon: Icons.how_to_reg_outlined,
-                  label: 'CHECKED IN',
-                  value: Formatters.number(dashboard.checkedIn),
+                  label: AppLocalizations.of(context)!.homeStatCheckedIn,
+                  value: Formatters.number(context, dashboard.checkedIn),
                   caption: dashboard.ticketsSold == 0
-                      ? 'No tickets sold yet'
-                      : 'of ${Formatters.number(dashboard.ticketsSold)} sold',
+                      ? AppLocalizations.of(context)!.homeStatNoTicketsSold
+                      : AppLocalizations.of(context)!.homeStatOfSold(
+                        Formatters.number(context, dashboard.ticketsSold),
+                      ),
                 ),
               ),
             ],

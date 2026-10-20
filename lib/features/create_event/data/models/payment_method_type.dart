@@ -1,5 +1,6 @@
 import 'package:evetick_organizer/core/helpers/app_regex.dart';
 import 'package:flutter/services.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 /// The payment methods an organizer can use to receive money.
 enum PaymentMethodType {
@@ -7,34 +8,29 @@ enum PaymentMethodType {
     key: 'vodafone_cash',
     title: 'Vodafone Cash',
     logoAsset: 'assets/images/vodafone_cash_logo.png',
-    fieldLabel: 'Wallet Number',
     hint: '010XXXXXXXX',
   ),
   orangeCash(
     key: 'orange_cash',
     title: 'Orange Cash',
     logoAsset: 'assets/images/orange_cash_logo.png',
-    fieldLabel: 'Wallet Number',
     hint: '012XXXXXXXX',
   ),
   instaPay(
     key: 'instapay',
     title: 'InstaPay',
     logoAsset: 'assets/images/instapay_logo.png',
-    fieldLabel: 'InstaPay Address or Phone',
     hint: 'name@instapay or 01XXXXXXXXX',
   ),
   paypal(
     key: 'paypal',
     title: 'PayPal',
-    fieldLabel: 'PayPal Email',
     hint: 'example@email.com',
   );
 
   const PaymentMethodType({
     required this.key,
     required this.title,
-    required this.fieldLabel,
     required this.hint,
     this.logoAsset,
   });
@@ -42,11 +38,28 @@ enum PaymentMethodType {
   /// Stable identifier stored in Firebase.
   final String key;
   final String title;
-  final String fieldLabel;
   final String hint;
 
   /// `null` when no logo asset is available (the UI shows an icon instead).
   final String? logoAsset;
+
+  /// Label of the input field, translated.
+  String fieldLabelOf(AppLocalizations l10n) {
+    switch (this) {
+      case PaymentMethodType.vodafoneCash:
+      case PaymentMethodType.orangeCash:
+        return l10n.createEventWalletNumber;
+      case PaymentMethodType.instaPay:
+        return l10n.createEventInstaPayField;
+      case PaymentMethodType.paypal:
+        return l10n.createEventPayPalField;
+    }
+  }
+
+  /// Placeholder of the input field, translated.
+  String hintOf(AppLocalizations l10n) {
+    return this == instaPay ? l10n.createEventInstaPayHint : hint;
+  }
 
   bool get isWallet => this == vodafoneCash || this == orangeCash;
 
@@ -62,19 +75,21 @@ enum PaymentMethodType {
     ];
   }
 
-  String? validate(String? value) {
+  String? validate(String? value, AppLocalizations l10n) {
     final input = value?.trim() ?? '';
-    if (input.isEmpty) return 'Please enter your ${fieldLabel.toLowerCase()}';
+    if (input.isEmpty) return l10n.createEventPaymentEnterField(
+        fieldLabelOf(l10n).toLowerCase(),
+      );
 
     switch (this) {
       case PaymentMethodType.vodafoneCash:
         return RegExp(r'^010\d{8}$').hasMatch(input)
             ? null
-            : 'Enter a valid Vodafone Cash number';
+            : l10n.createEventInvalidVodafone;
       case PaymentMethodType.orangeCash:
         return RegExp(r'^012\d{8}$').hasMatch(input)
             ? null
-            : 'Enter a valid Orange Cash number';
+            : l10n.createEventInvalidOrange;
       case PaymentMethodType.instaPay:
         final isPhone = RegExp(r'^01[0125]\d{8}$').hasMatch(input);
         final isAddress = RegExp(
@@ -83,9 +98,9 @@ enum PaymentMethodType {
         ).hasMatch(input);
         return isPhone || isAddress
             ? null
-            : 'Enter a valid InstaPay address or phone number';
+            : l10n.createEventInvalidInstaPay;
       case PaymentMethodType.paypal:
-        return AppRegex.isEmailValid(input) ? null : 'Enter a valid email';
+        return AppRegex.isEmailValid(input) ? null : l10n.createEventInvalidEmail;
     }
   }
 }

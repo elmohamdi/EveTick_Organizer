@@ -5,6 +5,7 @@ import 'package:evetick_organizer/core/theming/extensions/build_context_extensio
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/core/widgets/app_drop_down_form_field.dart';
 import 'package:evetick_organizer/core/widgets/app_text_form_field.dart';
+import 'package:evetick_organizer/core/widgets/app_toast/app_toast.dart';
 import 'package:evetick_organizer/features/auth/ui/widgets/error_banner.dart';
 import 'package:evetick_organizer/features/event_staff/data/models/staff_permission.dart';
 import 'package:evetick_organizer/features/event_staff/data/models/staff_role.dart';
@@ -12,6 +13,7 @@ import 'package:evetick_organizer/features/event_staff/logic/cubit/event_staff_c
 import 'package:evetick_organizer/features/event_staff/logic/cubit/event_staff_state.dart';
 import 'package:evetick_organizer/features/event_staff/presentation/widgets/staff_labels.dart';
 import 'package:evetick_organizer/features/event_staff/presentation/widgets/staff_permission_tile.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,13 +67,14 @@ class _AddStaffMemberSheetState extends State<AddStaffMemberSheet> {
 
   Future<void> _submit() async {
     FocusScope.of(context).unfocus();
+    final l10n = AppLocalizations.of(context)!;
 
     final isFormValid = _formKey.currentState!.validate();
     final hasPermissions = _permissions.isNotEmpty;
     setState(() {
       _permissionsError = hasPermissions
           ? null
-          : 'Select at least one permission';
+          : l10n.staffPermissionRequired;
       _submitError = null;
     });
     if (!isFormValid || !hasPermissions) return;
@@ -90,15 +93,14 @@ class _AddStaffMemberSheetState extends State<AddStaffMemberSheet> {
       return;
     }
 
-    final messenger = ScaffoldMessenger.of(context);
+    // Shown on the root overlay, so it stays after the sheet is closed.
+    AppToast.success(context, l10n.staffInvitationSent(email.toLowerCase()));
     Navigator.of(context).pop();
-    messenger.showSnackBar(
-      SnackBar(content: Text('Invitation sent to ${email.toLowerCase()}')),
-    );
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
       child: Column(
@@ -126,44 +128,44 @@ class _AddStaffMemberSheetState extends State<AddStaffMemberSheet> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppTextFormField(
-                      label: 'Full Name',
-                      hintText: 'e.g. Alex Johnson',
+                      label: l10n.staffFullName,
+                      hintText: l10n.staffFullNameHint,
                       controller: _nameController,
                       keyboardType: TextInputType.name,
                       validator: (value) =>
                           (value == null || value.trim().length < 2)
-                          ? 'Please enter the full name'
+                          ? l10n.staffFullNameRequired
                           : null,
                     ),
                     verticalSpace(20),
                     AppTextFormField(
-                      label: 'Email Address',
-                      hintText: 'alex@example.com',
+                      label: l10n.staffEmailAddress,
+                      hintText: l10n.staffEmailHint,
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                       validator: (value) {
                         final email = value?.trim() ?? '';
-                        if (email.isEmpty) return 'Please enter an email';
+                        if (email.isEmpty) return l10n.staffEmailRequired;
                         if (!AppRegex.isEmailValid(email)) {
-                          return 'Please enter a valid email';
+                          return l10n.staffEmailInvalid;
                         }
                         return null;
                       },
                     ),
                     verticalSpace(20),
                     AppDropdownFormField<StaffRole>(
-                      label: 'Assign Role',
-                      hintText: 'Select a role',
+                      label: l10n.staffAssignRole,
+                      hintText: l10n.staffSelectRole,
                       value: _role,
                       items: StaffRole.values,
-                      itemLabel: (role) => role.label,
+                      itemLabel: (role) => role.label(l10n),
                       onChanged: _onRoleChanged,
                       validator: (value) =>
-                          value == null ? 'Please select a role' : null,
+                          value == null ? l10n.staffRoleRequired : null,
                     ),
                     verticalSpace(24),
                     Text(
-                      'PERMISSIONS',
+                      l10n.staffPermissions,
                       style: TextStyle(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w700,
@@ -290,7 +292,7 @@ class _SendInvitationButton extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        'Send Invitation',
+                        AppLocalizations.of(context)!.staffSendInvitation,
                         style: TextStyles.font16WhiteBold(
                           context,
                         ).copyWith(color: ColorsManager.defaultWhite),

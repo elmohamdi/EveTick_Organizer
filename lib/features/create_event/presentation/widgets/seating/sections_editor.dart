@@ -5,6 +5,7 @@ import 'package:evetick_organizer/features/create_event/presentation/widgets/sea
 import 'package:evetick_organizer/features/create_event/presentation/widgets/seating/venue_section_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 /// The full "Sections" layout editor: a list of [VenueSectionCard]s plus
 /// an "Add Section" action. [BuildSeatingDetails] owns the [sections]
@@ -57,7 +58,7 @@ class SectionsEditor extends StatelessWidget {
                 ),
                 horizontalSpace(8),
                 Text(
-                  'Add Section',
+                  AppLocalizations.of(context)!.createEventAddSection,
                   style: TextStyles.font16LightGrayRegular(context),
                 ),
               ],

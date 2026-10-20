@@ -15,6 +15,7 @@ import 'package:evetick_organizer/features/event_staff/presentation/widgets/even
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 /// Requires an [EventDashboardCubit] and an [EventStaffCubit] above it.
 class EventDashboardScreen extends StatelessWidget {
@@ -45,7 +46,7 @@ class EventDashboardScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          'Event Dashboard',
+          AppLocalizations.of(context)!.dashboardTitle,
           style: TextStyles.font18WhiteBold(context),
         ),
       ),
@@ -93,11 +94,11 @@ class _DashboardContent extends StatelessWidget {
         verticalSpace(16),
         DashboardStatsGrid(dashboard: dashboard),
         verticalSpace(24),
-        Text('Ticket Sales', style: TextStyles.font18WhiteBold(context)),
+        Text(AppLocalizations.of(context)!.dashboardTicketSales, style: TextStyles.font18WhiteBold(context)),
         verticalSpace(12),
         if (dashboard.tiers.isEmpty)
           Text(
-            'This event has no ticket tiers.',
+            AppLocalizations.of(context)!.dashboardNoTiers,
             style: TextStyles.font14LightGrayRegular(context),
           )
         else
@@ -136,7 +137,7 @@ class _ErrorView extends StatelessWidget {
             ),
             verticalSpace(16),
             OutlineAppTextButton(
-              buttonText: 'Try again',
+              buttonText: AppLocalizations.of(context)!.commonTryAgain,
               buttonWidth: 160.w,
               onPressed: onRetry,
             ),

@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 /// Requires a [TicketScanCubit] above it in the tree.
 class TicketScanScreen extends StatefulWidget {
@@ -80,10 +81,11 @@ class _TicketScanScreenState extends State<TicketScanScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final eventSubtitle = context.select((TicketScanCubit cubit) {
       final state = cubit.state;
       return state.selectedEvent?.title ??
-          (state.isLoadingEvents ? 'Loading events...' : 'Select an event');
+          (state.isLoadingEvents ? l10n.scanLoadingEvents : l10n.scanSelectAnEvent);
     });
     final isScanning = context.select(
       (TicketScanCubit cubit) => !cubit.state.isProcessing,

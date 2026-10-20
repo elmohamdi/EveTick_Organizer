@@ -126,9 +126,11 @@ class ProfileScreen extends StatelessWidget {
                   firstIconPath: 'assets/icons/help_center.svg',
                   secondIconPath: 'assets/icons/terms_of_service.svg',
                   firstTitle: AppLocalizations.of(context)!.profileHelpCenter,
+                  firstAction: () => context.pushNamed(Routes.helpSupportScreen),
                   secondTitle: AppLocalizations.of(
                     context,
                   )!.profileTermsOfService,
+                  secondAction: () => context.pushNamed(Routes.termsOfServiceScreen),
                 ),
                 verticalSpace(24),
                 OutlineAppTextButton(

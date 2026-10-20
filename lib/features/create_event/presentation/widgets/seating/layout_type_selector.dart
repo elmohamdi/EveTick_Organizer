@@ -5,6 +5,7 @@ import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/features/create_event/data/models/venue_layout_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 /// Lets the organizer pick how this event's venue is laid out.
 /// Add a new [_LayoutTab] entry here whenever a new [VenueLayoutType]
@@ -24,12 +25,10 @@ class LayoutTypeSelector extends StatelessWidget {
     _LayoutTab(
       type: VenueLayoutType.seating,
       icon: Icons.event_seat_outlined,
-      label: 'Seating',
     ),
     _LayoutTab(
       type: VenueLayoutType.sections,
       icon: Icons.grid_view_rounded,
-      label: 'Sections',
     ),
   ];
 
@@ -63,12 +62,10 @@ class _LayoutTab {
   const _LayoutTab({
     required this.type,
     required this.icon,
-    required this.label,
-  }); 
+  });
 
   final VenueLayoutType type;
   final IconData icon;
-  final String label;
 }
 
 class _LayoutTabButton extends StatelessWidget {
@@ -106,7 +103,9 @@ class _LayoutTabButton extends StatelessWidget {
             Icon(tab.icon, size: 18.sp, color: color),
             horizontalSpace(6),
             Text(
-              tab.label,
+              tab.type == VenueLayoutType.seating
+                  ? AppLocalizations.of(context)!.createEventLayoutSeating
+                  : AppLocalizations.of(context)!.createEventLayoutSections,
               style: TextStyles.font14IndicatorLabel(context, color),
             ),
           ],

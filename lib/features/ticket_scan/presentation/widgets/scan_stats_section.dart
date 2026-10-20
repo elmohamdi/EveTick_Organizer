@@ -5,7 +5,8 @@ import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/scan
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
+import 'package:evetick_organizer/core/helpers/formatters.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class ScanStatsSection extends StatelessWidget {
   const ScanStatsSection({super.key});
@@ -18,15 +19,14 @@ class ScanStatsSection extends StatelessWidget {
     final totalExpected = context.select(
       (TicketScanCubit cubit) => cubit.state.totalExpected,
     );
-    final formatter = NumberFormat.decimalPattern('en');
 
     return Row(
       children: [
         Expanded(
           child: ScanStatCard(
-            value: formatter.format(scanned),
+            value: Formatters.number(context, scanned),
             valueColor: ColorsManager.orange,
-            label: 'SCANNED',
+            label: AppLocalizations.of(context)!.scanStatScanned,
           ),
         ),
         Container(
@@ -36,9 +36,9 @@ class ScanStatsSection extends StatelessWidget {
         ),
         Expanded(
           child: ScanStatCard(
-            value: formatter.format(totalExpected),
+            value: Formatters.number(context, totalExpected),
             valueColor: context.colors.white,
-            label: 'TOTAL EXPECTED',
+            label: AppLocalizations.of(context)!.scanStatTotalExpected,
           ),
         ),
       ],

@@ -2,6 +2,7 @@ import 'package:evetick_organizer/core/helpers/extentions.dart';
 import 'package:evetick_organizer/core/routing/routes.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
 import 'package:evetick_organizer/core/theming/text_styles.dart';
+import 'package:evetick_organizer/core/widgets/app_toast/app_toast.dart';
 import 'package:evetick_organizer/features/create_event/data/models/event_model.dart';
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_state.dart';
@@ -10,6 +11,7 @@ import 'package:evetick_organizer/features/create_event/presentation/screens/bui
 import 'package:evetick_organizer/features/create_event/presentation/screens/build_seating_details.dart';
 import 'package:evetick_organizer/features/create_event/presentation/screens/build_ticket_details.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/event_phase_indicator.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -88,10 +90,10 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
             },
           );
         } else if (state.status == CreateEventStatus.failure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.errorMessage ?? 'حصل خطأ أثناء نشر الحدث'),
-            ),
+          AppToast.error(
+            context,
+            state.errorMessage ??
+                AppLocalizations.of(context)!.createEventPublishFailed,
           );
         }
       },
@@ -100,7 +102,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
         return Scaffold(
           appBar: AppBar(
             title: Text(
-              'Create Event',
+              AppLocalizations.of(context)!.createEventScreenTitle,
               style: TextStyles.font18WhiteBold(context),
             ),
             centerTitle: true,

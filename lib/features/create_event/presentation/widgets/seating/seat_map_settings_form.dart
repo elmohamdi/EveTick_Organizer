@@ -4,6 +4,7 @@ import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/core/widgets/number_stepper_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 /// Rows / seats-per-row controls for a [VenueLayoutType.seating] layout.
 /// Purely presentational - [BuildSeatingDetails] owns the actual numbers
@@ -38,13 +39,13 @@ class SeatMapSettingsForm extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Map Settings', style: TextStyles.font16WhiteBold(context)),
+          Text(AppLocalizations.of(context)!.createEventMapSettings, style: TextStyles.font16WhiteBold(context)),
           verticalSpace(16),
           Row(
             children: [
               Expanded(
                 child: NumberStepperField(
-                  label: 'Rows',
+                  label: AppLocalizations.of(context)!.createEventRows,
                   value: rows,
                   min: _minRows,
                   max: _maxRows,
@@ -54,7 +55,7 @@ class SeatMapSettingsForm extends StatelessWidget {
               horizontalSpace(12),
               Expanded(
                 child: NumberStepperField(
-                  label: 'Seats per Row',
+                  label: AppLocalizations.of(context)!.createEventSeatsPerRow,
                   value: seatsPerRow,
                   min: _minSeatsPerRow,
                   max: _maxSeatsPerRow,

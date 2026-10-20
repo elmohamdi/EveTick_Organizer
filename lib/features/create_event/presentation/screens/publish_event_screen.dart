@@ -7,6 +7,7 @@ import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/published_event_info_card.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class PublishEventScreen extends StatelessWidget {
   final String eventTitle;
@@ -48,7 +49,7 @@ class PublishEventScreen extends StatelessWidget {
               ),
               verticalSpace(32),
               Text(
-                'Congratulations!',
+                AppLocalizations.of(context)!.createEventCongrats,
                 style: TextStyles.font24WhiteBold(context).copyWith(
                   fontSize: 28.sp,
                 ),
@@ -62,15 +63,15 @@ class PublishEventScreen extends StatelessWidget {
                     height: 1.5,
                   ),
                   children: [
-                    const TextSpan(text: 'Your event is now '),
+                    TextSpan(text: AppLocalizations.of(context)!.createEventPublishedIntro),
                     TextSpan(
-                      text: 'UnderReview!\n',
+                      text: AppLocalizations.of(context)!.createEventPublishedStatus,
                       style: TextStyles.font16WhiteRegular(context).copyWith(
                         color: ColorsManager.orange,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const TextSpan(text: 'please wait for our respond.'),
+                    TextSpan(text: AppLocalizations.of(context)!.createEventPublishedWait),
                   ],
                 ),
               ),
@@ -97,7 +98,7 @@ class PublishEventScreen extends StatelessWidget {
                     predicate: (route) => false,
                   ),
                   child: Text(
-                    'Go To Home',
+                    AppLocalizations.of(context)!.createEventGoHome,
                     style: TextStyles.font16WhiteMid(context),
                   ),
                 ),

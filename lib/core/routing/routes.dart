@@ -16,4 +16,7 @@ class Routes {
   static const String publishEventScreen = '/publishEventScreen';
   static const String ticketScanScreen = '/ticketScanScreen';
   static const String eventDashboardScreen = '/eventDashboardScreen';
+  static const String helpSupportScreen = '/helpSupportScreen';
+  static const String sendMessageScreen = '/sendMessageScreen';
+  static const String termsOfServiceScreen = '/termsOfServiceScreen';
 }

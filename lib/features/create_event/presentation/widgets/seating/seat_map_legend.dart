@@ -4,6 +4,7 @@ import 'package:evetick_organizer/core/theming/extensions/build_context_extensio
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 /// Small colour-key row shown under the seat grid, explaining what each
 /// seat colour means.
@@ -15,9 +16,9 @@ class SeatMapLegend extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        _LegendItem(color: ColorsManager.chairColor, label: 'Available'),
+        _LegendItem(color: ColorsManager.chairColor, label: AppLocalizations.of(context)!.createEventSeatAvailable),
         horizontalSpace(20),
-        _LegendItem(color: context.colors.lightBlue, label: 'Unavailable'),
+        _LegendItem(color: context.colors.lightBlue, label: AppLocalizations.of(context)!.createEventSeatUnavailable),
       ],
     );
   }

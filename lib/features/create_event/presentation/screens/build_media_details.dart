@@ -1,7 +1,9 @@
 import 'package:evetick_organizer/core/helpers/spacing.dart';
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/core/widgets/app_text_form_field.dart';
+import 'package:evetick_organizer/core/widgets/app_toast/app_toast.dart';
 import 'package:evetick_organizer/core/widgets/filled_app_text_button.dart';
+import 'package:evetick_organizer/features/create_event/helpers/persist_picked_image.dart';
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/cover_image_picker.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/gallery_photo_slot.dart';
@@ -9,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 const int _maxGalleryPhotos = 5;
 
@@ -45,11 +48,13 @@ class _BuildMediaDetailsState extends State<BuildMediaDetails> {
     );
 
     if (image == null) return;
+    final saved = await persistPickedImage(image);
+    if (!mounted) return;
 
     setState(() {
-      coverImage = image;
+      coverImage = saved;
     });
-    context.read<CreateEventCubit>().updateEventCoverImage(image);
+    context.read<CreateEventCubit>().updateEventCoverImage(saved);
   }
 
   Future<void> _pickGalleryPhoto(int index) async {
@@ -59,9 +64,11 @@ class _BuildMediaDetailsState extends State<BuildMediaDetails> {
     );
 
     if (image == null) return;
+    final saved = await persistPickedImage(image);
+    if (!mounted) return;
 
     setState(() {
-      galleryPhotos[index] = image;
+      galleryPhotos[index] = saved;
     });
     context.read<CreateEventCubit>().updateEventGalleryPhotos(
       galleryPhotos.whereType<XFile>().toList(),
@@ -80,9 +87,7 @@ class _BuildMediaDetailsState extends State<BuildMediaDetails> {
     final bool isValid = _formKey.currentState?.validate() ?? false;
 
     if (coverImage == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please upload a cover image')),
-      );
+      AppToast.error(context, AppLocalizations.of(context)!.createEventCoverRequired);
       return;
     }
 
@@ -100,23 +105,23 @@ class _BuildMediaDetailsState extends State<BuildMediaDetails> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Media Files', style: TextStyles.font24OrangeBold),
+            Text(AppLocalizations.of(context)!.createEventMediaTitle, style: TextStyles.font24OrangeBold),
             verticalSpace(4),
             Text(
-              'Add visuals to attract more attendees',
+              AppLocalizations.of(context)!.createEventMediaSubtitle,
               style: TextStyles.font16Gray3Regular,
             ),
 
             verticalSpace(24),
 
-            Text('Cover Image', style: TextStyles.font16WhiteRegular(context)),
+            Text(AppLocalizations.of(context)!.createEventCoverImage, style: TextStyles.font16WhiteRegular(context)),
             verticalSpace(8),
             CoverImagePicker(imagePath: coverImage, onTap: _pickCoverImage),
 
             verticalSpace(24),
 
             Text(
-              'Gallery Photos (Optional)',
+              AppLocalizations.of(context)!.createEventGalleryPhotos,
               style: TextStyles.font16WhiteRegular(context),
             ),
             verticalSpace(8),
@@ -144,7 +149,7 @@ class _BuildMediaDetailsState extends State<BuildMediaDetails> {
             ),
             verticalSpace(8),
             Text(
-              'maximum $_maxGalleryPhotos photos, up to 5MB each.',
+              AppLocalizations.of(context)!.createEventGalleryLimit(_maxGalleryPhotos),
               style: TextStyles.font14Gray3Regular,
             ),
 
@@ -155,7 +160,7 @@ class _BuildMediaDetailsState extends State<BuildMediaDetails> {
                 context.read<CreateEventCubit>().updateDescription(value);
               },
               hintText:
-                  'Tell your attendees what to expect this amazing event...',
+                  AppLocalizations.of(context)!.createEventDescriptionHint,
               controller: descriptionController,
               maxLines: 5,
               maxLength: 2000,
@@ -165,7 +170,7 @@ class _BuildMediaDetailsState extends State<BuildMediaDetails> {
             verticalSpace(32),
 
             FilledAppTextButton(
-              buttonText: 'Next Step',
+              buttonText: AppLocalizations.of(context)!.createEventNextStep,
               onPressed: _onNextStepPressed,
             ),
 

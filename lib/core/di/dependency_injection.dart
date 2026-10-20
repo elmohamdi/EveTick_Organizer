@@ -20,6 +20,13 @@ import 'package:evetick_organizer/features/pending_events/data/repositories/pend
 import 'package:evetick_organizer/features/pending_events/logic/cubit/pending_events_cubit.dart';
 import 'package:evetick_organizer/features/staff_access/data/repositories/staff_access_repository.dart';
 import 'package:evetick_organizer/features/staff_access/logic/cubit/staff_invites_cubit.dart';
+import 'package:evetick_organizer/features/support/data/repositories/support_repository.dart';
+import 'package:evetick_organizer/features/support/data/repositories/support_repository_impl.dart';
+import 'package:evetick_organizer/features/support/logic/help_support_cubit/help_support_cubit.dart';
+import 'package:evetick_organizer/features/support/logic/send_message_cubit/send_message_cubit.dart';
+import 'package:evetick_organizer/features/terms/data/repositories/terms_repository.dart';
+import 'package:evetick_organizer/features/terms/data/repositories/terms_repository_impl.dart';
+import 'package:evetick_organizer/features/terms/logic/cubit/terms_cubit.dart';
 import 'package:evetick_organizer/features/ticket_scan/data/repositories/ticket_scan_repository.dart';
 import 'package:evetick_organizer/features/ticket_scan/data/repositories/ticket_scan_repository_impl.dart';
 import 'package:evetick_organizer/features/ticket_scan/logic/cubit/ticket_scan_cubit.dart';
@@ -35,6 +42,8 @@ import 'package:evetick_organizer/features/onboarding/presentation/cubit/onboard
 import 'package:evetick_organizer/features/profile/data/profile_repository.dart';
 import 'package:evetick_organizer/features/profile/logic/profile_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'package:get_it/get_it.dart';
 
@@ -157,4 +166,26 @@ Future<void> setupGetIt() async {
       getIt<ScanFeedbackService>(),
     ),
   );
+
+  // help & support (organizer FAQs + contact support)
+  getIt.registerLazySingleton<SupportRepository>(
+    () => SupportRepositoryImpl(
+      firestore: FirebaseFirestore.instance,
+      auth: FirebaseAuth.instance,
+      storage: FirebaseStorage.instance,
+      picker: ImagePicker(),
+    ),
+  );
+  getIt.registerFactory<HelpSupportCubit>(
+    () => HelpSupportCubit(getIt<SupportRepository>()),
+  );
+  getIt.registerFactory<SendMessageCubit>(
+    () => SendMessageCubit(getIt<SupportRepository>()),
+  );
+
+  // terms of service (read-only)
+  getIt.registerLazySingleton<TermsRepository>(
+    () => TermsRepositoryImpl(firestore: FirebaseFirestore.instance),
+  );
+  getIt.registerFactory<TermsCubit>(() => TermsCubit(getIt<TermsRepository>()));
 }

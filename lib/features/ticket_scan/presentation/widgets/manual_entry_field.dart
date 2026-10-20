@@ -2,6 +2,7 @@ import 'package:evetick_organizer/core/theming/colors.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class ManualEntryField extends StatelessWidget {
   final TextEditingController controller;
@@ -43,7 +44,7 @@ class ManualEntryField extends StatelessWidget {
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.symmetric(horizontal: 8.w),
                 border: InputBorder.none,
-                hintText: 'Enter ticket code manually',
+                hintText: AppLocalizations.of(context)!.scanManualHint,
                 hintStyle: TextStyle(
                   color: context.colors.lightGray,
                   fontSize: 14.sp,

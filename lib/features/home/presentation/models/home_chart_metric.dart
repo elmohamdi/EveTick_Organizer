@@ -1,5 +1,6 @@
 import 'package:evetick_organizer/core/helpers/formatters.dart';
 import 'package:evetick_organizer/features/event_dashboard/data/models/event_dashboard.dart';
+import 'package:flutter/widgets.dart';
 
 /// What the "Sales by Event" chart measures.
 enum HomeChartMetric {
@@ -15,8 +16,8 @@ enum HomeChartMetric {
     HomeChartMetric.tickets => event.ticketsSold.toDouble(),
   };
 
-  String format(double value) => switch (this) {
-    HomeChartMetric.revenue => Formatters.money(value),
-    HomeChartMetric.tickets => Formatters.number(value),
+  String format(BuildContext context, double value) => switch (this) {
+    HomeChartMetric.revenue => Formatters.money(context, value),
+    HomeChartMetric.tickets => Formatters.number(context, value),
   };
 }

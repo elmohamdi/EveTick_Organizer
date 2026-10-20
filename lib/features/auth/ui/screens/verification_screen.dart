@@ -8,6 +8,7 @@ import 'package:evetick_organizer/features/auth/ui/widgets/verification_widgets/
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 
 class VerificationScreen extends StatelessWidget {
@@ -30,7 +31,7 @@ class VerificationScreen extends StatelessWidget {
                       size: 24.sp,
                     ),
                     horizontalSpace(121),
-                    Text('Verify', style: TextStyles.font18WhiteBold(context)),
+                    Text(AppLocalizations.of(context)!.authVerifyTitle, style: TextStyles.font18WhiteBold(context)),
                   ],
                 ),
                 verticalSpace(56),
@@ -39,7 +40,7 @@ class VerificationScreen extends StatelessWidget {
                   child: SvgPicture.asset('assets/svgs/dark_logo.svg'),
                 ),
                 verticalSpace(56),
-                Text('Verifiaction Code', style: TextStyles.font18WhiteBold(context)),
+                Text(AppLocalizations.of(context)!.authVerificationCodeLabel, style: TextStyles.font18WhiteBold(context)),
                 verticalSpace(16),
                 CheckEmailText(),
                 verticalSpace(56),

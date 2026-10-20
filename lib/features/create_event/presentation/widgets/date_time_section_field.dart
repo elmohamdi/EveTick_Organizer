@@ -2,6 +2,7 @@ import 'package:evetick_organizer/core/helpers/spacing.dart';
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/core/widgets/app_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class DateTimeSectionField extends StatelessWidget {
   const DateTimeSectionField({
@@ -35,7 +36,7 @@ class DateTimeSectionField extends StatelessWidget {
           children: [
             Expanded(
               child: AppTextFormField(
-                hintText: 'mm/dd/yyyy',
+                hintText: AppLocalizations.of(context)!.createEventDateHint,
                 readOnly: true,
                 controller: dateController,
                 validator: _requiredValidator,

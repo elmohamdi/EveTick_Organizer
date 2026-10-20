@@ -738,7 +738,7 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get profileSupportSection => 'Support';
+  String get profileSupportSection => 'الدعم';
 
   @override
   String get profileAccount => 'الحساب';
@@ -1189,4 +1189,682 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get onboardingDashboardSubtitle => 'احصل على نظرة عامة فورية على فعالياتك وتذاكرك ومبيعاتك وأداء موظفيك.';
+
+  @override
+  String get supportHelpTitle => 'المساعدة والدعم';
+
+  @override
+  String get supportSearchHint => 'كيف يمكننا مساعدتك؟';
+
+  @override
+  String get supportClearSearch => 'مسح';
+
+  @override
+  String get supportCategoriesTitle => 'الأقسام';
+
+  @override
+  String get supportFrequentQuestionsTitle => 'الأسئلة الشائعة';
+
+  @override
+  String get supportCategoryAccount => 'الحساب';
+
+  @override
+  String get supportCategoryEvents => 'الفعاليات';
+
+  @override
+  String get supportCategoryTicketing => 'التذاكر والمسح';
+
+  @override
+  String get supportCategoryPayouts => 'الأرباح والمدفوعات';
+
+  @override
+  String get supportCategoryTechnical => 'مشكلة تقنية';
+
+  @override
+  String get supportCategoryFeedback => 'ملاحظات واقتراحات';
+
+  @override
+  String get supportNoResultsTitle => 'لا توجد نتائج';
+
+  @override
+  String get supportNoResultsSubtitle => 'جرّب كلمات مختلفة أو أرسل رسالة إلى فريق الدعم.';
+
+  @override
+  String get supportRetry => 'حاول مرة أخرى';
+
+  @override
+  String get supportStillNeedHelpTitle => 'هل ما زلت بحاجة إلى مساعدة؟';
+
+  @override
+  String get supportStillNeedHelpSubtitle => 'فريق الدعم متاح على مدار الساعة لمساعدتك في أي مشكلة.';
+
+  @override
+  String get supportContactSupport => 'تواصل مع الدعم';
+
+  @override
+  String get supportSendMessageTitle => 'أرسل لنا رسالة';
+
+  @override
+  String get supportWhatCanWeHelpWith => 'بماذا نستطيع مساعدتك؟';
+
+  @override
+  String get supportSelectCategory => 'اختر القسم';
+
+  @override
+  String get supportCategoryRequired => 'من فضلك اختر القسم';
+
+  @override
+  String get supportYourMessage => 'رسالتك';
+
+  @override
+  String get supportMessageHint => 'اشرح مشكلتك أو ملاحظاتك بالتفصيل هنا...';
+
+  @override
+  String get supportMessageRequired => 'من فضلك اكتب رسالتك';
+
+  @override
+  String get supportMessageTooShort => 'يجب ألا تقل رسالتك عن 10 أحرف';
+
+  @override
+  String get supportAttachmentsOptional => 'المرفقات (اختياري)';
+
+  @override
+  String get supportUploadScreenshot => 'ارفع لقطة شاشة';
+
+  @override
+  String get supportAttachmentHint => 'الصيغ المدعومة: PNG, JPG (الحد الأقصى 5 ميجابايت)';
+
+  @override
+  String get supportAttachmentRemove => 'إزالة';
+
+  @override
+  String get supportAttachmentUnsupported => 'يمكن رفع صور PNG وJPG فقط';
+
+  @override
+  String get supportAttachmentTooLarge => 'حجم هذه الصورة أكبر من 5 ميجابايت';
+
+  @override
+  String get supportAttachmentLimit => 'يمكنك إرفاق 3 لقطات شاشة كحد أقصى';
+
+  @override
+  String get supportAttachmentPickFailed => 'تعذر فتح الصورة، حاول مرة أخرى';
+
+  @override
+  String get supportNoticePrefix => 'يرد فريق الدعم عادةً خلال 24 ساعة. للمشكلات العاجلة أثناء الفعالية، يرجى الاطلاع على ';
+
+  @override
+  String get supportNoticeLink => 'قسم الأسئلة الشائعة';
+
+  @override
+  String get supportNoticeSuffix => '.';
+
+  @override
+  String get supportSendMessage => 'إرسال الرسالة';
+
+  @override
+  String get supportMessageSent => 'تم إرسال رسالتك! سنرد عليك خلال 24 ساعة.';
+
+  @override String staffInvitationsTitle(int count) => 'دعوات الفريق ($count)';
+  @override String get staffInvitationsCheckFailed => 'تعذر التحقق من دعواتك';
+  @override String get staffInvitationsRetry => 'إعادة المحاولة';
+  @override String staffInvitationAccepted(String eventTitle) => 'انضممت إلى "$eventTitle"';
+  @override String get staffInvitationDeclined => 'تم رفض الدعوة';
+  @override String staffInvitationInvitedAs(String name, String role) => 'دعاك $name كـ $role';
+  @override String get staffAccept => 'قبول';
+  @override String get staffDecline => 'رفض';
+  @override String get staffSectionTitle => 'الفريق';
+  @override String get staffAdd => 'إضافة';
+  @override String get staffLoadFailed => 'تعذر تحميل الفريق';
+  @override String get staffTryAgain => 'حاول مرة أخرى';
+  @override String get staffEmptyMessage => 'لا يوجد أعضاء فريق حتى الآن. ادعُ منظمًا مشاركًا أو موظف بوابة عبر البريد الإلكتروني وحدد صلاحياته.';
+  @override String get staffAddMember => 'إضافة عضو فريق';
+  @override String get staffCancelInvitationQuestion => 'إلغاء الدعوة؟';
+  @override String get staffRemoveMemberQuestion => 'إزالة عضو الفريق؟';
+  @override String staffCancelInvitationMessage(String email) => 'سيتم إلغاء الدعوة المرسلة إلى $email.';
+  @override String staffRemoveMemberMessage(String name) => 'سيفقد $name حق الوصول إلى هذه الفعالية.';
+  @override String get staffKeep => 'احتفاظ';
+  @override String get staffCancelInvitation => 'إلغاء الدعوة';
+  @override String get staffRemove => 'إزالة';
+  @override String get staffAddMemberTitle => 'إضافة عضو فريق';
+  @override String get staffFullName => 'الاسم الكامل';
+  @override String get staffFullNameHint => 'مثال: أحمد محمد';
+  @override String get staffFullNameRequired => 'من فضلك أدخل الاسم الكامل';
+  @override String get staffEmailAddress => 'البريد الإلكتروني';
+  @override String get staffEmailHint => 'alex@example.com';
+  @override String get staffEmailRequired => 'من فضلك أدخل البريد الإلكتروني';
+  @override String get staffEmailInvalid => 'من فضلك أدخل بريدًا إلكترونيًا صحيحًا';
+  @override String get staffAssignRole => 'تعيين الدور';
+  @override String get staffSelectRole => 'اختر دورًا';
+  @override String get staffRoleRequired => 'من فضلك اختر دورًا';
+  @override String get staffPermissions => 'الصلاحيات';
+  @override String get staffPermissionRequired => 'اختر صلاحية واحدة على الأقل';
+  @override String staffInvitationSent(String email) => 'تم إرسال الدعوة إلى $email';
+  @override String get staffSendInvitation => 'إرسال الدعوة';
+  @override String get staffPending => 'قيد الانتظار';
+  @override String get staffActive => 'نشط';
+  @override String get staffPermissionViewAnalytics => 'عرض التحليلات';
+  @override String get staffPermissionViewAnalyticsDescription => 'الوصول إلى تقارير ورسوم المبيعات';
+  @override String get staffPermissionScanTickets => 'مسح التذاكر';
+  @override String get staffPermissionScanTicketsDescription => 'استخدم تطبيق الهاتف لتسجيل الدخول';
+  @override String get staffPermissionEditEventDetails => 'تعديل تفاصيل الفعالية';
+  @override String get staffPermissionEditEventDetailsDescription => 'تغيير العنوان والجدول والوصف';
+  @override String get staffRoleCoOrganizer => 'منظم مشارك';
+  @override String get staffRoleManager => 'مدير';
+  @override String get staffRoleGateStaff => 'موظف بوابة';
+  @override String get staffRoleAnalyst => 'محلل';
+
+  @override
+  String get createEventScreenTitle => 'إنشاء حدث';
+
+  @override
+  String get createEventPhaseDetails => 'التفاصيل';
+
+  @override
+  String get createEventPhaseMedia => 'الوسائط';
+
+  @override
+  String get createEventPhaseSeating => 'المقاعد';
+
+  @override
+  String get createEventPhaseTickets => 'التذاكر';
+
+  @override
+  String get createEventPublishFailed => 'حدث خطأ أثناء نشر الحدث';
+
+  @override
+  String get createEventNextStep => 'الخطوة التالية';
+
+  @override
+  String get createEventTitleHint => 'اكتب اسماً جذاباً للحدث';
+
+  @override
+  String get createEventTitleLabel => 'عنوان الحدث';
+
+  @override
+  String get createEventTitleRequired => 'من فضلك أدخل عنوان الحدث';
+
+  @override
+  String get createEventCategoryLabel => 'الفئة';
+
+  @override
+  String get createEventCategoryHint => 'اختر فئة الحدث';
+
+  @override
+  String get createEventCategoryRequired => 'من فضلك اختر فئة';
+
+  @override
+  String get createEventStartDateTime => 'تاريخ ووقت البدء';
+
+  @override
+  String get createEventEndDateTime => 'تاريخ ووقت الانتهاء';
+
+  @override
+  String get createEventUrlLabel => 'رابط الحدث';
+
+  @override
+  String get createEventUrlHint => 'أدخل رابط الحدث (مثل رابط Zoom)';
+
+  @override
+  String get createEventUrlRequired => 'من فضلك أدخل رابط الحدث';
+
+  @override
+  String get createEventOnlineToggle => 'حدث عبر الإنترنت (افتراضي)';
+
+  @override
+  String get createEventSelectStart => 'من فضلك اختر تاريخ ووقت البدء';
+
+  @override
+  String get createEventSelectEnd => 'من فضلك اختر تاريخ ووقت الانتهاء';
+
+  @override
+  String get createEventLocationRequired => 'من فضلك أدخل موقع الحدث';
+
+  @override
+  String get createEventEndBeforeStart => 'يجب أن يكون تاريخ ووقت الانتهاء بعد تاريخ ووقت البدء';
+
+  @override
+  String get createEventAddressNotFound => 'تعذّر الحصول على العنوان من الموقع';
+
+  @override
+  String createEventLocationError(String error) {
+    return 'حدث خطأ أثناء تحديد الموقع: ${error}';
+  }
+
+  @override
+  String get createEventLocationLabel => 'موقع الحدث';
+
+  @override
+  String get createEventLocationHint => 'ابحث عن موقع أو أدخله';
+
+  @override
+  String get createEventDateHint => 'شهر/يوم/سنة';
+
+  @override
+  String get createEventCategorySports => 'الرياضة';
+
+  @override
+  String get createEventCategoryMusic => 'الموسيقى';
+
+  @override
+  String get createEventCategoryMedical => 'الطب';
+
+  @override
+  String get createEventCategoryMovies => 'الأفلام';
+
+  @override
+  String get createEventCategoryTechnology => 'التكنولوجيا';
+
+  @override
+  String get createEventCategoryBusiness => 'الأعمال';
+
+  @override
+  String get createEventCategoryEducation => 'التعليم';
+
+  @override
+  String get createEventCategoryEntertainment => 'الترفيه';
+
+  @override
+  String get createEventCategoryArtsCulture => 'الفنون والثقافة';
+
+  @override
+  String get createEventCategoryFoodDrink => 'الطعام والمشروبات';
+
+  @override
+  String get createEventCategoryHealthWellness => 'الصحة والعافية';
+
+  @override
+  String get createEventCategoryTravelAdventure => 'السفر والمغامرة';
+
+  @override
+  String get createEventCategoryGaming => 'الألعاب';
+
+  @override
+  String get createEventCategoryFashion => 'الأزياء';
+
+  @override
+  String get createEventCategoryNetworking => 'التواصل المهني';
+
+  @override
+  String get createEventCategoryWorkshops => 'ورش العمل';
+
+  @override
+  String get createEventCategoryConferences => 'المؤتمرات';
+
+  @override
+  String get createEventCategoryExhibitions => 'المعارض';
+
+  @override
+  String get createEventCategoryFestivals => 'المهرجانات';
+
+  @override
+  String get createEventCategoryCharitySocial => 'الأعمال الخيرية والاجتماعية';
+
+  @override
+  String get createEventMediaTitle => 'ملفات الوسائط';
+
+  @override
+  String get createEventMediaSubtitle => 'أضف صوراً لجذب المزيد من الحضور';
+
+  @override
+  String get createEventCoverImage => 'صورة الغلاف';
+
+  @override
+  String get createEventGalleryPhotos => 'صور المعرض (اختياري)';
+
+  @override
+  String createEventGalleryLimit(int max) {
+    return 'بحد أقصى ${max} صور، حتى 5 ميجابايت للصورة.';
+  }
+
+  @override
+  String get createEventDescriptionHint => 'أخبر الحضور بما يمكنهم توقعه في هذا الحدث الرائع...';
+
+  @override
+  String get createEventCoverRequired => 'من فضلك ارفع صورة الغلاف';
+
+  @override
+  String get createEventUploadCover => 'ارفع صورة الغلاف';
+
+  @override
+  String get createEventRecommendedSize => 'الحجم المُوصى به: 1200 × 675 بكسل';
+
+  @override
+  String get createEventVenueMap => 'خريطة المكان';
+
+  @override
+  String get createEventVenueMapSubtitle => 'اختر طريقة جلوس الحضور في هذا الحدث.';
+
+  @override
+  String get createEventContinueToTickets => 'المتابعة إلى التذاكر';
+
+  @override
+  String get createEventLayoutSeating => 'مقاعد';
+
+  @override
+  String get createEventLayoutSections => 'أقسام';
+
+  @override
+  String get createEventSeatAvailable => 'متاح';
+
+  @override
+  String get createEventSeatUnavailable => 'غير متاح';
+
+  @override
+  String get createEventAddSection => 'إضافة قسم';
+
+  @override
+  String get createEventScreenLabel => 'الشاشة';
+
+  @override
+  String get createEventWalkway => 'الممر';
+
+  @override
+  String get createEventMapSettings => 'إعدادات الخريطة';
+
+  @override
+  String get createEventRows => 'الصفوف';
+
+  @override
+  String get createEventSeatsPerRow => 'المقاعد في الصف';
+
+  @override
+  String get createEventSectionName => 'اسم القسم';
+
+  @override
+  String get createEventSectionNameHint => 'مثال: المسرح أ، منطقة VIP.';
+
+  @override
+  String get createEventSectionNameRequired => 'من فضلك أدخل اسم القسم';
+
+  @override
+  String get createEventCapacity => 'السعة';
+
+  @override
+  String get createEventCapacityHint => 'أدخل عدد الأماكن.';
+
+  @override
+  String get createEventRequired => 'مطلوب';
+
+  @override
+  String get createEventInvalid => 'غير صالح';
+
+  @override
+  String get createEventTicketTiers => 'فئات التذاكر';
+
+  @override
+  String get createEventActiveTierOne => 'فئة واحدة نشطة';
+
+  @override
+  String createEventActiveTiers(int count) {
+    return '${count} فئات نشطة';
+  }
+
+  @override
+  String get createEventAddTier => 'إضافة فئة جديدة';
+
+  @override
+  String get createEventPublish => 'نشر الحدث';
+
+  @override
+  String get createEventTicketName => 'اسم التذكرة';
+
+  @override
+  String get createEventTicketNameHint => 'أدخل اسم التذكرة.';
+
+  @override
+  String get createEventTicketNameRequired => 'من فضلك أدخل اسم التذكرة';
+
+  @override
+  String get createEventPrice => 'السعر';
+
+  @override
+  String get createEventPriceHint => 'أدخل السعر.';
+
+  @override
+  String get createEventInvalidPrice => 'سعر غير صالح';
+
+  @override
+  String get createEventQuantity => 'الكمية';
+
+  @override
+  String get createEventQuantityHint => 'أدخل كمية التذاكر.';
+
+  @override
+  String get createEventTicketDescription => 'الوصف';
+
+  @override
+  String get createEventTicketDescriptionHint => 'أدخل وصف التذكرة.';
+
+  @override
+  String get createEventPaymentMethods => 'طرق الدفع';
+
+  @override
+  String get createEventPaymentMethodsSubtitle => 'اختر أين تريد استلام أموالك.';
+
+  @override
+  String get createEventPaymentMethodRequired => 'من فضلك اختر طريقة دفع واحدة على الأقل';
+
+  @override
+  String get createEventWalletNumber => 'رقم المحفظة';
+
+  @override
+  String get createEventInstaPayField => 'عنوان InstaPay أو رقم الهاتف';
+
+  @override
+  String get createEventPayPalField => 'بريد PayPal الإلكتروني';
+
+  @override
+  String get createEventInstaPayHint => 'name@instapay أو 01XXXXXXXXX';
+
+  @override
+  String createEventPaymentEnterField(String field) {
+    return 'من فضلك أدخل ${field}';
+  }
+
+  @override
+  String get createEventInvalidVodafone => 'أدخل رقم فودافون كاش صالحاً';
+
+  @override
+  String get createEventInvalidOrange => 'أدخل رقم أورانج كاش صالحاً';
+
+  @override
+  String get createEventInvalidInstaPay => 'أدخل عنوان InstaPay أو رقم هاتف صالحاً';
+
+  @override
+  String get createEventInvalidEmail => 'أدخل بريداً إلكترونياً صالحاً';
+
+  @override
+  String get createEventCongrats => 'تهانينا!';
+
+  @override
+  String get createEventPublishedIntro => 'حدثك الآن ';
+
+  @override
+  String get createEventPublishedStatus => 'قيد المراجعة!';
+
+  @override
+  String get createEventPublishedWait => 'من فضلك انتظر ردنا.';
+
+  @override
+  String get createEventGoHome => 'الذهاب إلى الرئيسية';
+
+  @override
+  String get createEventStatusPending => 'قيد المراجعة';
+
+  @override
+  String get commonTryAgain => 'حاول مرة أخرى';
+
+  @override
+  String get commonRefresh => 'تحديث';
+
+  @override
+  String get commonStatusLive => 'مباشر';
+
+  @override
+  String get commonStatusPending => 'قيد المراجعة';
+
+  @override
+  String get commonNoEventsFound => 'لا توجد أحداث.';
+
+  @override
+  String get authOrDivider => 'أو';
+
+  @override
+  String get authCheckEmailCodeSent => 'تحقق من بريدك الإلكتروني للحصول على الرمز المرسل إلى ';
+
+  @override
+  String get authNameInvalid => 'من فضلك أدخل اسماً صالحاً';
+
+  @override
+  String get authEmailInvalid => 'من فضلك أدخل بريداً إلكترونياً صالحاً';
+
+  @override
+  String get authPasswordInvalid => 'من فضلك أدخل كلمة مرور صالحة';
+
+  @override
+  String get myEventsTitle => 'أحداثي';
+
+  @override
+  String get myEventsManageEvent => 'إدارة الحدث';
+
+  @override
+  String get myEventsNoTitle => 'بدون عنوان';
+
+  @override
+  String get homeOverviewTitle => 'نظرة عامة';
+
+  @override
+  String get homeSalesByEvent => 'المبيعات حسب الحدث';
+
+  @override
+  String get homeNoEventsTitle => 'لا توجد أحداث بعد';
+
+  @override
+  String get homeNoEventsSubtitle => 'أنشئ أول حدث لك وستظهر مبيعاته هنا.';
+
+  @override
+  String get homeStatRevenue => 'الإيرادات';
+
+  @override
+  String get homeStatAllEvents => 'كل الأحداث';
+
+  @override
+  String get homeStatTicketsSold => 'التذاكر المباعة';
+
+  @override
+  String homeStatSoldPercent(int percent, String capacity) {
+    return '${percent}% من ${capacity}';
+  }
+
+  @override
+  String get homeStatEvents => 'الأحداث';
+
+  @override
+  String homeStatLiveNow(String count) {
+    return '${count} مباشر الآن';
+  }
+
+  @override
+  String get homeStatCheckedIn => 'تم الدخول';
+
+  @override
+  String get homeStatNoTicketsSold => 'لم تُبع أي تذاكر بعد';
+
+  @override
+  String homeStatOfSold(String count) {
+    return 'من ${count} مباعة';
+  }
+
+  @override
+  String get dashboardTitle => 'لوحة تحكم الحدث';
+
+  @override
+  String get dashboardTicketSales => 'مبيعات التذاكر';
+
+  @override
+  String get dashboardNoTiers => 'هذا الحدث ليس به فئات تذاكر.';
+
+  @override
+  String get dashboardOnlineEvent => 'حدث عبر الإنترنت';
+
+  @override
+  String get dashboardNoLocation => 'لا يوجد موقع';
+
+  @override
+  String dashboardPerTicket(String price) {
+    return '${price} للتذكرة';
+  }
+
+  @override
+  String dashboardTierSold(String sold, String capacity) {
+    return 'تم بيع ${sold} من ${capacity}';
+  }
+
+  @override
+  String get dashboardTotalRevenue => 'إجمالي الإيرادات';
+
+  @override
+  String dashboardFromTickets(String count) {
+    return 'من ${count} تذكرة';
+  }
+
+  @override
+  String get scanTitle => 'مسح التذاكر';
+
+  @override
+  String get scanLoadingEvents => 'جارٍ تحميل الأحداث...';
+
+  @override
+  String get scanSelectAnEvent => 'اختر حدثاً';
+
+  @override
+  String get scanSelectEventTitle => 'اختر الحدث';
+
+  @override
+  String get scanTicketVerified => 'تم التحقق من التذكرة';
+
+  @override
+  String get scanAlreadyScanned => 'تم مسحها من قبل';
+
+  @override
+  String get scanInvalidTicket => 'تذكرة غير صالحة';
+
+  @override
+  String get scanCodeNotFound => 'الرمز غير موجود لهذا الحدث';
+
+  @override
+  String get scanFailed => 'فشل المسح';
+
+  @override
+  String get scanCameraPermission => 'إذن الكاميرا مطلوب لمسح التذاكر';
+
+  @override
+  String get scanCameraUnavailable => 'الكاميرا غير متاحة';
+
+  @override
+  String get scanEnterManuallyBelow => 'يمكنك إدخال رمز التذكرة يدوياً بالأسفل';
+
+  @override
+  String get scanInstruction => 'ضع رمز QR داخل الإطار';
+
+  @override
+  String get scanManualEntry => 'إدخال يدوي';
+
+  @override
+  String get scanManualHint => 'أدخل رمز التذكرة يدوياً';
+
+  @override
+  String get scanSound => 'الصوت';
+
+  @override
+  String get scanVibrate => 'الاهتزاز';
+
+  @override
+  String get scanStatScanned => 'تم مسحها';
+
+  @override
+  String get scanStatTotalExpected => 'إجمالي المتوقع';
+
+  @override
+  String get scanSelectEventFirst => 'اختر حدثاً قبل المسح';
 }

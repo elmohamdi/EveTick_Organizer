@@ -6,6 +6,7 @@ import 'package:evetick_organizer/features/create_event/data/models/seat_status.
 import 'package:evetick_organizer/features/create_event/presentation/widgets/seating/seat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 /// Renders a cinema / stadium style seat map with:
 ///
@@ -261,7 +262,7 @@ class _CurvedScreenBar extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: Text('SCREEN', style: TextStyles.font16WhiteBold(context)),
+          child: Text(AppLocalizations.of(context)!.createEventScreenLabel, style: TextStyles.font16WhiteBold(context)),
         ),
       ),
     );
@@ -311,7 +312,7 @@ class _WalkwaySeparator extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 8.w),
             child: Text(
-              'WALKWAY',
+              AppLocalizations.of(context)!.createEventWalkway,
               style: TextStyles.font12LightGrayRegular(
                 context,
               ).copyWith(fontSize: 8.sp, letterSpacing: 2),

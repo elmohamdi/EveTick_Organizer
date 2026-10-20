@@ -2,11 +2,13 @@ import 'package:evetick_organizer/core/helpers/spacing.dart';
 import 'package:evetick_organizer/core/theming/colors.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
 import 'package:evetick_organizer/core/theming/text_styles.dart';
+import 'package:evetick_organizer/core/widgets/app_toast/app_toast.dart';
 import 'package:evetick_organizer/features/event_staff/data/models/event_staff_member.dart';
 import 'package:evetick_organizer/features/event_staff/logic/cubit/event_staff_cubit.dart';
 import 'package:evetick_organizer/features/event_staff/logic/cubit/event_staff_state.dart';
 import 'package:evetick_organizer/features/event_staff/presentation/widgets/add_staff_member_sheet.dart';
 import 'package:evetick_organizer/features/event_staff/presentation/widgets/staff_member_tile.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,33 +37,38 @@ class EventStaffSection extends StatelessWidget {
     BuildContext context,
     EventStaffMember member,
   ) async {
+    final l10n = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (dialogContext) => AlertDialog(
         backgroundColor: dialogContext.colors.lightBlue,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
         title: Text(
-          member.isPending ? 'Cancel invitation?' : 'Remove staff member?',
+          member.isPending
+              ? l10n.staffCancelInvitationQuestion
+              : l10n.staffRemoveMemberQuestion,
           style: TextStyles.font18WhiteBold(dialogContext),
         ),
         content: Text(
           member.isPending
-              ? 'The invitation sent to ${member.email} will be cancelled.'
-              : '${member.name} will lose access to this event.',
+              ? l10n.staffCancelInvitationMessage(member.email)
+              : l10n.staffRemoveMemberMessage(member.name),
           style: TextStyles.font14LightGrayRegular(dialogContext),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(dialogContext).pop(false),
             child: Text(
-              'Keep',
+              l10n.staffKeep,
               style: TextStyles.font16LightGrayMid(dialogContext),
             ),
           ),
           TextButton(
             onPressed: () => Navigator.of(dialogContext).pop(true),
             child: Text(
-              member.isPending ? 'Cancel invitation' : 'Remove',
+              member.isPending
+                  ? l10n.staffCancelInvitation
+                  : l10n.staffRemove,
               style: TextStyles.font16RedMid,
             ),
           ),
@@ -72,21 +79,23 @@ class EventStaffSection extends StatelessWidget {
 
     final error = await context.read<EventStaffCubit>().removeStaff(member);
     if (error != null && context.mounted) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(error)));
+      AppToast.error(context, error);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
             Expanded(
-              child: Text('Staff', style: TextStyles.font18WhiteBold(context)),
+              child: Text(
+                l10n.staffSectionTitle,
+                style: TextStyles.font18WhiteBold(context),
+              ),
             ),
             TextButton.icon(
               onPressed: () => _openAddSheet(context),
@@ -95,7 +104,7 @@ class EventStaffSection extends StatelessWidget {
                 size: 18.sp,
                 color: ColorsManager.orange,
               ),
-              label: Text('Add', style: TextStyles.font12OrangeBold),
+              label: Text(l10n.staffAdd, style: TextStyles.font12OrangeBold),
             ),
           ],
         ),
@@ -115,16 +124,15 @@ class EventStaffSection extends StatelessWidget {
                 );
               case StaffLoadStatus.failure:
                 return _InfoCard(
-                  message: state.errorMessage ?? 'Could not load staff',
-                  actionLabel: 'Try again',
+                  message: state.errorMessage ?? l10n.staffLoadFailed,
+                  actionLabel: l10n.staffTryAgain,
                   onAction: () => context.read<EventStaffCubit>().loadStaff(),
                 );
               case StaffLoadStatus.success:
                 if (state.members.isEmpty) {
                   return _InfoCard(
-                    message:
-                        'No staff yet. Invite a co-organizer or gate staff by email and choose what they can do.',
-                    actionLabel: 'Add staff member',
+                    message: l10n.staffEmptyMessage,
+                    actionLabel: l10n.staffAddMember,
                     onAction: () => _openAddSheet(context),
                   );
                 }

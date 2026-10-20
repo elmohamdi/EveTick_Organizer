@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class ScanInstructionPill extends StatelessWidget {
-  final String text;
+  final String? text;
 
-  const ScanInstructionPill({
-    super.key,
-    this.text = 'Align QR code within the frame',
-  });
+  const ScanInstructionPill({super.key, this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +23,7 @@ class ScanInstructionPill extends StatelessWidget {
         ],
       ),
       child: Text(
-        text,
+        text ?? AppLocalizations.of(context)!.scanInstruction,
         textAlign: TextAlign.center,
         style: TextStyle(
           color: Colors.white,

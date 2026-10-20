@@ -4,16 +4,26 @@ import 'package:evetick_organizer/core/theming/extensions/build_context_extensio
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class EventPhaseIndicator extends StatelessWidget {
   final int currentStep;
 
   const EventPhaseIndicator({super.key, this.currentStep = 0});
 
-  static const List<String> labels = ['Details', 'Media', 'Seating', 'Tickets'];
+  static List<String> labelsOf(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return [
+      l10n.createEventPhaseDetails,
+      l10n.createEventPhaseMedia,
+      l10n.createEventPhaseSeating,
+      l10n.createEventPhaseTickets,
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
+    final labels = labelsOf(context);
     return Row(
       children: List.generate(labels.length, (index) {
         final bool isActive = index == currentStep;

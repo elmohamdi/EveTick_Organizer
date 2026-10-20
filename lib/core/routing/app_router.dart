@@ -25,6 +25,13 @@ import 'package:evetick_organizer/features/onboarding/presentation/ui/welcome_sc
 import 'package:evetick_organizer/features/profile/logic/profile_cubit.dart';
 import 'package:evetick_organizer/features/profile/ui/screens/edit_profile_screen.dart';
 import 'package:evetick_organizer/features/profile/ui/screens/profile_screen.dart';
+import 'package:evetick_organizer/features/support/data/models/support_category.dart';
+import 'package:evetick_organizer/features/support/logic/help_support_cubit/help_support_cubit.dart';
+import 'package:evetick_organizer/features/support/logic/send_message_cubit/send_message_cubit.dart';
+import 'package:evetick_organizer/features/support/presentation/screens/help_support_screen.dart';
+import 'package:evetick_organizer/features/support/presentation/screens/send_message_screen.dart';
+import 'package:evetick_organizer/features/terms/logic/cubit/terms_cubit.dart';
+import 'package:evetick_organizer/features/terms/presentation/screens/terms_of_service_screen.dart';
 import 'package:evetick_organizer/features/ticket_scan/logic/cubit/ticket_scan_cubit.dart';
 import 'package:evetick_organizer/features/ticket_scan/presentation/screens/ticket_scan_screen.dart';
 import 'package:evetick_organizer/main_container.dart';
@@ -154,6 +161,29 @@ class AppRouter {
               ),
             ],
             child: const EventDashboardScreen(),
+          ),
+        );
+      case Routes.helpSupportScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<HelpSupportCubit>()..loadFaqs(),
+            child: const HelpSupportScreen(),
+          ),
+        );
+      case Routes.sendMessageScreen:
+        // Optional: the topic picked on the Help & Support screen.
+        final initialCategory = arguments as SupportCategory?;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<SendMessageCubit>(),
+            child: SendMessageScreen(initialCategory: initialCategory),
+          ),
+        );
+      case Routes.termsOfServiceScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<TermsCubit>()..load(),
+            child: const TermsOfServiceScreen(),
           ),
         );
       default:

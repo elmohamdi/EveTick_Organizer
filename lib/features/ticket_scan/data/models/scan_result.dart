@@ -6,6 +6,7 @@ class ScanResult {
     this.attendeeName,
     this.ticketType,
     this.message,
+    this.noEventSelected = false,
   });
 
   final ScanStatus status;
@@ -14,4 +15,8 @@ class ScanResult {
 
   /// Human readable detail, used for [ScanStatus.error].
   final String? message;
+
+  /// The user tried to scan without choosing an event; the UI shows a
+  /// translated message for it.
+  final bool noEventSelected;
 }
