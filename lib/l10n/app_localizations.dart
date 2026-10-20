@@ -62,7 +62,8 @@ import 'app_localizations_en.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale)
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -70,7 +71,8 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -82,17 +84,18 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ar'),
-    Locale('en')
+    Locale('en'),
   ];
 
   /// No description provided for @commonSkip.
@@ -2567,9 +2570,1048 @@ abstract class AppLocalizations {
   /// **'Message sent! We will get back to you within 24 hours.'**
   String get supportMessageSent;
 
+  String staffInvitationsTitle(int count);
+  String get staffInvitationsCheckFailed;
+  String get staffInvitationsRetry;
+  String staffInvitationAccepted(String eventTitle);
+  String get staffInvitationDeclined;
+  String staffInvitationInvitedAs(String name, String role);
+  String get staffAccept;
+  String get staffDecline;
+  String get staffSectionTitle;
+  String get staffAdd;
+  String get staffLoadFailed;
+  String get staffTryAgain;
+  String get staffEmptyMessage;
+  String get staffAddMember;
+  String get staffCancelInvitationQuestion;
+  String get staffRemoveMemberQuestion;
+  String staffCancelInvitationMessage(String email);
+  String staffRemoveMemberMessage(String name);
+  String get staffKeep;
+  String get staffCancelInvitation;
+  String get staffRemove;
+  String get staffAddMemberTitle;
+  String get staffFullName;
+  String get staffFullNameHint;
+  String get staffFullNameRequired;
+  String get staffEmailAddress;
+  String get staffEmailHint;
+  String get staffEmailRequired;
+  String get staffEmailInvalid;
+  String get staffAssignRole;
+  String get staffSelectRole;
+  String get staffRoleRequired;
+  String get staffPermissions;
+  String get staffPermissionRequired;
+  String staffInvitationSent(String email);
+  String get staffSendInvitation;
+  String get staffPending;
+  String get staffActive;
+  String get staffPermissionViewAnalytics;
+  String get staffPermissionViewAnalyticsDescription;
+  String get staffPermissionScanTickets;
+  String get staffPermissionScanTicketsDescription;
+  String get staffPermissionEditEventDetails;
+  String get staffPermissionEditEventDetailsDescription;
+  String get staffRoleCoOrganizer;
+  String get staffRoleManager;
+  String get staffRoleGateStaff;
+  String get staffRoleAnalyst;
+
+  /// No description provided for @createEventScreenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Event'**
+  String get createEventScreenTitle;
+
+  /// No description provided for @createEventPhaseDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get createEventPhaseDetails;
+
+  /// No description provided for @createEventPhaseMedia.
+  ///
+  /// In en, this message translates to:
+  /// **'Media'**
+  String get createEventPhaseMedia;
+
+  /// No description provided for @createEventPhaseSeating.
+  ///
+  /// In en, this message translates to:
+  /// **'Seating'**
+  String get createEventPhaseSeating;
+
+  /// No description provided for @createEventPhaseTickets.
+  ///
+  /// In en, this message translates to:
+  /// **'Tickets'**
+  String get createEventPhaseTickets;
+
+  /// No description provided for @createEventPublishFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong while publishing the event'**
+  String get createEventPublishFailed;
+
+  /// No description provided for @createEventNextStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Next Step'**
+  String get createEventNextStep;
+
+  /// No description provided for @createEventTitleHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter catchy event name'**
+  String get createEventTitleHint;
+
+  /// No description provided for @createEventTitleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Event Title'**
+  String get createEventTitleLabel;
+
+  /// No description provided for @createEventTitleRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter event title'**
+  String get createEventTitleRequired;
+
+  /// No description provided for @createEventCategoryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get createEventCategoryLabel;
+
+  /// No description provided for @createEventCategoryHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select event category'**
+  String get createEventCategoryHint;
+
+  /// No description provided for @createEventCategoryRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a category'**
+  String get createEventCategoryRequired;
+
+  /// No description provided for @createEventStartDateTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Date & Time'**
+  String get createEventStartDateTime;
+
+  /// No description provided for @createEventEndDateTime.
+  ///
+  /// In en, this message translates to:
+  /// **'End Date & Time'**
+  String get createEventEndDateTime;
+
+  /// No description provided for @createEventUrlLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Event URL'**
+  String get createEventUrlLabel;
+
+  /// No description provided for @createEventUrlHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter event URL (e.g. Zoom link)'**
+  String get createEventUrlHint;
+
+  /// No description provided for @createEventUrlRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter event URL'**
+  String get createEventUrlRequired;
+
+  /// No description provided for @createEventOnlineToggle.
+  ///
+  /// In en, this message translates to:
+  /// **'Online event (Virtual)'**
+  String get createEventOnlineToggle;
+
+  /// No description provided for @createEventSelectStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a start date & time'**
+  String get createEventSelectStart;
+
+  /// No description provided for @createEventSelectEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select an end date & time'**
+  String get createEventSelectEnd;
+
+  /// No description provided for @createEventLocationRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter the event location'**
+  String get createEventLocationRequired;
+
+  /// No description provided for @createEventEndBeforeStart.
+  ///
+  /// In en, this message translates to:
+  /// **'End date & time must be after start date & time'**
+  String get createEventEndBeforeStart;
+
+  /// No description provided for @createEventAddressNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not get address from location'**
+  String get createEventAddressNotFound;
+
+  /// No description provided for @createEventLocationError.
+  ///
+  /// In en, this message translates to:
+  /// **'Error getting location: {error}'**
+  String createEventLocationError(String error);
+
+  /// No description provided for @createEventLocationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Event Location'**
+  String get createEventLocationLabel;
+
+  /// No description provided for @createEventLocationHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search or enter location'**
+  String get createEventLocationHint;
+
+  /// No description provided for @createEventDateHint.
+  ///
+  /// In en, this message translates to:
+  /// **'mm/dd/yyyy'**
+  String get createEventDateHint;
+
+  /// No description provided for @createEventCategorySports.
+  ///
+  /// In en, this message translates to:
+  /// **'Sports'**
+  String get createEventCategorySports;
+
+  /// No description provided for @createEventCategoryMusic.
+  ///
+  /// In en, this message translates to:
+  /// **'Music'**
+  String get createEventCategoryMusic;
+
+  /// No description provided for @createEventCategoryMedical.
+  ///
+  /// In en, this message translates to:
+  /// **'Medical'**
+  String get createEventCategoryMedical;
+
+  /// No description provided for @createEventCategoryMovies.
+  ///
+  /// In en, this message translates to:
+  /// **'Movies'**
+  String get createEventCategoryMovies;
+
+  /// No description provided for @createEventCategoryTechnology.
+  ///
+  /// In en, this message translates to:
+  /// **'Technology'**
+  String get createEventCategoryTechnology;
+
+  /// No description provided for @createEventCategoryBusiness.
+  ///
+  /// In en, this message translates to:
+  /// **'Business'**
+  String get createEventCategoryBusiness;
+
+  /// No description provided for @createEventCategoryEducation.
+  ///
+  /// In en, this message translates to:
+  /// **'Education'**
+  String get createEventCategoryEducation;
+
+  /// No description provided for @createEventCategoryEntertainment.
+  ///
+  /// In en, this message translates to:
+  /// **'Entertainment'**
+  String get createEventCategoryEntertainment;
+
+  /// No description provided for @createEventCategoryArtsCulture.
+  ///
+  /// In en, this message translates to:
+  /// **'Arts & Culture'**
+  String get createEventCategoryArtsCulture;
+
+  /// No description provided for @createEventCategoryFoodDrink.
+  ///
+  /// In en, this message translates to:
+  /// **'Food & Drink'**
+  String get createEventCategoryFoodDrink;
+
+  /// No description provided for @createEventCategoryHealthWellness.
+  ///
+  /// In en, this message translates to:
+  /// **'Health & Wellness'**
+  String get createEventCategoryHealthWellness;
+
+  /// No description provided for @createEventCategoryTravelAdventure.
+  ///
+  /// In en, this message translates to:
+  /// **'Travel & Adventure'**
+  String get createEventCategoryTravelAdventure;
+
+  /// No description provided for @createEventCategoryGaming.
+  ///
+  /// In en, this message translates to:
+  /// **'Gaming'**
+  String get createEventCategoryGaming;
+
+  /// No description provided for @createEventCategoryFashion.
+  ///
+  /// In en, this message translates to:
+  /// **'Fashion'**
+  String get createEventCategoryFashion;
+
+  /// No description provided for @createEventCategoryNetworking.
+  ///
+  /// In en, this message translates to:
+  /// **'Networking'**
+  String get createEventCategoryNetworking;
+
+  /// No description provided for @createEventCategoryWorkshops.
+  ///
+  /// In en, this message translates to:
+  /// **'Workshops'**
+  String get createEventCategoryWorkshops;
+
+  /// No description provided for @createEventCategoryConferences.
+  ///
+  /// In en, this message translates to:
+  /// **'Conferences'**
+  String get createEventCategoryConferences;
+
+  /// No description provided for @createEventCategoryExhibitions.
+  ///
+  /// In en, this message translates to:
+  /// **'Exhibitions'**
+  String get createEventCategoryExhibitions;
+
+  /// No description provided for @createEventCategoryFestivals.
+  ///
+  /// In en, this message translates to:
+  /// **'Festivals'**
+  String get createEventCategoryFestivals;
+
+  /// No description provided for @createEventCategoryCharitySocial.
+  ///
+  /// In en, this message translates to:
+  /// **'Charity & Social'**
+  String get createEventCategoryCharitySocial;
+
+  /// No description provided for @createEventMediaTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Media Files'**
+  String get createEventMediaTitle;
+
+  /// No description provided for @createEventMediaSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add visuals to attract more attendees'**
+  String get createEventMediaSubtitle;
+
+  /// No description provided for @createEventCoverImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Cover Image'**
+  String get createEventCoverImage;
+
+  /// No description provided for @createEventGalleryPhotos.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallery Photos (Optional)'**
+  String get createEventGalleryPhotos;
+
+  /// No description provided for @createEventGalleryLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'maximum {max} photos, up to 5MB each.'**
+  String createEventGalleryLimit(int max);
+
+  /// No description provided for @createEventDescriptionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell your attendees what to expect this amazing event...'**
+  String get createEventDescriptionHint;
+
+  /// No description provided for @createEventCoverRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please upload a cover image'**
+  String get createEventCoverRequired;
+
+  /// No description provided for @createEventUploadCover.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload Cover Photo'**
+  String get createEventUploadCover;
+
+  /// No description provided for @createEventRecommendedSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommended size: 1200 x 675px'**
+  String get createEventRecommendedSize;
+
+  /// No description provided for @createEventVenueMap.
+  ///
+  /// In en, this message translates to:
+  /// **'Venue Map'**
+  String get createEventVenueMap;
+
+  /// No description provided for @createEventVenueMapSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose how attendees will be seated at this event.'**
+  String get createEventVenueMapSubtitle;
+
+  /// No description provided for @createEventContinueToTickets.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue to Tickets'**
+  String get createEventContinueToTickets;
+
+  /// No description provided for @createEventLayoutSeating.
+  ///
+  /// In en, this message translates to:
+  /// **'Seating'**
+  String get createEventLayoutSeating;
+
+  /// No description provided for @createEventLayoutSections.
+  ///
+  /// In en, this message translates to:
+  /// **'Sections'**
+  String get createEventLayoutSections;
+
+  /// No description provided for @createEventSeatAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Available'**
+  String get createEventSeatAvailable;
+
+  /// No description provided for @createEventSeatUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Unavailable'**
+  String get createEventSeatUnavailable;
+
+  /// No description provided for @createEventAddSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Section'**
+  String get createEventAddSection;
+
+  /// No description provided for @createEventScreenLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'SCREEN'**
+  String get createEventScreenLabel;
+
+  /// No description provided for @createEventWalkway.
+  ///
+  /// In en, this message translates to:
+  /// **'WALKWAY'**
+  String get createEventWalkway;
+
+  /// No description provided for @createEventMapSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Map Settings'**
+  String get createEventMapSettings;
+
+  /// No description provided for @createEventRows.
+  ///
+  /// In en, this message translates to:
+  /// **'Rows'**
+  String get createEventRows;
+
+  /// No description provided for @createEventSeatsPerRow.
+  ///
+  /// In en, this message translates to:
+  /// **'Seats per Row'**
+  String get createEventSeatsPerRow;
+
+  /// No description provided for @createEventSectionName.
+  ///
+  /// In en, this message translates to:
+  /// **'Section Name'**
+  String get createEventSectionName;
+
+  /// No description provided for @createEventSectionNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Stage A, VIP Zone.'**
+  String get createEventSectionNameHint;
+
+  /// No description provided for @createEventSectionNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a section name'**
+  String get createEventSectionNameRequired;
+
+  /// No description provided for @createEventCapacity.
+  ///
+  /// In en, this message translates to:
+  /// **'Capacity'**
+  String get createEventCapacity;
+
+  /// No description provided for @createEventCapacityHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter number of spots.'**
+  String get createEventCapacityHint;
+
+  /// No description provided for @createEventRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Required'**
+  String get createEventRequired;
+
+  /// No description provided for @createEventInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid'**
+  String get createEventInvalid;
+
+  /// No description provided for @createEventTicketTiers.
+  ///
+  /// In en, this message translates to:
+  /// **'Ticket Tiers'**
+  String get createEventTicketTiers;
+
+  /// No description provided for @createEventActiveTierOne.
+  ///
+  /// In en, this message translates to:
+  /// **'1 active tier'**
+  String get createEventActiveTierOne;
+
+  /// No description provided for @createEventActiveTiers.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} active tiers'**
+  String createEventActiveTiers(int count);
+
+  /// No description provided for @createEventAddTier.
+  ///
+  /// In en, this message translates to:
+  /// **'Add New Tier'**
+  String get createEventAddTier;
+
+  /// No description provided for @createEventPublish.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish Event'**
+  String get createEventPublish;
+
+  /// No description provided for @createEventTicketName.
+  ///
+  /// In en, this message translates to:
+  /// **'Ticket Name'**
+  String get createEventTicketName;
+
+  /// No description provided for @createEventTicketNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your ticket name.'**
+  String get createEventTicketNameHint;
+
+  /// No description provided for @createEventTicketNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a ticket name'**
+  String get createEventTicketNameRequired;
+
+  /// No description provided for @createEventPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get createEventPrice;
+
+  /// No description provided for @createEventPriceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Your Price.'**
+  String get createEventPriceHint;
+
+  /// No description provided for @createEventInvalidPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid price'**
+  String get createEventInvalidPrice;
+
+  /// No description provided for @createEventQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Quantity'**
+  String get createEventQuantity;
+
+  /// No description provided for @createEventQuantityHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Ticket Quantity.'**
+  String get createEventQuantityHint;
+
+  /// No description provided for @createEventTicketDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get createEventTicketDescription;
+
+  /// No description provided for @createEventTicketDescriptionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Ticket Description.'**
+  String get createEventTicketDescriptionHint;
+
+  /// No description provided for @createEventPaymentMethods.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Methods'**
+  String get createEventPaymentMethods;
+
+  /// No description provided for @createEventPaymentMethodsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose where you want to receive your money.'**
+  String get createEventPaymentMethodsSubtitle;
+
+  /// No description provided for @createEventPaymentMethodRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select at least one payment method'**
+  String get createEventPaymentMethodRequired;
+
+  /// No description provided for @createEventWalletNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallet Number'**
+  String get createEventWalletNumber;
+
+  /// No description provided for @createEventInstaPayField.
+  ///
+  /// In en, this message translates to:
+  /// **'InstaPay Address or Phone'**
+  String get createEventInstaPayField;
+
+  /// No description provided for @createEventPayPalField.
+  ///
+  /// In en, this message translates to:
+  /// **'PayPal Email'**
+  String get createEventPayPalField;
+
+  /// No description provided for @createEventInstaPayHint.
+  ///
+  /// In en, this message translates to:
+  /// **'name@instapay or 01XXXXXXXXX'**
+  String get createEventInstaPayHint;
+
+  /// No description provided for @createEventPaymentEnterField.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your {field}'**
+  String createEventPaymentEnterField(String field);
+
+  /// No description provided for @createEventInvalidVodafone.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid Vodafone Cash number'**
+  String get createEventInvalidVodafone;
+
+  /// No description provided for @createEventInvalidOrange.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid Orange Cash number'**
+  String get createEventInvalidOrange;
+
+  /// No description provided for @createEventInvalidInstaPay.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid InstaPay address or phone number'**
+  String get createEventInvalidInstaPay;
+
+  /// No description provided for @createEventInvalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid email'**
+  String get createEventInvalidEmail;
+
+  /// No description provided for @createEventCongrats.
+  ///
+  /// In en, this message translates to:
+  /// **'Congratulations!'**
+  String get createEventCongrats;
+
+  /// No description provided for @createEventPublishedIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Your event is now '**
+  String get createEventPublishedIntro;
+
+  /// No description provided for @createEventPublishedStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Under Review!'**
+  String get createEventPublishedStatus;
+
+  /// No description provided for @createEventPublishedWait.
+  ///
+  /// In en, this message translates to:
+  /// **'please wait for our response.'**
+  String get createEventPublishedWait;
+
+  /// No description provided for @createEventGoHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Go To Home'**
+  String get createEventGoHome;
+
+  /// No description provided for @createEventStatusPending.
+  ///
+  /// In en, this message translates to:
+  /// **'PENDING'**
+  String get createEventStatusPending;
+
+  /// No description provided for @commonTryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get commonTryAgain;
+
+  /// No description provided for @commonRefresh.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh'**
+  String get commonRefresh;
+
+  /// No description provided for @commonStatusLive.
+  ///
+  /// In en, this message translates to:
+  /// **'LIVE'**
+  String get commonStatusLive;
+
+  /// No description provided for @commonStatusPending.
+  ///
+  /// In en, this message translates to:
+  /// **'PENDING'**
+  String get commonStatusPending;
+
+  /// No description provided for @commonNoEventsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No events found.'**
+  String get commonNoEventsFound;
+
+  /// No description provided for @authOrDivider.
+  ///
+  /// In en, this message translates to:
+  /// **'or'**
+  String get authOrDivider;
+
+  /// No description provided for @authCheckEmailCodeSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Check your email for the code sent to '**
+  String get authCheckEmailCodeSent;
+
+  /// No description provided for @authNameInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid name'**
+  String get authNameInvalid;
+
+  /// No description provided for @authEmailInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email'**
+  String get authEmailInvalid;
+
+  /// No description provided for @authPasswordInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid password'**
+  String get authPasswordInvalid;
+
+  /// No description provided for @myEventsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My Events'**
+  String get myEventsTitle;
+
+  /// No description provided for @myEventsManageEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage Event'**
+  String get myEventsManageEvent;
+
+  /// No description provided for @myEventsNoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No Title'**
+  String get myEventsNoTitle;
+
+  /// No description provided for @homeOverviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Overview'**
+  String get homeOverviewTitle;
+
+  /// No description provided for @homeSalesByEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Sales by Event'**
+  String get homeSalesByEvent;
+
+  /// No description provided for @homeNoEventsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No events yet'**
+  String get homeNoEventsTitle;
+
+  /// No description provided for @homeNoEventsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create your first event and its sales will show up here.'**
+  String get homeNoEventsSubtitle;
+
+  /// No description provided for @homeStatRevenue.
+  ///
+  /// In en, this message translates to:
+  /// **'REVENUE'**
+  String get homeStatRevenue;
+
+  /// No description provided for @homeStatAllEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'All events'**
+  String get homeStatAllEvents;
+
+  /// No description provided for @homeStatTicketsSold.
+  ///
+  /// In en, this message translates to:
+  /// **'TICKETS SOLD'**
+  String get homeStatTicketsSold;
+
+  /// No description provided for @homeStatSoldPercent.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% of {capacity}'**
+  String homeStatSoldPercent(int percent, String capacity);
+
+  /// No description provided for @homeStatEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'EVENTS'**
+  String get homeStatEvents;
+
+  /// No description provided for @homeStatLiveNow.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} live now'**
+  String homeStatLiveNow(String count);
+
+  /// No description provided for @homeStatCheckedIn.
+  ///
+  /// In en, this message translates to:
+  /// **'CHECKED IN'**
+  String get homeStatCheckedIn;
+
+  /// No description provided for @homeStatNoTicketsSold.
+  ///
+  /// In en, this message translates to:
+  /// **'No tickets sold yet'**
+  String get homeStatNoTicketsSold;
+
+  /// No description provided for @homeStatOfSold.
+  ///
+  /// In en, this message translates to:
+  /// **'of {count} sold'**
+  String homeStatOfSold(String count);
+
+  /// No description provided for @dashboardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Event Dashboard'**
+  String get dashboardTitle;
+
+  /// No description provided for @dashboardTicketSales.
+  ///
+  /// In en, this message translates to:
+  /// **'Ticket Sales'**
+  String get dashboardTicketSales;
+
+  /// No description provided for @dashboardNoTiers.
+  ///
+  /// In en, this message translates to:
+  /// **'This event has no ticket tiers.'**
+  String get dashboardNoTiers;
+
+  /// No description provided for @dashboardOnlineEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Online event'**
+  String get dashboardOnlineEvent;
+
+  /// No description provided for @dashboardNoLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'No location'**
+  String get dashboardNoLocation;
+
+  /// No description provided for @dashboardPerTicket.
+  ///
+  /// In en, this message translates to:
+  /// **'{price} per ticket'**
+  String dashboardPerTicket(String price);
+
+  /// No description provided for @dashboardTierSold.
+  ///
+  /// In en, this message translates to:
+  /// **'{sold} of {capacity} sold'**
+  String dashboardTierSold(String sold, String capacity);
+
+  /// No description provided for @dashboardTotalRevenue.
+  ///
+  /// In en, this message translates to:
+  /// **'TOTAL REVENUE'**
+  String get dashboardTotalRevenue;
+
+  /// No description provided for @dashboardFromTickets.
+  ///
+  /// In en, this message translates to:
+  /// **'From {count} tickets'**
+  String dashboardFromTickets(String count);
+
+  /// No description provided for @scanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan Tickets'**
+  String get scanTitle;
+
+  /// No description provided for @scanLoadingEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading events...'**
+  String get scanLoadingEvents;
+
+  /// No description provided for @scanSelectAnEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Select an event'**
+  String get scanSelectAnEvent;
+
+  /// No description provided for @scanSelectEventTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select event'**
+  String get scanSelectEventTitle;
+
+  /// No description provided for @scanTicketVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Ticket Verified'**
+  String get scanTicketVerified;
+
+  /// No description provided for @scanAlreadyScanned.
+  ///
+  /// In en, this message translates to:
+  /// **'Already Scanned'**
+  String get scanAlreadyScanned;
+
+  /// No description provided for @scanInvalidTicket.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid Ticket'**
+  String get scanInvalidTicket;
+
+  /// No description provided for @scanCodeNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Code not found for this event'**
+  String get scanCodeNotFound;
+
+  /// No description provided for @scanFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan Failed'**
+  String get scanFailed;
+
+  /// No description provided for @scanCameraPermission.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera permission is required to scan tickets'**
+  String get scanCameraPermission;
+
+  /// No description provided for @scanCameraUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera is unavailable'**
+  String get scanCameraUnavailable;
+
+  /// No description provided for @scanEnterManuallyBelow.
+  ///
+  /// In en, this message translates to:
+  /// **'You can still enter the ticket code manually below'**
+  String get scanEnterManuallyBelow;
+
+  /// No description provided for @scanInstruction.
+  ///
+  /// In en, this message translates to:
+  /// **'Align QR code within the frame'**
+  String get scanInstruction;
+
+  /// No description provided for @scanManualEntry.
+  ///
+  /// In en, this message translates to:
+  /// **'MANUAL ENTRY'**
+  String get scanManualEntry;
+
+  /// No description provided for @scanManualHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter ticket code manually'**
+  String get scanManualHint;
+
+  /// No description provided for @scanSound.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound'**
+  String get scanSound;
+
+  /// No description provided for @scanVibrate.
+  ///
+  /// In en, this message translates to:
+  /// **'Vibrate'**
+  String get scanVibrate;
+
+  /// No description provided for @scanStatScanned.
+  ///
+  /// In en, this message translates to:
+  /// **'SCANNED'**
+  String get scanStatScanned;
+
+  /// No description provided for @scanStatTotalExpected.
+  ///
+  /// In en, this message translates to:
+  /// **'TOTAL EXPECTED'**
+  String get scanStatTotalExpected;
+
+  /// No description provided for @scanSelectEventFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Select an event before scanning'**
+  String get scanSelectEventFirst;
 }
 
-class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -2578,25 +3620,26 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['ar', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'ar': return AppLocalizationsAr();
-    case 'en': return AppLocalizationsEn();
+    case 'ar':
+      return AppLocalizationsAr();
+    case 'en':
+      return AppLocalizationsEn();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
+    'that was used.',
   );
 }

@@ -8,6 +8,7 @@ import 'package:evetick_organizer/features/pending_events/presentation/widgets/e
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class BuildEvent extends StatelessWidget {
   const BuildEvent({super.key, context});
@@ -31,7 +32,7 @@ class BuildEvent extends StatelessWidget {
           if (state.events.isEmpty) {
             return Center(
               child: Text(
-                'No events found.',
+                AppLocalizations.of(context)!.commonNoEventsFound,
                 style: TextStyles.font16WhiteRegular(context),
               ),
             );

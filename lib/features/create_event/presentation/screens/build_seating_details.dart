@@ -15,6 +15,7 @@ import 'package:evetick_organizer/features/create_event/presentation/widgets/sea
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 /// Step shown right before "Ticket Tiers": the organizer builds the venue
 /// map here, either a seat grid ([VenueLayoutType.seating]) or a list of
@@ -139,10 +140,10 @@ class _BuildSeatingDetailsState extends State<BuildSeatingDetails> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Venue Map', style: TextStyles.font24OrangeBold),
+            Text(AppLocalizations.of(context)!.createEventVenueMap, style: TextStyles.font24OrangeBold),
             verticalSpace(4),
             Text(
-              'Choose how attendees will be seated at this event.',
+              AppLocalizations.of(context)!.createEventVenueMapSubtitle,
               style: TextStyles.font14LightGrayRegular(context),
             ),
 
@@ -176,7 +177,7 @@ class _BuildSeatingDetailsState extends State<BuildSeatingDetails> {
             verticalSpace(32),
 
             FilledAppTextButton(
-              buttonText: 'Continue to Tickets',
+              buttonText: AppLocalizations.of(context)!.createEventContinueToTickets,
               onPressed: _onContinuePressed,
             ),
 

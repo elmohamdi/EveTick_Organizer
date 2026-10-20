@@ -12,6 +12,7 @@ import 'package:evetick_organizer/features/create_event/presentation/widgets/tic
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class BuildTicketDetails extends StatefulWidget {
   const BuildTicketDetails({super.key, this.onPublish});
@@ -100,9 +101,11 @@ class _BuildTicketDetailsState extends State<BuildTicketDetails> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Ticket Tiers', style: TextStyles.font24OrangeBold),
+                Text(AppLocalizations.of(context)!.createEventTicketTiers, style: TextStyles.font24OrangeBold),
                 Text(
-                  '${tiers.length} active tier${tiers.length == 1 ? '' : 's'}',
+                  tiers.length == 1
+                      ? AppLocalizations.of(context)!.createEventActiveTierOne
+                      : AppLocalizations.of(context)!.createEventActiveTiers(tiers.length),
                   style: TextStyles.font14LightGrayRegular(context),
                 ),
               ],
@@ -141,7 +144,7 @@ class _BuildTicketDetailsState extends State<BuildTicketDetails> {
                     ),
                     horizontalSpace(8),
                     Text(
-                      'Add New Tier',
+                      AppLocalizations.of(context)!.createEventAddTier,
                       style: TextStyles.font16LightGrayRegular(context),
                     ),
                   ],
@@ -160,7 +163,7 @@ class _BuildTicketDetailsState extends State<BuildTicketDetails> {
             verticalSpace(24),
 
             FilledAppTextButton(
-              buttonText: 'Publish Event',
+              buttonText: AppLocalizations.of(context)!.createEventPublish,
               onPressed: _onPublishPressed,
             ),
 

@@ -6,6 +6,7 @@ import 'package:evetick_organizer/features/create_event/presentation/widgets/tic
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class TicketTierCard extends StatelessWidget {
   const TicketTierCard({
@@ -45,13 +46,13 @@ class TicketTierCard extends StatelessWidget {
 
           AppTextFormField(
             hintStyle: TextStyles.font12Gray3Mid,
-            label: 'Ticket Name',
-            hintText: 'Enter your ticket name.',
+            label: AppLocalizations.of(context)!.createEventTicketName,
+            hintText: AppLocalizations.of(context)!.createEventTicketNameHint,
             controller: tier.nameController,
             backgroundColor: context.colors.thirdBlue,
             validator: (value) {
               if (value == null || value.trim().isEmpty) {
-                return 'Please enter a ticket name';
+                return AppLocalizations.of(context)!.createEventTicketNameRequired;
               }
               return null;
             },
@@ -65,8 +66,8 @@ class TicketTierCard extends StatelessWidget {
               Expanded(
                 child: AppTextFormField(
                   hintStyle: TextStyles.font12Gray3Mid,
-                  label: 'Price',
-                  hintText: 'Enter Your Price.',
+                  label: AppLocalizations.of(context)!.createEventPrice,
+                  hintText: AppLocalizations.of(context)!.createEventPriceHint,
                   controller: tier.priceController,
                   backgroundColor: context.colors.thirdBlue,
                   keyboardType: const TextInputType.numberWithOptions(
@@ -79,10 +80,10 @@ class TicketTierCard extends StatelessWidget {
                   ],
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
-                      return 'Required';
+                      return AppLocalizations.of(context)!.createEventRequired;
                     }
                     if (double.tryParse(value) == null) {
-                      return 'Invalid price';
+                      return AppLocalizations.of(context)!.createEventInvalidPrice;
                     }
                     return null;
                   },
@@ -92,18 +93,18 @@ class TicketTierCard extends StatelessWidget {
               Expanded(
                 child: AppTextFormField(
                   hintStyle: TextStyles.font12Gray3Mid,
-                  label: 'Quantity',
-                  hintText: 'Enter Ticket Quantity.',
+                  label: AppLocalizations.of(context)!.createEventQuantity,
+                  hintText: AppLocalizations.of(context)!.createEventQuantityHint,
                   controller: tier.quantityController,
                   backgroundColor: context.colors.thirdBlue,
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
-                      return 'Required';
+                      return AppLocalizations.of(context)!.createEventRequired;
                     }
                     if (int.tryParse(value) == null || int.parse(value) <= 0) {
-                      return 'Invalid';
+                      return AppLocalizations.of(context)!.createEventInvalid;
                     }
                     return null;
                   },
@@ -115,8 +116,8 @@ class TicketTierCard extends StatelessWidget {
           verticalSpace(16),
 
           AppTextFormField(
-            label: 'Description',
-            hintText: 'Enter Ticket Description.',
+            label: AppLocalizations.of(context)!.createEventTicketDescription,
+            hintText: AppLocalizations.of(context)!.createEventTicketDescriptionHint,
             controller: tier.descriptionController,
             backgroundColor: context.colors.thirdBlue,
             hintStyle: TextStyles.font12Gray3Mid,

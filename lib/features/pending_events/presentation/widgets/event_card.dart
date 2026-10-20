@@ -5,6 +5,8 @@ import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/core/widgets/event_status_chip.dart';
 import 'package:evetick_organizer/features/event_staff/data/models/staff_role.dart';
 import 'package:evetick_organizer/features/event_staff/presentation/widgets/staff_labels.dart';
+import 'package:evetick_organizer/features/pending_events/presentation/widgets/manage_event_button.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
@@ -19,10 +21,12 @@ class EventCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final title = event['eventTitle'] ?? 'No Title';
+    final title = event['eventTitle'] ?? AppLocalizations.of(context)!.myEventsNoTitle;
     final coverImageUrl = event['coverImageUrl'] as String?;
     final startAtStr = event['startAt'] as String?;
 
+    String roleLabel(BuildContext context, String? key) =>
+        StaffRole.fromKey(key).label(AppLocalizations.of(context)!);
     DateTime? startAt;
     if (startAtStr != null) {
       startAt = DateTime.tryParse(startAtStr);
@@ -85,7 +89,8 @@ class EventCard extends StatelessWidget {
                     if (event['isStaffEvent'] == true) ...[
                       verticalSpace(4),
                       Text(
-                        'Staff • ${_roleLabel(event['staffRole'] as String?)}',
+                        '${AppLocalizations.of(context)!.staffSectionTitle} • '
+                        '${roleLabel(context, event['staffRole'] as String?)}',
                         style: TextStyles.font12LightGrayRegular(
                           context,
                         ).copyWith(color: ColorsManager.orange),
@@ -94,7 +99,7 @@ class EventCard extends StatelessWidget {
                     verticalSpace(8),
                     if (startAt != null)
                       Text(
-                        DateFormat('MMM dd, yyyy • hh:mm a').format(startAt),
+                        DateFormat('MMM dd, yyyy • hh:mm a', Localizations.localeOf(context).toString()).format(startAt),
                         style: TextStyles.font12LightGrayRegular(
                           context,
                         ).copyWith(color: context.colors.lightGray),
@@ -108,50 +113,9 @@ class EventCard extends StatelessWidget {
           ),
           if (onManage != null) ...[
             verticalSpace(16),
-            _ManageEventButton(onTap: onManage!),
+            ManageEventButton(onTap: onManage!),
           ],
         ],
-      ),
-    );
-  }
-}
-
-String _roleLabel(String? key) => StaffRole.fromKey(key).label;
-
-class _ManageEventButton extends StatelessWidget {
-  const _ManageEventButton({required this.onTap});
-
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: ColorsManager.orange,
-      borderRadius: BorderRadius.circular(12.r),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(12.r),
-        child: SizedBox(
-          height: 44.h,
-          width: double.infinity,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.dashboard_customize_outlined,
-                size: 20.sp,
-                color: ColorsManager.defaultWhite,
-              ),
-              horizontalSpace(8),
-              Text(
-                'Manage Event',
-                style: TextStyles.font16WhiteMid(
-                  context,
-                ).copyWith(color: ColorsManager.defaultWhite),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

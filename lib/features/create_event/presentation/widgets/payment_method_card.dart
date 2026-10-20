@@ -7,6 +7,7 @@ import 'package:evetick_organizer/features/create_event/presentation/widgets/pay
 import 'package:evetick_organizer/features/create_event/presentation/widgets/payment_method_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class PaymentMethodCard extends StatelessWidget {
   const PaymentMethodCard({
@@ -65,14 +66,14 @@ class PaymentMethodCard extends StatelessWidget {
                 ? Padding(
                     padding: EdgeInsets.only(top: 12.h),
                     child: AppTextFormField(
-                      label: type.fieldLabel,
-                      hintText: type.hint,
+                      label: type.fieldLabelOf(AppLocalizations.of(context)!),
+                      hintText: type.hintOf(AppLocalizations.of(context)!),
                       hintStyle: TextStyles.font12Gray3Mid,
                       controller: entry.controller,
                       backgroundColor: context.colors.thirdBlue,
                       keyboardType: type.keyboardType,
                       inputFormatters: type.inputFormatters,
-                      validator: type.validate,
+                      validator: (value) => type.validate(value, AppLocalizations.of(context)!),
                     ),
                   )
                 : const SizedBox(width: double.infinity),

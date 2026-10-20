@@ -2,6 +2,7 @@ import 'package:evetick_organizer/core/theming/colors.dart';
 import 'package:evetick_organizer/core/widgets/app_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class EventLocationField extends StatelessWidget {
   const EventLocationField({
@@ -25,8 +26,8 @@ class EventLocationField extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppTextFormField(
       onChanged: onChanged,
-      hintText: 'Search or enter location',
-      label: 'Event Location',
+      hintText: AppLocalizations.of(context)!.createEventLocationHint,
+      label: AppLocalizations.of(context)!.createEventLocationLabel,
       controller: controller,
       suffixIcon: Row(
         mainAxisSize: MainAxisSize.min,
@@ -61,7 +62,7 @@ class EventLocationField extends StatelessWidget {
       ),
       validator: (value) {
         if (!isOnlineEvent && (value == null || value.trim().isEmpty)) {
-          return 'Please enter the event location';
+          return AppLocalizations.of(context)!.createEventLocationRequired;
         }
         return null;
       },

@@ -3,6 +3,7 @@ import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/core/widgets/outline_app_text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class HomeErrorView extends StatelessWidget {
   const HomeErrorView({super.key, required this.message, required this.onRetry});
@@ -25,7 +26,7 @@ class HomeErrorView extends StatelessWidget {
             ),
             verticalSpace(16),
             OutlineAppTextButton(
-              buttonText: 'Try again',
+              buttonText: AppLocalizations.of(context)!.commonTryAgain,
               buttonWidth: 160.w,
               onPressed: onRetry,
             ),

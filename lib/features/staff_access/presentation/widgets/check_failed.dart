@@ -1,4 +1,5 @@
 import 'package:evetick_organizer/core/theming/text_styles.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,17 +10,18 @@ class CheckFailed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.fromLTRB(16.w, 8.h, 16.w, 0),
       child: Row(
         children: [
           Expanded(
             child: Text(
-              message ?? "Couldn't check your invitations",
+              message ?? l10n.staffInvitationsCheckFailed,
               style: TextStyles.font12LightGrayRegular(context),
             ),
           ),
-          TextButton(onPressed: onRetry, child: const Text('Retry')),
+          TextButton(onPressed: onRetry, child: Text(l10n.staffInvitationsRetry)),
         ],
       ),
     );

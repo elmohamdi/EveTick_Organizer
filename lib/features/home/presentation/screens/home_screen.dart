@@ -10,6 +10,7 @@ import 'package:evetick_organizer/features/staff_access/logic/cubit/staff_invite
 import 'package:evetick_organizer/features/staff_access/presentation/widgets/staff_invites_banner.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 /// Requires a [HomeCubit], a [StaffInvitesCubit] and a [PendingEventsCubit]
 /// above it. The "Create Event" FAB lives in
@@ -27,7 +28,7 @@ class HomeScreen extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         automaticallyImplyLeading: false,
-        title: Text('Overview', style: TextStyles.font18WhiteBold(context)),
+        title: Text(AppLocalizations.of(context)!.homeOverviewTitle, style: TextStyles.font18WhiteBold(context)),
       ),
       body: Column(
         children: [

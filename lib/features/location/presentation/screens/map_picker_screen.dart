@@ -5,6 +5,7 @@ import 'package:evetick_organizer/features/location/presentation/widgets/selecte
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class MapPickerScreen extends StatefulWidget {
   const MapPickerScreen({super.key});
@@ -21,7 +22,7 @@ class _MapPickerScreenState extends State<MapPickerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Select Location')),
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.locationSelectLocationTitle)),
       body: Column(
         children: [
           Flexible(

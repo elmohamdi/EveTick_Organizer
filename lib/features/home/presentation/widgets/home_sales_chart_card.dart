@@ -9,6 +9,7 @@ import 'package:evetick_organizer/features/home/presentation/widgets/chart_metri
 import 'package:evetick_organizer/features/home/presentation/widgets/event_bar_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 /// Top events ranked by revenue or tickets sold. Tapping a bar opens that
 /// event's dashboard.
@@ -50,7 +51,7 @@ class _HomeSalesChartCardState extends State<HomeSalesChartCard> {
             children: [
               Expanded(
                 child: Text(
-                  'Sales by Event',
+                  AppLocalizations.of(context)!.homeSalesByEvent,
                   style: TextStyles.font18WhiteBold(context),
                 ),
               ),

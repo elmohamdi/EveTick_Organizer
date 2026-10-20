@@ -4,6 +4,7 @@ import 'package:evetick_organizer/core/theming/colors.dart';
 import 'package:evetick_organizer/features/event_dashboard/presentation/widgets/dashboard_stat_card.dart';
 import 'package:evetick_organizer/features/home/data/models/home_overview.dart';
 import 'package:flutter/material.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class HomeStatsGrid extends StatelessWidget {
   const HomeStatsGrid({super.key, required this.overview});
@@ -23,20 +24,23 @@ class HomeStatsGrid extends StatelessWidget {
               Expanded(
                 child: DashboardStatCard(
                   icon: Icons.payments_outlined,
-                  label: 'REVENUE',
+                  label: AppLocalizations.of(context)!.homeStatRevenue,
                   value: Formatters.money(overview.revenue),
                   valueColor: ColorsManager.orange,
-                  caption: 'All events',
+                  caption: AppLocalizations.of(context)!.homeStatAllEvents,
                 ),
               ),
               horizontalSpace(12),
               Expanded(
                 child: DashboardStatCard(
                   icon: Icons.confirmation_number_outlined,
-                  label: 'TICKETS SOLD',
+                  label: AppLocalizations.of(context)!.homeStatTicketsSold,
                   value: Formatters.number(overview.ticketsSold),
                   caption:
-                      '$soldPercent% of ${Formatters.number(overview.capacity)}',
+                      AppLocalizations.of(context)!.homeStatSoldPercent(
+                        soldPercent,
+                        Formatters.number(overview.capacity),
+                      ),
                 ),
               ),
             ],
@@ -50,20 +54,24 @@ class HomeStatsGrid extends StatelessWidget {
               Expanded(
                 child: DashboardStatCard(
                   icon: Icons.event_outlined,
-                  label: 'EVENTS',
+                  label: AppLocalizations.of(context)!.homeStatEvents,
                   value: Formatters.number(overview.totalEvents),
-                  caption: '${Formatters.number(overview.liveEvents)} live now',
+                  caption: AppLocalizations.of(context)!.homeStatLiveNow(
+                    Formatters.number(overview.liveEvents),
+                  ),
                 ),
               ),
               horizontalSpace(12),
               Expanded(
                 child: DashboardStatCard(
                   icon: Icons.how_to_reg_outlined,
-                  label: 'CHECKED IN',
+                  label: AppLocalizations.of(context)!.homeStatCheckedIn,
                   value: Formatters.number(overview.checkedIn),
                   caption: overview.ticketsSold == 0
-                      ? 'No tickets sold yet'
-                      : 'of ${Formatters.number(overview.ticketsSold)} sold',
+                      ? AppLocalizations.of(context)!.homeStatNoTicketsSold
+                      : AppLocalizations.of(context)!.homeStatOfSold(
+                        Formatters.number(overview.ticketsSold),
+                      ),
                 ),
               ),
             ],

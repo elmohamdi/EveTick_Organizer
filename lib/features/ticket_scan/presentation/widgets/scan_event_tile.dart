@@ -5,6 +5,7 @@ import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/features/ticket_scan/data/models/scan_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class ScanEventTile extends StatelessWidget {
   final ScanEvent event;
@@ -51,7 +52,9 @@ class ScanEventTile extends StatelessWidget {
                     ),
                     verticalSpace(4),
                     Text(
-                      event.isLive ? 'LIVE' : 'PENDING',
+                      event.isLive
+                          ? AppLocalizations.of(context)!.commonStatusLive
+                          : AppLocalizations.of(context)!.commonStatusPending,
                       style: TextStyles.font12Gray3Mid.copyWith(
                         color: event.isLive
                             ? ColorsManager.confirmed

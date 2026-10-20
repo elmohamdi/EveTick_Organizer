@@ -8,6 +8,7 @@ import 'package:evetick_organizer/features/event_dashboard/data/models/event_das
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class DashboardHeaderCard extends StatelessWidget {
   const DashboardHeaderCard({super.key, required this.dashboard});
@@ -18,8 +19,10 @@ class DashboardHeaderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final startAt = dashboard.startAt;
     final location = dashboard.isOnline
-        ? 'Online event'
-        : (dashboard.location.isEmpty ? 'No location' : dashboard.location);
+        ? AppLocalizations.of(context)!.dashboardOnlineEvent
+        : (dashboard.location.isEmpty
+              ? AppLocalizations.of(context)!.dashboardNoLocation
+              : dashboard.location);
 
     return Container(
       clipBehavior: Clip.antiAlias,
@@ -58,8 +61,10 @@ class DashboardHeaderCard extends StatelessWidget {
                 if (startAt != null) ...[
                   _InfoRow(
                     icon: Icons.calendar_today_outlined,
-                    text: DateFormat('EEE, MMM dd, yyyy • hh:mm a')
-                        .format(startAt),
+                    text: DateFormat(
+                      'EEE, MMM dd, yyyy • hh:mm a',
+                      Localizations.localeOf(context).toString(),
+                    ).format(startAt),
                   ),
                   verticalSpace(8),
                 ],

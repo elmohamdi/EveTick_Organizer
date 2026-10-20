@@ -1303,4 +1303,568 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get supportMessageSent => 'Message sent! We will get back to you within 24 hours.';
+
+  @override String staffInvitationsTitle(int count) => 'Staff invitations ($count)';
+  @override String get staffInvitationsCheckFailed => "Couldn't check your invitations";
+  @override String get staffInvitationsRetry => 'Retry';
+  @override String staffInvitationAccepted(String eventTitle) => 'You joined "$eventTitle"';
+  @override String get staffInvitationDeclined => 'Invitation declined';
+  @override String staffInvitationInvitedAs(String name, String role) => '$name invited you as $role';
+  @override String get staffAccept => 'Accept';
+  @override String get staffDecline => 'Decline';
+  @override String get staffSectionTitle => 'Staff';
+  @override String get staffAdd => 'Add';
+  @override String get staffLoadFailed => 'Could not load staff';
+  @override String get staffTryAgain => 'Try again';
+  @override String get staffEmptyMessage => 'No staff yet. Invite a co-organizer or gate staff by email and choose what they can do.';
+  @override String get staffAddMember => 'Add staff member';
+  @override String get staffCancelInvitationQuestion => 'Cancel invitation?';
+  @override String get staffRemoveMemberQuestion => 'Remove staff member?';
+  @override String staffCancelInvitationMessage(String email) => 'The invitation sent to $email will be cancelled.';
+  @override String staffRemoveMemberMessage(String name) => '$name will lose access to this event.';
+  @override String get staffKeep => 'Keep';
+  @override String get staffCancelInvitation => 'Cancel invitation';
+  @override String get staffRemove => 'Remove';
+  @override String get staffAddMemberTitle => 'Add Staff Member';
+  @override String get staffFullName => 'Full Name';
+  @override String get staffFullNameHint => 'e.g. Alex Johnson';
+  @override String get staffFullNameRequired => 'Please enter the full name';
+  @override String get staffEmailAddress => 'Email Address';
+  @override String get staffEmailHint => 'alex@example.com';
+  @override String get staffEmailRequired => 'Please enter an email';
+  @override String get staffEmailInvalid => 'Please enter a valid email';
+  @override String get staffAssignRole => 'Assign Role';
+  @override String get staffSelectRole => 'Select a role';
+  @override String get staffRoleRequired => 'Please select a role';
+  @override String get staffPermissions => 'PERMISSIONS';
+  @override String get staffPermissionRequired => 'Select at least one permission';
+  @override String staffInvitationSent(String email) => 'Invitation sent to $email';
+  @override String get staffSendInvitation => 'Send Invitation';
+  @override String get staffPending => 'PENDING';
+  @override String get staffActive => 'ACTIVE';
+  @override String get staffPermissionViewAnalytics => 'Can view analytics';
+  @override String get staffPermissionViewAnalyticsDescription => 'Access to sales reports and charts';
+  @override String get staffPermissionScanTickets => 'Can scan tickets';
+  @override String get staffPermissionScanTicketsDescription => 'Use the mobile app for check-ins';
+  @override String get staffPermissionEditEventDetails => 'Can edit event details';
+  @override String get staffPermissionEditEventDetailsDescription => 'Change title, schedule and description';
+  @override String get staffRoleCoOrganizer => 'Co-organizer';
+  @override String get staffRoleManager => 'Manager';
+  @override String get staffRoleGateStaff => 'Gate Staff';
+  @override String get staffRoleAnalyst => 'Analyst';
+
+  @override
+  String get createEventScreenTitle => 'Create Event';
+
+  @override
+  String get createEventPhaseDetails => 'Details';
+
+  @override
+  String get createEventPhaseMedia => 'Media';
+
+  @override
+  String get createEventPhaseSeating => 'Seating';
+
+  @override
+  String get createEventPhaseTickets => 'Tickets';
+
+  @override
+  String get createEventPublishFailed => 'Something went wrong while publishing the event';
+
+  @override
+  String get createEventNextStep => 'Next Step';
+
+  @override
+  String get createEventTitleHint => 'Enter catchy event name';
+
+  @override
+  String get createEventTitleLabel => 'Event Title';
+
+  @override
+  String get createEventTitleRequired => 'Please enter event title';
+
+  @override
+  String get createEventCategoryLabel => 'Category';
+
+  @override
+  String get createEventCategoryHint => 'Select event category';
+
+  @override
+  String get createEventCategoryRequired => 'Please select a category';
+
+  @override
+  String get createEventStartDateTime => 'Start Date & Time';
+
+  @override
+  String get createEventEndDateTime => 'End Date & Time';
+
+  @override
+  String get createEventUrlLabel => 'Event URL';
+
+  @override
+  String get createEventUrlHint => 'Enter event URL (e.g. Zoom link)';
+
+  @override
+  String get createEventUrlRequired => 'Please enter event URL';
+
+  @override
+  String get createEventOnlineToggle => 'Online event (Virtual)';
+
+  @override
+  String get createEventSelectStart => 'Please select a start date & time';
+
+  @override
+  String get createEventSelectEnd => 'Please select an end date & time';
+
+  @override
+  String get createEventLocationRequired => 'Please enter the event location';
+
+  @override
+  String get createEventEndBeforeStart => 'End date & time must be after start date & time';
+
+  @override
+  String get createEventAddressNotFound => 'Could not get address from location';
+
+  @override
+  String createEventLocationError(String error) {
+    return 'Error getting location: ${error}';
+  }
+
+  @override
+  String get createEventLocationLabel => 'Event Location';
+
+  @override
+  String get createEventLocationHint => 'Search or enter location';
+
+  @override
+  String get createEventDateHint => 'mm/dd/yyyy';
+
+  @override
+  String get createEventCategorySports => 'Sports';
+
+  @override
+  String get createEventCategoryMusic => 'Music';
+
+  @override
+  String get createEventCategoryMedical => 'Medical';
+
+  @override
+  String get createEventCategoryMovies => 'Movies';
+
+  @override
+  String get createEventCategoryTechnology => 'Technology';
+
+  @override
+  String get createEventCategoryBusiness => 'Business';
+
+  @override
+  String get createEventCategoryEducation => 'Education';
+
+  @override
+  String get createEventCategoryEntertainment => 'Entertainment';
+
+  @override
+  String get createEventCategoryArtsCulture => 'Arts & Culture';
+
+  @override
+  String get createEventCategoryFoodDrink => 'Food & Drink';
+
+  @override
+  String get createEventCategoryHealthWellness => 'Health & Wellness';
+
+  @override
+  String get createEventCategoryTravelAdventure => 'Travel & Adventure';
+
+  @override
+  String get createEventCategoryGaming => 'Gaming';
+
+  @override
+  String get createEventCategoryFashion => 'Fashion';
+
+  @override
+  String get createEventCategoryNetworking => 'Networking';
+
+  @override
+  String get createEventCategoryWorkshops => 'Workshops';
+
+  @override
+  String get createEventCategoryConferences => 'Conferences';
+
+  @override
+  String get createEventCategoryExhibitions => 'Exhibitions';
+
+  @override
+  String get createEventCategoryFestivals => 'Festivals';
+
+  @override
+  String get createEventCategoryCharitySocial => 'Charity & Social';
+
+  @override
+  String get createEventMediaTitle => 'Media Files';
+
+  @override
+  String get createEventMediaSubtitle => 'Add visuals to attract more attendees';
+
+  @override
+  String get createEventCoverImage => 'Cover Image';
+
+  @override
+  String get createEventGalleryPhotos => 'Gallery Photos (Optional)';
+
+  @override
+  String createEventGalleryLimit(int max) {
+    return 'maximum ${max} photos, up to 5MB each.';
+  }
+
+  @override
+  String get createEventDescriptionHint => 'Tell your attendees what to expect this amazing event...';
+
+  @override
+  String get createEventCoverRequired => 'Please upload a cover image';
+
+  @override
+  String get createEventUploadCover => 'Upload Cover Photo';
+
+  @override
+  String get createEventRecommendedSize => 'Recommended size: 1200 x 675px';
+
+  @override
+  String get createEventVenueMap => 'Venue Map';
+
+  @override
+  String get createEventVenueMapSubtitle => 'Choose how attendees will be seated at this event.';
+
+  @override
+  String get createEventContinueToTickets => 'Continue to Tickets';
+
+  @override
+  String get createEventLayoutSeating => 'Seating';
+
+  @override
+  String get createEventLayoutSections => 'Sections';
+
+  @override
+  String get createEventSeatAvailable => 'Available';
+
+  @override
+  String get createEventSeatUnavailable => 'Unavailable';
+
+  @override
+  String get createEventAddSection => 'Add Section';
+
+  @override
+  String get createEventScreenLabel => 'SCREEN';
+
+  @override
+  String get createEventWalkway => 'WALKWAY';
+
+  @override
+  String get createEventMapSettings => 'Map Settings';
+
+  @override
+  String get createEventRows => 'Rows';
+
+  @override
+  String get createEventSeatsPerRow => 'Seats per Row';
+
+  @override
+  String get createEventSectionName => 'Section Name';
+
+  @override
+  String get createEventSectionNameHint => 'e.g. Stage A, VIP Zone.';
+
+  @override
+  String get createEventSectionNameRequired => 'Please enter a section name';
+
+  @override
+  String get createEventCapacity => 'Capacity';
+
+  @override
+  String get createEventCapacityHint => 'Enter number of spots.';
+
+  @override
+  String get createEventRequired => 'Required';
+
+  @override
+  String get createEventInvalid => 'Invalid';
+
+  @override
+  String get createEventTicketTiers => 'Ticket Tiers';
+
+  @override
+  String get createEventActiveTierOne => '1 active tier';
+
+  @override
+  String createEventActiveTiers(int count) {
+    return '${count} active tiers';
+  }
+
+  @override
+  String get createEventAddTier => 'Add New Tier';
+
+  @override
+  String get createEventPublish => 'Publish Event';
+
+  @override
+  String get createEventTicketName => 'Ticket Name';
+
+  @override
+  String get createEventTicketNameHint => 'Enter your ticket name.';
+
+  @override
+  String get createEventTicketNameRequired => 'Please enter a ticket name';
+
+  @override
+  String get createEventPrice => 'Price';
+
+  @override
+  String get createEventPriceHint => 'Enter Your Price.';
+
+  @override
+  String get createEventInvalidPrice => 'Invalid price';
+
+  @override
+  String get createEventQuantity => 'Quantity';
+
+  @override
+  String get createEventQuantityHint => 'Enter Ticket Quantity.';
+
+  @override
+  String get createEventTicketDescription => 'Description';
+
+  @override
+  String get createEventTicketDescriptionHint => 'Enter Ticket Description.';
+
+  @override
+  String get createEventPaymentMethods => 'Payment Methods';
+
+  @override
+  String get createEventPaymentMethodsSubtitle => 'Choose where you want to receive your money.';
+
+  @override
+  String get createEventPaymentMethodRequired => 'Please select at least one payment method';
+
+  @override
+  String get createEventWalletNumber => 'Wallet Number';
+
+  @override
+  String get createEventInstaPayField => 'InstaPay Address or Phone';
+
+  @override
+  String get createEventPayPalField => 'PayPal Email';
+
+  @override
+  String get createEventInstaPayHint => 'name@instapay or 01XXXXXXXXX';
+
+  @override
+  String createEventPaymentEnterField(String field) {
+    return 'Please enter your ${field}';
+  }
+
+  @override
+  String get createEventInvalidVodafone => 'Enter a valid Vodafone Cash number';
+
+  @override
+  String get createEventInvalidOrange => 'Enter a valid Orange Cash number';
+
+  @override
+  String get createEventInvalidInstaPay => 'Enter a valid InstaPay address or phone number';
+
+  @override
+  String get createEventInvalidEmail => 'Enter a valid email';
+
+  @override
+  String get createEventCongrats => 'Congratulations!';
+
+  @override
+  String get createEventPublishedIntro => 'Your event is now ';
+
+  @override
+  String get createEventPublishedStatus => 'Under Review!';
+
+  @override
+  String get createEventPublishedWait => 'please wait for our response.';
+
+  @override
+  String get createEventGoHome => 'Go To Home';
+
+  @override
+  String get createEventStatusPending => 'PENDING';
+
+  @override
+  String get commonTryAgain => 'Try again';
+
+  @override
+  String get commonRefresh => 'Refresh';
+
+  @override
+  String get commonStatusLive => 'LIVE';
+
+  @override
+  String get commonStatusPending => 'PENDING';
+
+  @override
+  String get commonNoEventsFound => 'No events found.';
+
+  @override
+  String get authOrDivider => 'or';
+
+  @override
+  String get authCheckEmailCodeSent => 'Check your email for the code sent to ';
+
+  @override
+  String get authNameInvalid => 'Please enter a valid name';
+
+  @override
+  String get authEmailInvalid => 'Please enter a valid email';
+
+  @override
+  String get authPasswordInvalid => 'Please enter a valid password';
+
+  @override
+  String get myEventsTitle => 'My Events';
+
+  @override
+  String get myEventsManageEvent => 'Manage Event';
+
+  @override
+  String get myEventsNoTitle => 'No Title';
+
+  @override
+  String get homeOverviewTitle => 'Overview';
+
+  @override
+  String get homeSalesByEvent => 'Sales by Event';
+
+  @override
+  String get homeNoEventsTitle => 'No events yet';
+
+  @override
+  String get homeNoEventsSubtitle => 'Create your first event and its sales will show up here.';
+
+  @override
+  String get homeStatRevenue => 'REVENUE';
+
+  @override
+  String get homeStatAllEvents => 'All events';
+
+  @override
+  String get homeStatTicketsSold => 'TICKETS SOLD';
+
+  @override
+  String homeStatSoldPercent(int percent, String capacity) {
+    return '${percent}% of ${capacity}';
+  }
+
+  @override
+  String get homeStatEvents => 'EVENTS';
+
+  @override
+  String homeStatLiveNow(String count) {
+    return '${count} live now';
+  }
+
+  @override
+  String get homeStatCheckedIn => 'CHECKED IN';
+
+  @override
+  String get homeStatNoTicketsSold => 'No tickets sold yet';
+
+  @override
+  String homeStatOfSold(String count) {
+    return 'of ${count} sold';
+  }
+
+  @override
+  String get dashboardTitle => 'Event Dashboard';
+
+  @override
+  String get dashboardTicketSales => 'Ticket Sales';
+
+  @override
+  String get dashboardNoTiers => 'This event has no ticket tiers.';
+
+  @override
+  String get dashboardOnlineEvent => 'Online event';
+
+  @override
+  String get dashboardNoLocation => 'No location';
+
+  @override
+  String dashboardPerTicket(String price) {
+    return '${price} per ticket';
+  }
+
+  @override
+  String dashboardTierSold(String sold, String capacity) {
+    return '${sold} of ${capacity} sold';
+  }
+
+  @override
+  String get dashboardTotalRevenue => 'TOTAL REVENUE';
+
+  @override
+  String dashboardFromTickets(String count) {
+    return 'From ${count} tickets';
+  }
+
+  @override
+  String get scanTitle => 'Scan Tickets';
+
+  @override
+  String get scanLoadingEvents => 'Loading events...';
+
+  @override
+  String get scanSelectAnEvent => 'Select an event';
+
+  @override
+  String get scanSelectEventTitle => 'Select event';
+
+  @override
+  String get scanTicketVerified => 'Ticket Verified';
+
+  @override
+  String get scanAlreadyScanned => 'Already Scanned';
+
+  @override
+  String get scanInvalidTicket => 'Invalid Ticket';
+
+  @override
+  String get scanCodeNotFound => 'Code not found for this event';
+
+  @override
+  String get scanFailed => 'Scan Failed';
+
+  @override
+  String get scanCameraPermission => 'Camera permission is required to scan tickets';
+
+  @override
+  String get scanCameraUnavailable => 'Camera is unavailable';
+
+  @override
+  String get scanEnterManuallyBelow => 'You can still enter the ticket code manually below';
+
+  @override
+  String get scanInstruction => 'Align QR code within the frame';
+
+  @override
+  String get scanManualEntry => 'MANUAL ENTRY';
+
+  @override
+  String get scanManualHint => 'Enter ticket code manually';
+
+  @override
+  String get scanSound => 'Sound';
+
+  @override
+  String get scanVibrate => 'Vibrate';
+
+  @override
+  String get scanStatScanned => 'SCANNED';
+
+  @override
+  String get scanStatTotalExpected => 'TOTAL EXPECTED';
+
+  @override
+  String get scanSelectEventFirst => 'Select an event before scanning';
 }

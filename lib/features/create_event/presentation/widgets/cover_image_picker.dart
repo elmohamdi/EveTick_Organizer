@@ -8,6 +8,7 @@ import 'package:evetick_organizer/features/create_event/presentation/widgets/das
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class CoverImagePicker extends StatelessWidget {
   const CoverImagePicker({
@@ -52,12 +53,12 @@ class CoverImagePicker extends StatelessWidget {
                     ),
                     verticalSpace(12),
                     Text(
-                      'Upload Cover Photo',
+                      AppLocalizations.of(context)!.createEventUploadCover,
                       style: TextStyles.font16WhiteRegular(context),
                     ),
                     verticalSpace(4),
                     Text(
-                      'Recommended size: 1200 x 675px',
+                      AppLocalizations.of(context)!.createEventRecommendedSize,
                       style: TextStyles.font14Gray3Regular,
                     ),
                   ],

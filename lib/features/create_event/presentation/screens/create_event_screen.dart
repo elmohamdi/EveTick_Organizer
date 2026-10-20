@@ -14,6 +14,7 @@ import 'package:evetick_organizer/features/create_event/presentation/widgets/eve
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class CreateEventScreen extends StatefulWidget {
   const CreateEventScreen({super.key});
@@ -91,7 +92,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
         } else if (state.status == CreateEventStatus.failure) {
           AppToast.error(
             context,
-            state.errorMessage ?? 'حصل خطأ أثناء نشر الحدث',
+            state.errorMessage ?? AppLocalizations.of(context)!.createEventPublishFailed,
           );
         }
       },
@@ -100,7 +101,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
         return Scaffold(
           appBar: AppBar(
             title: Text(
-              'Create Event',
+              AppLocalizations.of(context)!.createEventScreenTitle,
               style: TextStyles.font18WhiteBold(context),
             ),
             centerTitle: true,

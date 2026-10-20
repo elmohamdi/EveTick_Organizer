@@ -4,6 +4,7 @@ import 'package:evetick_organizer/features/ticket_scan/data/models/scan_result.d
 import 'package:evetick_organizer/features/ticket_scan/data/models/scan_status.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 /// Colored toast describing the outcome of a scan. Status colors are the same
 /// in light and dark mode, and the text sits on them, so they are fixed.
@@ -25,26 +26,28 @@ class ScanResultBanner extends StatelessWidget {
           ScanStatus.verified => (
             ColorsManager.confirmed,
             Icons.check_rounded,
-            'Ticket Verified',
+            AppLocalizations.of(context)!.scanTicketVerified,
             attendeeLine.isEmpty ? null : attendeeLine,
           ),
           ScanStatus.alreadyScanned => (
             ColorsManager.orange,
             Icons.warning_amber_rounded,
-            'Already Scanned',
+            AppLocalizations.of(context)!.scanAlreadyScanned,
             attendeeLine.isEmpty ? null : attendeeLine,
           ),
           ScanStatus.invalid => (
             ColorsManager.red,
             Icons.close_rounded,
-            'Invalid Ticket',
-            'Code not found for this event',
+            AppLocalizations.of(context)!.scanInvalidTicket,
+            AppLocalizations.of(context)!.scanCodeNotFound,
           ),
           ScanStatus.error => (
             ColorsManager.red,
             Icons.error_outline_rounded,
-            'Scan Failed',
-            result.message,
+            AppLocalizations.of(context)!.scanFailed,
+            result.noEventSelected
+                ? AppLocalizations.of(context)!.scanSelectEventFirst
+                : result.message,
           ),
         };
 

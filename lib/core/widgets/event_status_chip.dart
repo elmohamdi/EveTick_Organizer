@@ -3,6 +3,7 @@ import 'package:evetick_organizer/core/theming/extensions/build_context_extensio
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 /// LIVE / PENDING pill shared by the event card and the event dashboard.
 class EventStatusChip extends StatelessWidget {
@@ -25,7 +26,7 @@ class EventStatusChip extends StatelessWidget {
       ),
       child: Text(
         textAlign: TextAlign.center,
-        isLive ? 'LIVE' : 'PENDING',
+        isLive ? AppLocalizations.of(context)!.commonStatusLive : AppLocalizations.of(context)!.commonStatusPending,
         style: TextStyles.font12Gray3Mid.copyWith(
           color: context.colors.white,
           fontSize: 10.sp,

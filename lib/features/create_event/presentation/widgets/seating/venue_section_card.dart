@@ -6,6 +6,7 @@ import 'package:evetick_organizer/features/create_event/presentation/widgets/sea
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 /// One editable zone row for a [VenueLayoutType.sections] layout, e.g.
 /// "Stage A" with a capacity. Mirrors [TicketTierCard]'s layout/behaviour.
@@ -47,13 +48,13 @@ class VenueSectionCard extends StatelessWidget {
 
           AppTextFormField(
             hintStyle: TextStyles.font12Gray3Mid,
-            label: 'Section Name',
-            hintText: 'e.g. Stage A, VIP Zone.',
+            label: AppLocalizations.of(context)!.createEventSectionName,
+            hintText: AppLocalizations.of(context)!.createEventSectionNameHint,
             controller: section.nameController,
             backgroundColor: context.colors.thirdBlue,
             validator: (value) {
               if (value == null || value.trim().isEmpty) {
-                return 'Please enter a section name';
+                return AppLocalizations.of(context)!.createEventSectionNameRequired;
               }
               return null;
             },
@@ -63,18 +64,18 @@ class VenueSectionCard extends StatelessWidget {
 
           AppTextFormField(
             hintStyle: TextStyles.font12Gray3Mid,
-            label: 'Capacity',
-            hintText: 'Enter number of spots.',
+            label: AppLocalizations.of(context)!.createEventCapacity,
+            hintText: AppLocalizations.of(context)!.createEventCapacityHint,
             controller: section.capacityController,
             backgroundColor: context.colors.thirdBlue,
             keyboardType: TextInputType.number,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             validator: (value) {
               if (value == null || value.trim().isEmpty) {
-                return 'Required';
+                return AppLocalizations.of(context)!.createEventRequired;
               }
               if (int.tryParse(value) == null || int.parse(value) <= 0) {
-                return 'Invalid';
+                return AppLocalizations.of(context)!.createEventInvalid;
               }
               return null;
             },

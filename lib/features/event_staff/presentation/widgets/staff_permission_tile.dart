@@ -4,6 +4,7 @@ import 'package:evetick_organizer/core/theming/extensions/build_context_extensio
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/features/event_staff/data/models/staff_permission.dart';
 import 'package:evetick_organizer/features/event_staff/presentation/widgets/staff_labels.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,6 +22,7 @@ class StaffPermissionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -45,12 +47,12 @@ class StaffPermissionTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      permission.title,
+                      permission.title(l10n),
                       style: TextStyles.font16WhiteMid(context),
                     ),
                     verticalSpace(4),
                     Text(
-                      permission.description,
+                      permission.description(l10n),
                       style: TextStyles.font12LightGrayRegular(context),
                     ),
                   ],

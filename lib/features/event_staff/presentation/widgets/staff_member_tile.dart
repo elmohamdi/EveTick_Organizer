@@ -5,6 +5,7 @@ import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/features/event_staff/data/models/event_staff_member.dart';
 import 'package:evetick_organizer/features/event_staff/data/models/staff_permission.dart';
 import 'package:evetick_organizer/features/event_staff/presentation/widgets/staff_labels.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,6 +26,7 @@ class StaffMemberTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       padding: EdgeInsets.all(14.w),
       decoration: BoxDecoration(
@@ -72,11 +74,11 @@ class StaffMemberTile extends StatelessWidget {
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     _Pill(
-                      label: member.role.label.toUpperCase(),
+                      label: member.role.label(l10n).toUpperCase(),
                       color: context.colors.gray3.withValues(alpha: 0.5),
                     ),
                     _Pill(
-                      label: member.isPending ? 'PENDING' : 'ACTIVE',
+                      label: member.isPending ? l10n.staffPending : l10n.staffActive,
                       color: member.isPending
                           ? context.colors.gray3.withValues(alpha: 0.5)
                           : ColorsManager.confirmed,
@@ -84,7 +86,7 @@ class StaffMemberTile extends StatelessWidget {
                     for (final permission in StaffPermission.values)
                       if (member.permissions.contains(permission))
                         Tooltip(
-                          message: permission.title,
+                          message: permission.title(l10n),
                           child: Icon(
                             permission.icon,
                             size: 18.sp,
@@ -112,7 +114,9 @@ class StaffMemberTile extends StatelessWidget {
           else
             IconButton(
               onPressed: onRemove,
-              tooltip: member.isPending ? 'Cancel invitation' : 'Remove',
+              tooltip: member.isPending
+                  ? l10n.staffCancelInvitation
+                  : l10n.staffRemove,
               icon: Icon(
                 Icons.delete_outline_rounded,
                 size: 22.sp,

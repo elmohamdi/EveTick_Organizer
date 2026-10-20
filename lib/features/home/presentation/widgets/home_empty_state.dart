@@ -3,6 +3,7 @@ import 'package:evetick_organizer/core/theming/extensions/build_context_extensio
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class HomeEmptyState extends StatelessWidget {
   const HomeEmptyState({super.key});
@@ -27,10 +28,10 @@ class HomeEmptyState extends StatelessWidget {
             color: context.colors.gray3,
           ),
           verticalSpace(12),
-          Text('No events yet', style: TextStyles.font18WhiteBold(context)),
+          Text(AppLocalizations.of(context)!.homeNoEventsTitle, style: TextStyles.font18WhiteBold(context)),
           verticalSpace(6),
           Text(
-            'Create your first event and its sales will show up here.',
+            AppLocalizations.of(context)!.homeNoEventsSubtitle,
             textAlign: TextAlign.center,
             style: TextStyles.font14LightGrayRegular(context),
           ),

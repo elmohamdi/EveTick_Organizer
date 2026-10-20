@@ -6,6 +6,7 @@ import 'package:evetick_organizer/features/staff_access/logic/cubit/staff_invite
 import 'package:evetick_organizer/features/staff_access/presentation/widgets/staff_invites_banner.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class PendingEventsScreen extends StatelessWidget {
   const PendingEventsScreen({super.key});
@@ -18,13 +19,13 @@ class PendingEventsScreen extends StatelessWidget {
       backgroundColor: context.colors.darkBlue,
       appBar: AppBar(
         backgroundColor: context.colors.darkBlue,
-        title: Text('My Events', style: TextStyles.font18WhiteBold(context)),
+        title: Text(AppLocalizations.of(context)!.myEventsTitle, style: TextStyles.font18WhiteBold(context)),
         centerTitle: true,
         elevation: 0,
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            tooltip: 'Refresh',
+            tooltip: AppLocalizations.of(context)!.commonRefresh,
             onPressed: () {
               context.read<StaffInvitesCubit>().load();
               context.read<PendingEventsCubit>().getPendingEvents();

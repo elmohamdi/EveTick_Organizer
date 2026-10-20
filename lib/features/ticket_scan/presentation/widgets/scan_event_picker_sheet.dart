@@ -8,6 +8,7 @@ import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/scan
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class ScanEventPickerSheet extends StatelessWidget {
   const ScanEventPickerSheet({super.key});
@@ -21,7 +22,7 @@ class ScanEventPickerSheet extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Select event', style: TextStyles.font18WhiteBold(context)),
+            Text(AppLocalizations.of(context)!.scanSelectEventTitle, style: TextStyles.font18WhiteBold(context)),
             verticalSpace(16),
             BlocBuilder<TicketScanCubit, TicketScanState>(
               buildWhen: (previous, current) =>
@@ -38,7 +39,7 @@ class ScanEventPickerSheet extends StatelessWidget {
                               color: ColorsManager.orange,
                             )
                           : Text(
-                              'No events found.',
+                              AppLocalizations.of(context)!.commonNoEventsFound,
                               style: TextStyles.font16LightGrayRegular(context),
                             ),
                     ),

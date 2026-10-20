@@ -6,6 +6,7 @@ import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/features/event_dashboard/data/models/ticket_tier_sales.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class TicketTierSalesTile extends StatelessWidget {
   const TicketTierSalesTile({super.key, required this.tier});
@@ -47,7 +48,7 @@ class TicketTierSalesTile extends StatelessWidget {
           ),
           verticalSpace(4),
           Text(
-            '${Formatters.money(tier.price)} per ticket',
+            AppLocalizations.of(context)!.dashboardPerTicket(Formatters.money(tier.price)),
             style: TextStyles.font12LightGrayRegular(context),
           ),
           verticalSpace(12),
@@ -64,7 +65,10 @@ class TicketTierSalesTile extends StatelessWidget {
           ),
           verticalSpace(8),
           Text(
-            '${Formatters.number(tier.sold)} of ${Formatters.number(tier.capacity)} sold',
+            AppLocalizations.of(context)!.dashboardTierSold(
+              Formatters.number(tier.sold),
+              Formatters.number(tier.capacity),
+            ),
             style: TextStyles.font12LightGrayRegular(context),
           ),
         ],

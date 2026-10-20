@@ -7,6 +7,7 @@ import 'package:evetick_organizer/core/widgets/app_toast/app_toast_type.dart';
 import 'package:evetick_organizer/features/event_staff/presentation/widgets/staff_labels.dart';
 import 'package:evetick_organizer/features/staff_access/data/models/staff_access_models.dart';
 import 'package:evetick_organizer/features/staff_access/logic/cubit/staff_invites_cubit.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,6 +28,7 @@ class InvitationTile extends StatelessWidget {
     // Taken before the await: once the invitation is answered this tile is
     // removed from the list and its context is no longer usable.
     final overlay = Overlay.of(context, rootOverlay: true);
+    final l10n = AppLocalizations.of(context)!;
     final error = await context.read<StaffInvitesCubit>().respond(
       invitation,
       accept: accept,
@@ -37,8 +39,8 @@ class InvitationTile extends StatelessWidget {
       message:
           error ??
           (accept
-              ? 'You joined "${invitation.eventTitle}"'
-              : 'Invitation declined'),
+              ? l10n.staffInvitationAccepted(invitation.eventTitle)
+              : l10n.staffInvitationDeclined),
       type: error != null
           ? AppToastType.error
           : (accept ? AppToastType.success : AppToastType.info),
@@ -48,6 +50,7 @@ class InvitationTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
@@ -66,7 +69,10 @@ class InvitationTile extends StatelessWidget {
           ),
           verticalSpace(4),
           Text(
-            '${invitation.inviterName} invited you as ${invitation.role.label}',
+            l10n.staffInvitationInvitedAs(
+              invitation.inviterName,
+              invitation.role.label(l10n),
+            ),
             style: TextStyles.font14LightGrayRegular(context),
           ),
           if (invitation.permissions.isNotEmpty) ...[
@@ -95,7 +101,7 @@ class InvitationTile extends StatelessWidget {
                         ),
                         SizedBox(width: 6.w),
                         Text(
-                          permission.title.replaceFirst('Can ', ''),
+                          permission.title(l10n),
                           style: TextStyles.font12LightGrayRegular(context),
                         ),
                       ],
@@ -120,7 +126,7 @@ class InvitationTile extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12.r),
                     ),
                   ),
-                  child: const Text('Decline'),
+                  child: Text(l10n.staffDecline),
                 ),
               ),
               SizedBox(width: 12.w),
@@ -146,7 +152,7 @@ class InvitationTile extends StatelessWidget {
                             color: ColorsManager.defaultWhite,
                           ),
                         )
-                      : const Text('Accept'),
+                      : Text(l10n.staffAccept),
                 ),
               ),
             ],

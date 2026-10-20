@@ -4,6 +4,7 @@ import 'package:evetick_organizer/features/staff_access/logic/cubit/staff_invite
 import 'package:evetick_organizer/features/staff_access/logic/cubit/staff_invites_state.dart';
 import 'package:evetick_organizer/features/staff_access/presentation/widgets/check_failed.dart';
 import 'package:evetick_organizer/features/staff_access/presentation/widgets/invitation_tile.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,7 +40,9 @@ class StaffInvitesBanner extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(16.w, 8.h, 16.w, 0),
             children: [
               Text(
-                'Staff invitations (${state.invitations.length})',
+                AppLocalizations.of(context)!.staffInvitationsTitle(
+                  state.invitations.length,
+                ),
                 style: TextStyles.font18WhiteBold(context),
               ),
               verticalSpace(12),

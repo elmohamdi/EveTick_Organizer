@@ -2,6 +2,7 @@ import 'package:evetick_organizer/core/helpers/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 /// Shown inside the viewfinder when the camera can't start. It always sits on
 /// top of the (dark) camera area, so it uses fixed light colors on purpose.
@@ -31,8 +32,8 @@ class ScanCameraError extends StatelessWidget {
               verticalSpace(12),
               Text(
                 isPermissionDenied
-                    ? 'Camera permission is required to scan tickets'
-                    : 'Camera is unavailable',
+                    ? AppLocalizations.of(context)!.scanCameraPermission
+                    : AppLocalizations.of(context)!.scanCameraUnavailable,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
@@ -42,7 +43,7 @@ class ScanCameraError extends StatelessWidget {
               ),
               verticalSpace(6),
               Text(
-                'You can still enter the ticket code manually below',
+                AppLocalizations.of(context)!.scanEnterManuallyBelow,
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.white70, fontSize: 12.sp),
               ),

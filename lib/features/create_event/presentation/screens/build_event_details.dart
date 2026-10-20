@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class BuildEventDetails extends StatefulWidget {
   const BuildEventDetails({super.key, this.onNextStep});
@@ -170,11 +171,11 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
           context.read<CreateEventCubit>().updateLocation(location.address!);
         }
       } else if (mounted) {
-        AppToast.error(context, 'Could not get address from location');
+        AppToast.error(context, AppLocalizations.of(context)!.createEventAddressNotFound);
       }
     } catch (e) {
       if (mounted) {
-        AppToast.error(context, 'Error getting location: $e');
+        AppToast.error(context, AppLocalizations.of(context)!.createEventLocationError(e.toString()));
       }
     } finally {
       if (mounted) setState(() => isGettingLocation = false);
@@ -185,19 +186,19 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
     final isValid = _formKey.currentState?.validate() ?? false;
 
     if (startDateController.text.isEmpty || startTimeController.text.isEmpty) {
-      _showSnack('Please select a start date & time');
+      _showSnack(AppLocalizations.of(context)!.createEventSelectStart);
       return;
     }
     if (endDateController.text.isEmpty || endTimeController.text.isEmpty) {
-      _showSnack('Please select an end date & time');
+      _showSnack(AppLocalizations.of(context)!.createEventSelectEnd);
       return;
     }
     if (!isOnlineEvent && locationController.text.trim().isEmpty) {
-      _showSnack('Please enter the event location');
+      _showSnack(AppLocalizations.of(context)!.createEventLocationRequired);
       return;
     }
     if (isOnlineEvent && urlController.text.trim().isEmpty) {
-      _showSnack('Please enter the event URL');
+      _showSnack(AppLocalizations.of(context)!.createEventUrlRequired);
       return;
     }
     if (!isValid) return;
@@ -217,10 +218,39 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
       endTime!.minute,
     );
     if (!endDateTime.isAfter(startDateTime)) {
-      _showSnack('End date & time must be after start date & time');
+      _showSnack(AppLocalizations.of(context)!.createEventEndBeforeStart);
       return;
     }
     widget.onNextStep?.call();
+  }
+
+  /// Categories are stored in Firestore by their English name, so only the
+  /// label shown to the user is translated.
+  String _categoryLabel(BuildContext context, String category) {
+    final l10n = AppLocalizations.of(context)!;
+    return switch (category) {
+      'Sports' => l10n.createEventCategorySports,
+      'Music' => l10n.createEventCategoryMusic,
+      'Medical' => l10n.createEventCategoryMedical,
+      'Movies' => l10n.createEventCategoryMovies,
+      'Technology' => l10n.createEventCategoryTechnology,
+      'Business' => l10n.createEventCategoryBusiness,
+      'Education' => l10n.createEventCategoryEducation,
+      'Entertainment' => l10n.createEventCategoryEntertainment,
+      'Arts & Culture' => l10n.createEventCategoryArtsCulture,
+      'Food & Drink' => l10n.createEventCategoryFoodDrink,
+      'Health & Wellness' => l10n.createEventCategoryHealthWellness,
+      'Travel & Adventure' => l10n.createEventCategoryTravelAdventure,
+      'Gaming' => l10n.createEventCategoryGaming,
+      'Fashion' => l10n.createEventCategoryFashion,
+      'Networking' => l10n.createEventCategoryNetworking,
+      'Workshops' => l10n.createEventCategoryWorkshops,
+      'Conferences' => l10n.createEventCategoryConferences,
+      'Exhibitions' => l10n.createEventCategoryExhibitions,
+      'Festivals' => l10n.createEventCategoryFestivals,
+      'Charity & Social' => l10n.createEventCategoryCharitySocial,
+      _ => category,
+    };
   }
 
   void _showSnack(String message) {
@@ -237,25 +267,25 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AppTextFormField(
-              hintText: 'Enter catchy event name',
-              label: 'Event Title',
+              hintText: AppLocalizations.of(context)!.createEventTitleHint,
+              label: AppLocalizations.of(context)!.createEventTitleLabel,
               controller: titleController,
               onChanged: (value) =>
                   context.read<CreateEventCubit>().updateTitle(value),
               validator: (value) => (value == null || value.trim().isEmpty)
-                  ? 'Please enter event title'
+                  ? AppLocalizations.of(context)!.createEventTitleRequired
                   : null,
             ),
             verticalSpace(24),
 
             AppDropdownFormField<String>(
-              label: 'Category',
-              hintText: 'Select event category',
+              label: AppLocalizations.of(context)!.createEventCategoryLabel,
+              hintText: AppLocalizations.of(context)!.createEventCategoryHint,
               value: selectedCategory,
               items: _categories,
-              itemLabel: (item) => item,
+              itemLabel: (item) => _categoryLabel(context, item),
               validator: (value) =>
-                  value == null ? 'Please select a category' : null,
+                  value == null ? AppLocalizations.of(context)!.createEventCategoryRequired : null,
               onChanged: (value) {
                 setState(() => selectedCategory = value);
                 context.read<CreateEventCubit>().updateCategory(value!);
@@ -264,7 +294,7 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
             verticalSpace(24),
 
             DateTimeSectionField(
-              title: 'Start Date & Time',
+              title: AppLocalizations.of(context)!.createEventStartDateTime,
               dateController: startDateController,
               timeController: startTimeController,
               onPickDate: () => _pickDate(isStart: true),
@@ -273,7 +303,7 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
             verticalSpace(24),
 
             DateTimeSectionField(
-              title: 'End Date & Time',
+              title: AppLocalizations.of(context)!.createEventEndDateTime,
               dateController: endDateController,
               timeController: endTimeController,
               onPickDate: () => _pickDate(isStart: false),
@@ -284,12 +314,12 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
             if (isOnlineEvent)
               AppTextFormField(
                 controller: urlController,
-                label: 'Event URL',
-                hintText: 'Enter event URL (e.g. Zoom link)',
+                label: AppLocalizations.of(context)!.createEventUrlLabel,
+                hintText: AppLocalizations.of(context)!.createEventUrlHint,
                 onChanged: (value) =>
                     context.read<CreateEventCubit>().updateEventUrl(value),
                 validator: (value) => (value == null || value.trim().isEmpty)
-                    ? 'Please enter event URL'
+                    ? AppLocalizations.of(context)!.createEventUrlRequired
                     : null,
               )
             else
@@ -306,7 +336,7 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
 
             AppRadioButton(
               value: isOnlineEvent,
-              label: 'Online event (Virtual)',
+              label: AppLocalizations.of(context)!.createEventOnlineToggle,
               onChanged: (value) {
                 context.read<CreateEventCubit>().updateIsOnlineEvent(value);
                 setState(() => isOnlineEvent = value);
@@ -315,7 +345,7 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
             verticalSpace(32),
 
             FilledAppTextButton(
-              buttonText: 'Next Step',
+              buttonText: AppLocalizations.of(context)!.createEventNextStep,
               onPressed: _onNextStepPressed,
             ),
             verticalSpace(24),
