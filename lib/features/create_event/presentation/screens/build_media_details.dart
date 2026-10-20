@@ -1,6 +1,7 @@
 import 'package:evetick_organizer/core/helpers/spacing.dart';
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/core/widgets/app_text_form_field.dart';
+import 'package:evetick_organizer/core/widgets/app_toast/app_toast.dart';
 import 'package:evetick_organizer/core/widgets/filled_app_text_button.dart';
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/cover_image_picker.dart';
@@ -80,9 +81,7 @@ class _BuildMediaDetailsState extends State<BuildMediaDetails> {
     final bool isValid = _formKey.currentState?.validate() ?? false;
 
     if (coverImage == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please upload a cover image')),
-      );
+      AppToast.error(context, 'Please upload a cover image');
       return;
     }
 

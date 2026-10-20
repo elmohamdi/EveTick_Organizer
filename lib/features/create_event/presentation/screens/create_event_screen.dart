@@ -2,6 +2,7 @@ import 'package:evetick_organizer/core/helpers/extentions.dart';
 import 'package:evetick_organizer/core/routing/routes.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
 import 'package:evetick_organizer/core/theming/text_styles.dart';
+import 'package:evetick_organizer/core/widgets/app_toast/app_toast.dart';
 import 'package:evetick_organizer/features/create_event/data/models/event_model.dart';
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_state.dart';
@@ -88,10 +89,9 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
             },
           );
         } else if (state.status == CreateEventStatus.failure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.errorMessage ?? 'حصل خطأ أثناء نشر الحدث'),
-            ),
+          AppToast.error(
+            context,
+            state.errorMessage ?? 'حصل خطأ أثناء نشر الحدث',
           );
         }
       },

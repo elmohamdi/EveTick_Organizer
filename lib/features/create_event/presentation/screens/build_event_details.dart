@@ -3,6 +3,7 @@ import 'package:evetick_organizer/core/helpers/spacing.dart';
 import 'package:evetick_organizer/core/widgets/app_drop_down_form_field.dart';
 import 'package:evetick_organizer/core/widgets/app_radio_button.dart';
 import 'package:evetick_organizer/core/widgets/app_text_form_field.dart';
+import 'package:evetick_organizer/core/widgets/app_toast/app_toast.dart';
 import 'package:evetick_organizer/core/widgets/filled_app_text_button.dart';
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
 import 'package:evetick_organizer/features/create_event/presentation/widgets/date_time_section_field.dart';
@@ -169,15 +170,11 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
           context.read<CreateEventCubit>().updateLocation(location.address!);
         }
       } else if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Could not get address from location')),
-        );
+        AppToast.error(context, 'Could not get address from location');
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text('Error getting location: $e')));
+        AppToast.error(context, 'Error getting location: $e');
       }
     } finally {
       if (mounted) setState(() => isGettingLocation = false);
@@ -227,9 +224,7 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
   }
 
   void _showSnack(String message) {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(message)));
+    AppToast.error(context, message);
   }
 
   @override

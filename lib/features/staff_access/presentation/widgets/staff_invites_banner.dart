@@ -2,6 +2,8 @@ import 'package:evetick_organizer/core/helpers/spacing.dart';
 import 'package:evetick_organizer/core/theming/colors.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
 import 'package:evetick_organizer/core/theming/text_styles.dart';
+import 'package:evetick_organizer/core/widgets/app_toast/app_toast.dart';
+import 'package:evetick_organizer/core/widgets/app_toast/app_toast_type.dart';
 import 'package:evetick_organizer/features/event_staff/presentation/widgets/staff_labels.dart';
 import 'package:evetick_organizer/features/staff_access/data/models/staff_access_models.dart';
 import 'package:evetick_organizer/features/staff_access/logic/cubit/staff_invites_cubit.dart';
@@ -73,21 +75,24 @@ class _InvitationTile extends StatelessWidget {
   final VoidCallback onAccepted;
 
   Future<void> _respond(BuildContext context, {required bool accept}) async {
-    final messenger = ScaffoldMessenger.of(context);
+    // Taken before the await: once the invitation is answered this tile is
+    // removed from the list and its context is no longer usable.
+    final overlay = Overlay.of(context, rootOverlay: true);
     final error = await context.read<StaffInvitesCubit>().respond(
       invitation,
       accept: accept,
     );
 
-    messenger.showSnackBar(
-      SnackBar(
-        content: Text(
+    AppToast.showOn(
+      overlay,
+      message:
           error ??
-              (accept
-                  ? 'You joined "${invitation.eventTitle}"'
-                  : 'Invitation declined'),
-        ),
-      ),
+          (accept
+              ? 'You joined "${invitation.eventTitle}"'
+              : 'Invitation declined'),
+      type: error != null
+          ? AppToastType.error
+          : (accept ? AppToastType.success : AppToastType.info),
     );
     if (error == null && accept) onAccepted();
   }

@@ -5,6 +5,7 @@ import 'package:evetick_organizer/core/theming/extensions/build_context_extensio
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/core/widgets/app_drop_down_form_field.dart';
 import 'package:evetick_organizer/core/widgets/app_text_form_field.dart';
+import 'package:evetick_organizer/core/widgets/app_toast/app_toast.dart';
 import 'package:evetick_organizer/features/auth/ui/widgets/error_banner.dart';
 import 'package:evetick_organizer/features/event_staff/data/models/staff_permission.dart';
 import 'package:evetick_organizer/features/event_staff/data/models/staff_role.dart';
@@ -90,11 +91,9 @@ class _AddStaffMemberSheetState extends State<AddStaffMemberSheet> {
       return;
     }
 
-    final messenger = ScaffoldMessenger.of(context);
+    // Shown on the root overlay, so it stays after the sheet is closed.
+    AppToast.success(context, 'Invitation sent to ${email.toLowerCase()}');
     Navigator.of(context).pop();
-    messenger.showSnackBar(
-      SnackBar(content: Text('Invitation sent to ${email.toLowerCase()}')),
-    );
   }
 
   @override

@@ -1189,4 +1189,118 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboardingDashboardSubtitle => 'Get a real-time overview of your events,tickets, sales, and staff performance.';
+
+  @override
+  String get supportHelpTitle => 'Help & Support';
+
+  @override
+  String get supportSearchHint => 'How can we help?';
+
+  @override
+  String get supportClearSearch => 'Clear';
+
+  @override
+  String get supportCategoriesTitle => 'Categories';
+
+  @override
+  String get supportFrequentQuestionsTitle => 'Frequent Questions';
+
+  @override
+  String get supportCategoryAccount => 'Account';
+
+  @override
+  String get supportCategoryEvents => 'Events';
+
+  @override
+  String get supportCategoryTicketing => 'Tickets & Scanning';
+
+  @override
+  String get supportCategoryPayouts => 'Payouts';
+
+  @override
+  String get supportCategoryTechnical => 'Technical Issue';
+
+  @override
+  String get supportCategoryFeedback => 'Feedback & Suggestions';
+
+  @override
+  String get supportNoResultsTitle => 'No results found';
+
+  @override
+  String get supportNoResultsSubtitle => 'Try different keywords or send a message to our support team.';
+
+  @override
+  String get supportRetry => 'Try again';
+
+  @override
+  String get supportStillNeedHelpTitle => 'Still need help?';
+
+  @override
+  String get supportStillNeedHelpSubtitle => 'Our support team is available 24/7 to assist you with any issues.';
+
+  @override
+  String get supportContactSupport => 'Contact Support';
+
+  @override
+  String get supportSendMessageTitle => 'Send Us a Message';
+
+  @override
+  String get supportWhatCanWeHelpWith => 'What can we help with?';
+
+  @override
+  String get supportSelectCategory => 'Select Category';
+
+  @override
+  String get supportCategoryRequired => 'Please select a category';
+
+  @override
+  String get supportYourMessage => 'Your Message';
+
+  @override
+  String get supportMessageHint => 'Describe your issue or feedback in detail here...';
+
+  @override
+  String get supportMessageRequired => 'Please write your message';
+
+  @override
+  String get supportMessageTooShort => 'Your message must be at least 10 characters';
+
+  @override
+  String get supportAttachmentsOptional => 'Attachments (optional)';
+
+  @override
+  String get supportUploadScreenshot => 'Upload Screenshot';
+
+  @override
+  String get supportAttachmentHint => 'Supported formats: PNG, JPG (Max 5MB)';
+
+  @override
+  String get supportAttachmentRemove => 'Remove';
+
+  @override
+  String get supportAttachmentUnsupported => 'Only PNG and JPG images are supported';
+
+  @override
+  String get supportAttachmentTooLarge => 'This image is larger than 5MB';
+
+  @override
+  String get supportAttachmentLimit => 'You can attach up to 3 screenshots';
+
+  @override
+  String get supportAttachmentPickFailed => 'Could not open that image, please try again';
+
+  @override
+  String get supportNoticePrefix => 'Our support team typically responds within 24 hours. For urgent issues during a live event, please check our ';
+
+  @override
+  String get supportNoticeLink => 'FAQ section';
+
+  @override
+  String get supportNoticeSuffix => '.';
+
+  @override
+  String get supportSendMessage => 'Send Message';
+
+  @override
+  String get supportMessageSent => 'Message sent! We will get back to you within 24 hours.';
 }

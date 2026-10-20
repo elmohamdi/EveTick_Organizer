@@ -1189,4 +1189,118 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get onboardingDashboardSubtitle => 'احصل على نظرة عامة فورية على فعالياتك وتذاكرك ومبيعاتك وأداء موظفيك.';
+
+  @override
+  String get supportHelpTitle => 'المساعدة والدعم';
+
+  @override
+  String get supportSearchHint => 'كيف يمكننا مساعدتك؟';
+
+  @override
+  String get supportClearSearch => 'مسح';
+
+  @override
+  String get supportCategoriesTitle => 'الأقسام';
+
+  @override
+  String get supportFrequentQuestionsTitle => 'الأسئلة الشائعة';
+
+  @override
+  String get supportCategoryAccount => 'الحساب';
+
+  @override
+  String get supportCategoryEvents => 'الفعاليات';
+
+  @override
+  String get supportCategoryTicketing => 'التذاكر والمسح';
+
+  @override
+  String get supportCategoryPayouts => 'الأرباح والمدفوعات';
+
+  @override
+  String get supportCategoryTechnical => 'مشكلة تقنية';
+
+  @override
+  String get supportCategoryFeedback => 'ملاحظات واقتراحات';
+
+  @override
+  String get supportNoResultsTitle => 'لا توجد نتائج';
+
+  @override
+  String get supportNoResultsSubtitle => 'جرّب كلمات مختلفة أو أرسل رسالة إلى فريق الدعم.';
+
+  @override
+  String get supportRetry => 'حاول مرة أخرى';
+
+  @override
+  String get supportStillNeedHelpTitle => 'هل ما زلت بحاجة إلى مساعدة؟';
+
+  @override
+  String get supportStillNeedHelpSubtitle => 'فريق الدعم متاح على مدار الساعة لمساعدتك في أي مشكلة.';
+
+  @override
+  String get supportContactSupport => 'تواصل مع الدعم';
+
+  @override
+  String get supportSendMessageTitle => 'أرسل لنا رسالة';
+
+  @override
+  String get supportWhatCanWeHelpWith => 'بماذا نستطيع مساعدتك؟';
+
+  @override
+  String get supportSelectCategory => 'اختر القسم';
+
+  @override
+  String get supportCategoryRequired => 'من فضلك اختر القسم';
+
+  @override
+  String get supportYourMessage => 'رسالتك';
+
+  @override
+  String get supportMessageHint => 'اشرح مشكلتك أو ملاحظاتك بالتفصيل هنا...';
+
+  @override
+  String get supportMessageRequired => 'من فضلك اكتب رسالتك';
+
+  @override
+  String get supportMessageTooShort => 'يجب ألا تقل رسالتك عن 10 أحرف';
+
+  @override
+  String get supportAttachmentsOptional => 'المرفقات (اختياري)';
+
+  @override
+  String get supportUploadScreenshot => 'ارفع لقطة شاشة';
+
+  @override
+  String get supportAttachmentHint => 'الصيغ المدعومة: PNG, JPG (الحد الأقصى 5 ميجابايت)';
+
+  @override
+  String get supportAttachmentRemove => 'إزالة';
+
+  @override
+  String get supportAttachmentUnsupported => 'يمكن رفع صور PNG وJPG فقط';
+
+  @override
+  String get supportAttachmentTooLarge => 'حجم هذه الصورة أكبر من 5 ميجابايت';
+
+  @override
+  String get supportAttachmentLimit => 'يمكنك إرفاق 3 لقطات شاشة كحد أقصى';
+
+  @override
+  String get supportAttachmentPickFailed => 'تعذر فتح الصورة، حاول مرة أخرى';
+
+  @override
+  String get supportNoticePrefix => 'يرد فريق الدعم عادةً خلال 24 ساعة. للمشكلات العاجلة أثناء الفعالية، يرجى الاطلاع على ';
+
+  @override
+  String get supportNoticeLink => 'قسم الأسئلة الشائعة';
+
+  @override
+  String get supportNoticeSuffix => '.';
+
+  @override
+  String get supportSendMessage => 'إرسال الرسالة';
+
+  @override
+  String get supportMessageSent => 'تم إرسال رسالتك! سنرد عليك خلال 24 ساعة.';
 }

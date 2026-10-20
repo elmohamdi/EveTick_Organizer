@@ -106,11 +106,28 @@ exports.getMyStaffAccess = onCall({ region: REGION }, async (request) => {
     return { invitations: [], assignments: [] };
   }
 
-  // Needs a collection-group index on staff.email (see README).
-  const snapshot = await db
-    .collectionGroup("staff")
-    .where("email", "==", email)
-    .get();
+  // Needs a collection-group index on staff.email. Until it exists Firestore
+  // throws FAILED_PRECONDITION with a "create index" link in the message, which
+  // we log so it shows up in `firebase functions:log`.
+  let snapshot;
+  try {
+    snapshot = await db
+      .collectionGroup("staff")
+      .where("email", "==", email)
+      .get();
+  } catch (error) {
+    logger.error("staff collectionGroup query failed", {
+      code: error.code,
+      message: String(error.message || error),
+    });
+    if (error.code === 9) {
+      throw new HttpsError(
+        "failed-precondition",
+        "Staff invitations are being set up, try again in a few minutes"
+      );
+    }
+    throw new HttpsError("internal", "Could not load staff access");
+  }
 
   // Only events/{id}/staff/{doc}; ignore any other collection called "staff".
   const entries = snapshot.docs

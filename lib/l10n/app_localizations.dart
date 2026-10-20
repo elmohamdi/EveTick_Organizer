@@ -2338,6 +2338,235 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Get a real-time overview of your events,tickets, sales, and staff performance.'**
   String get onboardingDashboardSubtitle;
+
+  /// No description provided for @supportHelpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Help & Support'**
+  String get supportHelpTitle;
+
+  /// No description provided for @supportSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'How can we help?'**
+  String get supportSearchHint;
+
+  /// No description provided for @supportClearSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get supportClearSearch;
+
+  /// No description provided for @supportCategoriesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get supportCategoriesTitle;
+
+  /// No description provided for @supportFrequentQuestionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Frequent Questions'**
+  String get supportFrequentQuestionsTitle;
+
+  /// No description provided for @supportCategoryAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get supportCategoryAccount;
+
+  /// No description provided for @supportCategoryEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'Events'**
+  String get supportCategoryEvents;
+
+  /// No description provided for @supportCategoryTicketing.
+  ///
+  /// In en, this message translates to:
+  /// **'Tickets & Scanning'**
+  String get supportCategoryTicketing;
+
+  /// No description provided for @supportCategoryPayouts.
+  ///
+  /// In en, this message translates to:
+  /// **'Payouts'**
+  String get supportCategoryPayouts;
+
+  /// No description provided for @supportCategoryTechnical.
+  ///
+  /// In en, this message translates to:
+  /// **'Technical Issue'**
+  String get supportCategoryTechnical;
+
+  /// No description provided for @supportCategoryFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback & Suggestions'**
+  String get supportCategoryFeedback;
+
+  /// No description provided for @supportNoResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No results found'**
+  String get supportNoResultsTitle;
+
+  /// No description provided for @supportNoResultsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Try different keywords or send a message to our support team.'**
+  String get supportNoResultsSubtitle;
+
+  /// No description provided for @supportRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get supportRetry;
+
+  /// No description provided for @supportStillNeedHelpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Still need help?'**
+  String get supportStillNeedHelpTitle;
+
+  /// No description provided for @supportStillNeedHelpSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Our support team is available 24/7 to assist you with any issues.'**
+  String get supportStillNeedHelpSubtitle;
+
+  /// No description provided for @supportContactSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Support'**
+  String get supportContactSupport;
+
+  /// No description provided for @supportSendMessageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Us a Message'**
+  String get supportSendMessageTitle;
+
+  /// No description provided for @supportWhatCanWeHelpWith.
+  ///
+  /// In en, this message translates to:
+  /// **'What can we help with?'**
+  String get supportWhatCanWeHelpWith;
+
+  /// No description provided for @supportSelectCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Category'**
+  String get supportSelectCategory;
+
+  /// No description provided for @supportCategoryRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a category'**
+  String get supportCategoryRequired;
+
+  /// No description provided for @supportYourMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Message'**
+  String get supportYourMessage;
+
+  /// No description provided for @supportMessageHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Describe your issue or feedback in detail here...'**
+  String get supportMessageHint;
+
+  /// No description provided for @supportMessageRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please write your message'**
+  String get supportMessageRequired;
+
+  /// No description provided for @supportMessageTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Your message must be at least 10 characters'**
+  String get supportMessageTooShort;
+
+  /// No description provided for @supportAttachmentsOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'Attachments (optional)'**
+  String get supportAttachmentsOptional;
+
+  /// No description provided for @supportUploadScreenshot.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload Screenshot'**
+  String get supportUploadScreenshot;
+
+  /// No description provided for @supportAttachmentHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Supported formats: PNG, JPG (Max 5MB)'**
+  String get supportAttachmentHint;
+
+  /// No description provided for @supportAttachmentRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get supportAttachmentRemove;
+
+  /// No description provided for @supportAttachmentUnsupported.
+  ///
+  /// In en, this message translates to:
+  /// **'Only PNG and JPG images are supported'**
+  String get supportAttachmentUnsupported;
+
+  /// No description provided for @supportAttachmentTooLarge.
+  ///
+  /// In en, this message translates to:
+  /// **'This image is larger than 5MB'**
+  String get supportAttachmentTooLarge;
+
+  /// No description provided for @supportAttachmentLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'You can attach up to 3 screenshots'**
+  String get supportAttachmentLimit;
+
+  /// No description provided for @supportAttachmentPickFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open that image, please try again'**
+  String get supportAttachmentPickFailed;
+
+  /// No description provided for @supportNoticePrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'Our support team typically responds within 24 hours. For urgent issues during a live event, please check our '**
+  String get supportNoticePrefix;
+
+  /// No description provided for @supportNoticeLink.
+  ///
+  /// In en, this message translates to:
+  /// **'FAQ section'**
+  String get supportNoticeLink;
+
+  /// No description provided for @supportNoticeSuffix.
+  ///
+  /// In en, this message translates to:
+  /// **'.'**
+  String get supportNoticeSuffix;
+
+  /// No description provided for @supportSendMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Message'**
+  String get supportSendMessage;
+
+  /// No description provided for @supportMessageSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Message sent! We will get back to you within 24 hours.'**
+  String get supportMessageSent;
+
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

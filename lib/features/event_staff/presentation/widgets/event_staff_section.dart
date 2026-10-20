@@ -2,6 +2,7 @@ import 'package:evetick_organizer/core/helpers/spacing.dart';
 import 'package:evetick_organizer/core/theming/colors.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
 import 'package:evetick_organizer/core/theming/text_styles.dart';
+import 'package:evetick_organizer/core/widgets/app_toast/app_toast.dart';
 import 'package:evetick_organizer/features/event_staff/data/models/event_staff_member.dart';
 import 'package:evetick_organizer/features/event_staff/logic/cubit/event_staff_cubit.dart';
 import 'package:evetick_organizer/features/event_staff/logic/cubit/event_staff_state.dart';
@@ -72,9 +73,7 @@ class EventStaffSection extends StatelessWidget {
 
     final error = await context.read<EventStaffCubit>().removeStaff(member);
     if (error != null && context.mounted) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(error)));
+      AppToast.error(context, error);
     }
   }
 
