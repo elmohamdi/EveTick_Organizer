@@ -1,19 +1,17 @@
 import 'package:evetick_organizer/core/helpers/spacing.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
 import 'package:evetick_organizer/features/ticket_scan/logic/cubit/ticket_scan_cubit.dart';
-import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/manual_entry_field.dart';
-import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/manual_entry_header.dart';
 import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/scan_event_picker_sheet.dart';
 import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/scan_header_app_bar.dart';
 import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/scan_quick_settings.dart';
 import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/scan_result_overlay.dart';
 import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/scan_stats_section.dart';
 import 'package:evetick_organizer/features/ticket_scan/presentation/widgets/scan_viewfinder.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 /// Requires a [TicketScanCubit] above it in the tree.
 class TicketScanScreen extends StatefulWidget {
@@ -58,14 +56,6 @@ class _TicketScanScreenState extends State<TicketScanScreen> {
     context.read<TicketScanCubit>().onCodeScanned(code);
   }
 
-  void _onManualCodeSubmitted(String code) {
-    if (code.trim().isEmpty) return;
-
-    FocusScope.of(context).unfocus();
-    _codeController.clear();
-    context.read<TicketScanCubit>().onCodeScanned(code);
-  }
-
   void _showEventPicker() {
     final cubit = context.read<TicketScanCubit>()..loadEvents();
     showModalBottomSheet<void>(
@@ -85,7 +75,9 @@ class _TicketScanScreenState extends State<TicketScanScreen> {
     final eventSubtitle = context.select((TicketScanCubit cubit) {
       final state = cubit.state;
       return state.selectedEvent?.title ??
-          (state.isLoadingEvents ? l10n.scanLoadingEvents : l10n.scanSelectAnEvent);
+          (state.isLoadingEvents
+              ? l10n.scanLoadingEvents
+              : l10n.scanSelectAnEvent);
     });
     final isScanning = context.select(
       (TicketScanCubit cubit) => !cubit.state.isProcessing,
@@ -98,8 +90,7 @@ class _TicketScanScreenState extends State<TicketScanScreen> {
           SafeArea(
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
-              keyboardDismissBehavior:
-                  ScrollViewKeyboardDismissBehavior.onDrag,
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -126,13 +117,6 @@ class _TicketScanScreenState extends State<TicketScanScreen> {
                     isScanning: isScanning,
                   ),
                   verticalSpace(20),
-                  const ManualEntryHeader(),
-                  verticalSpace(8),
-                  ManualEntryField(
-                    controller: _codeController,
-                    onSubmitted: _onManualCodeSubmitted,
-                  ),
-                  verticalSpace(14),
                   const ScanQuickSettings(),
                   verticalSpace(22),
                   const ScanStatsSection(),
