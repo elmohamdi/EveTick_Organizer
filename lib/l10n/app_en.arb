@@ -125,8 +125,6 @@
   "@authSignUp": {},
   "authContinueWithGoogle": "Continue with Google",
   "@authContinueWithGoogle": {},
-  "authContinueWithFacebook": "Continue with Facebook",
-  "@authContinueWithFacebook": {},
   "authContinueAsGuest": "Continue as guest",
   "@authContinueAsGuest": {},
   "authNoAccountPrompt": "Don't have an account? ",

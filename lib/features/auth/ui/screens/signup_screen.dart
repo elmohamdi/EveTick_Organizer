@@ -7,6 +7,7 @@ import 'package:evetick_organizer/features/auth/logic/signup_cubit/signup_cubit.
 import 'package:evetick_organizer/features/auth/ui/widgets/already_have_account_text.dart';
 import 'package:evetick_organizer/features/auth/ui/widgets/auth_background.dart';
 import 'package:evetick_organizer/features/auth/ui/widgets/auth_with_other_platforms.dart';
+import 'package:evetick_organizer/features/auth/ui/widgets/login_bloc_listener.dart';
 import 'package:evetick_organizer/features/auth/ui/widgets/name_email_and_password.dart';
 import 'package:evetick_organizer/features/auth/ui/widgets/signup_bloc_listener.dart';
 import 'package:evetick_organizer/l10n/app_localizations.dart';
@@ -65,6 +66,7 @@ class SignupScreen extends StatelessWidget {
                     ),
                     verticalSpace(24),
                     const SignupBlocListener(),
+                    const LoginBlocListener(),
                     NameEmailAndPassword(),
                     verticalSpace(24),
                     FilledAppTextButton(

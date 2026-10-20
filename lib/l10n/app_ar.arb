@@ -53,7 +53,6 @@
   "authSignIn": "تسجيل الدخول",
   "authSignUp": "إنشاء حساب",
   "authContinueWithGoogle": "المتابعة باستخدام جوجل",
-  "authContinueWithFacebook": "المتابعة باستخدام فيسبوك",
   "authContinueAsGuest": "المتابعة كضيف",
   "authNoAccountPrompt": "ليس لديك حساب؟ ",
   "authNoAccountPromptRemain": "أنشئ حسابًا",

@@ -416,12 +416,6 @@ abstract class AppLocalizations {
   /// **'Continue with Google'**
   String get authContinueWithGoogle;
 
-  /// No description provided for @authContinueWithFacebook.
-  ///
-  /// In en, this message translates to:
-  /// **'Continue with Facebook'**
-  String get authContinueWithFacebook;
-
   /// No description provided for @authContinueAsGuest.
   ///
   /// In en, this message translates to:

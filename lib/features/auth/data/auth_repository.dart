@@ -6,6 +6,8 @@ import 'package:evetick_organizer/features/auth/data/models/app_user_model.dart'
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepository {
+  static const String signInCancelledMessage = 'Sign-in was cancelled';
+
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
@@ -123,6 +125,44 @@ class AuthRepository {
       }
 
       return Result.success(user);
+    } on FirebaseAuthException catch (e) {
+      return Result.failure(FirebaseErrorHandler.handle(e));
+    } catch (e) {
+      return Result.failure(FirebaseErrorHandler.handleGeneric(e));
+    }
+  }
+
+  Future<Result<AppUserModel>> signInWithGoogle() =>
+      _signInWithProvider(GoogleAuthProvider()..addScope('email'));
+
+  /// OAuth flow (Google) through Firebase's own provider
+  /// sign-in: no extra packages needed. Creates the `users/{uid}` document the
+  /// first time, exactly like a normal signup (role: Organizer).
+  Future<Result<AppUserModel>> _signInWithProvider(
+    AuthProvider provider,
+  ) async {
+    try {
+      final credential = await auth.signInWithProvider(provider);
+      final firebaseUser = credential.user!;
+
+      final docRef = firestore.collection('users').doc(firebaseUser.uid);
+      final doc = await docRef.get();
+
+      if (!doc.exists) {
+        final user = AppUserModel(
+          uid: firebaseUser.uid,
+          email: firebaseUser.email ?? '',
+          name: firebaseUser.displayName ?? '',
+          // The provider already verified the account.
+          isEmailVerified: true,
+          isGuest: false,
+          role: 'Organizer',
+        );
+        await docRef.set(user.toJson());
+        return Result.success(user);
+      }
+
+      return Result.success(AppUserModel.fromJson(doc.data()!));
     } on FirebaseAuthException catch (e) {
       return Result.failure(FirebaseErrorHandler.handle(e));
     } catch (e) {

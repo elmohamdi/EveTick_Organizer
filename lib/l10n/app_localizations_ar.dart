@@ -174,9 +174,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get authContinueWithGoogle => 'المتابعة باستخدام جوجل';
 
   @override
-  String get authContinueWithFacebook => 'المتابعة باستخدام فيسبوك';
-
-  @override
   String get authContinueAsGuest => 'المتابعة كضيف';
 
   @override
