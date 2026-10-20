@@ -16,6 +16,9 @@ import 'package:evetick_organizer/features/event_staff/logic/cubit/event_staff_c
 import 'package:evetick_organizer/features/home/data/repositories/home_repository.dart';
 import 'package:evetick_organizer/features/home/data/repositories/home_repository_impl.dart';
 import 'package:evetick_organizer/features/home/logic/cubit/home_cubit.dart';
+import 'package:evetick_organizer/features/notifications/data/repositories/notifications_repository.dart';
+import 'package:evetick_organizer/features/notifications/data/repositories/notifications_repository_impl.dart';
+import 'package:evetick_organizer/features/notifications/logic/cubit/notifications_cubit.dart';
 import 'package:evetick_organizer/features/pending_events/data/repositories/pending_events_repository.dart';
 import 'package:evetick_organizer/features/pending_events/logic/cubit/pending_events_cubit.dart';
 import 'package:evetick_organizer/features/staff_access/data/repositories/staff_access_repository.dart';
@@ -108,6 +111,17 @@ Future<void> setupGetIt() async {
   );
   getIt.registerFactory<StaffInvitesCubit>(
     () => StaffInvitesCubit(getIt<StaffAccessRepository>()),
+  );
+
+  // notifications (live list of the user's notifications + the Home bell)
+  getIt.registerLazySingleton<NotificationsRepository>(
+    () => NotificationsRepositoryImpl(
+      firestore: FirebaseFirestore.instance,
+      auth: FirebaseAuth.instance,
+    ),
+  );
+  getIt.registerFactory<NotificationsCubit>(
+    () => NotificationsCubit(getIt<NotificationsRepository>()),
   );
 
   // pending events

@@ -101,7 +101,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get onboardingWelcomeTitleRemain => 'تحبها';
 
   @override
-  String get onboardingWelcomeSubtitle => 'انضم إلى مجتمع الباحثين عن الفعاليات';
+  String get onboardingWelcomeSubtitle => 'أنشئ فعالياتك، وقم بإدارتها، ونمّيها بكل سهولة.';
 
   @override
   String get locationSetLocationTitle => 'أين أنت؟';
@@ -1301,54 +1301,161 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get supportMessageSent => 'تم إرسال رسالتك! سنرد عليك خلال 24 ساعة.';
 
-  @override String staffInvitationsTitle(int count) => 'دعوات الفريق ($count)';
-  @override String get staffInvitationsCheckFailed => 'تعذر التحقق من دعواتك';
-  @override String get staffInvitationsRetry => 'إعادة المحاولة';
-  @override String staffInvitationAccepted(String eventTitle) => 'انضممت إلى "$eventTitle"';
-  @override String get staffInvitationDeclined => 'تم رفض الدعوة';
-  @override String staffInvitationInvitedAs(String name, String role) => 'دعاك $name كـ $role';
-  @override String get staffAccept => 'قبول';
-  @override String get staffDecline => 'رفض';
-  @override String get staffSectionTitle => 'الفريق';
-  @override String get staffAdd => 'إضافة';
-  @override String get staffLoadFailed => 'تعذر تحميل الفريق';
-  @override String get staffTryAgain => 'حاول مرة أخرى';
-  @override String get staffEmptyMessage => 'لا يوجد أعضاء فريق حتى الآن. ادعُ منظمًا مشاركًا أو موظف بوابة عبر البريد الإلكتروني وحدد صلاحياته.';
-  @override String get staffAddMember => 'إضافة عضو فريق';
-  @override String get staffCancelInvitationQuestion => 'إلغاء الدعوة؟';
-  @override String get staffRemoveMemberQuestion => 'إزالة عضو الفريق؟';
-  @override String staffCancelInvitationMessage(String email) => 'سيتم إلغاء الدعوة المرسلة إلى $email.';
-  @override String staffRemoveMemberMessage(String name) => 'سيفقد $name حق الوصول إلى هذه الفعالية.';
-  @override String get staffKeep => 'احتفاظ';
-  @override String get staffCancelInvitation => 'إلغاء الدعوة';
-  @override String get staffRemove => 'إزالة';
-  @override String get staffAddMemberTitle => 'إضافة عضو فريق';
-  @override String get staffFullName => 'الاسم الكامل';
-  @override String get staffFullNameHint => 'مثال: أحمد محمد';
-  @override String get staffFullNameRequired => 'من فضلك أدخل الاسم الكامل';
-  @override String get staffEmailAddress => 'البريد الإلكتروني';
-  @override String get staffEmailHint => 'alex@example.com';
-  @override String get staffEmailRequired => 'من فضلك أدخل البريد الإلكتروني';
-  @override String get staffEmailInvalid => 'من فضلك أدخل بريدًا إلكترونيًا صحيحًا';
-  @override String get staffAssignRole => 'تعيين الدور';
-  @override String get staffSelectRole => 'اختر دورًا';
-  @override String get staffRoleRequired => 'من فضلك اختر دورًا';
-  @override String get staffPermissions => 'الصلاحيات';
-  @override String get staffPermissionRequired => 'اختر صلاحية واحدة على الأقل';
-  @override String staffInvitationSent(String email) => 'تم إرسال الدعوة إلى $email';
-  @override String get staffSendInvitation => 'إرسال الدعوة';
-  @override String get staffPending => 'قيد الانتظار';
-  @override String get staffActive => 'نشط';
-  @override String get staffPermissionViewAnalytics => 'عرض التحليلات';
-  @override String get staffPermissionViewAnalyticsDescription => 'الوصول إلى تقارير ورسوم المبيعات';
-  @override String get staffPermissionScanTickets => 'مسح التذاكر';
-  @override String get staffPermissionScanTicketsDescription => 'استخدم تطبيق الهاتف لتسجيل الدخول';
-  @override String get staffPermissionEditEventDetails => 'تعديل تفاصيل الفعالية';
-  @override String get staffPermissionEditEventDetailsDescription => 'تغيير العنوان والجدول والوصف';
-  @override String get staffRoleCoOrganizer => 'منظم مشارك';
-  @override String get staffRoleManager => 'مدير';
-  @override String get staffRoleGateStaff => 'موظف بوابة';
-  @override String get staffRoleAnalyst => 'محلل';
+  @override
+  String staffInvitationsTitle(int count) {
+    return 'دعوات الفريق ($count)';
+  }
+
+  @override
+  String get staffInvitationsCheckFailed => 'تعذر التحقق من دعواتك';
+
+  @override
+  String get staffInvitationsRetry => 'إعادة المحاولة';
+
+  @override
+  String staffInvitationAccepted(String eventTitle) {
+    return 'انضممت إلى \"$eventTitle\"';
+  }
+
+  @override
+  String get staffInvitationDeclined => 'تم رفض الدعوة';
+
+  @override
+  String staffInvitationInvitedAs(String name, String role) {
+    return 'دعاك $name كـ $role';
+  }
+
+  @override
+  String get staffAccept => 'قبول';
+
+  @override
+  String get staffDecline => 'رفض';
+
+  @override
+  String get staffSectionTitle => 'الفريق';
+
+  @override
+  String get staffAdd => 'إضافة';
+
+  @override
+  String get staffLoadFailed => 'تعذر تحميل الفريق';
+
+  @override
+  String get staffTryAgain => 'حاول مرة أخرى';
+
+  @override
+  String get staffEmptyMessage => 'لا يوجد أعضاء فريق حتى الآن. ادعُ منظمًا مشاركًا أو موظف بوابة عبر البريد الإلكتروني وحدد صلاحياته.';
+
+  @override
+  String get staffAddMember => 'إضافة عضو فريق';
+
+  @override
+  String get staffCancelInvitationQuestion => 'إلغاء الدعوة؟';
+
+  @override
+  String get staffRemoveMemberQuestion => 'إزالة عضو الفريق؟';
+
+  @override
+  String staffCancelInvitationMessage(String email) {
+    return 'سيتم إلغاء الدعوة المرسلة إلى $email.';
+  }
+
+  @override
+  String staffRemoveMemberMessage(String name) {
+    return 'سيفقد $name حق الوصول إلى هذه الفعالية.';
+  }
+
+  @override
+  String get staffKeep => 'احتفاظ';
+
+  @override
+  String get staffCancelInvitation => 'إلغاء الدعوة';
+
+  @override
+  String get staffRemove => 'إزالة';
+
+  @override
+  String get staffAddMemberTitle => 'إضافة عضو فريق';
+
+  @override
+  String get staffFullName => 'الاسم الكامل';
+
+  @override
+  String get staffFullNameHint => 'مثال: أحمد محمد';
+
+  @override
+  String get staffFullNameRequired => 'من فضلك أدخل الاسم الكامل';
+
+  @override
+  String get staffEmailAddress => 'البريد الإلكتروني';
+
+  @override
+  String get staffEmailHint => 'alex@example.com';
+
+  @override
+  String get staffEmailRequired => 'من فضلك أدخل البريد الإلكتروني';
+
+  @override
+  String get staffEmailInvalid => 'من فضلك أدخل بريدًا إلكترونيًا صحيحًا';
+
+  @override
+  String get staffAssignRole => 'تعيين الدور';
+
+  @override
+  String get staffSelectRole => 'اختر دورًا';
+
+  @override
+  String get staffRoleRequired => 'من فضلك اختر دورًا';
+
+  @override
+  String get staffPermissions => 'الصلاحيات';
+
+  @override
+  String get staffPermissionRequired => 'اختر صلاحية واحدة على الأقل';
+
+  @override
+  String staffInvitationSent(String email) {
+    return 'تم إرسال الدعوة إلى $email';
+  }
+
+  @override
+  String get staffSendInvitation => 'إرسال الدعوة';
+
+  @override
+  String get staffPending => 'قيد الانتظار';
+
+  @override
+  String get staffActive => 'نشط';
+
+  @override
+  String get staffPermissionViewAnalytics => 'عرض التحليلات';
+
+  @override
+  String get staffPermissionViewAnalyticsDescription => 'الوصول إلى تقارير ورسوم المبيعات';
+
+  @override
+  String get staffPermissionScanTickets => 'مسح التذاكر';
+
+  @override
+  String get staffPermissionScanTicketsDescription => 'استخدم تطبيق الهاتف لتسجيل الدخول';
+
+  @override
+  String get staffPermissionEditEventDetails => 'تعديل تفاصيل الفعالية';
+
+  @override
+  String get staffPermissionEditEventDetailsDescription => 'تغيير العنوان والجدول والوصف';
+
+  @override
+  String get staffRoleCoOrganizer => 'منظم مشارك';
+
+  @override
+  String get staffRoleManager => 'مدير';
+
+  @override
+  String get staffRoleGateStaff => 'موظف بوابة';
+
+  @override
+  String get staffRoleAnalyst => 'محلل';
 
   @override
   String get createEventScreenTitle => 'إنشاء حدث';
@@ -1424,7 +1531,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String createEventLocationError(String error) {
-    return 'حدث خطأ أثناء تحديد الموقع: ${error}';
+    return 'حدث خطأ أثناء تحديد الموقع: $error';
   }
 
   @override
@@ -1510,7 +1617,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String createEventGalleryLimit(int max) {
-    return 'بحد أقصى ${max} صور، حتى 5 ميجابايت للصورة.';
+    return 'بحد أقصى $max صور، حتى 5 ميجابايت للصورة.';
   }
 
   @override
@@ -1593,7 +1700,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String createEventActiveTiers(int count) {
-    return '${count} فئات نشطة';
+    return '$count فئات نشطة';
   }
 
   @override
@@ -1655,7 +1762,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String createEventPaymentEnterField(String field) {
-    return 'من فضلك أدخل ${field}';
+    return 'من فضلك أدخل $field';
   }
 
   @override
@@ -1677,7 +1784,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get createEventPublishedIntro => 'حدثك الآن ';
 
   @override
-  String get createEventPublishedStatus => 'قيد المراجعة!';
+  String get createEventPublishedStatus => 'قيد المراجعة!\n';
 
   @override
   String get createEventPublishedWait => 'من فضلك انتظر ردنا.';
@@ -1707,7 +1814,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get authOrDivider => 'أو';
 
   @override
-  String get authCheckEmailCodeSent => 'تحقق من بريدك الإلكتروني للحصول على الرمز المرسل إلى ';
+  String get authCheckEmailCodeSent => 'تحقق من بريدك الإلكتروني للحصول على الرمز المرسل \nإلى ';
 
   @override
   String get authNameInvalid => 'من فضلك أدخل اسماً صالحاً';
@@ -1750,7 +1857,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String homeStatSoldPercent(int percent, String capacity) {
-    return '${percent}% من ${capacity}';
+    return '$percent% من $capacity';
   }
 
   @override
@@ -1758,7 +1865,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String homeStatLiveNow(String count) {
-    return '${count} مباشر الآن';
+    return '$count مباشر الآن';
   }
 
   @override
@@ -1769,7 +1876,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String homeStatOfSold(String count) {
-    return 'من ${count} مباعة';
+    return 'من $count مباعة';
   }
 
   @override
@@ -1789,12 +1896,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String dashboardPerTicket(String price) {
-    return '${price} للتذكرة';
+    return '$price للتذكرة';
   }
 
   @override
   String dashboardTierSold(String sold, String capacity) {
-    return 'تم بيع ${sold} من ${capacity}';
+    return 'تم بيع $sold من $capacity';
   }
 
   @override
@@ -1802,7 +1909,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String dashboardFromTickets(String count) {
-    return 'من ${count} تذكرة';
+    return 'من $count تذكرة';
   }
 
   @override
@@ -1864,4 +1971,78 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get scanSelectEventFirst => 'اختر حدثاً قبل المسح';
+
+  @override
+  String get notificationsMarkAllRead => 'تحديد الكل كمقروء';
+
+  @override
+  String get notificationsMarkAllFailed => 'تعذر تحديث الإشعارات';
+
+  @override
+  String get notificationsEmptyTitle => 'لا توجد إشعارات بعد';
+
+  @override
+  String get notificationsEmptySubtitle => 'ستظهر هنا مبيعات التذاكر وردود الفريق وتحديثات الأحداث';
+
+  @override
+  String get notificationsLoadFailed => 'تعذر تحميل الإشعارات';
+
+  @override
+  String get notificationsRecentTitle => 'الأحدث';
+
+  @override
+  String get notificationSomeone => 'شخص ما';
+
+  @override
+  String get notificationATicket => 'تذكرة';
+
+  @override
+  String get notificationTicketPurchasedTitle => 'تم بيع تذكرة جديدة';
+
+  @override
+  String notificationTicketPurchasedBody(String buyer, String ticket, String event) {
+    return 'اشترى $buyer $ticket لحدث \"$event\"';
+  }
+
+  @override
+  String get notificationStaffAcceptedTitle => 'تم قبول الدعوة';
+
+  @override
+  String notificationStaffAcceptedBody(String name, String event) {
+    return 'قبل $name دعوتك للانضمام إلى \"$event\"';
+  }
+
+  @override
+  String get notificationStaffDeclinedTitle => 'تم رفض الدعوة';
+
+  @override
+  String notificationStaffDeclinedBody(String name, String event) {
+    return 'رفض $name دعوتك للانضمام إلى \"$event\"';
+  }
+
+  @override
+  String get notificationEventLiveTitle => 'أصبح حدثك مباشراً';
+
+  @override
+  String notificationEventLiveBody(String event) {
+    return 'أصبح حدث \"$event\" مباشراً الآن';
+  }
+
+  @override
+  String get notificationTimeNow => 'الآن';
+
+  @override
+  String notificationTimeMinutes(int count) {
+    return 'منذ $count د';
+  }
+
+  @override
+  String notificationTimeHours(int count) {
+    return 'منذ $count س';
+  }
+
+  @override
+  String notificationTimeDays(int count) {
+    return 'منذ $count يوم';
+  }
 }

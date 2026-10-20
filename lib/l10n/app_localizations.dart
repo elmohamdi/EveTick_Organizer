@@ -62,8 +62,7 @@ import 'app_localizations_en.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -71,8 +70,7 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -84,18 +82,17 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ar'),
-    Locale('en'),
+    Locale('en')
   ];
 
   /// No description provided for @commonSkip.
@@ -2564,53 +2561,292 @@ abstract class AppLocalizations {
   /// **'Message sent! We will get back to you within 24 hours.'**
   String get supportMessageSent;
 
+  /// No description provided for @staffInvitationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Staff invitations ({count})'**
   String staffInvitationsTitle(int count);
+
+  /// No description provided for @staffInvitationsCheckFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t check your invitations'**
   String get staffInvitationsCheckFailed;
+
+  /// No description provided for @staffInvitationsRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
   String get staffInvitationsRetry;
+
+  /// No description provided for @staffInvitationAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'You joined \"{eventTitle}\"'**
   String staffInvitationAccepted(String eventTitle);
+
+  /// No description provided for @staffInvitationDeclined.
+  ///
+  /// In en, this message translates to:
+  /// **'Invitation declined'**
   String get staffInvitationDeclined;
+
+  /// No description provided for @staffInvitationInvitedAs.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} invited you as {role}'**
   String staffInvitationInvitedAs(String name, String role);
+
+  /// No description provided for @staffAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
   String get staffAccept;
+
+  /// No description provided for @staffDecline.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline'**
   String get staffDecline;
+
+  /// No description provided for @staffSectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Staff'**
   String get staffSectionTitle;
+
+  /// No description provided for @staffAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
   String get staffAdd;
+
+  /// No description provided for @staffLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load staff'**
   String get staffLoadFailed;
+
+  /// No description provided for @staffTryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
   String get staffTryAgain;
+
+  /// No description provided for @staffEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'No staff yet. Invite a co-organizer or gate staff by email and choose what they can do.'**
   String get staffEmptyMessage;
+
+  /// No description provided for @staffAddMember.
+  ///
+  /// In en, this message translates to:
+  /// **'Add staff member'**
   String get staffAddMember;
+
+  /// No description provided for @staffCancelInvitationQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel invitation?'**
   String get staffCancelInvitationQuestion;
+
+  /// No description provided for @staffRemoveMemberQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove staff member?'**
   String get staffRemoveMemberQuestion;
+
+  /// No description provided for @staffCancelInvitationMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'The invitation sent to {email} will be cancelled.'**
   String staffCancelInvitationMessage(String email);
+
+  /// No description provided for @staffRemoveMemberMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} will lose access to this event.'**
   String staffRemoveMemberMessage(String name);
+
+  /// No description provided for @staffKeep.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep'**
   String get staffKeep;
+
+  /// No description provided for @staffCancelInvitation.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel invitation'**
   String get staffCancelInvitation;
+
+  /// No description provided for @staffRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
   String get staffRemove;
+
+  /// No description provided for @staffAddMemberTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Staff Member'**
   String get staffAddMemberTitle;
+
+  /// No description provided for @staffFullName.
+  ///
+  /// In en, this message translates to:
+  /// **'Full Name'**
   String get staffFullName;
+
+  /// No description provided for @staffFullNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Alex Johnson'**
   String get staffFullNameHint;
+
+  /// No description provided for @staffFullNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter the full name'**
   String get staffFullNameRequired;
+
+  /// No description provided for @staffEmailAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Address'**
   String get staffEmailAddress;
+
+  /// No description provided for @staffEmailHint.
+  ///
+  /// In en, this message translates to:
+  /// **'alex@example.com'**
   String get staffEmailHint;
+
+  /// No description provided for @staffEmailRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter an email'**
   String get staffEmailRequired;
+
+  /// No description provided for @staffEmailInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email'**
   String get staffEmailInvalid;
+
+  /// No description provided for @staffAssignRole.
+  ///
+  /// In en, this message translates to:
+  /// **'Assign Role'**
   String get staffAssignRole;
+
+  /// No description provided for @staffSelectRole.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a role'**
   String get staffSelectRole;
+
+  /// No description provided for @staffRoleRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a role'**
   String get staffRoleRequired;
+
+  /// No description provided for @staffPermissions.
+  ///
+  /// In en, this message translates to:
+  /// **'PERMISSIONS'**
   String get staffPermissions;
+
+  /// No description provided for @staffPermissionRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Select at least one permission'**
   String get staffPermissionRequired;
+
+  /// No description provided for @staffInvitationSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Invitation sent to {email}'**
   String staffInvitationSent(String email);
+
+  /// No description provided for @staffSendInvitation.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Invitation'**
   String get staffSendInvitation;
+
+  /// No description provided for @staffPending.
+  ///
+  /// In en, this message translates to:
+  /// **'PENDING'**
   String get staffPending;
+
+  /// No description provided for @staffActive.
+  ///
+  /// In en, this message translates to:
+  /// **'ACTIVE'**
   String get staffActive;
+
+  /// No description provided for @staffPermissionViewAnalytics.
+  ///
+  /// In en, this message translates to:
+  /// **'Can view analytics'**
   String get staffPermissionViewAnalytics;
+
+  /// No description provided for @staffPermissionViewAnalyticsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Access to sales reports and charts'**
   String get staffPermissionViewAnalyticsDescription;
+
+  /// No description provided for @staffPermissionScanTickets.
+  ///
+  /// In en, this message translates to:
+  /// **'Can scan tickets'**
   String get staffPermissionScanTickets;
+
+  /// No description provided for @staffPermissionScanTicketsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Use the mobile app for check-ins'**
   String get staffPermissionScanTicketsDescription;
+
+  /// No description provided for @staffPermissionEditEventDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Can edit event details'**
   String get staffPermissionEditEventDetails;
+
+  /// No description provided for @staffPermissionEditEventDetailsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Change title, schedule and description'**
   String get staffPermissionEditEventDetailsDescription;
+
+  /// No description provided for @staffRoleCoOrganizer.
+  ///
+  /// In en, this message translates to:
+  /// **'Co-organizer'**
   String get staffRoleCoOrganizer;
+
+  /// No description provided for @staffRoleManager.
+  ///
+  /// In en, this message translates to:
+  /// **'Manager'**
   String get staffRoleManager;
+
+  /// No description provided for @staffRoleGateStaff.
+  ///
+  /// In en, this message translates to:
+  /// **'Gate Staff'**
   String get staffRoleGateStaff;
+
+  /// No description provided for @staffRoleAnalyst.
+  ///
+  /// In en, this message translates to:
+  /// **'Analyst'**
   String get staffRoleAnalyst;
 
   /// No description provided for @createEventScreenTitle.
@@ -3252,7 +3488,7 @@ abstract class AppLocalizations {
   /// No description provided for @createEventPublishedStatus.
   ///
   /// In en, this message translates to:
-  /// **'Under Review!'**
+  /// **'Under Review!\n'**
   String get createEventPublishedStatus;
 
   /// No description provided for @createEventPublishedWait.
@@ -3312,7 +3548,7 @@ abstract class AppLocalizations {
   /// No description provided for @authCheckEmailCodeSent.
   ///
   /// In en, this message translates to:
-  /// **'Check your email for the code sent to '**
+  /// **'Check your email for the code sent \nto '**
   String get authCheckEmailCodeSent;
 
   /// No description provided for @authNameInvalid.
@@ -3602,10 +3838,129 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select an event before scanning'**
   String get scanSelectEventFirst;
+
+  /// No description provided for @notificationsMarkAllRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark all as read'**
+  String get notificationsMarkAllRead;
+
+  /// No description provided for @notificationsMarkAllFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t update your notifications'**
+  String get notificationsMarkAllFailed;
+
+  /// No description provided for @notificationsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No notifications yet'**
+  String get notificationsEmptyTitle;
+
+  /// No description provided for @notificationsEmptySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ticket sales, staff replies and event updates will show up here'**
+  String get notificationsEmptySubtitle;
+
+  /// No description provided for @notificationsLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load your notifications'**
+  String get notificationsLoadFailed;
+
+  /// No description provided for @notificationsRecentTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent'**
+  String get notificationsRecentTitle;
+
+  /// No description provided for @notificationSomeone.
+  ///
+  /// In en, this message translates to:
+  /// **'Someone'**
+  String get notificationSomeone;
+
+  /// No description provided for @notificationATicket.
+  ///
+  /// In en, this message translates to:
+  /// **'a ticket'**
+  String get notificationATicket;
+
+  /// No description provided for @notificationTicketPurchasedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New ticket sold'**
+  String get notificationTicketPurchasedTitle;
+
+  /// No description provided for @notificationTicketPurchasedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{buyer} bought {ticket} for \"{event}\"'**
+  String notificationTicketPurchasedBody(String buyer, String ticket, String event);
+
+  /// No description provided for @notificationStaffAcceptedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Invitation accepted'**
+  String get notificationStaffAcceptedTitle;
+
+  /// No description provided for @notificationStaffAcceptedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} accepted your invitation to join \"{event}\"'**
+  String notificationStaffAcceptedBody(String name, String event);
+
+  /// No description provided for @notificationStaffDeclinedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Invitation declined'**
+  String get notificationStaffDeclinedTitle;
+
+  /// No description provided for @notificationStaffDeclinedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} declined your invitation to join \"{event}\"'**
+  String notificationStaffDeclinedBody(String name, String event);
+
+  /// No description provided for @notificationEventLiveTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your event is live'**
+  String get notificationEventLiveTitle;
+
+  /// No description provided for @notificationEventLiveBody.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{event}\" is now live'**
+  String notificationEventLiveBody(String event);
+
+  /// No description provided for @notificationTimeNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Just now'**
+  String get notificationTimeNow;
+
+  /// No description provided for @notificationTimeMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'{count}m ago'**
+  String notificationTimeMinutes(int count);
+
+  /// No description provided for @notificationTimeHours.
+  ///
+  /// In en, this message translates to:
+  /// **'{count}h ago'**
+  String notificationTimeHours(int count);
+
+  /// No description provided for @notificationTimeDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count}d ago'**
+  String notificationTimeDays(int count);
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -3614,26 +3969,25 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['ar', 'en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'ar':
-      return AppLocalizationsAr();
-    case 'en':
-      return AppLocalizationsEn();
+    case 'ar': return AppLocalizationsAr();
+    case 'en': return AppLocalizationsEn();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
+    'that was used.'
   );
 }
