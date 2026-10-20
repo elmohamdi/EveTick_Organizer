@@ -39,7 +39,7 @@ class TicketTierSalesTile extends StatelessWidget {
               ),
               horizontalSpace(8),
               Text(
-                Formatters.money(tier.revenue),
+                Formatters.money(context, tier.revenue),
                 style: TextStyles.font16WhiteMid(
                   context,
                 ).copyWith(color: ColorsManager.orange),
@@ -48,7 +48,9 @@ class TicketTierSalesTile extends StatelessWidget {
           ),
           verticalSpace(4),
           Text(
-            AppLocalizations.of(context)!.dashboardPerTicket(Formatters.money(tier.price)),
+            AppLocalizations.of(context)!.dashboardPerTicket(
+              Formatters.money(context, tier.price),
+            ),
             style: TextStyles.font12LightGrayRegular(context),
           ),
           verticalSpace(12),
@@ -66,8 +68,8 @@ class TicketTierSalesTile extends StatelessWidget {
           verticalSpace(8),
           Text(
             AppLocalizations.of(context)!.dashboardTierSold(
-              Formatters.number(tier.sold),
-              Formatters.number(tier.capacity),
+              Formatters.number(context, tier.sold),
+              Formatters.number(context, tier.capacity),
             ),
             style: TextStyles.font12LightGrayRegular(context),
           ),

@@ -65,7 +65,7 @@ class _HomeSalesChartCardState extends State<HomeSalesChartCard> {
           for (final event in top)
             EventBarRow(
               title: event.title,
-              valueLabel: _metric.format(_metric.valueOf(event)),
+              valueLabel: _metric.format(context, _metric.valueOf(event)),
               fraction: maxValue <= 0 ? 0 : _metric.valueOf(event) / maxValue,
               onTap: () => context.pushNamed(
                 Routes.eventDashboardScreen,

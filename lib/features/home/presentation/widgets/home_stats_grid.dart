@@ -25,7 +25,7 @@ class HomeStatsGrid extends StatelessWidget {
                 child: DashboardStatCard(
                   icon: Icons.payments_outlined,
                   label: AppLocalizations.of(context)!.homeStatRevenue,
-                  value: Formatters.money(overview.revenue),
+                  value: Formatters.money(context, overview.revenue),
                   valueColor: ColorsManager.orange,
                   caption: AppLocalizations.of(context)!.homeStatAllEvents,
                 ),
@@ -35,11 +35,11 @@ class HomeStatsGrid extends StatelessWidget {
                 child: DashboardStatCard(
                   icon: Icons.confirmation_number_outlined,
                   label: AppLocalizations.of(context)!.homeStatTicketsSold,
-                  value: Formatters.number(overview.ticketsSold),
+                  value: Formatters.number(context, overview.ticketsSold),
                   caption:
                       AppLocalizations.of(context)!.homeStatSoldPercent(
                         soldPercent,
-                        Formatters.number(overview.capacity),
+                        Formatters.number(context, overview.capacity),
                       ),
                 ),
               ),
@@ -55,9 +55,9 @@ class HomeStatsGrid extends StatelessWidget {
                 child: DashboardStatCard(
                   icon: Icons.event_outlined,
                   label: AppLocalizations.of(context)!.homeStatEvents,
-                  value: Formatters.number(overview.totalEvents),
+                  value: Formatters.number(context, overview.totalEvents),
                   caption: AppLocalizations.of(context)!.homeStatLiveNow(
-                    Formatters.number(overview.liveEvents),
+                    Formatters.number(context, overview.liveEvents),
                   ),
                 ),
               ),
@@ -66,11 +66,11 @@ class HomeStatsGrid extends StatelessWidget {
                 child: DashboardStatCard(
                   icon: Icons.how_to_reg_outlined,
                   label: AppLocalizations.of(context)!.homeStatCheckedIn,
-                  value: Formatters.number(overview.checkedIn),
+                  value: Formatters.number(context, overview.checkedIn),
                   caption: overview.ticketsSold == 0
                       ? AppLocalizations.of(context)!.homeStatNoTicketsSold
                       : AppLocalizations.of(context)!.homeStatOfSold(
-                        Formatters.number(overview.ticketsSold),
+                        Formatters.number(context, overview.ticketsSold),
                       ),
                 ),
               ),

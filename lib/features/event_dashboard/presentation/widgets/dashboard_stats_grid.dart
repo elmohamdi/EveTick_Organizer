@@ -20,10 +20,10 @@ class DashboardStatsGrid extends StatelessWidget {
         DashboardStatCard(
           icon: Icons.payments_outlined,
           label: AppLocalizations.of(context)!.dashboardTotalRevenue,
-          value: Formatters.money(dashboard.revenue),
+          value: Formatters.money(context, dashboard.revenue),
           valueColor: ColorsManager.orange,
           caption: AppLocalizations.of(context)!.dashboardFromTickets(
-            Formatters.number(dashboard.ticketsSold),
+            Formatters.number(context, dashboard.ticketsSold),
           ),
         ),
         verticalSpace(12),
@@ -35,11 +35,11 @@ class DashboardStatsGrid extends StatelessWidget {
                 child: DashboardStatCard(
                   icon: Icons.confirmation_number_outlined,
                   label: AppLocalizations.of(context)!.homeStatTicketsSold,
-                  value: Formatters.number(dashboard.ticketsSold),
+                  value: Formatters.number(context, dashboard.ticketsSold),
                   caption:
                       AppLocalizations.of(context)!.homeStatSoldPercent(
                         soldPercent,
-                        Formatters.number(dashboard.capacity),
+                        Formatters.number(context, dashboard.capacity),
                       ),
                 ),
               ),
@@ -48,11 +48,11 @@ class DashboardStatsGrid extends StatelessWidget {
                 child: DashboardStatCard(
                   icon: Icons.how_to_reg_outlined,
                   label: AppLocalizations.of(context)!.homeStatCheckedIn,
-                  value: Formatters.number(dashboard.checkedIn),
+                  value: Formatters.number(context, dashboard.checkedIn),
                   caption: dashboard.ticketsSold == 0
                       ? AppLocalizations.of(context)!.homeStatNoTicketsSold
                       : AppLocalizations.of(context)!.homeStatOfSold(
-                        Formatters.number(dashboard.ticketsSold),
+                        Formatters.number(context, dashboard.ticketsSold),
                       ),
                 ),
               ),
