@@ -23,7 +23,7 @@ class WelcomeImage extends StatelessWidget {
           left: 0,
           right: 0,
           bottom: 0,
-          height: 100.h,
+          height: 130.h,
           child: IgnorePointer(
             child: DecoratedBox(
               decoration: BoxDecoration(
