@@ -31,6 +31,7 @@ import 'package:evetick_organizer/features/onboarding/presentation/ui/welcome_sc
 import 'package:evetick_organizer/features/profile/logic/profile_cubit.dart';
 import 'package:evetick_organizer/features/profile/ui/screens/edit_profile_screen.dart';
 import 'package:evetick_organizer/features/profile/ui/screens/profile_screen.dart';
+import 'package:evetick_organizer/features/splash/ui/screens/splash_screen.dart';
 import 'package:evetick_organizer/features/support/data/models/support_category.dart';
 import 'package:evetick_organizer/features/support/logic/help_support_cubit/help_support_cubit.dart';
 import 'package:evetick_organizer/features/support/logic/send_message_cubit/send_message_cubit.dart';
@@ -80,6 +81,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const MainContainer());
       case Routes.verificationScreen:
         return MaterialPageRoute(builder: (_) => const VerificationScreen());
+      case Routes.splashScreen:
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.appStartScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider<AppStartCubit>(
