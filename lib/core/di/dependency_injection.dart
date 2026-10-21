@@ -31,6 +31,7 @@ import 'package:evetick_organizer/features/support/logic/help_support_cubit/help
 import 'package:evetick_organizer/features/support/logic/send_message_cubit/send_message_cubit.dart';
 import 'package:evetick_organizer/features/terms/data/repositories/terms_repository.dart';
 import 'package:evetick_organizer/features/terms/data/repositories/terms_repository_impl.dart';
+import 'package:evetick_organizer/features/terms/logic/cubit/terms_acceptance_cubit.dart';
 import 'package:evetick_organizer/features/terms/logic/cubit/terms_cubit.dart';
 import 'package:evetick_organizer/features/ticket_scan/data/repositories/ticket_scan_repository.dart';
 import 'package:evetick_organizer/features/ticket_scan/data/repositories/ticket_scan_repository_impl.dart';
@@ -212,4 +213,7 @@ Future<void> setupGetIt() async {
     () => TermsRepositoryImpl(firestore: FirebaseFirestore.instance),
   );
   getIt.registerFactory<TermsCubit>(() => TermsCubit(getIt<TermsRepository>()));
+  getIt.registerFactory<TermsAcceptanceCubit>(
+    () => TermsAcceptanceCubit(getIt<AuthRepository>()),
+  );
 }

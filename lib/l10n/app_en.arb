@@ -1460,5 +1460,13 @@
   "deleteAccountPasswordSheetSubtitle": "Enter your current password to permanently delete your account.",
   "@deleteAccountPasswordSheetSubtitle": {},
   "deleteAccountPasswordRequired": "Please enter your password",
-  "@deleteAccountPasswordRequired": {}
+  "@deleteAccountPasswordRequired": {},
+  "termsAccept": "Accept",
+  "@termsAccept": {},
+  "termsReject": "Reject",
+  "@termsReject": {},
+  "termsScrollToAccept": "Scroll to the end of the terms to enable Accept",
+  "@termsScrollToAccept": {},
+  "termsRejectedNotice": "You need to accept the terms to use EveTick",
+  "@termsRejectedNotice": {}
 }

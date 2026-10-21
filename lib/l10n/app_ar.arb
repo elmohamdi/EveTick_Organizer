@@ -660,5 +660,9 @@
   "deleteAccountSuccess": "تم حذف حسابك بنجاح",
   "deleteAccountPasswordSheetTitle": "تأكيد كلمة المرور",
   "deleteAccountPasswordSheetSubtitle": "أدخل كلمة المرور الحالية لحذف حسابك نهائياً.",
-  "deleteAccountPasswordRequired": "من فضلك أدخل كلمة المرور"
+  "deleteAccountPasswordRequired": "من فضلك أدخل كلمة المرور",
+  "termsAccept": "قبول",
+  "termsReject": "رفض",
+  "termsScrollToAccept": "مرّر حتى نهاية الشروط لتفعيل زر القبول",
+  "termsRejectedNotice": "يجب الموافقة على الشروط لاستخدام EveTick"
 }

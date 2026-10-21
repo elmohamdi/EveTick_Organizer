@@ -36,7 +36,9 @@ import 'package:evetick_organizer/features/support/logic/help_support_cubit/help
 import 'package:evetick_organizer/features/support/logic/send_message_cubit/send_message_cubit.dart';
 import 'package:evetick_organizer/features/support/presentation/screens/help_support_screen.dart';
 import 'package:evetick_organizer/features/support/presentation/screens/send_message_screen.dart';
+import 'package:evetick_organizer/features/terms/logic/cubit/terms_acceptance_cubit.dart';
 import 'package:evetick_organizer/features/terms/logic/cubit/terms_cubit.dart';
+import 'package:evetick_organizer/features/terms/presentation/screens/terms_acceptance_screen.dart';
 import 'package:evetick_organizer/features/terms/presentation/screens/terms_of_service_screen.dart';
 import 'package:evetick_organizer/features/ticket_scan/logic/cubit/ticket_scan_cubit.dart';
 import 'package:evetick_organizer/features/ticket_scan/presentation/screens/ticket_scan_screen.dart';
@@ -206,6 +208,16 @@ class AppRouter {
               BlocProvider.value(value: args.pendingEventsCubit),
             ],
             child: const NotificationsScreen(),
+          ),
+        );
+      case Routes.termsAcceptanceScreen:
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (_) => getIt<TermsCubit>()..load()),
+              BlocProvider(create: (_) => getIt<TermsAcceptanceCubit>()),
+            ],
+            child: const TermsAcceptanceScreen(),
           ),
         );
       case Routes.forgotPasswordScreen:

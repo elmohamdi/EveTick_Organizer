@@ -2095,4 +2095,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get deleteAccountPasswordRequired => 'Please enter your password';
+
+  @override
+  String get termsAccept => 'Accept';
+
+  @override
+  String get termsReject => 'Reject';
+
+  @override
+  String get termsScrollToAccept => 'Scroll to the end of the terms to enable Accept';
+
+  @override
+  String get termsRejectedNotice => 'You need to accept the terms to use EveTick';
 }

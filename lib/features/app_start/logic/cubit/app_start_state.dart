@@ -1,14 +1,44 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+sealed class AppStartState {
+  const AppStartState();
 
-part 'app_start_state.freezed.dart';
+  const factory AppStartState.initial() = AppStartInitial;
+  const factory AppStartState.loading() = AppStartLoading;
+  const factory AppStartState.goToOnboarding() = AppStartGoToOnboarding;
+  const factory AppStartState.goToLogin() = AppStartGoToLogin;
+  const factory AppStartState.goToHome() = AppStartGoToHome;
+  const factory AppStartState.goToLocation() = AppStartGoToLocation;
+  const factory AppStartState.goToWelcome() = AppStartGoToWelcome;
+  const factory AppStartState.goToTerms() = AppStartGoToTerms;
+}
 
-@freezed
-class AppStartState with _$AppStartState {
-  const factory AppStartState.initial() = _Initial;
-  const factory AppStartState.loading() = _Loading;
-  const factory AppStartState.goToOnboarding() = _GoToOnboarding;
-  const factory AppStartState.goToLogin() = _GoToLogin;
-  const factory AppStartState.goToHome() = _GoToHome;
-  const factory AppStartState.goToLocation() = _GoToLocation;
-  const factory AppStartState.goToWelcome() = _GoToWelcome;
+final class AppStartInitial extends AppStartState {
+  const AppStartInitial();
+}
+
+final class AppStartLoading extends AppStartState {
+  const AppStartLoading();
+}
+
+final class AppStartGoToOnboarding extends AppStartState {
+  const AppStartGoToOnboarding();
+}
+
+final class AppStartGoToLogin extends AppStartState {
+  const AppStartGoToLogin();
+}
+
+final class AppStartGoToHome extends AppStartState {
+  const AppStartGoToHome();
+}
+
+final class AppStartGoToLocation extends AppStartState {
+  const AppStartGoToLocation();
+}
+
+final class AppStartGoToWelcome extends AppStartState {
+  const AppStartGoToWelcome();
+}
+
+final class AppStartGoToTerms extends AppStartState {
+  const AppStartGoToTerms();
 }
