@@ -57,11 +57,7 @@ class ProfileScreen extends StatelessWidget {
                     context,
                   )!.profileAccountSection,
                   firstIconPath: 'assets/icons/personal_info.svg',
-                  secondIconPath: 'assets/icons/following_organizers.svg',
                   firstTitle: AppLocalizations.of(context)!.profilePersonalInfo,
-                  secondTitle: AppLocalizations.of(
-                    context,
-                  )!.profileTabsFollowingOrganizers,
                   firstSubtitle: AppLocalizations.of(
                     context,
                   )!.profilePersonalInfoSubtitle,
@@ -86,11 +82,14 @@ class ProfileScreen extends StatelessWidget {
                   firstTrailingText: context
                       .watch<LocaleCubit>()
                       .currentLanguageName,
-                  secondTrailingText: context.watch<ThemeCubit>().state.themeMode == ThemeMode.light
+                  secondTrailingText:
+                      context.watch<ThemeCubit>().state.themeMode ==
+                          ThemeMode.light
                       ? AppLocalizations.of(context)!.profileThemeLight
-                      : context.watch<ThemeCubit>().state.themeMode == ThemeMode.dark
-                          ? AppLocalizations.of(context)!.profileThemeDark
-                          : AppLocalizations.of(context)!.profileThemeSystem,
+                      : context.watch<ThemeCubit>().state.themeMode ==
+                            ThemeMode.dark
+                      ? AppLocalizations.of(context)!.profileThemeDark
+                      : AppLocalizations.of(context)!.profileThemeSystem,
                   firstAction: () {
                     showModalBottomSheet(
                       context: context,
@@ -126,11 +125,20 @@ class ProfileScreen extends StatelessWidget {
                   firstIconPath: 'assets/icons/help_center.svg',
                   secondIconPath: 'assets/icons/terms_of_service.svg',
                   firstTitle: AppLocalizations.of(context)!.profileHelpCenter,
-                  firstAction: () => context.pushNamed(Routes.helpSupportScreen),
+                  firstAction: () =>
+                      context.pushNamed(Routes.helpSupportScreen),
                   secondTitle: AppLocalizations.of(
                     context,
                   )!.profileTermsOfService,
-                  secondAction: () => context.pushNamed(Routes.termsOfServiceScreen),
+                  secondAction: () =>
+                      context.pushNamed(Routes.termsOfServiceScreen),
+                  thirdIconPath: 'assets/icons/delete_account.svg',
+                  thirdTitle: AppLocalizations.of(
+                    context,
+                  )!.profileDeleteAccount,
+                  thirdTitleColor: ColorsManager.red,
+                  thirdAction: () =>
+                      context.pushNamed(Routes.deleteAccountScreen),
                 ),
                 verticalSpace(24),
                 OutlineAppTextButton(

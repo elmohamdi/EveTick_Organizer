@@ -54,6 +54,13 @@ class FirebaseErrorHandler {
       case 'user-token-expired':
         return FirebaseFailure('Session expired, please login again');
 
+      // account deletion
+      case 'requires-recent-login':
+        return FirebaseFailure('Please sign in again, then try once more');
+
+      case 'user-mismatch':
+        return FirebaseFailure('This is not the account you are signed in with');
+
 
       default:
         return FirebaseFailure('Error code: ${e.code} | ${e.message}');

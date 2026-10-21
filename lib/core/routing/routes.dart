@@ -20,4 +20,6 @@ class Routes {
   static const String sendMessageScreen = '/sendMessageScreen';
   static const String termsOfServiceScreen = '/termsOfServiceScreen';
   static const String notificationsScreen = '/notificationsScreen';
+  static const String forgotPasswordScreen = '/forgotPasswordScreen';
+  static const String deleteAccountScreen = '/deleteAccountScreen';
 }

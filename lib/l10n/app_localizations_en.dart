@@ -2050,4 +2050,49 @@ class AppLocalizationsEn extends AppLocalizations {
   String notificationTicketsPurchasedBody(String buyer, int count, String event) {
     return '$buyer bought $count tickets for \"$event\"';
   }
+
+  @override
+  String get authForgotPasswordLink => 'Forgot password?';
+
+  @override
+  String get authForgotPasswordTitle => 'Forgot Password';
+
+  @override
+  String get authForgotPasswordSubtitle => 'Enter your email and we will send you a link to reset your password.';
+
+  @override
+  String get authSendResetLink => 'Send reset link';
+
+  @override
+  String get authBackToSignIn => 'Back to sign in';
+
+  @override
+  String get authResetLinkSent => 'Reset link sent successfully, please check your email';
+
+  @override
+  String get profileDeleteAccount => 'Delete Account';
+
+  @override
+  String get deleteAccountTitle => 'Delete Account';
+
+  @override
+  String get deleteAccountDescription => 'Deleting your account permanently removes your profile and data. This action cannot be undone.';
+
+  @override
+  String get deleteAccountGoogleNote => 'You will be asked to confirm with Google before your account is deleted.';
+
+  @override
+  String get deleteAccountPasswordNote => 'You will be asked to enter your password before your account is deleted.';
+
+  @override
+  String get deleteAccountSuccess => 'Your account has been deleted';
+
+  @override
+  String get deleteAccountPasswordSheetTitle => 'Confirm your password';
+
+  @override
+  String get deleteAccountPasswordSheetSubtitle => 'Enter your current password to permanently delete your account.';
+
+  @override
+  String get deleteAccountPasswordRequired => 'Please enter your password';
 }

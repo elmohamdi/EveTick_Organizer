@@ -3964,6 +3964,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{buyer} bought {count} tickets for "{event}"'**
   String notificationTicketsPurchasedBody(String buyer, int count, String event);
+
+  /// No description provided for @authForgotPasswordLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password?'**
+  String get authForgotPasswordLink;
+
+  /// No description provided for @authForgotPasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot Password'**
+  String get authForgotPasswordTitle;
+
+  /// No description provided for @authForgotPasswordSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email and we will send you a link to reset your password.'**
+  String get authForgotPasswordSubtitle;
+
+  /// No description provided for @authSendResetLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Send reset link'**
+  String get authSendResetLink;
+
+  /// No description provided for @authBackToSignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to sign in'**
+  String get authBackToSignIn;
+
+  /// No description provided for @authResetLinkSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset link sent successfully, please check your email'**
+  String get authResetLinkSent;
+
+  /// No description provided for @profileDeleteAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account'**
+  String get profileDeleteAccount;
+
+  /// No description provided for @deleteAccountTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account'**
+  String get deleteAccountTitle;
+
+  /// No description provided for @deleteAccountDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleting your account permanently removes your profile and data. This action cannot be undone.'**
+  String get deleteAccountDescription;
+
+  /// No description provided for @deleteAccountGoogleNote.
+  ///
+  /// In en, this message translates to:
+  /// **'You will be asked to confirm with Google before your account is deleted.'**
+  String get deleteAccountGoogleNote;
+
+  /// No description provided for @deleteAccountPasswordNote.
+  ///
+  /// In en, this message translates to:
+  /// **'You will be asked to enter your password before your account is deleted.'**
+  String get deleteAccountPasswordNote;
+
+  /// No description provided for @deleteAccountSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account has been deleted'**
+  String get deleteAccountSuccess;
+
+  /// No description provided for @deleteAccountPasswordSheetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm your password'**
+  String get deleteAccountPasswordSheetTitle;
+
+  /// No description provided for @deleteAccountPasswordSheetSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your current password to permanently delete your account.'**
+  String get deleteAccountPasswordSheetSubtitle;
+
+  /// No description provided for @deleteAccountPasswordRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your password'**
+  String get deleteAccountPasswordRequired;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
