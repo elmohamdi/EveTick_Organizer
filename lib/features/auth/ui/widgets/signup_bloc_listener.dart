@@ -1,6 +1,5 @@
 import 'package:evetick_organizer/core/helpers/extentions.dart';
 import 'package:evetick_organizer/core/routing/routes.dart';
-import 'package:evetick_organizer/core/theming/colors.dart';
 import 'package:evetick_organizer/features/auth/logic/signup_cubit/signup_cubit.dart';
 import 'package:evetick_organizer/features/auth/logic/signup_cubit/signup_state.dart';
 import 'package:evetick_organizer/features/auth/ui/widgets/error_banner.dart';
@@ -17,11 +16,6 @@ class SignupBlocListener extends StatelessWidget {
           current is Loading || current is Success || current is Error,
       listener: (context, state) {
         state.whenOrNull(
-          loading: () {
-            Center(
-              child: CircularProgressIndicator(color: ColorsManager.orange),
-            );
-          },
           success: (data) {
             context.pushNamed(Routes.loginScreen);
           },
