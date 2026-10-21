@@ -11,20 +11,21 @@ import 'package:flutter/foundation.dart';
 
 /// Reads the dashboard numbers for one event.
 ///
-/// Uses the same schema as the ticket scanner:
+/// events/{eventId}                         -> event document (ticketTiers[] has
+///                                             ticketName / ticketPrice / ticketQuantity)
+/// events/{eventId}/analytics/summary       -> sales numbers, written ONLY by the
+///                                             `onOrderConfirmed` Cloud Function
+///     revenue:   number            (sum of confirmed orders' `subtotal`)
+///     tierSales: { "<tierIndex>": number }   (tickets sold per tier)
+/// events/{eventId}/tickets/{ticketCode}    -> scanner / check-in only
+///     checkedIn: bool
 ///
-/// events/{eventId}                      -> event document (ticketTiers[] has
-///                                          ticketName / ticketPrice / ticketQuantity)
-/// events/{eventId}/tickets/{ticketCode} -> one doc per sold ticket with
-///     ticketName: String   (must equal the tier's `ticketName`)
-///     checkedIn:  bool
-///
-/// Sold tickets and revenue are derived from Firestore *count aggregations*
-/// (one per tier), so we never download the ticket documents themselves: the
-/// cost stays flat no matter how many tickets were sold.
-/// Revenue = sold x current tier price. If tier prices can change after
-/// tickets were sold, store the paid `price` on each ticket and switch to a
-/// `sum()` aggregation instead.
+/// Sales come from the `orders` the client app creates, aggregated on the
+/// server, so the app reads two small documents instead of counting tickets.
+/// The summary is a separate private document (not fields on the event)
+/// because event documents are readable by every client: revenue must not be.
+/// The per-tier revenue is `sold x current tier price`; the exact total is
+/// [EventDashboard.revenue].
 class EventDashboardRepositoryImpl implements EventDashboardRepository {
   EventDashboardRepositoryImpl({
     required FirebaseFirestore firestore,
@@ -61,20 +62,19 @@ class EventDashboardRepositoryImpl implements EventDashboardRepository {
           .map((tier) => Map<String, dynamic>.from(tier))
           .toList();
 
-      final tickets = eventRef.collection('tickets');
-
-      // Every tier + the checked-in count, all in parallel. The last element
-      // of [counts] is the checked-in count.
-      final counts = await Future.wait<int>([
-        for (final tier in tierMaps)
-          _count(
-            tickets.where(
-              'ticketName',
-              isEqualTo: _asString(tier['ticketName'], ''),
-            ),
-          ),
-        _count(tickets.where('checkedIn', isEqualTo: true)),
+      // Sales summary + check-ins, in parallel. A missing summary simply means
+      // "no confirmed order yet".
+      final results = await Future.wait<Object>([
+        _summaryRef(eventRef).get(),
+        _count(eventRef.collection('tickets').where('checkedIn', isEqualTo: true)),
       ]);
+      final summary =
+          (results[0] as DocumentSnapshot<Map<String, dynamic>>).data() ??
+          const <String, dynamic>{};
+      final checkedIn = results[1] as int;
+
+      final rawTierSales = summary['tierSales'];
+      final tierSales = rawTierSales is Map ? rawTierSales : const {};
 
       final tiers = <TicketTierSales>[
         for (var i = 0; i < tierMaps.length; i++)
@@ -82,7 +82,7 @@ class EventDashboardRepositoryImpl implements EventDashboardRepository {
             name: _asString(tierMaps[i]['ticketName'], 'Ticket'),
             price: _asNum(tierMaps[i]['ticketPrice']).toDouble(),
             capacity: _asNum(tierMaps[i]['ticketQuantity']).toInt(),
-            sold: counts[i],
+            sold: _asNum(tierSales['$i']).toInt(),
           ),
       ];
 
@@ -98,7 +98,8 @@ class EventDashboardRepositoryImpl implements EventDashboardRepository {
           startAt: DateTime.tryParse(_asString(data['startAt'], '')),
           endAt: DateTime.tryParse(_asString(data['endAt'], '')),
           tiers: tiers,
-          checkedIn: counts.last,
+          checkedIn: checkedIn,
+          revenue: _asNum(summary['revenue']).toDouble(),
           isOrganizer: isOrganizer,
         ),
       );
@@ -110,6 +111,16 @@ class EventDashboardRepositoryImpl implements EventDashboardRepository {
       return Result.failure(FirebaseErrorHandler.handleGeneric(e));
     }
   }
+
+  @override
+  Stream<void> watchSalesChanges(String eventId) {
+    final eventRef = _firestore.collection('events').doc(eventId);
+    return _summaryRef(eventRef).snapshots().map<void>((_) {});
+  }
+
+  DocumentReference<Map<String, dynamic>> _summaryRef(
+    DocumentReference<Map<String, dynamic>> eventRef,
+  ) => eventRef.collection('analytics').doc('summary');
 
   /// Accepted staff member (invitation answered -> status `active`, bound to
   /// this uid by the backend) that holds [permission] on [eventId].

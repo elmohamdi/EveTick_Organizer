@@ -1,3 +1,4 @@
+import 'package:evetick_organizer/features/auth/data/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'failure.dart';
@@ -30,6 +31,17 @@ class FirebaseErrorHandler {
 
       case 'operation-not-allowed':
         return FirebaseFailure('This sign-in method is not enabled');
+
+      // social sign-in
+      case 'account-exists-with-different-credential':
+        return FirebaseFailure(
+          'This email is already registered with another sign-in method',
+        );
+
+      case 'canceled':
+      case 'web-context-canceled':
+      case 'popup-closed-by-user':
+        return FirebaseFailure(AuthRepository.signInCancelledMessage);
 
       //public errors
 

@@ -12,6 +12,11 @@
  *
  * Both only ever act on the signed-in user's own e-mail (taken from the auth
  * token, never from the request body).
+ *
+ * Also in this codebase (see the files for details):
+ *   onOrderConfirmed  (orders.js)         confirmed order -> sales summary + "ticket purchased" notification
+ *   notifyEventLive   (notifications.js)  event status became 'live' -> notification
+ *   respondToStaffInvite writes the "accepted / declined" notification.
  */
 const { onCall, HttpsError } = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
@@ -20,6 +25,13 @@ const { getFirestore, FieldValue } = require("firebase-admin/firestore");
 
 initializeApp();
 const db = getFirestore();
+
+const notifications = require("./notifications");
+const orders = require("./orders");
+
+// Firestore triggers (orders.js / notifications.js).
+exports.onOrderConfirmed = orders.onOrderConfirmed;
+exports.notifyEventLive = notifications.notifyEventLive;
 
 const REGION = "us-central1";
 
@@ -204,7 +216,11 @@ exports.respondToStaffInvite = onCall({ region: REGION }, async (request) => {
 
   const ref = db.collection("events").doc(eventId).collection("staff").doc(email);
 
+  // The invitation as it was before it was answered, for the notification.
+  let answeredInvite = null;
+
   await db.runTransaction(async (transaction) => {
+    answeredInvite = null; // a transaction can be retried
     const snap = await transaction.get(ref);
     if (!snap.exists) {
       throw new HttpsError("not-found", "This invitation no longer exists");
@@ -219,6 +235,8 @@ exports.respondToStaffInvite = onCall({ region: REGION }, async (request) => {
       );
     }
 
+    answeredInvite = snap.data();
+
     if (accept) {
       transaction.update(ref, {
         status: "active",
@@ -229,6 +247,23 @@ exports.respondToStaffInvite = onCall({ region: REGION }, async (request) => {
       transaction.delete(ref);
     }
   });
+
+  // Tell the organizer who invited this person. Never fail the answer itself
+  // because the notification could not be written.
+  if (answeredInvite) {
+    try {
+      await notifications.notifyStaffResponse({
+        eventId,
+        staff: answeredInvite,
+        accepted: accept,
+      });
+    } catch (error) {
+      logger.error("staff response notification failed", {
+        eventId,
+        error: String(error),
+      });
+    }
+  }
 
   return { ok: true };
 });

@@ -40,26 +40,13 @@ class WelcomeScreen extends StatelessWidget {
                   buttonText: AppLocalizations.of(
                     context,
                   )!.authContinueWithGoogle,
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<LoginCubit>().signInWithGoogle();
+                  },
                 ),
               ),
               Positioned(
                 top: 565.h,
-                left: 20.w,
-                child: OutlineAppTextButton(
-                  trailing: SvgPicture.asset(
-                    'assets/svgs/facebook.svg',
-                    height: 23.h,
-                  ),
-                  textStyle: TextStyles.font16WhiteMid(context),
-                  buttonText: AppLocalizations.of(
-                    context,
-                  )!.authContinueWithFacebook,
-                  onPressed: () {},
-                ),
-              ),
-              Positioned(
-                top: 630.h,
                 left: 20.w,
                 child: FilledAppTextButton(
                   buttonText: AppLocalizations.of(context)!.authSignIn,
@@ -70,7 +57,7 @@ class WelcomeScreen extends StatelessWidget {
               ),
               WelcomeListener(),
               Positioned(
-                top: 680.h,
+                top: 615.h,
                 left: 0,
                 right: 0,
                 child: Center(

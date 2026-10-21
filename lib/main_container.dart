@@ -5,6 +5,8 @@ import 'package:evetick_organizer/features/auth/logic/login_cubit/login_cubit.da
 import 'package:evetick_organizer/features/home/logic/cubit/home_cubit.dart';
 import 'package:evetick_organizer/features/home/presentation/screens/home_screen.dart';
 import 'package:evetick_organizer/features/home/presentation/widgets/create_event_fab.dart';
+import 'package:evetick_organizer/features/notifications/logic/cubit/notifications_cubit.dart';
+import 'package:evetick_organizer/features/notifications/logic/cubit/notifications_state.dart';
 import 'package:evetick_organizer/features/pending_events/logic/cubit/pending_events_cubit.dart';
 import 'package:evetick_organizer/features/pending_events/presentation/screens/pending_events_screen.dart';
 import 'package:evetick_organizer/core/theming/extensions/build_context_extension.dart';
@@ -37,14 +39,18 @@ class _MainContainerState extends State<MainContainer>
   late final TicketScanCubit _ticketScanCubit = getIt<TicketScanCubit>()
     ..init();
 
-  // Owned here so the Home banner, the My Events banner and the events list
-  // share one state, and so staff invitations can be re-checked when the user
-  // switches tabs or comes back to the app (an invitation sent while the app
-  // was already open used to stay invisible until a manual refresh).
+  // Owned here so the Home bell badge and the Notifications screen share one
+  // state, and so staff invitations can be re-checked when the user returns
+  // to Home or to the app (an invitation sent while the app was already open
+  // used to stay invisible until a manual refresh).
   late final StaffInvitesCubit _staffInvitesCubit = getIt<StaffInvitesCubit>()
     ..load();
   late final PendingEventsCubit _pendingEventsCubit =
       getIt<PendingEventsCubit>()..getPendingEvents();
+
+  // Live listener behind the Home bell and the Notifications screen.
+  late final NotificationsCubit _notificationsCubit =
+      getIt<NotificationsCubit>()..start();
 
   // Not `const` anymore: the Profile tab now creates its own cubits via
   // getIt, so this list can no longer be a compile-time constant.
@@ -82,13 +88,20 @@ class _MainContainerState extends State<MainContainer>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed) _staffInvitesCubit.load();
+    if (state != AppLifecycleState.resumed) return;
+    _staffInvitesCubit.load();
+    // A listener that died (e.g. while offline) is restarted on return.
+    if (_notificationsCubit.state.status == NotificationsStatus.failure) {
+      _notificationsCubit.start();
+    }
   }
 
   void _onTabSelected(int index) {
-    // The tabs that show the invitations banner re-check on every visit.
-    final showsInvites = index == _homeTabIndex || index == _eventsTabIndex;
-    if (showsInvites && index != _currentIndex) _staffInvitesCubit.load();
+    // Home shows the bell badge, which counts pending invitations: re-check
+    // on every visit.
+    if (index == _homeTabIndex && index != _currentIndex) {
+      _staffInvitesCubit.load();
+    }
     // Reload My Events on every visit so a just-created event shows up.
     if (index == _eventsTabIndex && index != _currentIndex) {
       _pendingEventsCubit.getPendingEvents();
@@ -107,6 +120,7 @@ class _MainContainerState extends State<MainContainer>
     WidgetsBinding.instance.removeObserver(this);
     _staffInvitesCubit.close();
     _pendingEventsCubit.close();
+    _notificationsCubit.close();
     _ticketScanCubit.close();
     super.dispose();
   }
@@ -117,6 +131,7 @@ class _MainContainerState extends State<MainContainer>
       providers: [
         BlocProvider.value(value: _staffInvitesCubit),
         BlocProvider.value(value: _pendingEventsCubit),
+        BlocProvider.value(value: _notificationsCubit),
       ],
       child: Scaffold(
         extendBody: true,

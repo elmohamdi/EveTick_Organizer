@@ -9,6 +9,7 @@ class EventDashboard {
     required this.location,
     required this.tiers,
     required this.checkedIn,
+    required this.revenue,
     this.isOrganizer = true,
     this.coverImageUrl,
     this.category,
@@ -28,14 +29,17 @@ class EventDashboard {
   final List<TicketTierSales> tiers;
   final int checkedIn;
 
+  /// Sum of the `subtotal` of every confirmed order (taxes and service fee
+  /// are not the organizer's money). Maintained by the `onOrderConfirmed`
+  /// Cloud Function in `events/{id}/analytics/summary`.
+  final double revenue;
+
   /// `false` when the viewer is staff with the "view analytics" permission.
   final bool isOrganizer;
 
   int get capacity => tiers.fold(0, (sum, tier) => sum + tier.capacity);
 
   int get ticketsSold => tiers.fold(0, (sum, tier) => sum + tier.sold);
-
-  double get revenue => tiers.fold(0.0, (sum, tier) => sum + tier.revenue);
 
   double get sellThrough =>
       capacity <= 0 ? 0 : (ticketsSold / capacity).clamp(0.0, 1.0).toDouble();

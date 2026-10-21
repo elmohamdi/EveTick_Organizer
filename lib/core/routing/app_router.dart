@@ -18,6 +18,8 @@ import 'package:evetick_organizer/features/location/data/repos/location_reposito
 import 'package:evetick_organizer/features/location/logic/cubit/location_cubit.dart';
 import 'package:evetick_organizer/features/location/presentation/screens/map_picker_screen.dart';
 import 'package:evetick_organizer/features/location/presentation/screens/set_location.dart';
+import 'package:evetick_organizer/features/notifications/presentation/models/notifications_route_args.dart';
+import 'package:evetick_organizer/features/notifications/presentation/screens/notifications_screen.dart';
 import 'package:evetick_organizer/features/onboarding/domain/onboarding_repository.dart';
 import 'package:evetick_organizer/features/onboarding/presentation/cubit/onboarding_cubit.dart';
 import 'package:evetick_organizer/features/onboarding/presentation/ui/onboarding_screen.dart';
@@ -60,8 +62,11 @@ class AppRouter {
         );
       case Routes.signupScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<SignupCubit>(),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => getIt<SignupCubit>()),
+              BlocProvider(create: (context) => getIt<LoginCubit>()),
+            ],
             child: const SignupScreen(),
           ),
         );
@@ -184,6 +189,19 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (_) => getIt<TermsCubit>()..load(),
             child: const TermsOfServiceScreen(),
+          ),
+        );
+      case Routes.notificationsScreen:
+        // The cubits are owned by MainContainer (the bell shows their badge).
+        final args = arguments as NotificationsRouteArgs;
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: args.notificationsCubit),
+              BlocProvider.value(value: args.staffInvitesCubit),
+              BlocProvider.value(value: args.pendingEventsCubit),
+            ],
+            child: const NotificationsScreen(),
           ),
         );
       default:

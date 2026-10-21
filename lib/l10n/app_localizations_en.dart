@@ -174,9 +174,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authContinueWithGoogle => 'Continue with Google';
 
   @override
-  String get authContinueWithFacebook => 'Continue with Facebook';
-
-  @override
   String get authContinueAsGuest => 'Continue as guest';
 
   @override
@@ -1304,54 +1301,161 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get supportMessageSent => 'Message sent! We will get back to you within 24 hours.';
 
-  @override String staffInvitationsTitle(int count) => 'Staff invitations ($count)';
-  @override String get staffInvitationsCheckFailed => "Couldn't check your invitations";
-  @override String get staffInvitationsRetry => 'Retry';
-  @override String staffInvitationAccepted(String eventTitle) => 'You joined "$eventTitle"';
-  @override String get staffInvitationDeclined => 'Invitation declined';
-  @override String staffInvitationInvitedAs(String name, String role) => '$name invited you as $role';
-  @override String get staffAccept => 'Accept';
-  @override String get staffDecline => 'Decline';
-  @override String get staffSectionTitle => 'Staff';
-  @override String get staffAdd => 'Add';
-  @override String get staffLoadFailed => 'Could not load staff';
-  @override String get staffTryAgain => 'Try again';
-  @override String get staffEmptyMessage => 'No staff yet. Invite a co-organizer or gate staff by email and choose what they can do.';
-  @override String get staffAddMember => 'Add staff member';
-  @override String get staffCancelInvitationQuestion => 'Cancel invitation?';
-  @override String get staffRemoveMemberQuestion => 'Remove staff member?';
-  @override String staffCancelInvitationMessage(String email) => 'The invitation sent to $email will be cancelled.';
-  @override String staffRemoveMemberMessage(String name) => '$name will lose access to this event.';
-  @override String get staffKeep => 'Keep';
-  @override String get staffCancelInvitation => 'Cancel invitation';
-  @override String get staffRemove => 'Remove';
-  @override String get staffAddMemberTitle => 'Add Staff Member';
-  @override String get staffFullName => 'Full Name';
-  @override String get staffFullNameHint => 'e.g. Alex Johnson';
-  @override String get staffFullNameRequired => 'Please enter the full name';
-  @override String get staffEmailAddress => 'Email Address';
-  @override String get staffEmailHint => 'alex@example.com';
-  @override String get staffEmailRequired => 'Please enter an email';
-  @override String get staffEmailInvalid => 'Please enter a valid email';
-  @override String get staffAssignRole => 'Assign Role';
-  @override String get staffSelectRole => 'Select a role';
-  @override String get staffRoleRequired => 'Please select a role';
-  @override String get staffPermissions => 'PERMISSIONS';
-  @override String get staffPermissionRequired => 'Select at least one permission';
-  @override String staffInvitationSent(String email) => 'Invitation sent to $email';
-  @override String get staffSendInvitation => 'Send Invitation';
-  @override String get staffPending => 'PENDING';
-  @override String get staffActive => 'ACTIVE';
-  @override String get staffPermissionViewAnalytics => 'Can view analytics';
-  @override String get staffPermissionViewAnalyticsDescription => 'Access to sales reports and charts';
-  @override String get staffPermissionScanTickets => 'Can scan tickets';
-  @override String get staffPermissionScanTicketsDescription => 'Use the mobile app for check-ins';
-  @override String get staffPermissionEditEventDetails => 'Can edit event details';
-  @override String get staffPermissionEditEventDetailsDescription => 'Change title, schedule and description';
-  @override String get staffRoleCoOrganizer => 'Co-organizer';
-  @override String get staffRoleManager => 'Manager';
-  @override String get staffRoleGateStaff => 'Gate Staff';
-  @override String get staffRoleAnalyst => 'Analyst';
+  @override
+  String staffInvitationsTitle(int count) {
+    return 'Staff invitations ($count)';
+  }
+
+  @override
+  String get staffInvitationsCheckFailed => 'Couldn\'t check your invitations';
+
+  @override
+  String get staffInvitationsRetry => 'Retry';
+
+  @override
+  String staffInvitationAccepted(String eventTitle) {
+    return 'You joined \"$eventTitle\"';
+  }
+
+  @override
+  String get staffInvitationDeclined => 'Invitation declined';
+
+  @override
+  String staffInvitationInvitedAs(String name, String role) {
+    return '$name invited you as $role';
+  }
+
+  @override
+  String get staffAccept => 'Accept';
+
+  @override
+  String get staffDecline => 'Decline';
+
+  @override
+  String get staffSectionTitle => 'Staff';
+
+  @override
+  String get staffAdd => 'Add';
+
+  @override
+  String get staffLoadFailed => 'Could not load staff';
+
+  @override
+  String get staffTryAgain => 'Try again';
+
+  @override
+  String get staffEmptyMessage => 'No staff yet. Invite a co-organizer or gate staff by email and choose what they can do.';
+
+  @override
+  String get staffAddMember => 'Add staff member';
+
+  @override
+  String get staffCancelInvitationQuestion => 'Cancel invitation?';
+
+  @override
+  String get staffRemoveMemberQuestion => 'Remove staff member?';
+
+  @override
+  String staffCancelInvitationMessage(String email) {
+    return 'The invitation sent to $email will be cancelled.';
+  }
+
+  @override
+  String staffRemoveMemberMessage(String name) {
+    return '$name will lose access to this event.';
+  }
+
+  @override
+  String get staffKeep => 'Keep';
+
+  @override
+  String get staffCancelInvitation => 'Cancel invitation';
+
+  @override
+  String get staffRemove => 'Remove';
+
+  @override
+  String get staffAddMemberTitle => 'Add Staff Member';
+
+  @override
+  String get staffFullName => 'Full Name';
+
+  @override
+  String get staffFullNameHint => 'e.g. Alex Johnson';
+
+  @override
+  String get staffFullNameRequired => 'Please enter the full name';
+
+  @override
+  String get staffEmailAddress => 'Email Address';
+
+  @override
+  String get staffEmailHint => 'alex@example.com';
+
+  @override
+  String get staffEmailRequired => 'Please enter an email';
+
+  @override
+  String get staffEmailInvalid => 'Please enter a valid email';
+
+  @override
+  String get staffAssignRole => 'Assign Role';
+
+  @override
+  String get staffSelectRole => 'Select a role';
+
+  @override
+  String get staffRoleRequired => 'Please select a role';
+
+  @override
+  String get staffPermissions => 'PERMISSIONS';
+
+  @override
+  String get staffPermissionRequired => 'Select at least one permission';
+
+  @override
+  String staffInvitationSent(String email) {
+    return 'Invitation sent to $email';
+  }
+
+  @override
+  String get staffSendInvitation => 'Send Invitation';
+
+  @override
+  String get staffPending => 'PENDING';
+
+  @override
+  String get staffActive => 'ACTIVE';
+
+  @override
+  String get staffPermissionViewAnalytics => 'Can view analytics';
+
+  @override
+  String get staffPermissionViewAnalyticsDescription => 'Access to sales reports and charts';
+
+  @override
+  String get staffPermissionScanTickets => 'Can scan tickets';
+
+  @override
+  String get staffPermissionScanTicketsDescription => 'Use the mobile app for check-ins';
+
+  @override
+  String get staffPermissionEditEventDetails => 'Can edit event details';
+
+  @override
+  String get staffPermissionEditEventDetailsDescription => 'Change title, schedule and description';
+
+  @override
+  String get staffRoleCoOrganizer => 'Co-organizer';
+
+  @override
+  String get staffRoleManager => 'Manager';
+
+  @override
+  String get staffRoleGateStaff => 'Gate Staff';
+
+  @override
+  String get staffRoleAnalyst => 'Analyst';
 
   @override
   String get createEventScreenTitle => 'Create Event';
@@ -1427,7 +1531,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String createEventLocationError(String error) {
-    return 'Error getting location: ${error}';
+    return 'Error getting location: $error';
   }
 
   @override
@@ -1513,7 +1617,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String createEventGalleryLimit(int max) {
-    return 'maximum ${max} photos, up to 5MB each.';
+    return 'maximum $max photos, up to 5MB each.';
   }
 
   @override
@@ -1596,7 +1700,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String createEventActiveTiers(int count) {
-    return '${count} active tiers';
+    return '$count active tiers';
   }
 
   @override
@@ -1658,7 +1762,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String createEventPaymentEnterField(String field) {
-    return 'Please enter your ${field}';
+    return 'Please enter your $field';
   }
 
   @override
@@ -1680,7 +1784,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get createEventPublishedIntro => 'Your event is now ';
 
   @override
-  String get createEventPublishedStatus => 'Under Review!';
+  String get createEventPublishedStatus => 'Under Review!\n';
 
   @override
   String get createEventPublishedWait => 'please wait for our response.';
@@ -1710,7 +1814,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authOrDivider => 'or';
 
   @override
-  String get authCheckEmailCodeSent => 'Check your email for the code sent to ';
+  String get authCheckEmailCodeSent => 'Check your email for the code sent \nto ';
 
   @override
   String get authNameInvalid => 'Please enter a valid name';
@@ -1753,7 +1857,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String homeStatSoldPercent(int percent, String capacity) {
-    return '${percent}% of ${capacity}';
+    return '$percent% of $capacity';
   }
 
   @override
@@ -1761,7 +1865,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String homeStatLiveNow(String count) {
-    return '${count} live now';
+    return '$count live now';
   }
 
   @override
@@ -1772,7 +1876,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String homeStatOfSold(String count) {
-    return 'of ${count} sold';
+    return 'of $count sold';
   }
 
   @override
@@ -1792,12 +1896,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String dashboardPerTicket(String price) {
-    return '${price} per ticket';
+    return '$price per ticket';
   }
 
   @override
   String dashboardTierSold(String sold, String capacity) {
-    return '${sold} of ${capacity} sold';
+    return '$sold of $capacity sold';
   }
 
   @override
@@ -1805,7 +1909,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String dashboardFromTickets(String count) {
-    return 'From ${count} tickets';
+    return 'From $count tickets';
   }
 
   @override
@@ -1867,4 +1971,83 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get scanSelectEventFirst => 'Select an event before scanning';
+
+  @override
+  String get notificationsMarkAllRead => 'Mark all as read';
+
+  @override
+  String get notificationsMarkAllFailed => 'Couldn\'t update your notifications';
+
+  @override
+  String get notificationsEmptyTitle => 'No notifications yet';
+
+  @override
+  String get notificationsEmptySubtitle => 'Ticket sales, staff replies and event updates will show up here';
+
+  @override
+  String get notificationsLoadFailed => 'Couldn\'t load your notifications';
+
+  @override
+  String get notificationsRecentTitle => 'Recent';
+
+  @override
+  String get notificationSomeone => 'Someone';
+
+  @override
+  String get notificationATicket => 'a ticket';
+
+  @override
+  String get notificationTicketPurchasedTitle => 'New ticket sold';
+
+  @override
+  String notificationTicketPurchasedBody(String buyer, String ticket, String event) {
+    return '$buyer bought $ticket for \"$event\"';
+  }
+
+  @override
+  String get notificationStaffAcceptedTitle => 'Invitation accepted';
+
+  @override
+  String notificationStaffAcceptedBody(String name, String event) {
+    return '$name accepted your invitation to join \"$event\"';
+  }
+
+  @override
+  String get notificationStaffDeclinedTitle => 'Invitation declined';
+
+  @override
+  String notificationStaffDeclinedBody(String name, String event) {
+    return '$name declined your invitation to join \"$event\"';
+  }
+
+  @override
+  String get notificationEventLiveTitle => 'Your event is live';
+
+  @override
+  String notificationEventLiveBody(String event) {
+    return '\"$event\" is now live';
+  }
+
+  @override
+  String get notificationTimeNow => 'Just now';
+
+  @override
+  String notificationTimeMinutes(int count) {
+    return '${count}m ago';
+  }
+
+  @override
+  String notificationTimeHours(int count) {
+    return '${count}h ago';
+  }
+
+  @override
+  String notificationTimeDays(int count) {
+    return '${count}d ago';
+  }
+
+  @override
+  String notificationTicketsPurchasedBody(String buyer, int count, String event) {
+    return '$buyer bought $count tickets for \"$event\"';
+  }
 }

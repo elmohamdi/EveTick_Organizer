@@ -2,8 +2,6 @@ import 'package:evetick_organizer/core/theming/extensions/build_context_extensio
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/features/pending_events/logic/cubit/pending_events_cubit.dart';
 import 'package:evetick_organizer/features/pending_events/presentation/widgets/build_event.dart';
-import 'package:evetick_organizer/features/staff_access/logic/cubit/staff_invites_cubit.dart';
-import 'package:evetick_organizer/features/staff_access/presentation/widgets/staff_invites_banner.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:evetick_organizer/l10n/app_localizations.dart';
@@ -11,8 +9,9 @@ import 'package:evetick_organizer/l10n/app_localizations.dart';
 class PendingEventsScreen extends StatelessWidget {
   const PendingEventsScreen({super.key});
 
-  /// Needs a [PendingEventsCubit] and a [StaffInvitesCubit] above it; both
-  /// are owned by `MainContainer`.
+  /// Needs a [PendingEventsCubit] above it (owned by `MainContainer`). Staff
+  /// invitations are no longer listed here: they live on the Notifications
+  /// screen.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,23 +25,12 @@ class PendingEventsScreen extends StatelessWidget {
         actions: [
           IconButton(
             tooltip: AppLocalizations.of(context)!.commonRefresh,
-            onPressed: () {
-              context.read<StaffInvitesCubit>().load();
-              context.read<PendingEventsCubit>().getPendingEvents();
-            },
+            onPressed: () => context.read<PendingEventsCubit>().getPendingEvents(),
             icon: Icon(Icons.refresh_rounded, color: context.colors.white),
           ),
         ],
       ),
-      body: Column(
-        children: [
-          StaffInvitesBanner(
-            onAccepted: () =>
-                context.read<PendingEventsCubit>().getPendingEvents(),
-          ),
-          Expanded(child: BuildEvent()),
-        ],
-      ),
+      body: BuildEvent(),
     );
   }
 }

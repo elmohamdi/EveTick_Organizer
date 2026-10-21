@@ -5,15 +5,15 @@ import 'package:evetick_organizer/features/home/logic/cubit/home_cubit.dart';
 import 'package:evetick_organizer/features/home/logic/cubit/home_state.dart';
 import 'package:evetick_organizer/features/home/presentation/widgets/home_content.dart';
 import 'package:evetick_organizer/features/home/presentation/widgets/home_error_view.dart';
-import 'package:evetick_organizer/features/pending_events/logic/cubit/pending_events_cubit.dart';
+import 'package:evetick_organizer/features/notifications/presentation/widgets/notification_bell_button.dart';
 import 'package:evetick_organizer/features/staff_access/logic/cubit/staff_invites_cubit.dart';
-import 'package:evetick_organizer/features/staff_access/presentation/widgets/staff_invites_banner.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:evetick_organizer/l10n/app_localizations.dart';
 
-/// Requires a [HomeCubit], a [StaffInvitesCubit] and a [PendingEventsCubit]
-/// above it. The "Create Event" FAB lives in
+/// Requires a [HomeCubit], a [StaffInvitesCubit], a `NotificationsCubit` and a
+/// `PendingEventsCubit` above it (the bell opens the Notifications screen,
+/// where staff invitations are answered). The "Create Event" FAB lives in
 /// `MainContainer` so Material positions it above the bottom navbar.
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -29,47 +29,34 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: Text(AppLocalizations.of(context)!.homeOverviewTitle, style: TextStyles.font18WhiteBold(context)),
+        actions: const [NotificationBellButton()],
       ),
-      body: Column(
-        children: [
-          // Home is the landing tab, so a staff invitation must show up here
-          // and not only under "My Events".
-          StaffInvitesBanner(
-            onAccepted: () =>
-                context.read<PendingEventsCubit>().getPendingEvents(),
-          ),
-          Expanded(
-            child: BlocBuilder<HomeCubit, HomeState>(
-              builder: (context, state) {
-                if (state is HomeInitial || state is HomeLoading) {
-                  return const Center(
-                    child: CircularProgressIndicator(
-                      color: ColorsManager.orange,
-                    ),
-                  );
-                }
+      body: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          if (state is HomeInitial || state is HomeLoading) {
+            return const Center(
+              child: CircularProgressIndicator(color: ColorsManager.orange),
+            );
+          }
 
-                if (state is HomeFailure) {
-                  return HomeErrorView(
-                    message: state.error,
-                    onRetry: () => context.read<HomeCubit>().load(),
-                  );
-                }
+          if (state is HomeFailure) {
+            return HomeErrorView(
+              message: state.error,
+              onRetry: () => context.read<HomeCubit>().load(),
+            );
+          }
 
-                final overview = (state as HomeSuccess).overview;
-                return RefreshIndicator(
-                  color: ColorsManager.orange,
-                  backgroundColor: context.colors.lightBlue,
-                  onRefresh: () => Future.wait([
-                    context.read<HomeCubit>().load(isRefresh: true),
-                    context.read<StaffInvitesCubit>().load(),
-                  ]),
-                  child: HomeContent(overview: overview),
-                );
-              },
-            ),
-          ),
-        ],
+          final overview = (state as HomeSuccess).overview;
+          return RefreshIndicator(
+            color: ColorsManager.orange,
+            backgroundColor: context.colors.lightBlue,
+            onRefresh: () => Future.wait([
+              context.read<HomeCubit>().load(isRefresh: true),
+              context.read<StaffInvitesCubit>().load(),
+            ]),
+            child: HomeContent(overview: overview),
+          );
+        },
       ),
     );
   }

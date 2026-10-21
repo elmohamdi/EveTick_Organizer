@@ -87,7 +87,28 @@ class _AnimatedSpotlightNavbarState extends State<AnimatedSpotlightNavbar>
   double _calculateCenterX(int index) {
     final totalWidth = MediaQuery.of(context).size.width;
     final itemWidth = totalWidth / widget.items.length;
-    return itemWidth * index + itemWidth / 2;
+    // The icons live in a Row, which mirrors itself in RTL (Arabic), but the
+    // spotlight/indicator are painted with absolute X coordinates. Mirror the
+    // slot index so they line up with the icon that is really selected.
+    final isRtl = Directionality.of(context) == TextDirection.rtl;
+    final visualIndex = isRtl ? widget.items.length - 1 - index : index;
+    return itemWidth * visualIndex + itemWidth / 2;
+  }
+
+  TextDirection? _lastDirection;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final direction = Directionality.of(context);
+    if (_lastDirection != null && _lastDirection != direction) {
+      // Language switched (LTR <-> RTL): snap to the mirrored position.
+      final center = _calculateCenterX(widget.currentIndex);
+      _startX = center;
+      _endX = center;
+      _controller.reset();
+    }
+    _lastDirection = direction;
   }
 
   @override

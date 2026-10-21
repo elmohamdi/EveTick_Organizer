@@ -19,4 +19,5 @@ class Routes {
   static const String helpSupportScreen = '/helpSupportScreen';
   static const String sendMessageScreen = '/sendMessageScreen';
   static const String termsOfServiceScreen = '/termsOfServiceScreen';
+  static const String notificationsScreen = '/notificationsScreen';
 }
