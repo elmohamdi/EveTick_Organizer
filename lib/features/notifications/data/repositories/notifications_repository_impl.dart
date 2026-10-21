@@ -11,18 +11,20 @@ import 'package:flutter/foundation.dart';
 
 /// Firestore implementation.
 ///
-/// users/{uid}/notifications/{notificationId}
+/// users/{uid}/organizer_notifications/{notificationId}
+///   (NOT `users/{uid}/notifications`: that collection belongs to the client
+///   app and has its own schema and rules)
 ///     type:       String     (NotificationType.key)
 ///     eventId:    String
 ///     eventTitle: String
 ///     actorName:  String?    (buyer / invited organizer)
 ///     ticketName: String?    (ticketPurchased only)
 ///     createdAt:  Timestamp  (server timestamp)
-///     read:       bool
+///     isRead:     bool
 ///
 /// Documents are *created by Cloud Functions only* (see
 /// `backend/functions/notifications.js`); the app only reads them and flips
-/// `read` to true. Ordering by a single field needs no composite index.
+/// `isRead` to true. Ordering by a single field needs no composite index.
 class NotificationsRepositoryImpl implements NotificationsRepository {
   NotificationsRepositoryImpl({
     required FirebaseFirestore firestore,
@@ -40,7 +42,10 @@ class NotificationsRepositoryImpl implements NotificationsRepository {
   CollectionReference<Map<String, dynamic>>? _collection() {
     final uid = _auth.currentUser?.uid;
     if (uid == null) return null;
-    return _firestore.collection('users').doc(uid).collection('notifications');
+    return _firestore
+        .collection('users')
+        .doc(uid)
+        .collection('organizer_notifications');
   }
 
   @override
@@ -85,7 +90,7 @@ class NotificationsRepositoryImpl implements NotificationsRepository {
     }
 
     try {
-      await collection.doc(id).update({'read': true});
+      await collection.doc(id).update({'isRead': true});
       return const Result.success(null);
     } catch (e, stackTrace) {
       debugPrint('Notifications markAsRead error: $e\n$stackTrace');
@@ -107,7 +112,7 @@ class NotificationsRepositoryImpl implements NotificationsRepository {
       // The list is capped at [_limit], far below the 500-writes batch limit.
       final batch = _firestore.batch();
       for (final id in unread) {
-        batch.update(collection.doc(id), {'read': true});
+        batch.update(collection.doc(id), {'isRead': true});
       }
       await batch.commit();
       return const Result.success(null);

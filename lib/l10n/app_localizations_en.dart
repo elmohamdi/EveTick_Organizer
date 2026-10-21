@@ -2045,4 +2045,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String notificationTimeDays(int count) {
     return '${count}d ago';
   }
+
+  @override
+  String notificationTicketsPurchasedBody(String buyer, int count, String event) {
+    return '$buyer bought $count tickets for \"$event\"';
+  }
 }

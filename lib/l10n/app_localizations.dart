@@ -3958,6 +3958,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count}d ago'**
   String notificationTimeDays(int count);
+
+  /// No description provided for @notificationTicketsPurchasedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{buyer} bought {count} tickets for "{event}"'**
+  String notificationTicketsPurchasedBody(String buyer, int count, String event);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evetick_organizer/features/notifications/data/models/notification_type.dart';
 
-/// One entry of `users/{uid}/notifications/{id}`.
+/// One entry of `users/{uid}/organizer_notifications/{id}`.
 ///
 /// The backend stores *data* (type + names), never display text, so the app
 /// can localize every message itself.
@@ -14,6 +14,7 @@ class AppNotification {
     required this.createdAt,
     this.actorName,
     this.ticketName,
+    this.ticketCount = 1,
     this.isRead = false,
   });
 
@@ -31,6 +32,9 @@ class AppNotification {
 
   /// Tier name of the purchased ticket (ticketPurchased only).
   final String? ticketName;
+
+  /// Number of tickets in the purchase (ticketPurchased only).
+  final int ticketCount;
   final bool isRead;
 
   /// Returns `null` for an unknown [NotificationType] instead of throwing, so
@@ -47,8 +51,11 @@ class AppNotification {
       eventTitle: _text(map['eventTitle']) ?? '',
       actorName: _text(map['actorName']),
       ticketName: _text(map['ticketName']),
+      ticketCount: map['ticketCount'] is num
+          ? (map['ticketCount'] as num).toInt().clamp(1, 1 << 30).toInt()
+          : 1,
       createdAt: createdAt is Timestamp ? createdAt.toDate() : DateTime.now(),
-      isRead: map['read'] == true,
+      isRead: map['isRead'] == true,
     );
   }
 

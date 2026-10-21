@@ -19,11 +19,14 @@ extension NotificationLabels on AppNotification {
     final actor = actorName ?? l10n.notificationSomeone;
 
     return switch (type) {
-      NotificationType.ticketPurchased => l10n.notificationTicketPurchasedBody(
-        actor,
-        ticketName ?? l10n.notificationATicket,
-        event,
-      ),
+      NotificationType.ticketPurchased =>
+        ticketCount > 1
+            ? l10n.notificationTicketsPurchasedBody(actor, ticketCount, event)
+            : l10n.notificationTicketPurchasedBody(
+                actor,
+                ticketName ?? l10n.notificationATicket,
+                event,
+              ),
       NotificationType.staffAccepted => l10n.notificationStaffAcceptedBody(
         actor,
         event,

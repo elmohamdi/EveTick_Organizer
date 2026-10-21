@@ -1428,5 +1428,7 @@
   "notificationTimeHours": "{count}h ago",
   "@notificationTimeHours": {"placeholders": {"count": {"type": "int"}}},
   "notificationTimeDays": "{count}d ago",
-  "@notificationTimeDays": {"placeholders": {"count": {"type": "int"}}}
+  "@notificationTimeDays": {"placeholders": {"count": {"type": "int"}}},
+  "notificationTicketsPurchasedBody": "{buyer} bought {count} tickets for \"{event}\"",
+  "@notificationTicketsPurchasedBody": {"placeholders": {"buyer": {"type": "String"}, "count": {"type": "int"}, "event": {"type": "String"}}}
 }
