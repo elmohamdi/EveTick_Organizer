@@ -2095,4 +2095,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get deleteAccountPasswordRequired => 'من فضلك أدخل كلمة المرور';
+
+  @override
+  String get termsAccept => 'قبول';
+
+  @override
+  String get termsReject => 'رفض';
+
+  @override
+  String get termsScrollToAccept => 'مرّر حتى نهاية الشروط لتفعيل زر القبول';
+
+  @override
+  String get termsRejectedNotice => 'يجب الموافقة على الشروط لاستخدام EveTick';
 }

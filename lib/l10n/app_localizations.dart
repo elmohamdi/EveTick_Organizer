@@ -4054,6 +4054,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please enter your password'**
   String get deleteAccountPasswordRequired;
+
+  /// No description provided for @termsAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
+  String get termsAccept;
+
+  /// No description provided for @termsReject.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject'**
+  String get termsReject;
+
+  /// No description provided for @termsScrollToAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'Scroll to the end of the terms to enable Accept'**
+  String get termsScrollToAccept;
+
+  /// No description provided for @termsRejectedNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'You need to accept the terms to use EveTick'**
+  String get termsRejectedNotice;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

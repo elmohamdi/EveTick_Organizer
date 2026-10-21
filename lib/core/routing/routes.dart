@@ -22,4 +22,5 @@ class Routes {
   static const String notificationsScreen = '/notificationsScreen';
   static const String forgotPasswordScreen = '/forgotPasswordScreen';
   static const String deleteAccountScreen = '/deleteAccountScreen';
+  static const String termsAcceptanceScreen = '/termsAcceptanceScreen';
 }

@@ -177,6 +177,25 @@ class AuthRepository {
     await auth.signOut();
   }
 
+  /// Records that the signed-in user accepted the terms.
+  Future<Result<void>> acceptTerms() async {
+    try {
+      final user = auth.currentUser;
+      if (user == null) {
+        return Result.failure(FirebaseFailure('User is not logged in'));
+      }
+      await firestore.collection('users').doc(user.uid).update({
+        'termsAccepted': true,
+        'termsAcceptedAt': FieldValue.serverTimestamp(),
+      });
+      return Result.success(null);
+    } on FirebaseException catch (e) {
+      return Result.failure(FirebaseErrorHandler.handleFirestore(e));
+    } catch (e) {
+      return Result.failure(FirebaseErrorHandler.handleGeneric(e));
+    }
+  }
+
   /// Sends Firebase's password reset email to [email].
   Future<Result<void>> sendPasswordResetEmail(String email) async {
     try {
