@@ -2050,4 +2050,49 @@ class AppLocalizationsAr extends AppLocalizations {
   String notificationTicketsPurchasedBody(String buyer, int count, String event) {
     return 'اشترى $buyer $count تذاكر لحدث \"$event\"';
   }
+
+  @override
+  String get authForgotPasswordLink => 'نسيت كلمة المرور؟';
+
+  @override
+  String get authForgotPasswordTitle => 'نسيت كلمة المرور';
+
+  @override
+  String get authForgotPasswordSubtitle => 'أدخل بريدك الإلكتروني وسنرسل لك رابطاً لإعادة تعيين كلمة المرور.';
+
+  @override
+  String get authSendResetLink => 'إرسال رابط إعادة التعيين';
+
+  @override
+  String get authBackToSignIn => 'العودة إلى تسجيل الدخول';
+
+  @override
+  String get authResetLinkSent => 'تم إرسال رابط إعادة التعيين بنجاح، يرجى التحقق من بريدك الإلكتروني';
+
+  @override
+  String get profileDeleteAccount => 'حذف الحساب';
+
+  @override
+  String get deleteAccountTitle => 'حذف الحساب';
+
+  @override
+  String get deleteAccountDescription => 'حذف حسابك يزيل ملفك الشخصي وبياناتك نهائياً. لا يمكن التراجع عن هذا الإجراء.';
+
+  @override
+  String get deleteAccountGoogleNote => 'ستحتاج إلى التأكيد باستخدام Google قبل حذف حسابك.';
+
+  @override
+  String get deleteAccountPasswordNote => 'ستحتاج إلى إدخال كلمة المرور قبل حذف حسابك.';
+
+  @override
+  String get deleteAccountSuccess => 'تم حذف حسابك بنجاح';
+
+  @override
+  String get deleteAccountPasswordSheetTitle => 'تأكيد كلمة المرور';
+
+  @override
+  String get deleteAccountPasswordSheetSubtitle => 'أدخل كلمة المرور الحالية لحذف حسابك نهائياً.';
+
+  @override
+  String get deleteAccountPasswordRequired => 'من فضلك أدخل كلمة المرور';
 }

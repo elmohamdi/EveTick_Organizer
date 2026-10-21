@@ -3,13 +3,16 @@ import 'package:evetick_organizer/core/services/failure.dart';
 import 'package:evetick_organizer/core/services/firebase_error_handler.dart';
 import 'package:evetick_organizer/core/services/result.dart';
 import 'package:evetick_organizer/features/auth/data/models/app_user_model.dart';
+import 'package:evetick_organizer/features/auth/data/models/reauth_method.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class AuthRepository {
   static const String signInCancelledMessage = 'Sign-in was cancelled';
 
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final FirebaseStorage storage = FirebaseStorage.instance;
 
   Future<Result<AppUserModel>> login({
     required String email,
@@ -172,5 +175,83 @@ class AuthRepository {
 
   Future<void> logout() async {
     await auth.signOut();
+  }
+
+  /// Sends Firebase's password reset email to [email].
+  Future<Result<void>> sendPasswordResetEmail(String email) async {
+    try {
+      await auth.sendPasswordResetEmail(email: email.trim());
+      return Result.success(null);
+    } on FirebaseAuthException catch (e) {
+      return Result.failure(FirebaseErrorHandler.handle(e));
+    } catch (e) {
+      return Result.failure(FirebaseErrorHandler.handleGeneric(e));
+    }
+  }
+
+  /// How the current user must confirm a sensitive action.
+  ReauthMethod get reauthMethod {
+    final user = auth.currentUser;
+    if (user == null) return ReauthMethod.none;
+
+    final providerIds = user.providerData.map((info) => info.providerId);
+    if (providerIds.contains('google.com')) return ReauthMethod.google;
+    if (providerIds.contains('password')) return ReauthMethod.password;
+    return ReauthMethod.none;
+  }
+
+  /// Permanently deletes the signed-in user: confirms their identity again,
+  /// removes their profile document and image, then the Firebase account.
+  ///
+  /// [password] is required for email/password accounts.
+  Future<Result<void>> deleteAccount({String? password}) async {
+    try {
+      final user = auth.currentUser;
+      if (user == null) {
+        return Result.failure(FirebaseFailure('User is not logged in'));
+      }
+
+      // Firebase only allows deleting an account after a recent sign-in.
+      await _reauthenticate(user, password);
+
+      // Data first: the rules need the user to still be signed in.
+      await firestore.collection('users').doc(user.uid).delete();
+      await _deleteProfileImage(user.uid);
+
+      await user.delete();
+      return Result.success(null);
+    } on FirebaseAuthException catch (e) {
+      return Result.failure(FirebaseErrorHandler.handle(e));
+    } on FirebaseException catch (e) {
+      return Result.failure(FirebaseErrorHandler.handleFirestore(e));
+    } catch (e) {
+      return Result.failure(FirebaseErrorHandler.handleGeneric(e));
+    }
+  }
+
+  Future<void> _reauthenticate(User user, String? password) async {
+    switch (reauthMethod) {
+      case ReauthMethod.google:
+        await user.reauthenticateWithProvider(
+          GoogleAuthProvider()..addScope('email'),
+        );
+      case ReauthMethod.password:
+        await user.reauthenticateWithCredential(
+          EmailAuthProvider.credential(
+            email: user.email ?? '',
+            password: password ?? '',
+          ),
+        );
+      case ReauthMethod.none:
+        break;
+    }
+  }
+
+  Future<void> _deleteProfileImage(String uid) async {
+    try {
+      await storage.ref().child('profile_images/$uid/profile.jpg').delete();
+    } on FirebaseException catch (_) {
+      // The user may never have uploaded a profile image.
+    }
   }
 }

@@ -8,6 +8,7 @@ import 'package:evetick_organizer/features/auth/ui/widgets/auth_background.dart'
 import 'package:evetick_organizer/features/auth/ui/widgets/auth_with_other_platforms.dart';
 import 'package:evetick_organizer/features/auth/ui/widgets/dont_have_account_text.dart';
 import 'package:evetick_organizer/features/auth/ui/widgets/email_and_password.dart';
+import 'package:evetick_organizer/features/auth/ui/widgets/forgot_password_link.dart';
 import 'package:evetick_organizer/features/auth/ui/widgets/login_bloc_listener.dart';
 import 'package:evetick_organizer/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -72,6 +73,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     verticalSpace(32),
                     const LoginBlocListener(),
                     Form(key: _formKey, child: const EmailAndPassword()),
+                    verticalSpace(8),
+                    const ForgotPasswordLink(),
                     verticalSpace(24),
                     FilledAppTextButton(
                       buttonText: AppLocalizations.of(context)!.commonContinue,

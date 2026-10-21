@@ -9,29 +9,37 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ProfileSection extends StatelessWidget {
   final String sectionTitle;
   final String firstIconPath;
-  final String secondIconPath;
+  final String? secondIconPath;
   final String firstTitle;
-  final String secondTitle;
+  final String? secondTitle;
   final String? firstSubtitle;
   final String? secondSubtitle;
   final String? firstTrailingText;
   final String? secondTrailingText;
   final VoidCallback? firstAction;
 final VoidCallback? secondAction;
-  
+  final String? thirdIconPath;
+  final String? thirdTitle;
+  final VoidCallback? thirdAction;
+  final Color? thirdTitleColor;
+
   const ProfileSection({
     super.key,
     required this.sectionTitle,
     required this.firstIconPath,
-    required this.secondIconPath,
+    this.secondIconPath,
     required this.firstTitle,
-    required this.secondTitle,
+    this.secondTitle,
     this.firstSubtitle,
     this.secondSubtitle,
     this.firstTrailingText,
     this.secondTrailingText,
     this.firstAction,
     this.secondAction,
+    this.thirdIconPath,
+    this.thirdTitle,
+    this.thirdAction,
+    this.thirdTitleColor,
   });
 
   @override
@@ -59,15 +67,28 @@ final VoidCallback? secondAction;
                   onTap: firstAction,
                 ),
 
-                Divider(color: context.colors.darkBlue, thickness: 1),
+                if (secondIconPath != null && secondTitle != null) ...[
+                  Divider(color: context.colors.darkBlue, thickness: 1),
 
-                ProfileTile(
-                  iconPath: secondIconPath,
-                  title: secondTitle,
-                  subtitle: secondSubtitle,
-                  trailingText: secondTrailingText,
-                  onTap: secondAction,
-                ),
+                  ProfileTile(
+                    iconPath: secondIconPath!,
+                    title: secondTitle!,
+                    subtitle: secondSubtitle,
+                    trailingText: secondTrailingText,
+                    onTap: secondAction,
+                  ),
+                ],
+
+                if (thirdIconPath != null && thirdTitle != null) ...[
+                  Divider(color: context.colors.darkBlue, thickness: 1),
+
+                  ProfileTile(
+                    iconPath: thirdIconPath!,
+                    title: thirdTitle!,
+                    titleColor: thirdTitleColor,
+                    onTap: thirdAction,
+                  ),
+                ],
                 
               ],
             ),

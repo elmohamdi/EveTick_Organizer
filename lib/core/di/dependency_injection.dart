@@ -2,11 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evetick_organizer/core/theming/data/theme_repository.dart';
 import 'package:evetick_organizer/core/theming/logic/theme_cubit.dart';
 import 'package:evetick_organizer/features/auth/data/auth_repository.dart';
+import 'package:evetick_organizer/features/auth/logic/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:evetick_organizer/features/auth/logic/login_cubit/login_cubit.dart';
 import 'package:evetick_organizer/features/auth/logic/signup_cubit/signup_cubit.dart';
 import 'package:evetick_organizer/features/create_event/data/repositories/create_event_repository.dart';
 import 'package:evetick_organizer/features/create_event/data/repositories/create_event_repository_impl.dart';
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
+import 'package:evetick_organizer/features/delete_account/logic/cubit/delete_account_cubit.dart';
 import 'package:evetick_organizer/features/event_dashboard/data/repositories/event_dashboard_repository.dart';
 import 'package:evetick_organizer/features/event_dashboard/data/repositories/event_dashboard_repository_impl.dart';
 import 'package:evetick_organizer/features/event_dashboard/logic/cubit/event_dashboard_cubit.dart';
@@ -60,6 +62,14 @@ Future<void> setupGetIt() async {
 
   getIt.registerFactory<SignupCubit>(
     () => SignupCubit(getIt<AuthRepository>()),
+  );
+
+  getIt.registerFactory<ForgotPasswordCubit>(
+    () => ForgotPasswordCubit(getIt<AuthRepository>()),
+  );
+
+  getIt.registerFactory<DeleteAccountCubit>(
+    () => DeleteAccountCubit(getIt<AuthRepository>()),
   );
 
   //onboarding

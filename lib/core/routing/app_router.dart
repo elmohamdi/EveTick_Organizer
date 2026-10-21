@@ -3,14 +3,18 @@ import 'package:evetick_organizer/core/routing/routes.dart';
 import 'package:evetick_organizer/features/app_start/logic/cubit/app_start_cubit.dart';
 import 'package:evetick_organizer/features/app_start/presentation/app_start.dart';
 import 'package:evetick_organizer/features/auth/data/auth_repository.dart';
+import 'package:evetick_organizer/features/auth/logic/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:evetick_organizer/features/auth/logic/login_cubit/login_cubit.dart';
 import 'package:evetick_organizer/features/auth/logic/signup_cubit/signup_cubit.dart';
+import 'package:evetick_organizer/features/auth/ui/screens/forgot_password_screen.dart';
 import 'package:evetick_organizer/features/auth/ui/screens/login_screen.dart';
 import 'package:evetick_organizer/features/auth/ui/screens/signup_screen.dart';
 import 'package:evetick_organizer/features/auth/ui/screens/verification_screen.dart';
 import 'package:evetick_organizer/features/create_event/logic/cubit/create_event_cubit.dart';
 import 'package:evetick_organizer/features/create_event/presentation/screens/create_event_screen.dart';
 import 'package:evetick_organizer/features/create_event/presentation/screens/publish_event_screen.dart';
+import 'package:evetick_organizer/features/delete_account/logic/cubit/delete_account_cubit.dart';
+import 'package:evetick_organizer/features/delete_account/presentation/screens/delete_account_screen.dart';
 import 'package:evetick_organizer/features/event_dashboard/logic/cubit/event_dashboard_cubit.dart';
 import 'package:evetick_organizer/features/event_dashboard/presentation/screens/event_dashboard_screen.dart';
 import 'package:evetick_organizer/features/event_staff/logic/cubit/event_staff_cubit.dart';
@@ -202,6 +206,22 @@ class AppRouter {
               BlocProvider.value(value: args.pendingEventsCubit),
             ],
             child: const NotificationsScreen(),
+          ),
+        );
+      case Routes.forgotPasswordScreen:
+        // Optional: the email already typed on the login screen.
+        final initialEmail = arguments as String?;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<ForgotPasswordCubit>(),
+            child: ForgotPasswordScreen(initialEmail: initialEmail),
+          ),
+        );
+      case Routes.deleteAccountScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => getIt<DeleteAccountCubit>(),
+            child: const DeleteAccountScreen(),
           ),
         );
       default:
