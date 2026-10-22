@@ -122,12 +122,7 @@ class AppRouter {
           ),
         );
       case Routes.mapPickerScreen:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<LocationCubit>(),
-            child: MapPickerScreen(),
-          ),
-        );
+        return MaterialPageRoute(builder: (_) => const MapPickerScreen());
       case Routes.editProfileScreen:
         final profileCubit = arguments as ProfileCubit;
         return MaterialPageRoute(

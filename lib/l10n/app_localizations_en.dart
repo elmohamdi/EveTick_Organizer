@@ -2107,4 +2107,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termsRejectedNotice => 'You need to accept the terms to use EveTick';
+
+  @override
+  String get locationConfirmLocation => 'Confirm Location';
+
+  @override
+  String get locationMoveMapHint => 'Move the map to place the pin on your spot';
+
+  @override
+  String get locationFindingAddress => 'Finding address…';
+
+  @override
+  String get locationAddressUnavailable => 'No address found for this spot. The coordinates will be used.';
+
+  @override
+  String get locationMyLocationTooltip => 'My location';
+
+  @override
+  String get locationServiceDisabled => 'Turn on location services to use your current location';
+
+  @override
+  String get locationPermissionDenied => 'Location permission is needed to use your current location';
+
+  @override
+  String get locationCurrentFailed => 'Couldn\'t get your current location';
 }

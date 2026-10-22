@@ -39,24 +39,6 @@ class LocationCubit extends Cubit<LocationState> {
     emit(LocationState.locationSelected(location));
   }
 
-  Future<void> updateSelectedLocation({
-    required double latitude,
-    required double longitude,
-  }) async {
-    try {
-      final location = await locationRepository.getLocationFromCoordinates(
-        latitude: latitude,
-        longitude: longitude,
-      );
-
-      selectedLocation = location;
-
-      emit(LocationState.locationUpdated(location));
-    } catch (e) {
-      emit(LocationState.error(e.toString()));
-    }
-  }
-
   Future<void> skipLocation() async {
     emit(const LocationState.loading());
 

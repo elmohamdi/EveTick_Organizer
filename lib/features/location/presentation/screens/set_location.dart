@@ -52,15 +52,10 @@ class SetLocation extends StatelessWidget {
               final LocationModel? location =
                   await Navigator.push<LocationModel>(
                     context,
-                    MaterialPageRoute(
-                      builder: (_) => BlocProvider.value(
-                        value: context.read<LocationCubit>(),
-                        child: const MapPickerScreen(),
-                      ),
-                    ),
+                    MaterialPageRoute(builder: (_) => const MapPickerScreen()),
                   );
 
-              if (location != null) {
+              if (location != null && context.mounted) {
                 context.read<LocationCubit>().setSelectedLocation(location);
               }
             },

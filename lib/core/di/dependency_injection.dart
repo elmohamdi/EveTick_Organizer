@@ -42,6 +42,7 @@ import 'package:evetick_organizer/features/localization/logic/locale_cubit.dart'
 import 'package:evetick_organizer/features/location/data/repos/location_repository.dart';
 import 'package:evetick_organizer/features/location/data/repos/location_repository_impl.dart';
 import 'package:evetick_organizer/features/location/logic/cubit/location_cubit.dart';
+import 'package:evetick_organizer/features/location/logic/cubit/map_picker_cubit.dart';
 import 'package:evetick_organizer/features/onboarding/data/onboarding_repository_impl.dart';
 import 'package:evetick_organizer/features/onboarding/domain/onboarding_repository.dart';
 import 'package:evetick_organizer/features/onboarding/presentation/cubit/onboarding_cubit.dart';
@@ -91,6 +92,9 @@ Future<void> setupGetIt() async {
   );
   getIt.registerFactory<LocationCubit>(
     () => LocationCubit(locationRepository: getIt<LocationRepository>()),
+  );
+  getIt.registerFactory<MapPickerCubit>(
+    () => MapPickerCubit(getIt<LocationRepository>()),
   );
 
   // profile

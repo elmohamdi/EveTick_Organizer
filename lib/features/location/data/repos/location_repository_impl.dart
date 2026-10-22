@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:evetick_organizer/features/location/data/models/location_exception.dart';
 import 'package:evetick_organizer/features/location/data/models/location_model.dart';
 import 'package:evetick_organizer/features/location/data/repos/location_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,34 +14,44 @@ class LocationRepositoryImpl implements LocationRepository {
 
   @override
   Future<LocationModel> getCurrentLocation() async {
-    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      throw Exception('Location service disabled');
-    }
-
-    LocationPermission permission = await Geolocator.checkPermission();
-
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-    }
-
-    if (permission == LocationPermission.denied ||
-        permission == LocationPermission.deniedForever) {
-      throw Exception('Location permission denied');
-    }
-    Position position = await Geolocator.getCurrentPosition();
-
-    List<Placemark> placemarks = await placemarkFromCoordinates(
-      position.latitude,
-      position.longitude,
+    final position = await _currentPosition();
+    return getLocationFromCoordinates(
+      latitude: position.latitude,
+      longitude: position.longitude,
     );
+  }
 
-    final place = placemarks.first;
+  @override
+  Future<LocationModel> getCurrentPosition() async {
+    final position = await _currentPosition();
     return LocationModel(
       latitude: position.latitude,
       longitude: position.longitude,
-      address: [place.locality, place.country].whereType<String>().join(', '),
     );
+  }
+
+  Future<Position> _currentPosition() async {
+    final serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      throw const LocationException(
+        LocationErrorType.serviceDisabled,
+        'Location service disabled',
+      );
+    }
+
+    var permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+    }
+    if (permission == LocationPermission.denied ||
+        permission == LocationPermission.deniedForever) {
+      throw const LocationException(
+        LocationErrorType.permissionDenied,
+        'Location permission denied',
+      );
+    }
+
+    return Geolocator.getCurrentPosition();
   }
 
   @override
@@ -86,12 +97,34 @@ class LocationRepositoryImpl implements LocationRepository {
     required double longitude,
   }) async {
     final placemarks = await placemarkFromCoordinates(latitude, longitude);
+
+    // Open sea / desert: the geocoder answers with an empty list.
+    if (placemarks.isEmpty) {
+      throw const LocationException(
+        LocationErrorType.addressNotFound,
+        'No address found for this location',
+      );
+    }
+
     final place = placemarks.first;
+    final parts = <String>[
+      for (final part in [
+        // `locality` is often empty outside big cities.
+        if (place.locality?.isNotEmpty ?? false)
+          place.locality
+        else if (place.subAdministrativeArea?.isNotEmpty ?? false)
+          place.subAdministrativeArea
+        else
+          place.administrativeArea,
+        place.country,
+      ])
+        if (part != null && part.isNotEmpty) part,
+    ];
 
     return LocationModel(
       latitude: latitude,
       longitude: longitude,
-      address: [place.locality, place.country].whereType<String>().join(', '),
+      address: parts.isEmpty ? null : parts.join(', '),
     );
   }
 }

@@ -2,6 +2,10 @@ import 'package:evetick_organizer/features/location/data/models/location_model.d
 
 abstract class LocationRepository {
   Future<LocationModel> getCurrentLocation();
+
+  /// Device position only (no address), so a broken geocoder can't stop the
+  /// map from jumping to the user.
+  Future<LocationModel> getCurrentPosition();
   Future<LocationModel?> getSavedLocation();
   Future<LocationModel> getLocationFromCoordinates({
     required double latitude,
