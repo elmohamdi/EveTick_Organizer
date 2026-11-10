@@ -4078,6 +4078,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You need to accept the terms to use EveTick'**
   String get termsRejectedNotice;
+
+  /// No description provided for @locationConfirmLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Location'**
+  String get locationConfirmLocation;
+
+  /// No description provided for @locationMoveMapHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Move the map to place the pin on your spot'**
+  String get locationMoveMapHint;
+
+  /// No description provided for @locationFindingAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Finding address…'**
+  String get locationFindingAddress;
+
+  /// No description provided for @locationAddressUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No address found for this spot. The coordinates will be used.'**
+  String get locationAddressUnavailable;
+
+  /// No description provided for @locationMyLocationTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'My location'**
+  String get locationMyLocationTooltip;
+
+  /// No description provided for @locationServiceDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on location services to use your current location'**
+  String get locationServiceDisabled;
+
+  /// No description provided for @locationPermissionDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Location permission is needed to use your current location'**
+  String get locationPermissionDenied;
+
+  /// No description provided for @locationCurrentFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t get your current location'**
+  String get locationCurrentFailed;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -1468,5 +1468,21 @@
   "termsScrollToAccept": "Scroll to the end of the terms to enable Accept",
   "@termsScrollToAccept": {},
   "termsRejectedNotice": "You need to accept the terms to use EveTick",
-  "@termsRejectedNotice": {}
+  "@termsRejectedNotice": {},
+  "locationConfirmLocation": "Confirm Location",
+  "@locationConfirmLocation": {},
+  "locationMoveMapHint": "Move the map to place the pin on your spot",
+  "@locationMoveMapHint": {},
+  "locationFindingAddress": "Finding address…",
+  "@locationFindingAddress": {},
+  "locationAddressUnavailable": "No address found for this spot. The coordinates will be used.",
+  "@locationAddressUnavailable": {},
+  "locationMyLocationTooltip": "My location",
+  "@locationMyLocationTooltip": {},
+  "locationServiceDisabled": "Turn on location services to use your current location",
+  "@locationServiceDisabled": {},
+  "locationPermissionDenied": "Location permission is needed to use your current location",
+  "@locationPermissionDenied": {},
+  "locationCurrentFailed": "Couldn't get your current location",
+  "@locationCurrentFailed": {}
 }

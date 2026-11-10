@@ -10,7 +10,6 @@ import 'package:evetick_organizer/features/create_event/presentation/widgets/dat
 import 'package:evetick_organizer/features/create_event/presentation/widgets/event_location_field.dart';
 import 'package:evetick_organizer/features/location/data/models/location_model.dart';
 import 'package:evetick_organizer/features/location/data/repos/location_repository.dart';
-import 'package:evetick_organizer/features/location/logic/cubit/location_cubit.dart';
 import 'package:evetick_organizer/features/location/presentation/screens/map_picker_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -146,12 +145,7 @@ class _BuildEventDetailsState extends State<BuildEventDetails> {
   Future<void> _pickLocationFromMap() async {
     final location = await Navigator.push<LocationModel>(
       context,
-      MaterialPageRoute(
-        builder: (context) => BlocProvider(
-          create: (context) => getIt<LocationCubit>(),
-          child: const MapPickerScreen(),
-        ),
-      ),
+      MaterialPageRoute(builder: (context) => const MapPickerScreen()),
     );
     if (location != null && location.address != null) {
       locationController.text = location.address!;

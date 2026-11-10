@@ -4,6 +4,7 @@ import 'package:evetick_organizer/core/theming/extensions/build_context_extensio
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:evetick_organizer/core/widgets/filled_app_text_button.dart';
 import 'package:evetick_organizer/features/auth/logic/signup_cubit/signup_cubit.dart';
+import 'package:evetick_organizer/features/auth/logic/signup_cubit/signup_state.dart';
 import 'package:evetick_organizer/features/auth/ui/widgets/already_have_account_text.dart';
 import 'package:evetick_organizer/features/auth/ui/widgets/auth_background.dart';
 import 'package:evetick_organizer/features/auth/ui/widgets/auth_with_other_platforms.dart';
@@ -69,11 +70,14 @@ class SignupScreen extends StatelessWidget {
                     const LoginBlocListener(),
                     NameEmailAndPassword(),
                     verticalSpace(24),
-                    FilledAppTextButton(
-                      buttonText: AppLocalizations.of(context)!.authSignUp,
-                      onPressed: () {
-                        validateThenDoSignup(context);
-                      },
+                    BlocBuilder<SignupCubit, SignupState>(
+                      builder: (context, state) => FilledAppTextButton(
+                        buttonText: AppLocalizations.of(context)!.authSignUp,
+                        isLoading: state is Loading,
+                        onPressed: () {
+                          validateThenDoSignup(context);
+                        },
+                      ),
                     ),
                     verticalSpace(16),
                     LoginWithOtherPlatforms(),

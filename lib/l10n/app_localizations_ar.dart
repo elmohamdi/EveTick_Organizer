@@ -2107,4 +2107,28 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get termsRejectedNotice => 'يجب الموافقة على الشروط لاستخدام EveTick';
+
+  @override
+  String get locationConfirmLocation => 'تأكيد الموقع';
+
+  @override
+  String get locationMoveMapHint => 'حرّك الخريطة لوضع الدبوس على المكان المطلوب';
+
+  @override
+  String get locationFindingAddress => 'جارٍ تحديد العنوان…';
+
+  @override
+  String get locationAddressUnavailable => 'لا يوجد عنوان لهذه النقطة، وسيتم استخدام الإحداثيات.';
+
+  @override
+  String get locationMyLocationTooltip => 'موقعي';
+
+  @override
+  String get locationServiceDisabled => 'فعّل خدمة الموقع لاستخدام موقعك الحالي';
+
+  @override
+  String get locationPermissionDenied => 'نحتاج إذن الموقع لاستخدام موقعك الحالي';
+
+  @override
+  String get locationCurrentFailed => 'تعذر تحديد موقعك الحالي';
 }

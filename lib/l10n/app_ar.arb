@@ -664,5 +664,13 @@
   "termsAccept": "قبول",
   "termsReject": "رفض",
   "termsScrollToAccept": "مرّر حتى نهاية الشروط لتفعيل زر القبول",
-  "termsRejectedNotice": "يجب الموافقة على الشروط لاستخدام EveTick"
+  "termsRejectedNotice": "يجب الموافقة على الشروط لاستخدام EveTick",
+  "locationConfirmLocation": "تأكيد الموقع",
+  "locationMoveMapHint": "حرّك الخريطة لوضع الدبوس على المكان المطلوب",
+  "locationFindingAddress": "جارٍ تحديد العنوان…",
+  "locationAddressUnavailable": "لا يوجد عنوان لهذه النقطة، وسيتم استخدام الإحداثيات.",
+  "locationMyLocationTooltip": "موقعي",
+  "locationServiceDisabled": "فعّل خدمة الموقع لاستخدام موقعك الحالي",
+  "locationPermissionDenied": "نحتاج إذن الموقع لاستخدام موقعك الحالي",
+  "locationCurrentFailed": "تعذر تحديد موقعك الحالي"
 }
