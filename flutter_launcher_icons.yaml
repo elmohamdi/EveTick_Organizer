@@ -1,0 +1,15 @@
+# Generate with:
+#   dart run flutter_launcher_icons
+flutter_launcher_icons:
+  android: true
+  ios: true
+
+  # Full icon (iOS + older Android). 1024x1024, opaque.
+  image_path: "assets/icons/app_icon.png"
+  remove_alpha_ios: true
+
+  # Android adaptive icon (Android 8+): background colour + logo layer.
+  adaptive_icon_background: "#0A2540"
+  adaptive_icon_foreground: "assets/icons/app_icon_foreground.png"
+
+  min_sdk_android: 21

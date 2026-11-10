@@ -1,0 +1,110 @@
+import 'package:evetick_organizer/features/auth/data/auth_repository.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import 'failure.dart';
+
+class FirebaseErrorHandler {
+  static FirebaseFailure handle(FirebaseAuthException e) {
+    switch (e.code) {
+      case 'invalid-credential':
+        return FirebaseFailure('Invalid email or password');
+
+      case 'user-not-found':
+        return FirebaseFailure('No account found with this email');
+
+      case 'wrong-password':
+        return FirebaseFailure('Incorrect password');
+
+      case 'user-disabled':
+        return FirebaseFailure('This account has been disabled');
+      
+      //sign up errors
+
+      case 'email-already-in-use':
+        return FirebaseFailure('This email is already registered');
+
+      case 'weak-password':
+        return FirebaseFailure('Password is too weak, use a stronger one');
+
+      case 'invalid-email':
+        return FirebaseFailure('Invalid email format');
+
+      case 'operation-not-allowed':
+        return FirebaseFailure('This sign-in method is not enabled');
+
+      // social sign-in
+      case 'account-exists-with-different-credential':
+        return FirebaseFailure(
+          'This email is already registered with another sign-in method',
+        );
+
+      case 'canceled':
+      case 'web-context-canceled':
+      case 'popup-closed-by-user':
+        return FirebaseFailure(AuthRepository.signInCancelledMessage);
+
+      //public errors
+
+      case 'too-many-requests':
+        return FirebaseFailure('Too many attempts, try again later');
+
+      case 'network-request-failed':
+        return FirebaseFailure('No internet connection');
+
+      case 'user-token-expired':
+        return FirebaseFailure('Session expired, please login again');
+
+      // account deletion
+      case 'requires-recent-login':
+        return FirebaseFailure('Please sign in again, then try once more');
+
+      case 'user-mismatch':
+        return FirebaseFailure('This is not the account you are signed in with');
+
+
+      default:
+        return FirebaseFailure('Error code: ${e.code} | ${e.message}');
+    }
+  }
+
+  static FirebaseFailure handleGeneric(Object e) {
+    return FirebaseFailure('Something went wrong, please try again');
+  }
+  
+  static FirebaseFailure handleFirestore(FirebaseException e) {
+  switch (e.code) {
+    case 'permission-denied':
+      return FirebaseFailure('Permission denied');
+
+    case 'unavailable':
+      return FirebaseFailure('Service unavailable');
+
+    case 'not-found':
+      return FirebaseFailure('Data not found');
+
+    default:
+      return FirebaseFailure(
+        'Firestore Error: ${e.code}',
+      );
+  }
+}
+
+static FirebaseFailure handleStorage(FirebaseException e) {
+  switch (e.code) {
+    case 'object-not-found':
+      return FirebaseFailure('File not found');
+
+    case 'unauthorized':
+      return FirebaseFailure('Unauthorized');
+
+    case 'canceled':
+      return FirebaseFailure('Upload cancelled');
+
+    case 'unknown':
+      return FirebaseFailure('Unknown storage error');
+
+    default:
+      return FirebaseFailure(e.message ?? 'Storage Error');
+  }
+}
+}
