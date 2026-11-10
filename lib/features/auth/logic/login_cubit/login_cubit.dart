@@ -48,6 +48,27 @@ class LoginCubit extends Cubit<LoginState> {
     );
   }
 
+  void signInWithGoogle() async {
+    if (state is Loading) return;
+    emit(const LoginState.loading());
+
+    final result = await authRepo.signInWithGoogle();
+
+    result.when(
+      success: (user) {
+        emit(LoginState.success(user));
+      },
+      failure: (failure) {
+        // The user closed the Google sheet: not an error, just go back.
+        if (failure.message == AuthRepository.signInCancelledMessage) {
+          emit(const LoginState.initial());
+        } else {
+          emit(LoginState.error(error: failure.message));
+        }
+      },
+    );
+  }
+
   void logOut() async {
     await authRepo.logout();
   }

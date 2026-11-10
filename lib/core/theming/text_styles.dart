@@ -22,10 +22,20 @@ class TextStyles {
     fontWeight: FontWeightHelper.regular,
     color: context.colors.lightGray,
   );
-    static TextStyle font14LightGrayRegular(BuildContext context) => TextStyle(
+  static TextStyle font14LightGrayRegular(BuildContext context) => TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.regular,
     color: context.colors.lightGray,
+  );
+  static TextStyle font14Gray3Regular = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.gray3,
+  );
+  static TextStyle font12Gray3Mid = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorsManager.gray3,
   );
 
   static TextStyle font16WhiteMid(BuildContext context) => TextStyle(
@@ -55,7 +65,11 @@ class TextStyles {
     fontWeight: FontWeightHelper.regular,
     color: context.colors.white,
   );
-
+  static TextStyle font16Gray3Regular = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorsManager.gray3,
+  );
   static TextStyle font16LightGrayMid(BuildContext context) => TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.medium,
@@ -95,4 +109,15 @@ class TextStyles {
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.orange,
   );
+  static TextStyle font24OrangeBold = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsManager.orange,
+  );
+  static TextStyle font14IndicatorLabel(BuildContext context, Color color) =>
+      TextStyle(
+        fontSize: 14.sp,
+        fontWeight: FontWeightHelper.bold,
+        color: color,
+      );
 }

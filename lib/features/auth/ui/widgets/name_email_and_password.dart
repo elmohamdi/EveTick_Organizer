@@ -42,7 +42,7 @@ class _NameEmailAndPasswordState extends State<NameEmailAndPassword> {
             hintText: AppLocalizations.of(context)!.authFullNamePlaceholder,
             validator: (value){
               if(value == null || value.isEmpty){
-                return 'Please enter a valid name';
+                return AppLocalizations.of(context)!.authNameInvalid;
               }
             },
             controller: context.read<SignupCubit>().nameController,
@@ -58,7 +58,7 @@ class _NameEmailAndPasswordState extends State<NameEmailAndPassword> {
             ),
             validator: (value){
               if(value == null || value.isEmpty){
-                return 'Please enter a valid email';
+                return AppLocalizations.of(context)!.authEmailInvalid;
               }
             },
             controller: context.read<SignupCubit>().emailController,
@@ -84,7 +84,7 @@ class _NameEmailAndPasswordState extends State<NameEmailAndPassword> {
             ),
             validator: (value) {
               if(value == null || value.isEmpty || AppRegex.isPasswordValid(value)){
-                return 'Please enter a valid password';
+                return AppLocalizations.of(context)!.authPasswordInvalid;
               }
             },
           ),

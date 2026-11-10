@@ -11,6 +11,7 @@ class FilledAppTextButton extends StatelessWidget {
   final String buttonText;
   final VoidCallback onPressed;
   final Color? textColor;
+  final bool isLoading;
   const FilledAppTextButton({
     super.key,
     this.borderRadius,
@@ -18,6 +19,7 @@ class FilledAppTextButton extends StatelessWidget {
     this.buttonWidth,
     this.buttonHeight,
     this.textColor,
+    this.isLoading = false,
     required this.buttonText,
     required this.onPressed,
   });
@@ -38,8 +40,17 @@ class FilledAppTextButton extends StatelessWidget {
           Size(buttonWidth ?? 344.w, buttonHeight ?? 48.h),
         ),
       ),
-      onPressed: onPressed,
-      child: Text(buttonText, style: TextStyles.font16WhiteMid(context)),
+      onPressed: isLoading ? null : onPressed,
+      child: isLoading
+          ? SizedBox(
+              width: 22.w,
+              height: 22.w,
+              child: const CircularProgressIndicator(
+                strokeWidth: 2.5,
+                color: ColorsManager.defaultWhite,
+              ),
+            )
+          : Text(buttonText, style: TextStyles.font16WhiteMid(context)),
     );
   }
 }

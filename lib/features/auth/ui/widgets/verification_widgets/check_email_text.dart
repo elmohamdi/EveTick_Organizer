@@ -1,5 +1,6 @@
 import 'package:evetick_organizer/core/theming/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:evetick_organizer/l10n/app_localizations.dart';
 
 class CheckEmailText extends StatelessWidget {
   const CheckEmailText({super.key});
@@ -14,12 +15,9 @@ class CheckEmailText extends StatelessWidget {
                 ),
                 children: [
                   TextSpan(
-                    text: 'Check your email for the code sent \n'
+                    text: AppLocalizations.of(context)!.authCheckEmailCodeSent
                     ),
-                    TextSpan(
-                      text: 'to '
-                    ),
-                    TextSpan(
+                  TextSpan(
                       text: 'hello@evetick.com',
                       style: TextStyles.font12OrangeBold
                     )

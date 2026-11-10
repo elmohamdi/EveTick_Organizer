@@ -1,4 +1,3 @@
-
 import 'package:evetick_organizer/core/helpers/extentions.dart';
 import 'package:evetick_organizer/core/routing/routes.dart';
 import 'package:evetick_organizer/features/app_start/logic/cubit/app_start_cubit.dart';
@@ -13,25 +12,22 @@ class AppStartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<AppStartCubit, AppStartState>(
       listener: (context, state) {
-        state.when(
-          initial: () {},
-          loading: () {},
-          goToOnboarding: () {
+        switch (state) {
+          case AppStartGoToOnboarding():
             context.pushReplacedNamed(Routes.onBoardingScreen);
-          },
-          goToWelcome: () {
+          case AppStartGoToWelcome():
             context.pushReplacedNamed(Routes.welcomeScreen);
-          },
-          goToLogin: () {
+          case AppStartGoToLogin():
             context.pushReplacedNamed(Routes.loginScreen);
-          },
-          goToHome: () {
-            context.pushReplacedNamed(Routes.profileScreen);
-          },
-          goToLocation: () {
+          case AppStartGoToTerms():
+            context.pushReplacedNamed(Routes.termsAcceptanceScreen);
+          case AppStartGoToLocation():
             context.pushReplacedNamed(Routes.setLocationScreen);
-          },
-        );
+          case AppStartGoToHome():
+            context.pushReplacedNamed(Routes.homeScreen);
+          case AppStartInitial() || AppStartLoading():
+            break;
+        }
       },
       child: const Scaffold(body: Center(child: CircularProgressIndicator())),
     );

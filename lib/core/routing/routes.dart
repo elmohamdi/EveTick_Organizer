@@ -1,4 +1,5 @@
 class Routes {
+  static const String splashScreen = '/splashScreen';
   static const String onBoardingScreen = '/onboardingScreen';
   static const String loginScreen = '/loginScreen';
   static const String signupScreen = '/signupScreen';
@@ -11,5 +12,16 @@ class Routes {
   static const String setLocationScreen = '/setLocationScreen';
   static const String profileScreen = '/profileScreen';
   static const String mapPickerScreen = '/mapPickerScreen';
-  static const String editProfileScreen='/editProfileScreen';
+  static const String editProfileScreen = '/editProfileScreen';
+  static const String createEventScreen = '/createEventScreen';
+  static const String publishEventScreen = '/publishEventScreen';
+  static const String ticketScanScreen = '/ticketScanScreen';
+  static const String eventDashboardScreen = '/eventDashboardScreen';
+  static const String helpSupportScreen = '/helpSupportScreen';
+  static const String sendMessageScreen = '/sendMessageScreen';
+  static const String termsOfServiceScreen = '/termsOfServiceScreen';
+  static const String notificationsScreen = '/notificationsScreen';
+  static const String forgotPasswordScreen = '/forgotPasswordScreen';
+  static const String deleteAccountScreen = '/deleteAccountScreen';
+  static const String termsAcceptanceScreen = '/termsAcceptanceScreen';
 }

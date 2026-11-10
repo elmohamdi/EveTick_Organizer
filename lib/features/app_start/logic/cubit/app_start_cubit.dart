@@ -33,6 +33,13 @@ class AppStartCubit extends Cubit<AppStartState> {
       return;
     }
 
+    // New accounts must accept the terms before entering the app.
+    // Guests never sign up, so they skip this step.
+    if (!user.isGuest && !user.termsAccepted) {
+      emit(const AppStartState.goToTerms());
+      return;
+    }
+
     final location = await locationRepository.getSavedLocation();
 
     if (location == null) {

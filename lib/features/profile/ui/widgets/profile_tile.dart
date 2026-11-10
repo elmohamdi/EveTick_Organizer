@@ -11,6 +11,7 @@ class ProfileTile extends StatelessWidget {
   final String? subtitle;
   final String? trailingText;
   final VoidCallback? onTap;
+  final Color? titleColor;
   
   const ProfileTile({
     super.key,
@@ -19,6 +20,7 @@ class ProfileTile extends StatelessWidget {
     this.subtitle,
     this.trailingText,
     this.onTap,
+    this.titleColor,
   });
 
   @override
@@ -39,7 +41,12 @@ class ProfileTile extends StatelessWidget {
             child: SvgPicture.asset(iconPath, fit: BoxFit.contain),
           ),
         ),
-        title: Text(title, style: TextStyles.font16WhiteRegular(context)),
+        title: Text(
+          title,
+          style: TextStyles.font16WhiteRegular(
+            context,
+          ).copyWith(color: titleColor),
+        ),
         subtitle: subtitle == null
       ? null
       : Text(

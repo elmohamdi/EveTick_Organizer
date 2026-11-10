@@ -1,1 +1,34 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"evetick-a2d16","appId":"1:1043739333910:android:9f40f5da4e2737acc7ac37","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"evetick-a2d16","configurations":{"android":"1:1043739333910:android:9f40f5da4e2737acc7ac37","ios":"1:1043739333910:ios:c68d8d94c6e04133c7ac37"}}}}}}
+{
+  "functions": [
+    {
+      "source": "functions-staff",
+      "codebase": "staff",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ]
+    }
+  ],
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "evetick-a2d16",
+          "appId": "1:1043739333910:android:9f40f5da4e2737acc7ac37",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "evetick-a2d16",
+          "configurations": {
+            "android": "1:1043739333910:android:9f40f5da4e2737acc7ac37",
+            "ios": "1:1043739333910:ios:c68d8d94c6e04133c7ac37"
+          }
+        }
+      }
+    }
+  }
+}

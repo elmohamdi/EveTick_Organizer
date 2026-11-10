@@ -7,13 +7,15 @@ class AppUserModel {
   final bool isEmailVerified;
   final bool isGuest;
   final String role;
+  final bool termsAccepted;
   AppUserModel({
     required this.uid,
     required this.email,
     this.name = '',
     this.isEmailVerified = false,
     this.isGuest = false,
-    required this.role
+    required this.role,
+    this.termsAccepted = false,
   });
 
   Map<String, dynamic> toJson() {
@@ -24,7 +26,8 @@ class AppUserModel {
       'isEmailVerified': isEmailVerified,
       'isGuest': isGuest,
       'createdAt': FieldValue.serverTimestamp(),
-      'role':role
+      'role':role,
+      'termsAccepted': termsAccepted,
     };
   }
 
@@ -36,6 +39,7 @@ class AppUserModel {
       isEmailVerified: json['isEmailVerified'] ?? false,
       isGuest: json['isGuest'] ?? false,
        role: json['role'] ?? 'client',
+      termsAccepted: json['termsAccepted'] ?? false,
     );
   }
 }
